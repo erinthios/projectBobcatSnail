@@ -27,17 +27,23 @@ ms
   text-align: center;
   vertical-align: middle;
   line-height: 54px;
+  text-shadow:
+      /* outline */
+      -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black,
+	  /* glow (using 'color' property value) */
+	  0 0 4px, 0 0 4px, 0 0 6px;
 }
 
 .empty
 {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .multiplier, .smallPoints, .bigPoints
 {
   font-family: sans-serif;
-  font-size: 26px;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 /* square text colors */
@@ -66,7 +72,7 @@ marker
 {
   position: absolute;
   transition-property: top, left;
-  transition-duration: 1s;
+  transition-duration: 3s;
   z-index: 2;
 }
 
