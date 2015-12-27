@@ -2,28 +2,29 @@
 /* Supported properties:
  * - text: text to display in the square when revealed
  * - sound: sound file to play when square revealed
+ * - cssClass: CSS class name to set on the square
  */
 var startSquare = { text: "" }
-var goalSquare = { text: "%", sound: "Finish", class: "goal", isGoal: true }
+var goalSquare = { text: "%", sound: "Finish", cssClass: "goal", isGoal: true }
 var otherSquares = [
-{ text: "r", class: "empty"},
-{ text: "r", class: "empty"},
-{ text: "r", class: "empty"},
-{ text: "r", class: "empty"},
-{ text: "-", sound: "Good", class: "dummyPrize"},
-{ text: "-", sound: "Good", class: "dummyPrize"},
-{ text: "-", sound: "Good", class: "dummyPrize"},
-{ text: "-", sound: "Good", class: "dummyPrize"},
-{ text: "-", sound: "Good", class: "dummyPrize"},
-{ text: "+", sound: "BigGood", class: "prize"},
-{ text: "+10", sound: "BigGood", class: "bigPoints"},
-{ text: "+10", sound: "BigGood", class: "bigPoints"},
-{ text: "+5", sound: "Good", class: "smallPoints"},
-{ text: "+5", sound: "Good", class: "smallPoints"},
-{ text: "+5", sound: "Good", class: "smallPoints"},
-{ text: "+5", sound: "Good", class: "smallPoints"},
-{ text: "x2", sound: "BigGood", class: "multiplier"},
-{ text: "x2", sound: "BigGood", class: "multiplier"},
+{ text: "r", cssClass: "empty"},
+{ text: "r", cssClass: "empty"},
+{ text: "r", cssClass: "empty"},
+{ text: "r", cssClass: "empty"},
+{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "+", sound: "BigGood", cssClass: "prize"},
+{ text: "+10", sound: "BigGood", cssClass: "bigPoints"},
+{ text: "+10", sound: "BigGood", cssClass: "bigPoints"},
+{ text: "+5", sound: "Good", cssClass: "smallPoints"},
+{ text: "+5", sound: "Good", cssClass: "smallPoints"},
+{ text: "+5", sound: "Good", cssClass: "smallPoints"},
+{ text: "+5", sound: "Good", cssClass: "smallPoints"},
+{ text: "x2", sound: "BigGood", cssClass: "multiplier"},
+{ text: "x2", sound: "BigGood", cssClass: "multiplier"},
 ];
 
 /* dummy "prize" text */
@@ -82,7 +83,7 @@ function setSquareContext(node, context)
 {
   node.dataContext = context;
   node.textContent = context.text;
-  node.className = context.class;
+  node.className = context.cssClass;
 }
 
 function hideAllSquares()
