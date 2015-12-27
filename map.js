@@ -88,6 +88,11 @@ function clickMapSquare(obj)
     sound.play();
   }
   
+  if (obj.dataContext != startSquare)
+  {
+    zoomSquare(obj);
+  }
+  
   if (numMoves == placeGoalAfterNumMoves)
   {
     /* place goal */
@@ -103,6 +108,32 @@ function clickMapSquare(obj)
 	shuffle(hiddenSquares);
 	placeGoal(hiddenSquares[0]);
   }
+}
+
+function zoomSquare(obj)
+{
+	var targetWidth = 302;
+	var targetHeight = 216;
+	
+	/* zoom to full */
+	obj.style.transform = "scale(4)";
+	obj.style.width = targetWidth/4; /* scaling 4x, so width should be 1/4 of the target width */
+	obj.style.top = (targetHeight/2 - targetHeight/8);
+	obj.style.left = (targetWidth/2 - targetWidth/8);
+	obj.style.zIndex = 10;
+	
+	/* wait then unzoom */
+	window.setTimeout(unzoomSquare, 2000, obj);
+}
+
+function unzoomSquare(obj)
+{
+	/* clear custom styles */
+	obj.style.top = null;
+	obj.style.left = null;
+	obj.style.width = null;
+	obj.style.zIndex = null;
+	obj.style.transform = null;
 }
 
 function hideMapSquare(obj)

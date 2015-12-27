@@ -32,6 +32,8 @@ ms
       -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black,
 	  /* glow (using 'color' property value) */
 	  0 0 4px, 0 0 4px, 0 0 6px;
+  transition-property: top, left, width, transform;
+  transition-duration: 1s;
 }
 
 .empty
