@@ -27,11 +27,14 @@ var otherSquares = [
 ];
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
-/* Current setting: rightmost two columns */
+/* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
 
 /* opacity value for a revealed square (0.0-1.0) */
 var revealedSquareOpacity = 0.60;
+
+var markerFaceLeftTransform = "scaleX(1)";
+var markerFaceRightTransform = "scaleX(-1)";
 
 
 /***** Functions ******/
@@ -41,7 +44,18 @@ function clickMapSquare(obj)
   /* move marker */
   var marker = document.getElementsByTagName("marker")[0];
   marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
-  marker.style.left = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
+  var newLeft = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
+  if (newLeft > marker.offsetLeft)
+  {
+    /* snail faces right */
+    marker.style.transform = markerFaceRightTransform;
+  }
+  else
+  {
+    /* snail faces left */
+    marker.style.transform = markerFaceLeftTransform;
+  }
+  marker.style.left = newLeft;
 
   /* uncover square */
   obj.style.opacity = revealedSquareOpacity;
