@@ -11,8 +11,8 @@ var otherSquares = [
 { text: "r", cssClass: "empty"},
 { text: "r", cssClass: "empty"},
 { text: "r", cssClass: "empty"},
-{ text: "-", sound: "Good", cssClass: "dummyPrize"},
-{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "r", cssClass: "empty"},
+{ text: "r", cssClass: "empty"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
@@ -34,10 +34,10 @@ var dummyPrizes = ["!","@","#","&","w","e","t","o","j","k","b",",","Q","E","T","
 /* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
 
-/* move # after which to place a goal square in any allowed space */
+/* move # after which to place a goal square in any allowed space (moving to start counts as 1) */
 /* 0 = set on init, use allowedGoalIndices for placement */
 /* 1+ = set on given move (moving to the start space counts as a move) */
-var placeGoalAfterNumMoves = 10;
+var placeGoalAfterNumMoves = 11;
 
 /* automatically show the goal square when it's placed */
 var showGoalWhenPlaced = false;
@@ -54,22 +54,6 @@ var markerFaceRightTransform = "scaleX(-1)";
 var numMoves = 0;
 function clickMapSquare(obj)
 {
-  if (++numMoves == placeGoalAfterNumMoves)
-  {
-    /* place goal */
-	var hiddenSquares = [];
-    var elements = document.getElementsByTagName("ms");
-    for (var i=0; i<elements.length; ++i)
-    {
-      if (elements[i].isShown == false)
-      {
-        hiddenSquares.push(elements[i]);
-      }
-    }
-	shuffle(hiddenSquares);
-	placeGoal(hiddenSquares[0]);
-  }
-	
   /* move marker */
   var marker = document.getElementsByTagName("marker")[0];
   marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
@@ -95,6 +79,22 @@ function clickMapSquare(obj)
     var location = "sounds/" + obj.dataContext.sound + ((Math.floor(Math.random() * 14))+1) + ".wav";
     var sound = new Audio(location);
     sound.play();
+  }
+  
+  if (++numMoves == placeGoalAfterNumMoves)
+  {
+    /* place goal */
+    var hiddenSquares = [];
+    var elements = document.getElementsByTagName("ms");
+    for (var i=0; i<elements.length; ++i)
+    {
+      if (elements[i].isShown == false && elements[i].cssClass != "prize" && elements[i].cssClass != "multiplier")
+      {
+        hiddenSquares.push(elements[i]);
+      }
+    }
+	shuffle(hiddenSquares);
+	placeGoal(hiddenSquares[0]);
   }
 }
 
