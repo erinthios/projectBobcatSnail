@@ -4,27 +4,30 @@
  * - sound: sound file to play when square revealed
  */
 var startSquare = { text: "" }
-var goalSquare = { text: "%", sound: "Finish", isGoal: true }
+var goalSquare = { text: "%", sound: "Finish", class: "goal", isGoal: true }
 var otherSquares = [
-{ text: "",pointSquare:false},
-{ text: "",pointSquare:false},
-{ text: "w", sound: "Good",pointSquare:false},
-{ text: "T", sound: "Good",pointSquare:false},
-{ text: "S", sound: "Good",pointSquare:false},
-{ text: "J", sound: "Good",pointSquare:false},
-{ text: "E", sound: "Good",pointSquare:false},
-{ text: "",pointSquare:false},
-{ text: "",pointSquare:false},
-{ text: "+",sound: "BigGood",pointSquare:false},
-{ text: "+10 Points", sound: "BigGood",pointSquare: true},
-{ text: "+10 Points", sound: "BigGood",pointSquare: true},
-{ text: "+5 Points",pointSquare: true, sound: "Good"},
-{ text: "+5 Points",pointSquare: true, sound: "Good"},
-{ text: "+5 Points",pointSquare: true, sound: "Good"},
-{ text: "+5 Points",pointSquare: true, sound: "Good"},
-{ text: "x2 Points", sound: "BigGood", pointSquare: true},
-{ text: "x2 Points", sound: "BigGood", pointSquare: true},
+{ text: "r", class: "empty"},
+{ text: "r", class: "empty"},
+{ text: "r", class: "empty"},
+{ text: "r", class: "empty"},
+{ text: "-", sound: "Good", class: "dummyPrize"},
+{ text: "-", sound: "Good", class: "dummyPrize"},
+{ text: "-", sound: "Good", class: "dummyPrize"},
+{ text: "-", sound: "Good", class: "dummyPrize"},
+{ text: "-", sound: "Good", class: "dummyPrize"},
+{ text: "+", sound: "BigGood", class: "prize"},
+{ text: "+10", sound: "BigGood", class: "bigPoints"},
+{ text: "+10", sound: "BigGood", class: "bigPoints"},
+{ text: "+5", sound: "Good", class: "smallPoints"},
+{ text: "+5", sound: "Good", class: "smallPoints"},
+{ text: "+5", sound: "Good", class: "smallPoints"},
+{ text: "+5", sound: "Good", class: "smallPoints"},
+{ text: "x2", sound: "BigGood", class: "multiplier"},
+{ text: "x2", sound: "BigGood", class: "multiplier"},
 ];
+
+/* dummy "prize" text */
+var dummyPrizes = ["!","@","#","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
@@ -79,16 +82,7 @@ function setSquareContext(node, context)
 {
   node.dataContext = context;
   node.textContent = context.text;
-  if(context.pointSquare == true)
-  {
-    node.style.fontFamily = "sans-serif";
-    node.style.fontSize = "20px";
-  }
-  else
-  {
-    node.style.fontFamily = "webdings";
-    node.style.fontSize = "52px";
-  }
+  node.className = context.class;
 }
 
 function hideAllSquares()
@@ -104,6 +98,17 @@ function initMap()
 {
   /* shuffle squares */
   shuffle(otherSquares);
+
+  /* set up dummy prize text */
+  shuffle(dummyPrizes);
+  var dummyPrizesUsed = 0;
+  for (var i=0; i<otherSquares.length; ++i)
+  {
+    if (otherSquares[i].class == "dummyPrize")
+    {
+      otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
+    }
+  }
 
   /* set up squares */
   var elements = document.getElementsByTagName("ms");

@@ -21,10 +21,21 @@ ms
   transition-property: opacity;
   transition-duration: 1s;
   z-index: 0;
-  text-align: center;
   color: white;
   font-family: webdings;
   font-size: 52px; 
+  text-align: center;
+}
+
+.empty
+{
+  font-size: 26px;
+}
+
+.multiplier, .smallPoints, .bigPoints
+{
+  font-family: sans-serif;
+  font-size: 36px;
 }
 
 marker
