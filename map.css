@@ -1,0 +1,41 @@
+body
+{
+  background-color: #ccc;
+}
+
+map { position: absolute; top:0; left: 0; }
+
+ms
+{
+  opacity: 0.0;
+  position: absolute;
+  height: 54px;
+  width: 60.4px;
+  background-color: #555;
+  transition-property: opacity;
+  transition-duration: 1s;
+  z-index: 0;
+  text-align: center;
+  color: white;
+}
+
+marker
+{
+  position: absolute;
+  transition-property: top, left;
+  transition-duration: 1s;
+  z-index: 2;
+}
+
+#a1, #a2, #a3, #a4, #a5 { top: 0px }
+#b1, #b2, #b3, #b4, #b5 { top: 54px }
+#c1, #c2, #c3, #c4, #c5 { top: 108px }
+#d1, #d2, #d3, #d4, #d5 { top: 162px }
+
+#a1, #b1, #c1, #d1 { left: 0px }
+#a2, #b2, #c2, #d2 { left: 60.4px }
+#a3, #b3, #c3, #d3 { left: 120.8px }
+#a4, #b4, #c4, #d4 { left: 181.2px }
+#a5, #b5, #c5, #d5 { left: 241.6px }
+
+#reset { position: absolute; left: 0px; top: 230px; }
