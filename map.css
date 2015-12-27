@@ -40,6 +40,28 @@ ms
   font-size: 26px;
 }
 
+/* square text colors */
+.prize
+{
+  color: orangered;
+}
+.bigPoints
+{
+  color: cyan;
+}
+.smallPoints
+{
+  color: deepskyblue;
+}
+.multiplier
+{
+  color: chartreuse;
+}
+.goal
+{
+  color: gold;
+}
+
 marker
 {
   position: absolute;
