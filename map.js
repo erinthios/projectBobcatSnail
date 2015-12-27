@@ -43,7 +43,7 @@ var placeGoalAfterNumMoves = 11;
 var showGoalWhenPlaced = false;
 
 /* opacity value for a revealed square (0.0-1.0) */
-var revealedSquareOpacity = 0.60;
+var revealedSquareOpacity = 1.0;
 
 var markerFaceLeftTransform = "scaleX(1)";
 var markerFaceRightTransform = "scaleX(-1)";
@@ -54,6 +54,12 @@ var markerFaceRightTransform = "scaleX(-1)";
 var numMoves = 0;
 function clickMapSquare(obj)
 {
+  /* increment moves */
+  if (obj.isShown == false)
+  {
+    ++numMoves;
+  }
+  
   /* move marker */
   var marker = document.getElementsByTagName("marker")[0];
   marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
@@ -81,7 +87,7 @@ function clickMapSquare(obj)
     sound.play();
   }
   
-  if (++numMoves == placeGoalAfterNumMoves)
+  if (numMoves == placeGoalAfterNumMoves)
   {
     /* place goal */
     var hiddenSquares = [];

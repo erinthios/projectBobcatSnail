@@ -17,11 +17,11 @@ ms
   position: absolute;
   height: 54px;
   width: 60.4px;
-  background-color: black;
+  background-color: rgba(0,0,0,0.6);
   transition-property: opacity;
   transition-duration: 1s;
   z-index: 0;
-  color: white;
+  color: rgba(255,255,255,0.6);
   font-family: webdings;
   font-size: 52px; 
   text-align: center;
@@ -31,13 +31,13 @@ ms
 
 .empty
 {
-  font-size: 26px;
+  font-size: 13px;
 }
 
 .multiplier, .smallPoints, .bigPoints
 {
   font-family: sans-serif;
-  font-size: 36px;
+  font-size: 26px;
 }
 
 marker
