@@ -110,9 +110,13 @@ function initMap()
     else
     {
       /* last square, swap the goal in somewhere legal */
-      var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * (allowedGoalIndices.length-1))];
+      var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
       var goalNode = elements[selectedIndex];
-      setSquareContext(node, goalNode.dataContext);
+      if (selectedIndex != i)
+      {
+        /* move selected goal square's context to this final square */
+        setSquareContext(node, goalNode.dataContext);
+      }
       setSquareContext(goalNode, goalSquare);
     }
     resetMapSquare(node);
