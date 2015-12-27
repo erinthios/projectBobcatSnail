@@ -27,12 +27,20 @@ var otherSquares = [
 { text: "x2", sound: "BigGood", cssClass: "multiplier"},
 ];
 
-/* dummy "prize" text */
+/* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","#","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
+
+/* move # after which to place a goal square in any allowed space */
+/* 0 = set on init, use allowedGoalIndices for placement */
+/* 1+ = set on given move (moving to the start space counts as a move) */
+var placeGoalAfterNumMoves = 10;
+
+/* automatically show the goal square when it's placed */
+var showGoalWhenPlaced = false;
 
 /* opacity value for a revealed square (0.0-1.0) */
 var revealedSquareOpacity = 0.60;
@@ -43,8 +51,25 @@ var markerFaceRightTransform = "scaleX(-1)";
 
 /***** Functions ******/
 
+var numMoves = 0;
 function clickMapSquare(obj)
 {
+  if (++numMoves == placeGoalAfterNumMoves)
+  {
+    /* place goal */
+	var hiddenSquares = [];
+    var elements = document.getElementsByTagName("ms");
+    for (var i=0; i<elements.length; ++i)
+    {
+      if (elements[i].isShown == false)
+      {
+        hiddenSquares.push(elements[i]);
+      }
+    }
+	shuffle(hiddenSquares);
+	placeGoal(hiddenSquares[0]);
+  }
+	
   /* move marker */
   var marker = document.getElementsByTagName("marker")[0];
   marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
@@ -62,7 +87,7 @@ function clickMapSquare(obj)
   marker.style.left = newLeft;
 
   /* uncover square */
-  obj.style.opacity = revealedSquareOpacity;
+  showMapSquare(obj);
 
   /* play sound */
   if (obj.dataContext.sound != null)
@@ -73,10 +98,18 @@ function clickMapSquare(obj)
   }
 }
 
-function resetMapSquare(obj)
+function hideMapSquare(obj)
 {
   /* cover square */
   obj.style.opacity=0.0;
+  obj.isShown = false;
+}
+
+function showMapSquare(obj)
+{
+  /* reveal square */
+  obj.style.opacity = revealedSquareOpacity;
+  obj.isShown = true;
 }
 
 function setSquareContext(node, context)
@@ -91,12 +124,24 @@ function hideAllSquares()
   var elements = document.getElementsByTagName("ms");
   for (var i=0; i<elements.length; ++i)
   {
-    resetMapSquare(elements[i]);
+    hideMapSquare(elements[i]);
+  }
+}
+
+function placeGoal(node)
+{
+  setSquareContext(node, goalSquare);
+  if (showGoalWhenPlaced)
+  {
+    showMapSquare(node);
   }
 }
 
 function initMap()
 {
+  /* reset counters */
+  numMoves = 0;
+  
   /* shuffle squares */
   shuffle(otherSquares);
 
@@ -105,7 +150,7 @@ function initMap()
   var dummyPrizesUsed = 0;
   for (var i=0; i<otherSquares.length; ++i)
   {
-    if (otherSquares[i].class == "dummyPrize")
+    if (otherSquares[i].cssClass == "dummyPrize")
     {
       otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
     }
@@ -116,6 +161,7 @@ function initMap()
   for (var i=0; i<elements.length; ++i)
   {
     var node = elements[i];
+    hideMapSquare(node);
     node.onclick = function () { clickMapSquare(this); };
     if (i == 0)
     {
@@ -127,7 +173,7 @@ function initMap()
       /* pick the next square from the deck */
       setSquareContext(node, otherSquares[i-1]);
     }
-    else
+    else if (placeGoalAfterNumMoves == 0)
     {
       /* last square, swap the goal in somewhere legal */
       var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
@@ -137,9 +183,13 @@ function initMap()
         /* move selected goal square's context to this final square */
         setSquareContext(node, goalNode.dataContext);
       }
-      setSquareContext(goalNode, goalSquare);
+      placeGoal(goalNode);
     }
-    resetMapSquare(node);
+    else
+    {
+      /* last square, use new blank square */
+      setSquareContext(node, { text: "r", cssClass: "empty"});
+    }
   }
   
 
