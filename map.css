@@ -3,10 +3,16 @@ body
   background-color: #ccc;
 }
 
-map { position: absolute; top:0; left: 0; }
+map
+{
+  position: absolute;
+  top:0;
+  left: 0;
+}
 
 ms
 {
+  cursor: pointer;
   opacity: 0.0;
   position: absolute;
   height: 54px;
