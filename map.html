@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Map</title>
+<style type="text/css">
+body
+{
+  background-color: #ccc;
+}
+ms
+{
+  position: absolute;
+  height: 54px;
+  width: 61px;
+}
+ms img
+{
+  height: 54px;
+  width: 61px;
+  transition-property: opacity;
+  transition-duration: 1s;
+  z-index: 1;
+}
+ms .maptext
+{
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  height: 54px;
+  width: 61px;
+  transition-property: opacity;
+  transition-duration: 1s;
+  z-index: 0;
+  text-align: center;
+}
+
+marker
+{
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  transition-property: top, left;
+  transition-duration: 1s;
+}
+marker img
+{
+  height: 20px;
+  width: 20px;
+  z-index: 2;
+}
+
+#a1, #a2, #a3, #a4, #a5 { top: 0px }
+#b1, #b2, #b3, #b4, #b5 { top: 54px }
+#c1, #c2, #c3, #c4, #c5 { top: 108px }
+#d1, #d2, #d3, #d4, #d5 { top: 162px }
+
+#a1, #b1, #c1, #d1 { left: 0px }
+#a2, #b2, #c2, #d2 { left: 61px }
+#a3, #b3, #c3, #d3 { left: 122px }
+#a4, #b4, #c4, #d4 { left: 183px }
+#a5, #b5, #c5, #d5 { left: 244px }
+
+#reset { position: absolute; left: 0px; top: 230px; }
+
+</style>
+<script type="text/javascript">
+function clickMapSquare(obj)
+{
+  /* move marker */
+  var marker = document.getElementsByTagName("marker")[0];
+  marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
+  marker.style.left = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
+
+  /* uncover square */
+  var childNodes = obj.childNodes;
+  for (var i=0; i<childNodes.length; ++i)
+  {
+    var node = childNodes[i];
+    if (node.tagName=="IMG")
+    {
+      node.style.opacity=0;
+    }
+    else if (node.className=="maptext")
+    {
+      node.style.opacity=100;
+    }
+  }
+}
+
+function resetMapSquare(obj)
+{
+  /* cover square */
+  var childNodes = obj.childNodes;
+  for (var i=0; i<childNodes.length; ++i)
+  {
+    var node = childNodes[i];
+    if (node.tagName=="IMG")
+    {
+      node.style.opacity=100;
+    }
+    else if (node.className=="maptext")
+    {
+      node.style.opacity=0;
+    }
+  }
+}
+
+var squareText = [
+"A1", "A2", "A3", "A4", "A5",
+"B1", "B2", "B3", "B4", "B5",
+"C1", "C2", "C3", "C4", "C5",
+"D1", "D2", "D3", "D4", "D5"
+];
+
+function init()
+{
+  /* move marker */
+  var marker = document.getElementsByTagName("marker")[0];
+  marker.style.top = 230;
+  marker.style.left = 270;
+
+  /* set up squares */
+  var elements = document.getElementsByTagName("ms");
+  for (var i=0; i<elements.length; ++i)
+  {
+    var node = elements[i];
+    node.onclick = function () { clickMapSquare(this); };
+    resetMapSquare(node);
+    node.getElementsByClassName("maptext")[0].textContent = squareText[i];
+  }
+}
+</script>
+</head>
+
+<body onload="init()">
+
+<ms id="a1"><img src="images/a1.png" /><div class="maptext"></div></ms>
+<ms id="a2"><img src="images/a2.png" /><div class="maptext"></div></ms>
+<ms id="a3"><img src="images/a3.png" /><div class="maptext"></div></ms>
+<ms id="a4"><img src="images/a4.png" /><div class="maptext"></div></ms>
+<ms id="a5"><img src="images/a5.png" /><div class="maptext"></div></ms>
+
+<ms id="b1"><img src="images/b1.png" /><div class="maptext"></div></ms>
+<ms id="b2"><img src="images/b2.png" /><div class="maptext"></div></ms>
+<ms id="b3"><img src="images/b3.png" /><div class="maptext"></div></ms>
+<ms id="b4"><img src="images/b4.png" /><div class="maptext"></div></ms>
+<ms id="b5"><img src="images/b5.png" /><div class="maptext"></div></ms>
+
+<ms id="c1"><img src="images/c1.png" /><div class="maptext"></div></ms>
+<ms id="c2"><img src="images/c2.png" /><div class="maptext"></div></ms>
+<ms id="c3"><img src="images/c3.png" /><div class="maptext"></div></ms>
+<ms id="c4"><img src="images/c4.png" /><div class="maptext"></div></ms>
+<ms id="c5"><img src="images/c5.png" /><div class="maptext"></div></ms>
+
+<ms id="d1"><img src="images/d1.png" /><div class="maptext"></div></ms>
+<ms id="d2"><img src="images/d2.png" /><div class="maptext"></div></ms>
+<ms id="d3"><img src="images/d3.png" /><div class="maptext"></div></ms>
+<ms id="d4"><img src="images/d4.png" /><div class="maptext"></div></ms>
+<ms id="d5"><img src="images/d5.png" /><div class="maptext"></div></ms>
+
+<marker><img src="images/marker.png" /></marker>
+
+<button id="reset" onclick="init()">Reset</button>
+
+</body>
+</html>
