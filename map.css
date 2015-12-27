@@ -1,6 +1,6 @@
 body
 {
-  background-color: #ccc;
+  background-color: #9400D3;
 }
 
 map
@@ -17,12 +17,14 @@ ms
   position: absolute;
   height: 54px;
   width: 60.4px;
-  background-color: #555;
+  background-color: black;
   transition-property: opacity;
   transition-duration: 1s;
   z-index: 0;
   text-align: center;
   color: white;
+  font-family: webdings;
+  font-size: 52px; 
 }
 
 marker

@@ -3,35 +3,35 @@
  * - text: text to display in the square when revealed
  * - sound: sound file to play when square revealed
  */
-var startSquare = { text: "START" }
-var goalSquare = { text: "GOAL", sound: "sounds/Audience_Applause-Matthiew11-1206899159.mp3", isGoal: true }
+var startSquare = { text: "" }
+var goalSquare = { text: "%", sound: "Finish", isGoal: true }
 var otherSquares = [
-{ text: "+10 POINTS", sound: "sounds/Cha_Ching_Register-Muska666-173262285.mp3" },
-{ text: "+10 POINTS", sound: "sounds/Cha_Ching_Register-Muska666-173262285.mp3" },
-{ text: "+40 POINTS", sound: "sounds/Cha_Ching_Register-Muska666-173262285.mp3" },
-{ text: "EATEN BY A SHARK" },
-{ text: "DO A SILLY DANCE" },
-{ text: "TAKE A DRINK" },
-{ text: "GET WRECKED" },
-{ text: "MAGIC 8-BALL" },
-{ text: "DO A LAP" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
-{ text: "" },
+{ text: "",pointSquare:false},
+{ text: "",pointSquare:false},
+{ text: "w", sound: "Good",pointSquare:false},
+{ text: "T", sound: "Good",pointSquare:false},
+{ text: "S", sound: "Good",pointSquare:false},
+{ text: "J", sound: "Good",pointSquare:false},
+{ text: "E", sound: "Good",pointSquare:false},
+{ text: "",pointSquare:false},
+{ text: "",pointSquare:false},
+{ text: "+",sound: "BigGood",pointSquare:false},
+{ text: "+10 Points", sound: "BigGood",pointSquare: true},
+{ text: "+10 Points", sound: "BigGood",pointSquare: true},
+{ text: "+5 Points",pointSquare: true, sound: "Good"},
+{ text: "+5 Points",pointSquare: true, sound: "Good"},
+{ text: "+5 Points",pointSquare: true, sound: "Good"},
+{ text: "+5 Points",pointSquare: true, sound: "Good"},
+{ text: "x2 Points", sound: "BigGood", pointSquare: true},
+{ text: "x2 Points", sound: "BigGood", pointSquare: true},
 ];
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: rightmost two columns */
-var allowedGoalIndices = [3,4,8,9,13,14,18,19];
+var allowedGoalIndices = [9,13,14,17,18,19];
 
 /* opacity value for a revealed square (0.0-1.0) */
-var revealedSquareOpacity = 0.9;
+var revealedSquareOpacity = 0.60;
 
 
 /***** Functions ******/
@@ -49,7 +49,8 @@ function clickMapSquare(obj)
   /* play sound */
   if (obj.dataContext.sound != null)
   {
-    var sound = new Audio(obj.dataContext.sound);
+    var location = "sounds/" + obj.dataContext.sound + ((Math.floor(Math.random() * 14))+1) + ".wav";
+    var sound = new Audio(location);
     sound.play();
   }
 }
@@ -64,6 +65,16 @@ function setSquareContext(node, context)
 {
   node.dataContext = context;
   node.textContent = context.text;
+  if(context.pointSquare == true)
+  {
+    node.style.fontFamily = "sans-serif";
+    node.style.fontSize = "20px";
+  }
+  else
+  {
+    node.style.fontFamily = "webdings";
+    node.style.fontSize = "52px";
+  }
 }
 
 function hideAllSquares()
@@ -99,13 +110,14 @@ function initMap()
     else
     {
       /* last square, swap the goal in somewhere legal */
-      var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
+      var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * (allowedGoalIndices.length-1))];
       var goalNode = elements[selectedIndex];
       setSquareContext(node, goalNode.dataContext);
       setSquareContext(goalNode, goalSquare);
     }
     resetMapSquare(node);
   }
+  
 
   /* move marker */
   var marker = document.getElementsByTagName("marker")[0];
