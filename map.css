@@ -17,11 +17,11 @@ ms
   position: absolute;
   height: 54px;
   width: 60.4px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.3);
   transition-property: opacity;
   transition-duration: 1s;
   z-index: 0;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.9);
   font-family: webdings;
   font-size: 52px; 
   text-align: center;
@@ -31,7 +31,7 @@ ms
 
 .empty
 {
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .multiplier, .smallPoints, .bigPoints
@@ -46,6 +46,22 @@ marker
   transition-property: top, left;
   transition-duration: 1s;
   z-index: 2;
+}
+
+currentSquare
+{
+  position: absolute;
+  left: 100px;
+  top: 230px;
+  height: 54px;
+  width: 60.4px;
+  color: white;
+  font-family: webdings;
+  font-size: 52px; 
+  text-align: center;
+  vertical-align: middle;
+  line-height: 54px;
+  border: 1px solid white;
 }
 
 #a1, #a2, #a3, #a4, #a5 { top: 0px }

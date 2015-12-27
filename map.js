@@ -7,12 +7,12 @@
 var startSquare = { text: "" }
 var goalSquare = { text: "%", sound: "Finish", cssClass: "goal", isGoal: true }
 var otherSquares = [
-{ text: "r", cssClass: "empty"},
-{ text: "r", cssClass: "empty"},
-{ text: "r", cssClass: "empty"},
-{ text: "r", cssClass: "empty"},
-{ text: "r", cssClass: "empty"},
-{ text: "r", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
+{ text: "a", cssClass: "empty"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
 { text: "-", sound: "Good", cssClass: "dummyPrize"},
@@ -28,7 +28,7 @@ var otherSquares = [
 ];
 
 /* dummy "prize" text (Webdings characters) */
-var dummyPrizes = ["!","@","#","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
+var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
@@ -78,6 +78,7 @@ function clickMapSquare(obj)
 
   /* uncover square */
   showMapSquare(obj);
+  setCurrentSquare(obj);
 
   /* play sound */
   if (obj.dataContext.sound != null)
@@ -116,6 +117,12 @@ function showMapSquare(obj)
   /* reveal square */
   obj.style.opacity = revealedSquareOpacity;
   obj.isShown = true;
+}
+
+function setCurrentSquare(obj)
+{
+  /* update current square display */
+  setSquareContext(document.getElementsByTagName("currentSquare")[0], obj.dataContext);
 }
 
 function setSquareContext(node, context)
@@ -179,7 +186,7 @@ function initMap()
       /* pick the next square from the deck */
       setSquareContext(node, otherSquares[i-1]);
     }
-    else if (placeGoalAfterNumMoves == 0)
+    else
     {
       /* last square, swap the goal in somewhere legal */
       var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
@@ -189,12 +196,15 @@ function initMap()
         /* move selected goal square's context to this final square */
         setSquareContext(node, goalNode.dataContext);
       }
-      placeGoal(goalNode);
-    }
-    else
-    {
-      /* last square, use new blank square */
-      setSquareContext(node, { text: "r", cssClass: "empty"});
+      if (placeGoalAfterNumMoves == 0)
+      {
+        placeGoal(goalNode);
+      }
+      else
+      {
+        /* last square, use new blank square */
+        setSquareContext(goalNode, { text: "a", cssClass: "empty"});
+      }
     }
   }
   
