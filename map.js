@@ -42,6 +42,9 @@ var placeGoalAfterNumMoves = 11;
 /* automatically show the goal square when it's placed */
 var showGoalWhenPlaced = false;
 
+/* milliseconds to delay before showing square */
+var msDelayToRevealSquare = 3000;
+
 /* opacity value for a revealed square (0.0-1.0) */
 var revealedSquareOpacity = 1.0;
 
@@ -76,22 +79,8 @@ function clickMapSquare(obj)
   }
   marker.style.left = newLeft;
 
-  /* uncover square */
-  showMapSquare(obj);
-  setCurrentSquare(obj);
-
-  /* play sound */
-  if (obj.dataContext.sound != null)
-  {
-    var location = "sounds/" + obj.dataContext.sound + ((Math.floor(Math.random() * 14))+1) + ".wav";
-    var sound = new Audio(location);
-    sound.play();
-  }
-  
-  if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
-  {
-    zoomSquare(obj);
-  }
+  /* wait, then uncover square */
+  window.setTimeout(showMapSquare, msDelayToRevealSquare, obj);
   
   if (numMoves == placeGoalAfterNumMoves)
   {
@@ -156,6 +145,22 @@ function showMapSquare(obj)
   /* reveal square */
   obj.style.opacity = revealedSquareOpacity;
   obj.isShown = true;
+
+  /* show in 'current square' location */
+  setCurrentSquare(obj);
+
+  /* play sound */
+  if (obj.dataContext.sound != null)
+  {
+    var location = "sounds/" + obj.dataContext.sound + ((Math.floor(Math.random() * 14))+1) + ".wav";
+    var sound = new Audio(location);
+    sound.play();
+  }
+  
+  if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
+  {
+    zoomSquare(obj);
+  }
 }
 
 function setCurrentSquare(obj)
