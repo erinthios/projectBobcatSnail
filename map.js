@@ -44,6 +44,8 @@ var showGoalWhenPlaced = false;
 
 /* milliseconds to delay before showing square */
 var msDelayToRevealSquare = 3000;
+/* milliseconds to delay before unzooming square */
+var msDelayToUnzoomSquare = 5500;
 
 /* opacity value for a revealed square (0.0-1.0) */
 var revealedSquareOpacity = 1.0;
@@ -105,12 +107,11 @@ function zoomSquare(obj)
 	var targetHeight = 216;
 	
 	/* zoom to full */
-	obj.style.transform = "scale(4)";
+	obj.style.transform = "scale(4.1)";
 	obj.style.width = targetWidth/4; /* scaling 4x, so width should be 1/4 of the target width */
 	obj.style.top = (targetHeight/2 - targetHeight/8);
 	obj.style.left = (targetWidth/2 - targetWidth/8);
 	obj.style.zIndex = 10;
-	obj.style.transitionDuration = "0.5s";
 	
 	/* darken background */
 	var style = window.getComputedStyle(obj);
@@ -118,7 +119,7 @@ function zoomSquare(obj)
 	obj.style.backgroundColor = newbg;
 	
 	/* wait then unzoom */
-	window.setTimeout(unzoomSquare, 2000, obj);
+	window.setTimeout(unzoomSquare, msDelayToUnzoomSquare, obj);
 }
 
 function unzoomSquare(obj)
@@ -130,7 +131,6 @@ function unzoomSquare(obj)
 	obj.style.zIndex = null;
 	obj.style.transform = null;
 	obj.style.backgroundColor = null;
-	obj.style.transitionDuration = null;
 }
 
 function hideMapSquare(obj)
