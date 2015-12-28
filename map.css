@@ -31,7 +31,7 @@ ms
 	  /* glow (using 'color' property value) */
 	  0 0 4px, 0 0 4px, 0 0 6px;
   transition-property: opacity, top, left, width, transform, background-color;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 
 .empty
@@ -49,7 +49,8 @@ ms
 /* square text colors */
 .prize
 {
-  color: orangered;
+  color: orange;
+  line-height: 62px; /* try to center character */
 }
 .bigPoints
 {
