@@ -88,7 +88,7 @@ function clickMapSquare(obj)
     sound.play();
   }
   
-  if (obj.dataContext != startSquare)
+  if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
   {
     zoomSquare(obj);
   }
@@ -121,6 +121,7 @@ function zoomSquare(obj)
 	obj.style.top = (targetHeight/2 - targetHeight/8);
 	obj.style.left = (targetWidth/2 - targetWidth/8);
 	obj.style.zIndex = 10;
+	obj.style.transitionDuration = "0.5s";
 	
 	/* darken background */
 	var style = window.getComputedStyle(obj);
@@ -140,6 +141,7 @@ function unzoomSquare(obj)
 	obj.style.zIndex = null;
 	obj.style.transform = null;
 	obj.style.backgroundColor = null;
+	obj.style.transitionDuration = null;
 }
 
 function hideMapSquare(obj)
