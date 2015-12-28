@@ -50,6 +50,9 @@ var msDelayToUnzoomSquare = 5500;
 /* opacity value for a revealed square (0.0-1.0) */
 var revealedSquareOpacity = 1.0;
 
+/* sound to play when marker moves on map */
+var markerMoveSoundPath = "sounds/walking.mp3";
+
 var markerFaceLeftTransform = "scaleX(1)";
 var markerFaceRightTransform = "scaleX(-1)";
 
@@ -57,12 +60,23 @@ var markerFaceRightTransform = "scaleX(-1)";
 /***** Functions ******/
 
 var numMoves = 0;
+var markerMoveSound = null;
 function clickMapSquare(obj)
 {
   /* increment moves */
   if (obj.isShown == false)
   {
     ++numMoves;
+  }
+  
+  /* play marker move sound */
+  if (markerMoveSoundPath && obj.dataContext != startSquare)
+  {
+    if (!markerMoveSound)
+	{
+      markerMoveSound = new Audio(markerMoveSoundPath);
+	}
+	markerMoveSound.play();
   }
   
   /* move marker */
