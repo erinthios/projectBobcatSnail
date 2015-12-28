@@ -122,6 +122,11 @@ function zoomSquare(obj)
 	obj.style.left = (targetWidth/2 - targetWidth/8);
 	obj.style.zIndex = 10;
 	
+	/* darken background */
+	var style = window.getComputedStyle(obj);
+	var newbg = style.backgroundColor.replace(/^(.*,)(.+)\)/,'$1 0.8)');
+	obj.style.backgroundColor = newbg;
+	
 	/* wait then unzoom */
 	window.setTimeout(unzoomSquare, 2000, obj);
 }
@@ -134,6 +139,7 @@ function unzoomSquare(obj)
 	obj.style.width = null;
 	obj.style.zIndex = null;
 	obj.style.transform = null;
+	obj.style.backgroundColor = null;
 }
 
 function hideMapSquare(obj)
