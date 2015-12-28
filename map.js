@@ -91,7 +91,8 @@ function clickMapSquare(obj)
     var elements = document.getElementsByTagName("ms");
     for (var i=0; i<elements.length; ++i)
     {
-      if (elements[i].isShown == false && elements[i].cssClass != "prize" && elements[i].cssClass != "multiplier")
+      var node = elements[i];
+      if (node != obj && node.isShown == false && node.className != "prize" && node.className != "multiplier")
       {
         hiddenSquares.push(elements[i]);
       }
