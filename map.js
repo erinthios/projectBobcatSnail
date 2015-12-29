@@ -13,9 +13,9 @@ var otherSquares = [
 { text: "a", cssClass: "empty"},
 { text: "a", cssClass: "empty"},
 { text: "a", cssClass: "empty"},
-{ text: "-", sound: "Good", cssClass: "dummyPrize"},
-{ text: "-", sound: "Good", cssClass: "dummyPrize"},
-{ text: "-", sound: "Good", cssClass: "dummyPrize"},
+{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
+{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
+{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
 { text: "+", sound: "BigGood", cssClass: "prize"},
 { text: "+10", sound: "BigGood", cssClass: "bigPoints"},
 { text: "+10", sound: "BigGood", cssClass: "bigPoints"},
@@ -29,6 +29,27 @@ var otherSquares = [
 
 /* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
+
+/* dummy "prize" images */
+var dummyPrizeImages = [
+"images/smite_alcoholism.png",
+"images/smite_bee.png",
+"images/smite_book.png",
+"images/smite_bread.png",
+"images/smite_cat.png",
+"images/smite_chicken_leg.png",
+"images/smite_crow.png",
+"images/smite_dolphin.png",
+"images/smite_garbage_can.png",
+"images/smite_grave.png",
+"images/smite_gun.png",
+"images/smite_lost.png",
+"images/smite_poison.png",
+"images/smite_skull.png",
+"images/smite_toilet.png",
+"images/smite_whale.png",
+];
+
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
@@ -189,6 +210,14 @@ function setSquareContext(node, context)
   node.dataContext = context;
   node.textContent = context.text;
   node.className = context.cssClass;
+  if (context.image)
+  {
+    node.style.backgroundImage = "url("+context.image+")";
+  }
+  else
+  {
+    node.style.backgroundImage = null;
+  }
 }
 
 function hideAllSquares()
@@ -219,12 +248,19 @@ function initMap()
 
   /* set up dummy prize text */
   shuffle(dummyPrizes);
+  shuffle(dummyPrizeImages);
   var dummyPrizesUsed = 0;
+  var dummyPrizeImagesUsed = 0;
   for (var i=0; i<otherSquares.length; ++i)
   {
     if (otherSquares[i].cssClass == "dummyPrize")
     {
       otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
+    }
+    else if (otherSquares[i].cssClass == "dummyPrizeImage")
+    {
+      otherSquares[i].text = null;
+      otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
     }
   }
 

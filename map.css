@@ -44,6 +44,17 @@ ms
 {
   text-shadow: none;
 }
+.dummyPrizeImage
+{
+  /* center background image */
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  /* invert contents */
+  -webkit-filter: invert(100%);
+  /* set background color to inverse of normal so when inverted it'll be right */
+  background-color: rgba(255,255,255,0.3);
+}
 
 .multiplier, .smallPoints, .bigPoints
 {
