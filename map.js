@@ -120,14 +120,8 @@ var msDelayToRevealSquare = 3000;
 /* milliseconds to delay before unzooming square */
 var msDelayToUnzoomSquare = 5500;
 
-/* opacity value for a revealed square (0.0-1.0) */
-var revealedSquareOpacity = 1.0;
-
 /* sound to play when marker moves on map */
 var markerMoveSoundPath = "sounds/walking.mp3";
-
-var markerFaceLeftTransform = "scaleX(1)";
-var markerFaceRightTransform = "scaleX(-1)";
 
 
 /***** Functions ******/
@@ -156,15 +150,15 @@ function clickMapSquare(obj)
   var marker = document.getElementsByTagName("marker")[0];
   marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
   var newLeft = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
-  if (newLeft > marker.offsetLeft)
+  if (newLeft > marker.offsetLeft+1)
   {
     /* snail faces right */
-    marker.style.transform = markerFaceRightTransform;
+    marker.className = "faceRight";
   }
-  else
+  else if (newLeft < marker.offsetLeft-1)
   {
     /* snail faces left */
-    marker.style.transform = markerFaceLeftTransform;
+    marker.className = "faceLeft";
   }
   marker.style.left = newLeft;
 
@@ -207,7 +201,7 @@ function unzoomSquare(obj)
 function hideMapSquare(obj)
 {
   /* cover square */
-  obj.style.opacity=0.0;
+  obj.className = obj.className.replace(" shown", "");
   obj.isShown = false;
 }
 
@@ -246,7 +240,7 @@ function getRandomSoundFromPoolName(poolName)
 function showMapSquare(obj)
 {
   /* reveal square */
-  obj.style.opacity = revealedSquareOpacity;
+  obj.className += " shown";
   obj.isShown = true;
 
   /* show in 'current square' location */
@@ -407,4 +401,3 @@ function shuffle(array) {
 
   return array;
 }
-

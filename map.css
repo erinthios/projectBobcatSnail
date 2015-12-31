@@ -34,6 +34,11 @@ ms
   transition-duration: 0.5s;
 }
 
+ms.shown
+{
+  opacity: 1.0;
+}
+
 .empty
 {
   font-size: 20px;
@@ -109,7 +114,14 @@ marker
   transition-duration: 3s;
   z-index: 2;
 }
-
+/* transformation for marker facing left (none as it faces left normally) */
+marker.faceLeft
+{}
+/* transformation for marker facing right (flip X axis) */
+marker.faceRight
+{
+  transform: scaleX(-1);
+}
 currentSquare
 {
   position: absolute;
