@@ -130,57 +130,57 @@ var numMoves = 0;
 var markerMoveSound = null;
 function clickMapSquare(obj)
 {
-  /* increment moves */
-  if (obj.isShown == false)
-  {
-    ++numMoves;
-  }
-  
-  /* play marker move sound */
-  if (markerMoveSoundPath && obj.dataContext != startSquare)
-  {
-    if (!markerMoveSound)
+	/* increment moves */
+	if (obj.isShown == false)
 	{
-      markerMoveSound = new Audio(markerMoveSoundPath);
+		++numMoves;
 	}
-	markerMoveSound.play();
-  }
-  
-  /* move marker */
-  var marker = document.getElementsByTagName("marker")[0];
-  marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
-  var newLeft = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
-  if (newLeft > marker.offsetLeft+1)
-  {
-    /* snail faces right */
-    marker.className = "faceRight";
-  }
-  else if (newLeft < marker.offsetLeft-1)
-  {
-    /* snail faces left */
-    marker.className = "faceLeft";
-  }
-  marker.style.left = newLeft;
+	
+	/* play marker move sound */
+	if (markerMoveSoundPath && obj.dataContext != startSquare)
+	{
+		if (!markerMoveSound)
+		{
+			markerMoveSound = new Audio(markerMoveSoundPath);
+		}
+		markerMoveSound.play();
+	}
+	
+	/* move marker */
+	var marker = document.getElementsByTagName("marker")[0];
+	marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
+	var newLeft = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
+	if (newLeft > marker.offsetLeft+1)
+	{
+		/* face marker right */
+		marker.className = "faceRight";
+	}
+	else if (newLeft < marker.offsetLeft-1)
+	{
+		/* face marker left */
+		marker.className = "faceLeft";
+	}
+	marker.style.left = newLeft;
 
-  /* wait, then uncover square */
-  window.setTimeout(showMapSquare, msDelayToRevealSquare, obj);
-  
-  if (numMoves == placeGoalAfterNumMoves)
-  {
-    /* place goal */
-    var hiddenSquares = [];
-    var elements = document.getElementsByTagName("ms");
-    for (var i=0; i<elements.length; ++i)
-    {
-      var node = elements[i];
-      if (node != obj && node.isShown == false && node.className != "prize" && node.className != "multiplier")
-      {
-        hiddenSquares.push(elements[i]);
-      }
-    }
-	shuffle(hiddenSquares);
-	placeGoal(hiddenSquares[0]);
-  }
+	/* wait, then uncover square */
+	window.setTimeout(showMapSquare, msDelayToRevealSquare, obj);
+	
+	if (numMoves == placeGoalAfterNumMoves)
+	{
+		/* place goal */
+		var hiddenSquares = [];
+		var elements = document.getElementsByTagName("ms");
+		for (var i=0; i<elements.length; ++i)
+		{
+			var node = elements[i];
+			if (node != obj && node.isShown == false && node.className != "prize" && node.className != "multiplier")
+			{
+				hiddenSquares.push(elements[i]);
+			}
+		}
+		shuffle(hiddenSquares);
+		placeGoal(hiddenSquares[0]);
+	}
 }
 
 function zoomSquare(obj)
@@ -200,9 +200,9 @@ function unzoomSquare(obj)
 
 function hideMapSquare(obj)
 {
-  /* cover square */
-  obj.className = obj.className.replace(" shown", "");
-  obj.isShown = false;
+	/* cover square */
+	obj.className = obj.className.replace(" shown", "");
+	obj.isShown = false;
 }
 
 function getRandomSoundFromPoolName(poolName)
@@ -239,165 +239,165 @@ function getRandomSoundFromPoolName(poolName)
 
 function showMapSquare(obj)
 {
-  /* reveal square */
-  obj.className += " shown";
-  obj.isShown = true;
+	/* reveal square */
+	obj.className += " shown";
+	obj.isShown = true;
 
-  /* show in 'current square' location */
-  setCurrentSquare(obj);
+	/* show in 'current square' location */
+	setCurrentSquare(obj);
 
-  /* play sound */
-  if (obj.dataContext.sound != null)
-  {
-    var sound = new Audio(obj.dataContext.sound);
-    sound.play();
-  }
-  else if (obj.dataContext.soundPool)
-  {
-    var location = getRandomSoundFromPoolName(obj.dataContext.soundPool);
-    var sound = new Audio(location);
-    sound.play();
-  }
-  
-  if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
-  {
-    zoomSquare(obj);
-  }
+	/* play sound */
+	if (obj.dataContext.sound != null)
+	{
+		var sound = new Audio(obj.dataContext.sound);
+		sound.play();
+	}
+	else if (obj.dataContext.soundPool)
+	{
+		var location = getRandomSoundFromPoolName(obj.dataContext.soundPool);
+		var sound = new Audio(location);
+		sound.play();
+	}
+	
+	if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
+	{
+		zoomSquare(obj);
+	}
 }
 
 function setCurrentSquare(obj)
 {
-  /* update current square display */
-  setSquareContext(document.getElementsByTagName("currentSquare")[0], obj.dataContext);
+	/* update current square display */
+	setSquareContext(document.getElementsByTagName("currentSquare")[0], obj.dataContext);
 }
 
 function setSquareContext(node, context)
 {
-  node.dataContext = context;
-  node.textContent = context.text;
-  node.className = context.cssClass;
-  if (context.image)
-  {
-    node.style.backgroundImage = "url("+context.image+")";
-  }
-  else
-  {
-    node.style.backgroundImage = null;
-  }
+	node.dataContext = context;
+	node.textContent = context.text;
+	node.className = context.cssClass;
+	if (context.image)
+	{
+		node.style.backgroundImage = "url("+context.image+")";
+	}
+	else
+	{
+		node.style.backgroundImage = null;
+	}
 }
 
 function hideAllSquares()
 {
-  var elements = document.getElementsByTagName("ms");
-  for (var i=0; i<elements.length; ++i)
-  {
-    hideMapSquare(elements[i]);
-  }
+	var elements = document.getElementsByTagName("ms");
+	for (var i=0; i<elements.length; ++i)
+	{
+		hideMapSquare(elements[i]);
+	}
 }
 
 function placeGoal(node)
 {
-  setSquareContext(node, goalSquare);
-  if (showGoalWhenPlaced)
-  {
-    showMapSquare(node);
-  }
+	setSquareContext(node, goalSquare);
+	if (showGoalWhenPlaced)
+	{
+		showMapSquare(node);
+	}
 }
 
 function initMap()
 {
-  /* reset counters */
-  numMoves = 0;
-  
-  /* shuffle squares */
-  shuffle(otherSquares);
+	/* reset counters */
+	numMoves = 0;
+	
+	/* shuffle squares */
+	shuffle(otherSquares);
 
-  /* set up dummy prize text */
-  shuffle(dummyPrizes);
-  shuffle(dummyPrizeImages);
-  var dummyPrizesUsed = 0;
-  var dummyPrizeImagesUsed = 0;
-  for (var i=0; i<otherSquares.length; ++i)
-  {
-    if (otherSquares[i].cssClass == "dummyPrize")
-    {
-      otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
-    }
-    else if (otherSquares[i].cssClass == "dummyPrizeImage")
-    {
-      otherSquares[i].text = null;
-      otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
-    }
-  }
+	/* set up dummy prize text */
+	shuffle(dummyPrizes);
+	shuffle(dummyPrizeImages);
+	var dummyPrizesUsed = 0;
+	var dummyPrizeImagesUsed = 0;
+	for (var i=0; i<otherSquares.length; ++i)
+	{
+		if (otherSquares[i].cssClass == "dummyPrize")
+		{
+			otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
+		}
+		else if (otherSquares[i].cssClass == "dummyPrizeImage")
+		{
+			otherSquares[i].text = null;
+			otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
+		}
+	}
 
-  /* set up squares */
-  var elements = document.getElementsByTagName("ms");
-  for (var i=0; i<elements.length; ++i)
-  {
-    var node = elements[i];
-    hideMapSquare(node);
-    node.onclick = function () { clickMapSquare(this); };
-    if (i == 0)
-    {
-      /* first square always start square */
-      setSquareContext(node, startSquare);
-    }
-    else if (i < elements.length-1)
-    {
-      /* pick the next square from the deck */
-      setSquareContext(node, otherSquares[i-1]);
-    }
-    else
-    {
-      /* last square, swap the goal in somewhere legal */
-      var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
-      var goalNode = elements[selectedIndex];
-      if (selectedIndex != i)
-      {
-        /* move selected goal square's context to this final square */
-        setSquareContext(node, goalNode.dataContext);
-      }
-      if (placeGoalAfterNumMoves == 0)
-      {
-        placeGoal(goalNode);
-      }
-      else
-      {
-        /* last square, use new blank square */
-        setSquareContext(goalNode, { text: "a", soundPool: "Empty", cssClass: "empty"});
-      }
-    }
-  }
-  
+	/* set up squares */
+	var elements = document.getElementsByTagName("ms");
+	for (var i=0; i<elements.length; ++i)
+	{
+		var node = elements[i];
+		hideMapSquare(node);
+		node.onclick = function () { clickMapSquare(this); };
+		if (i == 0)
+		{
+			/* first square always start square */
+			setSquareContext(node, startSquare);
+		}
+		else if (i < elements.length-1)
+		{
+			/* pick the next square from the deck */
+			setSquareContext(node, otherSquares[i-1]);
+		}
+		else
+		{
+			/* last square, swap the goal in somewhere legal */
+			var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
+			var goalNode = elements[selectedIndex];
+			if (selectedIndex != i)
+			{
+				/* move selected goal square's context to this final square */
+				setSquareContext(node, goalNode.dataContext);
+			}
+			if (placeGoalAfterNumMoves == 0)
+			{
+				placeGoal(goalNode);
+			}
+			else
+			{
+				/* last square, use new blank square */
+				setSquareContext(goalNode, { text: "a", soundPool: "Empty", cssClass: "empty"});
+			}
+		}
+	}
+	
 
-  /* move marker */
-  var marker = document.getElementsByTagName("marker")[0];
-  marker.style.top = 230;
-  marker.style.left = 270;
+	/* move marker */
+	var marker = document.getElementsByTagName("marker")[0];
+	marker.style.top = 230;
+	marker.style.left = 270;
 }
 
 function resetMap()
 {
-  hideAllSquares();
-  window.setTimeout(initMap, 1000);
+	hideAllSquares();
+	window.setTimeout(initMap, 1000);
 }
 
 /* http://stackoverflow.com/a/2450976 */
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+	var currentIndex = array.length, temporaryValue, randomIndex;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
 
-  return array;
+	return array;
 }
