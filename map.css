@@ -66,17 +66,17 @@ ms
 /* zoomed-in settings */
 .zoomed
 {
-  transform: scale(4.1);
-  width: 75.5px !important;
-  height: 54px !important;
-  top: 81px !important;
-  left: 113.25px !important;
-  z-index: 10 !important;
-  background-color: rgba(0,0,0,0.8);
+  transform: scale(4);
+  width: 77.5px !important; /* 1/4 of map width, plus 2px */
+  height: 56px !important; /* 1/4 of map height, plus 2px */
+  top: 80px !important; /* centered */
+  left: 112.25px !important; /* centered */
+  z-index: 10 !important; /* ensure it's on top */
+  background-color: rgba(0,0,0,0.8); /* color of ms element, only darker */
 }
 .dummyPrizeImage.zoomed
 {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.8); /* color of dummyPrizeImage class, only darker */
 }
 
 /* square text colors */
