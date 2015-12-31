@@ -322,6 +322,7 @@ function initMap()
 		if (otherSquares[i].cssClass == "dummyPrize")
 		{
 			otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
+			otherSquares[i].image = null;
 		}
 		else if (otherSquares[i].cssClass == "dummyPrizeImage")
 		{
