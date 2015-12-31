@@ -2,52 +2,104 @@
 /* Supported properties:
  * - text: text to display in the square when revealed
  * - sound: sound file to play when square revealed
+ * - soundPool: sound pool name to play a random entry from when square revealed
  * - cssClass: CSS class name to set on the square
  */
 var startSquare = { text: "" }
-var goalSquare = { text: "%", sound: "Finish", cssClass: "goal", isGoal: true }
+var goalSquare = { text: "%", soundPool: "Finish", cssClass: "goal", isGoal: true }
 var otherSquares = [
-{ text: "a", cssClass: "empty"},
-{ text: "a", cssClass: "empty"},
-{ text: "a", cssClass: "empty"},
-{ text: "a", cssClass: "empty"},
-{ text: "a", cssClass: "empty"},
-{ text: "a", cssClass: "empty"},
-{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
-{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
-{ text: "-", sound: "Good", cssClass: "dummyPrizeImage"},
-{ text: "+", sound: "BigGood", cssClass: "prize"},
-{ text: "+10", sound: "BigGood", cssClass: "bigPoints"},
-{ text: "+10", sound: "BigGood", cssClass: "bigPoints"},
-{ text: "+5", sound: "Good", cssClass: "smallPoints"},
-{ text: "+5", sound: "Good", cssClass: "smallPoints"},
-{ text: "+5", sound: "Good", cssClass: "smallPoints"},
-{ text: "+5", sound: "Good", cssClass: "smallPoints"},
-{ text: "x2", sound: "BigGood", cssClass: "multiplier"},
-{ text: "x2", sound: "BigGood", cssClass: "multiplier"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "a", soundPool: "Empty", cssClass: "empty"},
+{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
+{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
+{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
+{ text: "+", soundPool: "BigGood", cssClass: "prize"},
+{ text: "+10", soundPool: "BigGood", cssClass: "bigPoints"},
+{ text: "+10", soundPool: "BigGood", cssClass: "bigPoints"},
+{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
+{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
+{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
+{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
+{ text: "x2", soundPool: "BigGood", cssClass: "multiplier"},
+{ text: "x2", soundPool: "BigGood", cssClass: "multiplier"},
 ];
+
+/* sound pools */
+var soundPoolGood = [
+	"sounds/Good1.wav",
+	"sounds/Good2.wav",
+	"sounds/Good3.wav",
+	"sounds/Good4.wav",
+	"sounds/Good5.wav",
+	"sounds/Good6.wav",
+	"sounds/Good7.wav",
+	"sounds/Good8.wav",
+	"sounds/Good9.wav",
+	"sounds/Good10.wav",
+	"sounds/Good11.wav",
+	"sounds/Good12.wav",
+	"sounds/Good13.wav",
+	"sounds/Good14.wav",
+];
+var soundPoolBigGood = [
+	"sounds/BigGood1.wav",
+	"sounds/BigGood2.wav",
+	"sounds/BigGood3.wav",
+	"sounds/BigGood4.wav",
+	"sounds/BigGood5.wav",
+	"sounds/BigGood6.wav",
+	"sounds/BigGood7.wav",
+	"sounds/BigGood8.wav",
+	"sounds/BigGood9.wav",
+	"sounds/BigGood10.wav",
+	"sounds/BigGood11.wav",
+	"sounds/BigGood12.wav",
+	"sounds/BigGood13.wav",
+	"sounds/BigGood14.wav",
+];
+var soundPoolFinish = [
+	"sounds/Finish1.wav",
+	"sounds/Finish2.wav",
+	"sounds/Finish3.wav",
+	"sounds/Finish4.wav",
+	"sounds/Finish5.wav",
+	"sounds/Finish6.wav",
+	"sounds/Finish7.wav",
+	"sounds/Finish8.wav",
+	"sounds/Finish9.wav",
+	"sounds/Finish10.wav",
+	"sounds/Finish11.wav",
+	"sounds/Finish12.wav",
+	"sounds/Finish13.wav",
+	"sounds/Finish14.wav",
+];
+var soundPoolEmpty = [];
 
 /* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
 
 /* dummy "prize" images */
 var dummyPrizeImages = [
-"images/smite_alcoholism.png",
-"images/smite_bee.png",
-"images/smite_book.png",
-"images/smite_bread.png",
-"images/smite_cat.png",
-"images/smite_chicken_leg.png",
-"images/smite_crow.png",
-"images/smite_dolphin.png",
-"images/smite_garbage_can.png",
-"images/smite_grave.png",
-"images/smite_gun.png",
-"images/smite_lost.png",
-"images/smite_poison.png",
-"images/smite_skull.png",
-"images/smite_toilet.png",
-"images/smite_whale.png",
+	"images/smite_alcoholism.png",
+	"images/smite_bee.png",
+	"images/smite_book.png",
+	"images/smite_bread.png",
+	"images/smite_cat.png",
+	"images/smite_chicken_leg.png",
+	"images/smite_crow.png",
+	"images/smite_dolphin.png",
+	"images/smite_garbage_can.png",
+	"images/smite_grave.png",
+	"images/smite_gun.png",
+	"images/smite_lost.png",
+	"images/smite_poison.png",
+	"images/smite_skull.png",
+	"images/smite_toilet.png",
+	"images/smite_whale.png",
 ];
 
 
@@ -139,20 +191,8 @@ function clickMapSquare(obj)
 
 function zoomSquare(obj)
 {
-	var targetWidth = 302;
-	var targetHeight = 216;
-	
-	/* zoom to full */
-	obj.style.transform = "scale(4.1)";
-	obj.style.width = targetWidth/4; /* scaling 4x, so width should be 1/4 of the target width */
-	obj.style.top = (targetHeight/2 - targetHeight/8);
-	obj.style.left = (targetWidth/2 - targetWidth/8);
-	obj.style.zIndex = 10;
-	
-	/* darken background */
-	var style = window.getComputedStyle(obj);
-	var newbg = style.backgroundColor.replace(/^(.*,)(.+)\)/,'$1 0.8)');
-	obj.style.backgroundColor = newbg;
+	/* add zoomed class */
+	obj.className += " zoomed";
 	
 	/* wait then unzoom */
 	window.setTimeout(unzoomSquare, msDelayToUnzoomSquare, obj);
@@ -160,13 +200,8 @@ function zoomSquare(obj)
 
 function unzoomSquare(obj)
 {
-	/* clear custom styles */
-	obj.style.top = null;
-	obj.style.left = null;
-	obj.style.width = null;
-	obj.style.zIndex = null;
-	obj.style.transform = null;
-	obj.style.backgroundColor = null;
+	/* remove zoomed class */
+	obj.className = obj.className.replace(" zoomed", "");
 }
 
 function hideMapSquare(obj)
@@ -174,6 +209,38 @@ function hideMapSquare(obj)
   /* cover square */
   obj.style.opacity=0.0;
   obj.isShown = false;
+}
+
+function getRandomSoundFromPoolName(poolName)
+{
+	var pool = null;
+	switch (poolName)
+	{
+		case "Good":
+			pool = soundPoolGood;
+			break;
+		
+		case "BigGood":
+			pool = soundPoolBigGood;
+			break;
+		
+		case "Finish":
+			pool = soundPoolFinish;
+			break;
+		
+		case "Empty":
+			pool = soundPoolEmpty;
+			break;
+	}
+	
+	if (!pool)
+	{
+		return null;
+	}
+	
+	var randomIndex = Math.floor(Math.random() * pool.length)
+	var path = pool[randomIndex];
+	return path;
 }
 
 function showMapSquare(obj)
@@ -188,7 +255,12 @@ function showMapSquare(obj)
   /* play sound */
   if (obj.dataContext.sound != null)
   {
-    var location = "sounds/" + obj.dataContext.sound + ((Math.floor(Math.random() * 14))+1) + ".wav";
+    var sound = new Audio(obj.dataContext.sound);
+    sound.play();
+  }
+  else if (obj.dataContext.soundPool)
+  {
+    var location = getRandomSoundFromPoolName(obj.dataContext.soundPool);
     var sound = new Audio(location);
     sound.play();
   }
@@ -298,7 +370,7 @@ function initMap()
       else
       {
         /* last square, use new blank square */
-        setSquareContext(goalNode, { text: "a", cssClass: "empty"});
+        setSquareContext(goalNode, { text: "a", soundPool: "Empty", cssClass: "empty"});
       }
     }
   }
@@ -335,3 +407,4 @@ function shuffle(array) {
 
   return array;
 }
+

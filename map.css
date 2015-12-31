@@ -63,6 +63,22 @@ ms
   font-weight: 900;
 }
 
+/* zoomed-in settings */
+.zoomed
+{
+  transform: scale(4.1);
+  width: 75.5px !important;
+  height: 54px !important;
+  top: 81px !important;
+  left: 113.25px !important;
+  z-index: 10 !important;
+  background-color: rgba(0,0,0,0.8);
+}
+.dummyPrizeImage.zoomed
+{
+  background-color: rgba(255,255,255,0.8);
+}
+
 /* square text colors */
 .prize
 {
