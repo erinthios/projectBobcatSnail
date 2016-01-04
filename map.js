@@ -84,22 +84,22 @@ var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","
 
 /* dummy "prize" images */
 var dummyPrizeImages = [
-	"images/smite_alcoholism.png",
-	"images/smite_bee.png",
-	"images/smite_book.png",
-	"images/smite_bread.png",
-	"images/smite_cat.png",
-	"images/smite_chicken_leg.png",
-	"images/smite_crow.png",
-	"images/smite_dolphin.png",
-	"images/smite_garbage_can.png",
-	"images/smite_grave.png",
-	"images/smite_gun.png",
-	"images/smite_lost.png",
-	"images/smite_poison.png",
-	"images/smite_skull.png",
-	"images/smite_toilet.png",
-	"images/smite_whale.png",
+	"images/alcoholism.png",
+	"images/bee.png",
+	"images/magic_book.png",
+	"images/bread.png",
+	"images/cat.png",
+	"images/chicken_leg.png",
+	"images/crow.png",
+	"images/dolphin.png",
+	"images/garbage.png",
+	"images/grave.png",
+	"images/gun.png",
+	"images/lost.png",
+	"images/poison.png",
+	"images/skull.png",
+	"images/toilet.png",
+	"images/whale.png",
 ];
 
 

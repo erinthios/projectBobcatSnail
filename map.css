@@ -54,6 +54,7 @@ ms.shown
   /* center background image */
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   
   /* invert contents */
   -webkit-filter: invert(100%);
