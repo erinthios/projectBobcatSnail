@@ -407,7 +407,7 @@ function initMap()
 			else
 			{
 				/* last square, use new blank square */
-				setSquareContext(goalNode, { text: "a", soundPool: "Empty", cssClass: "empty"});
+				setSquareContext(goalNode, newEmptySquare());
 			}
 		}
 	}
