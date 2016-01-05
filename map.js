@@ -8,24 +8,24 @@
 var startSquare = { text: "" }
 var goalSquare = { text: "%", soundPool: "Finish", cssClass: "goal", isGoal: true }
 var otherSquares = [
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "a", soundPool: "Empty", cssClass: "empty"},
-{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
-{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
-{ text: "-", soundPool: "Good", cssClass: "dummyPrizeImage"},
-{ text: "+", soundPool: "BigGood", cssClass: "prize"},
-{ text: "+10", soundPool: "BigGood", cssClass: "bigPoints"},
-{ text: "+10", soundPool: "BigGood", cssClass: "bigPoints"},
-{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
-{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
-{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
-{ text: "+5", soundPool: "Good", cssClass: "smallPoints"},
-{ text: "x2", soundPool: "BigGood", cssClass: "multiplier"},
-{ text: "x2", soundPool: "BigGood", cssClass: "multiplier"},
+	newEmptySquare(),
+	newEmptySquare(),
+	newEmptySquare(),
+	newEmptySquare(),
+	newEmptySquare(),
+	newEmptySquare(),
+	newDummyPrizeSquare(),
+	newDummyPrizeSquare(),
+	newDummyPrizeSquare(),
+	newSpecialPrizeSquare(),
+	newBigPointsSquare(),
+	newBigPointsSquare(),
+	newSmallPointsSquare(),
+	newSmallPointsSquare(),
+	newSmallPointsSquare(),
+	newSmallPointsSquare(),
+	newMultipliedPointsSquare(),
+	newMultipliedPointsSquare(),
 ];
 
 /* sound pools */
@@ -102,6 +102,9 @@ var dummyPrizeImages = [
 	"images/whale.png",
 ];
 
+/* % chance for each dummy prize square to be text vs. an image */
+var dummyPrizeTextPct = 50;
+
 
 /* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
@@ -122,6 +125,40 @@ var msDelayToUnzoomSquare = 5500;
 
 /* sound to play when marker moves on map */
 var markerMoveSoundPath = "sounds/walking.mp3";
+
+
+/***** Square creation ******/
+
+/* Supported properties:
+ * - text: text to display in the square when revealed
+ * - sound: sound file to play when square revealed
+ * - soundPool: sound pool name to play a random entry from when square revealed
+ * - cssClass: CSS class name to set on the square
+ */
+function newEmptySquare()
+{
+	return { text: "a", soundPool: "Empty", cssClass: "empty"};
+}
+function newDummyPrizeSquare()
+{
+	return { soundPool: "Good", cssClass: "dummyPrize"};
+}
+function newSpecialPrizeSquare()
+{
+	return { text: "+", soundPool: "BigGood", cssClass: "prize"};
+}
+function newSmallPointsSquare()
+{
+	return { text: "+5", soundPool: "Good", cssClass: "smallPoints"};
+}
+function newBigPointsSquare()
+{
+	return { text: "+10", soundPool: "BigGood", cssClass: "bigPoints"};
+}
+function newMultipliedPointsSquare()
+{
+	return { text: "x2", soundPool: "BigGood", cssClass: "multiplier"};
+}
 
 
 /***** Functions ******/
@@ -319,15 +356,20 @@ function initMap()
 	var dummyPrizeImagesUsed = 0;
 	for (var i=0; i<otherSquares.length; ++i)
 	{
-		if (otherSquares[i].cssClass == "dummyPrize")
+		if (otherSquares[i].cssClass.startsWith("dummyPrize"))
 		{
-			otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
-			otherSquares[i].image = null;
-		}
-		else if (otherSquares[i].cssClass == "dummyPrizeImage")
-		{
-			otherSquares[i].text = null;
-			otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
+			if (Math.floor(Math.random() * 100) < dummyPrizeTextPct)
+			{
+				otherSquares[i].cssClass = "dummyPrize";
+				otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
+				otherSquares[i].image = null;
+			}
+			else
+			{
+				otherSquares[i].cssClass = "dummyPrizeImage";
+				otherSquares[i].text = null;
+				otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
+			}
 		}
 	}
 
