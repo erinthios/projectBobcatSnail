@@ -106,6 +106,7 @@ ms.shown
 .goal
 {
   color: gold;
+  line-height: 60px; /* try to center character */
 }
 
 marker
