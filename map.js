@@ -29,7 +29,8 @@ var otherSquares = [
 ];
 
 /* sound pools */
-var soundPoolGood = [
+var soundPools = {};
+soundPools["Good"] = [
 	"sounds/Good1.wav",
 	"sounds/Good2.wav",
 	"sounds/Good3.wav",
@@ -45,7 +46,7 @@ var soundPoolGood = [
 	"sounds/Good13.wav",
 	"sounds/Good14.wav",
 ];
-var soundPoolBigGood = [
+soundPools["BigGood"] = [
 	"sounds/BigGood1.wav",
 	"sounds/BigGood2.wav",
 	"sounds/BigGood3.wav",
@@ -61,7 +62,7 @@ var soundPoolBigGood = [
 	"sounds/BigGood13.wav",
 	"sounds/BigGood14.wav",
 ];
-var soundPoolFinish = [
+soundPools["Finish"] = [
 	"sounds/Finish1.wav",
 	"sounds/Finish2.wav",
 	"sounds/Finish3.wav",
@@ -77,7 +78,7 @@ var soundPoolFinish = [
 	"sounds/Finish13.wav",
 	"sounds/Finish14.wav",
 ];
-var soundPoolEmpty = [];
+soundPools["Empty"] = [];
 
 /* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
@@ -106,7 +107,7 @@ var dummyPrizeImages = [
 var dummyPrizeTextPct = 50;
 
 
-/* Indices the goal square is allowed to be at, with 0 in the upper left and moving right, then down. */
+/* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
 
@@ -244,26 +245,7 @@ function hideMapSquare(obj)
 
 function getRandomSoundFromPoolName(poolName)
 {
-	var pool = null;
-	switch (poolName)
-	{
-		case "Good":
-			pool = soundPoolGood;
-			break;
-		
-		case "BigGood":
-			pool = soundPoolBigGood;
-			break;
-		
-		case "Finish":
-			pool = soundPoolFinish;
-			break;
-		
-		case "Empty":
-			pool = soundPoolEmpty;
-			break;
-	}
-	
+	var pool = soundPools[poolName];
 	if (!pool)
 	{
 		return null;
