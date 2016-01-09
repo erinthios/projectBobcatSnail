@@ -10,6 +10,7 @@ map
   left: 0;
 }
 
+/* map tile square */
 ms
 {
   cursor: pointer;
@@ -45,10 +46,12 @@ ms.shown
   text-shadow: none;
 }
 
+/* dummy prize (text) */
 .dummyPrize
 {
   text-shadow: none;
 }
+/* dummy prize (image) */
 .dummyPrizeImage
 {
   /* center background image */
@@ -109,6 +112,7 @@ ms.shown
   line-height: 60px; /* try to center character */
 }
 
+/* map marker piece */
 marker
 {
   position: absolute;
@@ -124,6 +128,8 @@ marker.faceRight
 {
   transform: scaleX(-1);
 }
+
+/* host's 'current square' display */
 currentSquare
 {
   position: absolute;
@@ -143,6 +149,7 @@ currentSquare
       -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black;
 }
 
+/* individual square positioning */
 #a1, #a2, #a3, #a4, #a5 { top: 0px }
 #b1, #b2, #b3, #b4, #b5 { top: 54px }
 #c1, #c2, #c3, #c4, #c5 { top: 108px }
@@ -154,4 +161,5 @@ currentSquare
 #a4, #b4, #c4, #d4 { left: 181.2px }
 #a5, #b5, #c5, #d5 { left: 241.6px }
 
+/* reset button position */
 #reset { position: absolute; left: 0px; top: 230px; }
