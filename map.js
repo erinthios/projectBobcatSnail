@@ -45,6 +45,12 @@ soundPools["Good"] = [
 	"sounds/Good12.wav",
 	"sounds/Good13.wav",
 	"sounds/Good14.wav",
+	"sounds/Good15.wav",
+	"sounds/Good16.wav",
+	"sounds/Good17.wav",
+	"sounds/Good18.wav",
+	"sounds/Good19.wav",
+	"sounds/Good20.wav",
 ];
 soundPools["BigGood"] = [
 	"sounds/BigGood1.wav",
@@ -61,6 +67,12 @@ soundPools["BigGood"] = [
 	"sounds/BigGood12.wav",
 	"sounds/BigGood13.wav",
 	"sounds/BigGood14.wav",
+	"sounds/BigGood15.wav",
+	"sounds/BigGood16.wav",
+	"sounds/BigGood17.wav",
+	"sounds/BigGood18.wav",
+	"sounds/BigGood19.wav",
+	"sounds/BigGood20.wav",
 ];
 soundPools["Finish"] = [
 	"sounds/Finish1.wav",
@@ -77,6 +89,12 @@ soundPools["Finish"] = [
 	"sounds/Finish12.wav",
 	"sounds/Finish13.wav",
 	"sounds/Finish14.wav",
+	"sounds/Finish15.wav",
+	"sounds/Finish16.wav",
+	"sounds/Finish17.wav",
+	"sounds/Finish18.wav",
+	"sounds/Finish19.wav",
+	"sounds/Finish20.wav",
 ];
 soundPools["Empty"] = [];
 
