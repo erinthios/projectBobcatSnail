@@ -163,3 +163,5 @@ currentSquare
 
 /* reset button position */
 #reset { position: absolute; left: 0px; top: 230px; }
+
+loadIndicator { position: absolute; left: 0px; top: 270px; }

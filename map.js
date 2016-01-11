@@ -31,70 +31,70 @@ var otherSquares = [
 /* sound pools */
 var soundPools = {};
 soundPools["Good"] = [
-	"sounds/Good1.wav",
-	"sounds/Good2.wav",
-	"sounds/Good3.wav",
-	"sounds/Good4.wav",
-	"sounds/Good5.wav",
-	"sounds/Good6.wav",
-	"sounds/Good7.wav",
-	"sounds/Good8.wav",
-	"sounds/Good9.wav",
-	"sounds/Good10.wav",
-	"sounds/Good11.wav",
-	"sounds/Good12.wav",
-	"sounds/Good13.wav",
-	"sounds/Good14.wav",
-	"sounds/Good15.wav",
-	"sounds/Good16.wav",
-	"sounds/Good17.wav",
-	"sounds/Good18.wav",
-	"sounds/Good19.wav",
-	"sounds/Good20.wav",
+	"sounds/Good1.ogg",
+	"sounds/Good2.ogg",
+	"sounds/Good3.ogg",
+	"sounds/Good4.ogg",
+	"sounds/Good5.ogg",
+	"sounds/Good6.ogg",
+	"sounds/Good7.ogg",
+	"sounds/Good8.ogg",
+	"sounds/Good9.ogg",
+	"sounds/Good10.ogg",
+	"sounds/Good11.ogg",
+	"sounds/Good12.ogg",
+	"sounds/Good13.ogg",
+	"sounds/Good14.ogg",
+	"sounds/Good15.ogg",
+	"sounds/Good16.ogg",
+	"sounds/Good17.ogg",
+	"sounds/Good18.ogg",
+	"sounds/Good19.ogg",
+	"sounds/Good20.ogg",
 ];
 soundPools["BigGood"] = [
-	"sounds/BigGood1.wav",
-	"sounds/BigGood2.wav",
-	"sounds/BigGood3.wav",
-	"sounds/BigGood4.wav",
-	"sounds/BigGood5.wav",
-	"sounds/BigGood6.wav",
-	"sounds/BigGood7.wav",
-	"sounds/BigGood8.wav",
-	"sounds/BigGood9.wav",
-	"sounds/BigGood10.wav",
-	"sounds/BigGood11.wav",
-	"sounds/BigGood12.wav",
-	"sounds/BigGood13.wav",
-	"sounds/BigGood14.wav",
-	"sounds/BigGood15.wav",
-	"sounds/BigGood16.wav",
-	"sounds/BigGood17.wav",
-	"sounds/BigGood18.wav",
-	"sounds/BigGood19.wav",
-	"sounds/BigGood20.wav",
+	"sounds/BigGood1.ogg",
+	"sounds/BigGood2.ogg",
+	"sounds/BigGood3.ogg",
+	"sounds/BigGood4.ogg",
+	"sounds/BigGood5.ogg",
+	"sounds/BigGood6.ogg",
+	"sounds/BigGood7.ogg",
+	"sounds/BigGood8.ogg",
+	"sounds/BigGood9.ogg",
+	"sounds/BigGood10.ogg",
+	"sounds/BigGood11.ogg",
+	"sounds/BigGood12.ogg",
+	"sounds/BigGood13.ogg",
+	"sounds/BigGood14.ogg",
+	"sounds/BigGood15.ogg",
+	"sounds/BigGood16.ogg",
+	"sounds/BigGood17.ogg",
+	"sounds/BigGood18.ogg",
+	"sounds/BigGood19.ogg",
+	"sounds/BigGood20.ogg",
 ];
 soundPools["Finish"] = [
-	"sounds/Finish1.wav",
-	"sounds/Finish2.wav",
-	"sounds/Finish3.wav",
-	"sounds/Finish4.wav",
-	"sounds/Finish5.wav",
-	"sounds/Finish6.wav",
-	"sounds/Finish7.wav",
-	"sounds/Finish8.wav",
-	"sounds/Finish9.wav",
-	"sounds/Finish10.wav",
-	"sounds/Finish11.wav",
-	"sounds/Finish12.wav",
-	"sounds/Finish13.wav",
-	"sounds/Finish14.wav",
-	"sounds/Finish15.wav",
-	"sounds/Finish16.wav",
-	"sounds/Finish17.wav",
-	"sounds/Finish18.wav",
-	"sounds/Finish19.wav",
-	"sounds/Finish20.wav",
+	"sounds/Finish1.ogg",
+	"sounds/Finish2.ogg",
+	"sounds/Finish3.ogg",
+	"sounds/Finish4.ogg",
+	"sounds/Finish5.ogg",
+	"sounds/Finish6.ogg",
+	"sounds/Finish7.ogg",
+	"sounds/Finish8.ogg",
+	"sounds/Finish9.ogg",
+	"sounds/Finish10.ogg",
+	"sounds/Finish11.ogg",
+	"sounds/Finish12.ogg",
+	"sounds/Finish13.ogg",
+	"sounds/Finish14.ogg",
+	"sounds/Finish15.ogg",
+	"sounds/Finish16.ogg",
+	"sounds/Finish17.ogg",
+	"sounds/Finish18.ogg",
+	"sounds/Finish19.ogg",
+	"sounds/Finish20.ogg",
 ];
 soundPools["Empty"] = [];
 
@@ -263,13 +263,13 @@ function hideMapSquare(obj)
 
 function getRandomSoundFromPoolName(poolName)
 {
-	var pool = soundPools[poolName];
+	var pool = audioPools[poolName];
 	if (!pool)
 	{
 		return null;
 	}
 	
-	var randomIndex = Math.floor(Math.random() * pool.length)
+	var randomIndex = Math.floor(Math.random() * pool.length);
 	var path = pool[randomIndex];
 	return path;
 }
@@ -291,8 +291,7 @@ function showMapSquare(obj)
 	}
 	else if (obj.dataContext.soundPool)
 	{
-		var location = getRandomSoundFromPoolName(obj.dataContext.soundPool);
-		var sound = new Audio(location);
+		var sound = getRandomSoundFromPoolName(obj.dataContext.soundPool);
 		sound.play();
 	}
 	
@@ -341,8 +340,51 @@ function placeGoal(node)
 	}
 }
 
+var audioPools = {};
+var numAudioToPreload = 0;
+var numAudioPreloaded = 0;
+function initAudio()
+{
+	if (Object.keys(audioPools).length > 0)
+	{
+		return;
+	}
+	
+	// count audio to preload
+	for (var key in soundPools)
+	{
+		numAudioToPreload += soundPools[key].length;
+	}
+	document.getElementsByTagName("loadIndicator")[0].innerText = "0";
+	// create audio objects
+	for (var key in soundPools)
+	{
+		var soundPaths = soundPools[key];
+		var audios = [];
+		for (var i=0; i<soundPaths.length; ++i)
+		{
+			var audio = new Audio();
+			audio.addEventListener('canplaythrough', audioPreloaded, false);
+			audio.src = soundPaths[i];
+			audios.push(audio);
+		}
+		audioPools[key] = audios;
+	}
+}
+function audioPreloaded()
+{
+	++numAudioPreloaded;
+	document.getElementsByTagName("loadIndicator")[0].innerText = 
+			numAudioPreloaded < numAudioToPreload ? 
+				"Audio: "+Math.round(100*numAudioPreloaded/numAudioToPreload)+"%" :
+				"Audio: Ready";
+}
+
 function initMap()
 {
+	/* set up audio */
+	initAudio();
+	
 	/* reset counters */
 	numMoves = 0;
 	
