@@ -99,7 +99,7 @@ soundPools["Finish"] = [
 soundPools["Empty"] = [];
 
 /* dummy "prize" text (Webdings characters) */
-var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
+var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","Â²","Âµ","Ã„","Ã¤","Ã¥","Ã§"];
 
 /* dummy "prize" images */
 var dummyPrizeImages = [
