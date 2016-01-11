@@ -162,6 +162,12 @@ currentSquare
 #a5, #b5, #c5, #d5 { left: 241.6px }
 
 /* reset button position */
-#reset { position: absolute; left: 0px; top: 230px; }
+#reset { position: absolute; left: 10px; top: 230px; }
 
-loadIndicator { position: absolute; left: 0px; top: 270px; }
+loadIndicator
+{
+	position: absolute; left: 10px; top: 270px;
+	font-family: sans-serif;
+	font-size: 12px;
+	color: white;
+}
