@@ -37,12 +37,12 @@
         }
 
         .game-cell .answered-right{
-            background-color: green;
+            background: linear-gradient(to bottom, #5a5, #070, #070, #5a5);
             color: white;
         }
 
         .game-cell .answered-wrong{
-            background-color: black;
+            background: linear-gradient(to bottom, #333, #000, #000, #333);
             color: red;
         }
 
