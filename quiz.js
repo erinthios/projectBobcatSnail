@@ -109,6 +109,7 @@ var $quiz = {
                 var tableRow = 0;
                 for (var i = 0; i < questions.length; i++) {
                     $("#question-" + i)[0].innerText = questions[i].GameTitle;
+                    $quiz.textfit($("#question-" + i));
                 }
 
                 $(".answer").click(function () {
@@ -124,6 +125,15 @@ var $quiz = {
             });
         }
     },
+	// based on https://github.com/nbrunt/TextFit
+	// modified to require a max-height
+    textfit: function (node) {
+        var fs = parseInt(node.css("font-size"), 10);
+        var mh = parseInt(node.css("max-height"), 10);
+        while (node.height() > mh) {
+            node.css("font-size", --fs + "px");
+        }
+	},
     isCorrect: function (correct, timeup) {
         $('[data-correct="false"]').addClass("show-wrong");
         $('[data-correct="true"]').addClass("show-correct");

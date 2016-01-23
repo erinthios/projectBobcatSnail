@@ -18,9 +18,11 @@
             width: 200px;
         }
 
-        .game-cell td {
+        td.game-select-question {
             cursor: pointer;
             width: 200px;
+            height: 150px;
+            max-height: 150px;
             margin: 5px;
             padding-left: 10px;
             padding-right: 10px;
@@ -30,19 +32,8 @@
             border-radius: 5px;
             border: 1px solid black;
             color: white;
-        }
-
-        .game-select-question-outer {
-            height: 150px;
+			vertical-align: middle !important;
             overflow: hidden;
-            -webkit-transform-style: preserve-3d;
-            -moz-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-        }
-        .game-select-question-inner {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
         }
 
         .game-cell .answered-right{
