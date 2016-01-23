@@ -32,8 +32,9 @@
             border-radius: 5px;
             border: 1px solid black;
             color: white;
-			vertical-align: middle !important;
+            vertical-align: middle !important;
             overflow: hidden;
+            word-wrap: break-word;
         }
 
         .game-cell .answered-right{
