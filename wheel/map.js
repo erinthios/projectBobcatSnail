@@ -129,7 +129,13 @@ var dummyPrizeImages = [
 	"images/sexy_cupcake.png",
 	"images/spider.png",
 	"images/toilet_paper_roll2.png",
-	"images/treasure_chest.png"
+	"images/treasure_chest.png",
+	"images/a_wolfshirt.png",
+	"images/broken_trophy.png",
+	"images/plunger.png",
+	"images/tamagotchi.png",
+	"images/vcr_tape.png",
+	"images/wily_ship.png"
 ];
 
 /* % chance for each dummy prize square to be text vs. an image */
