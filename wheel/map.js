@@ -1,12 +1,18 @@
-﻿/* Square definitions */
+﻿// sound pool names
+var goodSoundPool = "Good";
+var bigGoodSoundPool = "BigGood";
+var finishSoundPool = "Finish";
+var emptySoundPool = "Empty";
+
+/* Square definitions */
 /* Supported properties:
  * - text: text to display in the square when revealed
  * - sound: sound file to play when square revealed
  * - soundPool: sound pool name to play a random entry from when square revealed
  * - cssClass: CSS class name to set on the square
  */
-var startSquare = { text: "" }
-var goalSquare = { text: "%", soundPool: "Finish", cssClass: "goal", isGoal: true }
+var startSquare = { text: "" };
+var goalSquare = { text: "%", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
 var otherSquares = [
 	newEmptySquare(),
 	newEmptySquare(),
@@ -25,12 +31,12 @@ var otherSquares = [
 	newSmallPointsSquare(),
 	newSmallPointsSquare(),
 	newMultipliedPointsSquare(),
-	newMultipliedPointsSquare(),
+	newMultipliedPointsSquare()
 ];
 
 /* sound pools */
 var soundPools = {};
-soundPools["Good"] = [
+soundPools[goodSoundPool] = [
 	"sounds/Good1.ogg",
 	"sounds/Good2.ogg",
 	"sounds/Good3.ogg",
@@ -50,9 +56,9 @@ soundPools["Good"] = [
 	"sounds/Good17.ogg",
 	"sounds/Good18.ogg",
 	"sounds/Good19.ogg",
-	"sounds/Good20.ogg",
+	"sounds/Good20.ogg"
 ];
-soundPools["BigGood"] = [
+soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood1.ogg",
 	"sounds/BigGood2.ogg",
 	"sounds/BigGood3.ogg",
@@ -72,9 +78,9 @@ soundPools["BigGood"] = [
 	"sounds/BigGood17.ogg",
 	"sounds/BigGood18.ogg",
 	"sounds/BigGood19.ogg",
-	"sounds/BigGood20.ogg",
+	"sounds/BigGood20.ogg"
 ];
-soundPools["Finish"] = [
+soundPools[finishSoundPool] = [
 	"sounds/Finish1.ogg",
 	"sounds/Finish2.ogg",
 	"sounds/Finish3.ogg",
@@ -94,9 +100,9 @@ soundPools["Finish"] = [
 	"sounds/Finish17.ogg",
 	"sounds/Finish18.ogg",
 	"sounds/Finish19.ogg",
-	"sounds/Finish20.ogg",
+	"sounds/Finish20.ogg"
 ];
-soundPools["Empty"] = [];
+soundPools[emptySoundPool] = [];
 
 /* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
@@ -173,27 +179,27 @@ var markerMoveSoundPath = "sounds/walking.mp3";
  */
 function newEmptySquare()
 {
-	return { text: "a", soundPool: "Empty", cssClass: "empty"};
+	return { text: "a", soundPool: emptySoundPool, cssClass: "empty"};
 }
 function newDummyPrizeSquare()
 {
-	return { soundPool: "Good", cssClass: "dummyPrize"};
+	return { soundPool: goodSoundPool, cssClass: "dummyPrize"};
 }
 function newSpecialPrizeSquare()
 {
-	return { text: "+", soundPool: "BigGood", cssClass: "prize"};
+	return { text: "+", soundPool: bigGoodSoundPool, cssClass: "prize"};
 }
 function newSmallPointsSquare()
 {
-	return { text: "+5", soundPool: "Good", cssClass: "smallPoints"};
+	return { text: "+5", soundPool: goodSoundPool, cssClass: "smallPoints"};
 }
 function newBigPointsSquare()
 {
-	return { text: "+10", soundPool: "BigGood", cssClass: "bigPoints"};
+	return { text: "+10", soundPool: bigGoodSoundPool, cssClass: "bigPoints"};
 }
 function newMultipliedPointsSquare()
 {
-	return { text: "x2", soundPool: "BigGood", cssClass: "multiplier"};
+	return { text: "x2", soundPool: bigGoodSoundPool, cssClass: "multiplier"};
 }
 
 
@@ -204,13 +210,13 @@ var markerMoveSound = null;
 function clickMapSquare(obj)
 {
 	/* increment moves */
-	if (obj.isShown == false)
+	if (!obj.isShown)
 	{
 		++numMoves;
 	}
 	
 	/* play marker move sound */
-	if (markerMoveSoundPath && obj.dataContext != startSquare)
+	if (markerMoveSoundPath && obj.dataContext !== startSquare)
 	{
 		if (!markerMoveSound)
 		{
@@ -238,7 +244,7 @@ function clickMapSquare(obj)
 	/* wait, then uncover square */
 	window.setTimeout(showMapSquare, msDelayToRevealSquare, obj);
 	
-	if (numMoves == placeGoalAfterNumMoves)
+	if (numMoves === placeGoalAfterNumMoves)
 	{
 		/* place goal */
 		var hiddenSquares = [];
@@ -246,7 +252,7 @@ function clickMapSquare(obj)
 		for (var i=0; i<elements.length; ++i)
 		{
 			var node = elements[i];
-			if (node != obj && node.isShown == false && node.className != "prize" && node.className != "multiplier")
+			if (node !== obj && !node.isShown && node.className !== "prize" && node.className !== "multiplier")
 			{
 				hiddenSquares.push(elements[i]);
 			}
@@ -301,7 +307,7 @@ function showMapSquare(obj)
 	setCurrentSquare(obj);
 
 	/* play sound */
-	if (obj.dataContext.sound != null)
+	if (obj.dataContext.sound)
 	{
 		var sound = new Audio(obj.dataContext.sound);
 		sound.play();
@@ -309,10 +315,10 @@ function showMapSquare(obj)
 	else if (obj.dataContext.soundPool)
 	{
 		var sound = getRandomSoundFromPoolName(obj.dataContext.soundPool);
-		sound.play();
+		if (sound) sound.play();
 	}
 	
-	if (obj.dataContext != startSquare && obj.dataContext.cssClass != "empty")
+	if (obj.dataContext !== startSquare && obj.dataContext.cssClass !== "empty")
 	{
 		zoomSquare(obj);
 	}
@@ -439,7 +445,7 @@ function initMap()
 		var node = elements[i];
 		hideMapSquare(node);
 		node.onclick = function () { clickMapSquare(this); };
-		if (i == 0)
+		if (i === 0)
 		{
 			/* first square always start square */
 			setSquareContext(node, startSquare);
@@ -454,12 +460,12 @@ function initMap()
 			/* last square, swap the goal in somewhere legal */
 			var selectedIndex = allowedGoalIndices[Math.floor(Math.random() * allowedGoalIndices.length)];
 			var goalNode = elements[selectedIndex];
-			if (selectedIndex != i)
+			if (selectedIndex !== i)
 			{
 				/* move selected goal square's context to this final square */
 				setSquareContext(node, goalNode.dataContext);
 			}
-			if (placeGoalAfterNumMoves == 0)
+			if (placeGoalAfterNumMoves === 0)
 			{
 				placeGoal(goalNode);
 			}
