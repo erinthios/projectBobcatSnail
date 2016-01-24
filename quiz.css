@@ -52,14 +52,17 @@
             font-family:Arial, Helvetica, sans-serif;
         }
 
-        .question-text {
+        #question-text {
             font-size:30px;
+			display: table-cell;
+            max-height:100px;
             color:white;
         }
 
         .submitter-text {
             font-size:21px;
             color:white;
+            margin-top: 5px;
         }
         .right-answer-choice{
             width:150px;
@@ -78,10 +81,16 @@
             text-align:center;
          }
 
-        .answer{
-            width:400px;
+		 #answers {
+			border-collapse: separate;
+			border-spacing: 15px;
+		 }
+        .answer {
+            width:500px;
+            max-height:60px;
             margin:15px;
             font-size:26px;
+			text-align: left;
             color:#FFFFFF; 
             padding:2px;
             padding-left:10px;
@@ -124,3 +133,7 @@
             color: white;
             font-size: 17px;
         }
+		
+		#question-controls {
+			margin: 10px;
+		}

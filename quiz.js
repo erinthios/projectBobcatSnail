@@ -1,3 +1,24 @@
+
+/* http://stackoverflow.com/a/2450976 */
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+}
+
 var isCalled = false;
 	function HasNotBeenSeen(value) {
 		return value.HasSeen == false;
@@ -83,27 +104,23 @@ var $quiz = {
                 var diffFour = actual_JSON.filter(DiffFour);
                 $('#startGame').fadeOut();
                 $('#pointLayout').fadeIn();
+				
+				// shuffle question arrays
+				shuffle(diffOne);
+				shuffle(diffTwo);
+				shuffle(diffThree);
+				shuffle(diffFour);
 
-
+				// get first two questions from each difficulty
                 var questions = [];
-                for (var i = 0; i < 8; i++) {
-                    if (i < 2) {
-                        var randomAnswer = Math.floor(Math.random() * (diffOne.length - 1) + 1);
-                        questions.push(diffOne[randomAnswer]);
-                    }
-                    if ((2 <= i) && (i < 4)) {
-                        var randomAnswer = Math.floor(Math.random() * (diffTwo.length - 1) + 1);
-                        questions.push(diffTwo[randomAnswer]);
-                    }
-                    if ((4 <= i) && (i < 6)) {
-                        var randomAnswer = Math.floor(Math.random() * (diffThree.length - 1) + 1);
-                        questions.push(diffThree[randomAnswer]);
-                    }
-                    if ((6 <= i) && (i < 8)) {
-                        var randomAnswer = Math.floor(Math.random() * (diffFour.length - 1) + 1);
-                        questions.push(diffFour[randomAnswer]);
-                    }
-                }
+				questions.push(diffOne[0]);
+				questions.push(diffOne[1]);
+				questions.push(diffTwo[0]);
+				questions.push(diffTwo[1]);
+				questions.push(diffThree[0]);
+				questions.push(diffThree[1]);
+				questions.push(diffFour[0]);
+				questions.push(diffFour[1]);
 
                 var table = document.getElementById('pointTable').getElementsByTagName('tbody')[0];
                 var tableRow = 0;
@@ -128,6 +145,7 @@ var $quiz = {
 	// based on https://github.com/nbrunt/TextFit
 	// modified to require a max-height
     textfit: function (node) {
+		node[0].style["font-size"] = null;
         var fs = parseInt(node.css("font-size"), 10);
         var mh = parseInt(node.css("max-height"), 10);
         while (node.height() > mh) {
@@ -152,14 +170,13 @@ var $quiz = {
         $('#question').attr("data-selected-question", questionNumber);
 
         if (typeof question.Submitter === 'undefined' || question.Submitter == "") {
-            $('#submitter-text').hide();
+            $('.submitter-text').hide();
         } else {
-            $('#submitter-text').show();
-            $('#submitter-text').text("Submitted By: " + question.Submitter);
+            $('.submitter-text').show();
+            $('#submitter-text').text(question.Submitter);
         }
 
         $('#question-text').text(question.Question);
-
         $('#question-number').text(question.QKEY);
         $('#question-comment').text(question.Comments);
 
@@ -184,6 +201,16 @@ var $quiz = {
         $("#" + wrongAnswerBanks[2]).text(question.FakeAnswer3);
 
         $('#question').delay(800).fadeIn();
+
+		// after fadeIn starts, fit text
+		setTimeout(function()
+		{
+			$quiz.textfit($('#question-text'));
+			$quiz.textfit($('#1'));
+			$quiz.textfit($('#2'));
+			$quiz.textfit($('#3'));
+			$quiz.textfit($('#4'));
+		}, 800);
     },
     setAnswerClearAndReturn: function (correct) {
         $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']').removeClass('answered-right');
