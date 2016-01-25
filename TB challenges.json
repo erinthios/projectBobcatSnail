@@ -190,18 +190,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"12/6/2015 1:21:20",
-    "TBKey":"TB20",
-    "Submitter":"D_W",
-    "GameTitle":"Super Metroid",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Escape the space station first.",
-    "Stateslot":"N/A",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"12/6/2015 1:22:09",
-    "TBKey":"TB21",
+    "TBKey":"TB20",
     "Submitter":"Mjolna",
     "GameTitle":"Galaga",
     "GameConsole":"NES",
@@ -211,7 +201,7 @@
   },
   {
     "Timestamp":"12/6/2015 1:22:20",
-    "TBKey":"TB22",
+    "TBKey":"TB21",
     "Submitter":"D_W",
     "GameTitle":"Wolf Child",
     "GameConsole":"SNES",
@@ -221,7 +211,7 @@
   },
   {
     "Timestamp":"12/6/2015 1:25:38",
-    "TBKey":"TB23",
+    "TBKey":"TB22",
     "Submitter":"D_W",
     "GameTitle":"Kirby's Dream Course",
     "GameConsole":"SNES",
@@ -231,7 +221,7 @@
   },
   {
     "Timestamp":"12/6/2015 1:28:47",
-    "TBKey":"TB24",
+    "TBKey":"TB23",
     "Submitter":"D_W",
     "GameTitle":"Bugs Bunny's Crazy Castle",
     "GameConsole":"NES",
@@ -241,7 +231,7 @@
   },
   {
     "Timestamp":"12/6/2015 1:35:13",
-    "TBKey":"TB25",
+    "TBKey":"TB24",
     "Submitter":"Word on the Wind",
     "GameTitle":"Gourmet Sentai Bara Yarou",
     "GameConsole":"SNES",
@@ -251,7 +241,7 @@
   },
   {
     "Timestamp":"12/6/2015 1:48:58",
-    "TBKey":"TB26",
+    "TBKey":"TB25",
     "Submitter":"D_W",
     "GameTitle":"Uniracers",
     "GameConsole":"SNES",
@@ -261,7 +251,7 @@
   },
   {
     "Timestamp":"12/6/2015 11:46:20",
-    "TBKey":"TB27",
+    "TBKey":"TB26",
     "Submitter":"???",
     "GameTitle":"Shaq Fu",
     "GameConsole":"SNES",
@@ -271,7 +261,7 @@
   },
   {
     "Timestamp":"12/6/2015 11:59:27",
-    "TBKey":"TB28",
+    "TBKey":"TB27",
     "Submitter":"???",
     "GameTitle":"Super Mario World",
     "GameConsole":"SNES",
@@ -281,7 +271,7 @@
   },
   {
     "Timestamp":"12/6/2015 17:29:17",
-    "TBKey":"TB29",
+    "TBKey":"TB28",
     "Submitter":"???",
     "GameTitle":"Psycho Dream",
     "GameConsole":"SNES",
@@ -291,7 +281,7 @@
   },
   {
     "Timestamp":"12/6/2015 20:14:47",
-    "TBKey":"TB30",
+    "TBKey":"TB29",
     "Submitter":"Mjolna",
     "GameTitle":"Doom",
     "GameConsole":"SNES",
@@ -301,7 +291,7 @@
   },
   {
     "Timestamp":"12/6/2015 20:17:14",
-    "TBKey":"TB31",
+    "TBKey":"TB30",
     "Submitter":"Trivial Man",
     "GameTitle":"Mike Tyson's Punch Out!!",
     "GameConsole":"NES",
@@ -311,7 +301,7 @@
   },
   {
     "Timestamp":"12/6/2015 20:27:14",
-    "TBKey":"TB32",
+    "TBKey":"TB31",
     "Submitter":"Trivial Man",
     "GameTitle":"Super Mario All-Stars",
     "GameConsole":"SNES",
@@ -321,7 +311,7 @@
   },
   {
     "Timestamp":"12/6/2015 20:51:00",
-    "TBKey":"TB33",
+    "TBKey":"TB32",
     "Submitter":"Nemo2342",
     "GameTitle":"Battleclash",
     "GameConsole":"SNES",
@@ -331,7 +321,7 @@
   },
   {
     "Timestamp":"12/6/2015 21:04:29",
-    "TBKey":"TB34",
+    "TBKey":"TB33",
     "Submitter":"Mjolna",
     "GameTitle":"Pop'n Twinbee - Rainbow Bell Adventures",
     "GameConsole":"SNES",
@@ -341,7 +331,7 @@
   },
   {
     "Timestamp":"12/7/2015 2:43:23",
-    "TBKey":"TB35",
+    "TBKey":"TB34",
     "Submitter":"Mjolna",
     "GameTitle":"Silver Surfer",
     "GameConsole":"NES",
@@ -351,7 +341,7 @@
   },
   {
     "Timestamp":"12/7/2015 3:05:42",
-    "TBKey":"TB36",
+    "TBKey":"TB35",
     "Submitter":"Mjolna",
     "GameTitle":"Gokujou Parodius",
     "GameConsole":"SNES",
@@ -361,7 +351,7 @@
   },
   {
     "Timestamp":"12/7/2015 21:04:29",
-    "TBKey":"TB37",
+    "TBKey":"TB36",
     "Submitter":"Smite",
     "GameTitle":"Jaws",
     "GameConsole":"NES",
@@ -371,7 +361,7 @@
   },
   {
     "Timestamp":"12/7/2015 21:06:14",
-    "TBKey":"TB38",
+    "TBKey":"TB37",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Mario Paint",
     "GameConsole":"SNES",
@@ -380,18 +370,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"12/9/2015 5:49:49",
-    "TBKey":"TB39",
-    "Submitter":"Mansard Roof",
-    "GameTitle":"Kirby's Adventure",
-    "GameConsole":"NES",
-    "ChallengeDetails":"In the first level, the winner of the team battle is the first person to capture the hidden UFO enemy.",
-    "Stateslot":"N/A",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"12/10/2015 2:20:32",
-    "TBKey":"TB40",
+    "TBKey":"TB38",
     "Submitter":"Kamikaze Scotsman",
     "GameTitle":"Super Mario World",
     "GameConsole":"SNES",
@@ -401,7 +381,7 @@
   },
   {
     "Timestamp":"12/10/2015 5:49:59",
-    "TBKey":"TB41",
+    "TBKey":"TB39",
     "Submitter":"Smite",
     "GameTitle":"Battletoads",
     "GameConsole":"NES",
@@ -411,7 +391,7 @@
   },
   {
     "Timestamp":"12/11/2015 3:02:14",
-    "TBKey":"TB42",
+    "TBKey":"TB40",
     "Submitter":"???",
     "GameTitle":"Kirby Super Star",
     "GameConsole":"SNES",
@@ -421,7 +401,7 @@
   },
   {
     "Timestamp":"12/11/2015 5:49:59",
-    "TBKey":"TB43",
+    "TBKey":"TB41",
     "Submitter":"Smite",
     "GameTitle":"3-D World Runner",
     "GameConsole":"NES",
@@ -431,7 +411,7 @@
   },
   {
     "Timestamp":"12/11/2015 21:52:35",
-    "TBKey":"TB44",
+    "TBKey":"TB42",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Arkanoid: Doh it Again!",
     "GameConsole":"SNES",
@@ -441,7 +421,7 @@
   },
   {
     "Timestamp":"12/11/2015 21:53:13",
-    "TBKey":"TB45",
+    "TBKey":"TB43",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Arkanoid: Doh It Again!",
     "GameConsole":"SNES",
@@ -451,7 +431,7 @@
   },
   {
     "Timestamp":"12/11/2015 22:14:16",
-    "TBKey":"TB46",
+    "TBKey":"TB44",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Arkanoid: Doh It Again!",
     "GameConsole":"SNES",
@@ -461,7 +441,7 @@
   },
   {
     "Timestamp":"12/12/2015 5:49:59",
-    "TBKey":"TB47",
+    "TBKey":"TB45",
     "Submitter":"Smite",
     "GameTitle":"Jaws",
     "GameConsole":"NES",
@@ -471,7 +451,7 @@
   },
   {
     "Timestamp":"12/12/2015 21:37:38",
-    "TBKey":"TB48",
+    "TBKey":"TB46",
     "Submitter":"???",
     "GameTitle":"The Lion King",
     "GameConsole":"SNES",
@@ -481,7 +461,7 @@
   },
   {
     "Timestamp":"12/13/2015 22:45:04",
-    "TBKey":"TB49",
+    "TBKey":"TB47",
     "Submitter":"Babycowland",
     "GameTitle":"Simpsons: Bart vs. the Space Mutants",
     "GameConsole":"NES",
@@ -491,7 +471,7 @@
   },
   {
     "Timestamp":"12/14/2015 18:22:46",
-    "TBKey":"TB50",
+    "TBKey":"TB48",
     "Submitter":"Trivial Man",
     "GameTitle":"Mario Bros.",
     "GameConsole":"NES",
@@ -500,18 +480,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"12/14/2015 20:29:53",
-    "TBKey":"TB51",
-    "Submitter":"Fenfel",
-    "GameTitle":"Umihara Kawase",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Beat the first 2 levels of the game in 2 min! Game over means opposite team wins.",
-    "Stateslot":"N/A",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"12/15/2015 20:45:34",
-    "TBKey":"TB52",
+    "TBKey":"TB49",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Legend of Zelda",
     "GameConsole":"NES",
@@ -521,7 +491,7 @@
   },
   {
     "Timestamp":"12/15/2015 20:50:42",
-    "TBKey":"TB53",
+    "TBKey":"TB50",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Legend of Zelda",
     "GameConsole":"NES",
@@ -531,7 +501,7 @@
   },
   {
     "Timestamp":"12/19/2015 7:04:45",
-    "TBKey":"TB54",
+    "TBKey":"TB51",
     "Submitter":"???",
     "GameTitle":"Dr. Mario",
     "GameConsole":"NES",
@@ -541,7 +511,7 @@
   },
   {
     "Timestamp":"12/20/2015 13:53:09",
-    "TBKey":"TB55",
+    "TBKey":"TB52",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Summer Carnival '92: Recca",
     "GameConsole":"NES",
@@ -551,7 +521,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:00:01",
-    "TBKey":"TB56",
+    "TBKey":"TB53",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Starship Hector",
     "GameConsole":"NES",
@@ -561,7 +531,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:24:23",
-    "TBKey":"TB57",
+    "TBKey":"TB54",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Pinball",
     "GameConsole":"NES",
@@ -571,7 +541,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:26:20",
-    "TBKey":"TB58",
+    "TBKey":"TB55",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Pac-Man",
     "GameConsole":"NES",
@@ -581,7 +551,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:38:59",
-    "TBKey":"TB59",
+    "TBKey":"TB56",
     "Submitter":"???",
     "GameTitle":"Rescue Rangers 2",
     "GameConsole":"NES",
@@ -591,7 +561,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:41:13",
-    "TBKey":"TB60",
+    "TBKey":"TB57",
     "Submitter":"???",
     "GameTitle":"Flintstones 2 - The Surprise at Dinosaur Peak",
     "GameConsole":"NES",
@@ -601,7 +571,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:41:54",
-    "TBKey":"TB61",
+    "TBKey":"TB58",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Tetris Attack",
     "GameConsole":"SNES",
@@ -611,7 +581,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:50:42",
-    "TBKey":"TB62",
+    "TBKey":"TB59",
     "Submitter":"???",
     "GameTitle":"Darius Twin",
     "GameConsole":"SNES",
@@ -621,7 +591,7 @@
   },
   {
     "Timestamp":"12/20/2015 14:56:05",
-    "TBKey":"TB63",
+    "TBKey":"TB60",
     "Submitter":"???",
     "GameTitle":"Sparkster",
     "GameConsole":"SNES",
@@ -631,7 +601,7 @@
   },
   {
     "Timestamp":"12/20/2015 15:04:10",
-    "TBKey":"TB64",
+    "TBKey":"TB61",
     "Submitter":"???",
     "GameTitle":"Rise of the Robots",
     "GameConsole":"SNES",
@@ -641,7 +611,7 @@
   },
   {
     "Timestamp":"12/20/2015 17:46:42",
-    "TBKey":"TB65",
+    "TBKey":"TB62",
     "Submitter":"truerevol",
     "GameTitle":"Smart Ball",
     "GameConsole":"SNES",
@@ -651,7 +621,7 @@
   },
   {
     "Timestamp":"12/22/2015 1:20:18",
-    "TBKey":"TB66",
+    "TBKey":"TB63",
     "Submitter":"SlimeDrawsNear",
     "GameTitle":"Maniac Mansion",
     "GameConsole":"NES",
@@ -661,7 +631,7 @@
   },
   {
     "Timestamp":"12/22/2015 2:47:09",
-    "TBKey":"TB67",
+    "TBKey":"TB64",
     "Submitter":"Bologna Amputation",
     "GameTitle":"Battletoads",
     "GameConsole":"NES",
@@ -671,7 +641,7 @@
   },
   {
     "Timestamp":"12/22/2015 2:48:02",
-    "TBKey":"TB68",
+    "TBKey":"TB65",
     "Submitter":"Dez",
     "GameTitle":"Faceball 3000",
     "GameConsole":"SNES",
@@ -681,7 +651,7 @@
   },
   {
     "Timestamp":"12/22/2015 2:59:20",
-    "TBKey":"TB69",
+    "TBKey":"TB66",
     "Submitter":"LesbianOrangePeels",
     "GameTitle":"Simpsons: Bart vs. the World",
     "GameConsole":"NES",
@@ -691,7 +661,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:05:05",
-    "TBKey":"TB70",
+    "TBKey":"TB67",
     "Submitter":"DoctorLuigi51",
     "GameTitle":"Wario's Woods",
     "GameConsole":"SNES",
@@ -701,7 +671,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:07:00",
-    "TBKey":"TB71",
+    "TBKey":"TB68",
     "Submitter":"Smite",
     "GameTitle":"Super Mario Kart",
     "GameConsole":"SNES",
@@ -711,7 +681,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:08:09",
-    "TBKey":"TB72",
+    "TBKey":"TB69",
     "Submitter":"Mjolna",
     "GameTitle":"Super Mario Bros 2 (USA)",
     "GameConsole":"NES",
@@ -721,7 +691,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:09:10",
-    "TBKey":"TB73",
+    "TBKey":"TB70",
     "Submitter":"Smite",
     "GameTitle":"Super Mario Bros 3",
     "GameConsole":"NES",
@@ -731,7 +701,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:11:52",
-    "TBKey":"TB74",
+    "TBKey":"TB71",
     "Submitter":"Mjolna",
     "GameTitle":"Silver Surfer",
     "GameConsole":"NES",
@@ -741,7 +711,7 @@
   },
   {
     "Timestamp":"12/22/2015 3:13:09",
-    "TBKey":"TB75",
+    "TBKey":"TB72",
     "Submitter":"Bologna Amputation",
     "GameTitle":"The Legend of Zelda",
     "GameConsole":"NES",
@@ -751,7 +721,7 @@
   },
   {
     "Timestamp":"12/22/2015 4:28:15",
-    "TBKey":"TB76",
+    "TBKey":"TB73",
     "Submitter":"Esca",
     "GameTitle":"Super Smash T.V.",
     "GameConsole":"SNES",
@@ -760,18 +730,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"12/22/2015 7:15:23",
-    "TBKey":"TB77",
-    "Submitter":"Dectilon",
-    "GameTitle":"Lufia 2",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Solve as many of the block puzzles as you can in 3 minutes.",
-    "Stateslot":"1",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"12/22/2015 8:10:02",
-    "TBKey":"TB78",
+    "TBKey":"TB74",
     "Submitter":"???",
     "GameTitle":"Magical Quest starring Mickey Mouse",
     "GameConsole":"SNES",
@@ -781,7 +741,7 @@
   },
   {
     "Timestamp":"12/22/2015 8:18:38",
-    "TBKey":"TB79",
+    "TBKey":"TB75",
     "Submitter":"Dectilon",
     "GameTitle":"Little Samson",
     "GameConsole":"NES",
@@ -791,7 +751,7 @@
   },
   {
     "Timestamp":"12/22/2015 8:26:07",
-    "TBKey":"TB80",
+    "TBKey":"TB76",
     "Submitter":"Dectilon",
     "GameTitle":"Metal Storm",
     "GameConsole":"NES",
@@ -801,7 +761,7 @@
   },
   {
     "Timestamp":"12/22/2015 11:18:22",
-    "TBKey":"TB81",
+    "TBKey":"TB77",
     "Submitter":"Crossbowflex",
     "GameTitle":"Gun Nac",
     "GameConsole":"NES",
@@ -811,7 +771,7 @@
   },
   {
     "Timestamp":"12/22/2015 11:39:28",
-    "TBKey":"TB82",
+    "TBKey":"TB78",
     "Submitter":"Smite",
     "GameTitle":"Pac-Man",
     "GameConsole":"NES",
@@ -821,7 +781,7 @@
   },
   {
     "Timestamp":"12/22/2015 13:18:47",
-    "TBKey":"TB83",
+    "TBKey":"TB79",
     "Submitter":"Smite",
     "GameTitle":"Mighty Bomb Jack",
     "GameConsole":"NES",
@@ -831,7 +791,7 @@
   },
   {
     "Timestamp":"12/22/2015 14:02:04",
-    "TBKey":"TB84",
+    "TBKey":"TB80",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Super Mario Bros 3",
     "GameConsole":"NES",
@@ -841,7 +801,7 @@
   },
   {
     "Timestamp":"12/22/2015 14:47:14",
-    "TBKey":"TB85",
+    "TBKey":"TB81",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Mega Man 2",
     "GameConsole":"NES",
@@ -851,7 +811,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:28:20",
-    "TBKey":"TB86",
+    "TBKey":"TB82",
     "Submitter":"Smite",
     "GameTitle":"Mega Man",
     "GameConsole":"NES",
@@ -861,7 +821,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:28:58",
-    "TBKey":"TB87",
+    "TBKey":"TB83",
     "Submitter":"ProtoIV",
     "GameTitle":"Super Street Fighter II - The New Challengers",
     "GameConsole":"SNES",
@@ -871,7 +831,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:47:47",
-    "TBKey":"TB88",
+    "TBKey":"TB84",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Claymates",
     "GameConsole":"SNES",
@@ -881,7 +841,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:48:41",
-    "TBKey":"TB89",
+    "TBKey":"TB85",
     "Submitter":"Mjolna",
     "GameTitle":"Zombie Nation",
     "GameConsole":"NES",
@@ -891,7 +851,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:50:03",
-    "TBKey":"TB90",
+    "TBKey":"TB86",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Super Mario Bros",
     "GameConsole":"NES",
@@ -901,7 +861,7 @@
   },
   {
     "Timestamp":"12/22/2015 15:53:15",
-    "TBKey":"TB91",
+    "TBKey":"TB87",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Tetris",
     "GameConsole":"NES",
@@ -911,7 +871,7 @@
   },
   {
     "Timestamp":"12/22/2015 16:13:27",
-    "TBKey":"TB92",
+    "TBKey":"TB88",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Battletoads",
     "GameConsole":"NES",
@@ -921,7 +881,7 @@
   },
   {
     "Timestamp":"12/22/2015 16:24:30",
-    "TBKey":"TB93",
+    "TBKey":"TB89",
     "Submitter":"KingEffingFrost",
     "GameTitle":"Mega Man 4",
     "GameConsole":"NES",
@@ -931,7 +891,7 @@
   },
   {
     "Timestamp":"12/22/2015 18:34:43",
-    "TBKey":"TB94",
+    "TBKey":"TB90",
     "Submitter":"Dustminion",
     "GameTitle":"Millipede (NES)",
     "GameConsole":"NES",
@@ -941,7 +901,7 @@
   },
   {
     "Timestamp":"12/22/2015 22:13:06",
-    "TBKey":"TB95",
+    "TBKey":"TB91",
     "Submitter":"Esca",
     "GameTitle":"Out of This World (a.k.a. Another World)",
     "GameConsole":"SNES",
@@ -951,7 +911,7 @@
   },
   {
     "Timestamp":"12/22/2015 22:25:33",
-    "TBKey":"TB96",
+    "TBKey":"TB92",
     "Submitter":"Esca",
     "GameTitle":"Zombies Ate My Neighbors",
     "GameConsole":"SNES",
@@ -961,7 +921,7 @@
   },
   {
     "Timestamp":"12/22/2015 22:47:51",
-    "TBKey":"TB97",
+    "TBKey":"TB93",
     "Submitter":"Esca",
     "GameTitle":"Hungry Dinosaurs",
     "GameConsole":"SNES",
@@ -971,7 +931,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:11:41",
-    "TBKey":"TB98",
+    "TBKey":"TB94",
     "Submitter":"Tankman",
     "GameTitle":"Battle City",
     "GameConsole":"NES",
@@ -981,7 +941,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:34:53",
-    "TBKey":"TB99",
+    "TBKey":"TB95",
     "Submitter":"Smoking Colt",
     "GameTitle":"Mike Tyson's Punch-Out!!",
     "GameConsole":"NES",
@@ -991,7 +951,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:35:40",
-    "TBKey":"TB100",
+    "TBKey":"TB96",
     "Submitter":"Smoking Colt",
     "GameTitle":"Super C",
     "GameConsole":"NES",
@@ -1001,7 +961,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:39:48",
-    "TBKey":"TB101",
+    "TBKey":"TB97",
     "Submitter":"Smite",
     "GameTitle":"Mario 3",
     "GameConsole":"NES",
@@ -1011,7 +971,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:41:23",
-    "TBKey":"TB102",
+    "TBKey":"TB98",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1021,7 +981,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:41:25",
-    "TBKey":"TB103",
+    "TBKey":"TB99",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1031,7 +991,7 @@
   },
   {
     "Timestamp":"12/22/2015 23:50:36",
-    "TBKey":"TB104",
+    "TBKey":"TB100",
     "Submitter":"Smoking Colt",
     "GameTitle":"Battle Toads",
     "GameConsole":"NES",
@@ -1041,7 +1001,7 @@
   },
   {
     "Timestamp":"12/23/2015 0:11:46",
-    "TBKey":"TB105",
+    "TBKey":"TB101",
     "Submitter":"Apt Funk",
     "GameTitle":"Excitebike",
     "GameConsole":"NES",
@@ -1051,7 +1011,7 @@
   },
   {
     "Timestamp":"12/23/2015 3:22:51",
-    "TBKey":"TB106",
+    "TBKey":"TB102",
     "Submitter":"Mjolna",
     "GameTitle":"Mighty Final Fight",
     "GameConsole":"NES",
@@ -1061,7 +1021,7 @@
   },
   {
     "Timestamp":"12/23/2015 3:23:34",
-    "TBKey":"TB107",
+    "TBKey":"TB103",
     "Submitter":"???",
     "GameTitle":"Mega Man 6",
     "GameConsole":"NES",
@@ -1071,7 +1031,7 @@
   },
   {
     "Timestamp":"12/23/2015 3:31:39",
-    "TBKey":"TB108",
+    "TBKey":"TB104",
     "Submitter":"Mjolna",
     "GameTitle":"NARC",
     "GameConsole":"NES",
@@ -1081,7 +1041,7 @@
   },
   {
     "Timestamp":"12/23/2015 23:30:15",
-    "TBKey":"TB109",
+    "TBKey":"TB105",
     "Submitter":"Psychedelic Eyeball",
     "GameTitle":"Battletoads",
     "GameConsole":"NES",
@@ -1091,7 +1051,7 @@
   },
   {
     "Timestamp":"12/24/2015 6:26:25",
-    "TBKey":"TB110",
+    "TBKey":"TB106",
     "Submitter":"???",
     "GameTitle":"Space Megaforce",
     "GameConsole":"SNES",
@@ -1101,7 +1061,7 @@
   },
   {
     "Timestamp":"12/24/2015 17:59:50",
-    "TBKey":"TB111",
+    "TBKey":"TB107",
     "Submitter":"applesaucers",
     "GameTitle":"Speed Racer in My Most Dangerous Adventures",
     "GameConsole":"SNES",
@@ -1111,7 +1071,7 @@
   },
   {
     "Timestamp":"12/24/2015 18:03:24",
-    "TBKey":"TB112",
+    "TBKey":"TB108",
     "Submitter":"Mjolna",
     "GameTitle":"Shin Kidou Senki Gundam W - Endless Duel",
     "GameConsole":"SNES",
@@ -1121,7 +1081,7 @@
   },
   {
     "Timestamp":"12/24/2015 19:55:57",
-    "TBKey":"TB113",
+    "TBKey":"TB109",
     "Submitter":"Mjolna",
     "GameTitle":"Snoopy's Silly Sports Spectacular",
     "GameConsole":"NES",
@@ -1131,7 +1091,7 @@
   },
   {
     "Timestamp":"12/24/2015 21:39:28",
-    "TBKey":"TB114",
+    "TBKey":"TB110",
     "Submitter":"Mjolna",
     "GameTitle":"Rex Ronan - Experimental Surgeon",
     "GameConsole":"SNES",
@@ -1141,7 +1101,7 @@
   },
   {
     "Timestamp":"12/24/2015 22:49:56",
-    "TBKey":"TB115",
+    "TBKey":"TB111",
     "Submitter":"Lolo De Puzlo",
     "GameTitle":"Track and Field",
     "GameConsole":"NES",
@@ -1151,7 +1111,7 @@
   },
   {
     "Timestamp":"12/25/2015 1:14:23",
-    "TBKey":"TB116",
+    "TBKey":"TB112",
     "Submitter":"Trivial Man",
     "GameTitle":"Aero the Acro-Bat",
     "GameConsole":"SNES",
@@ -1161,7 +1121,7 @@
   },
   {
     "Timestamp":"12/25/2015 5:34:17",
-    "TBKey":"TB117",
+    "TBKey":"TB113",
     "Submitter":"Mjolna",
     "GameTitle":"Mohawk & Headphone Jack",
     "GameConsole":"SNES",
@@ -1171,7 +1131,7 @@
   },
   {
     "Timestamp":"12/26/2015 4:09:37",
-    "TBKey":"TB118",
+    "TBKey":"TB114",
     "Submitter":"Smite",
     "GameTitle":"Ice Climber",
     "GameConsole":"NES",
@@ -1181,7 +1141,7 @@
   },
   {
     "Timestamp":"12/26/2015 4:14:43",
-    "TBKey":"TB119",
+    "TBKey":"TB115",
     "Submitter":"Smite",
     "GameTitle":"Mega Man 2",
     "GameConsole":"NES",
@@ -1191,7 +1151,7 @@
   },
   {
     "Timestamp":"12/26/2015 4:43:16",
-    "TBKey":"TB120",
+    "TBKey":"TB116",
     "Submitter":"???",
     "GameTitle":"Excitebike",
     "GameConsole":"NES",
@@ -1201,7 +1161,7 @@
   },
   {
     "Timestamp":"12/26/2015 7:45:21",
-    "TBKey":"TB121",
+    "TBKey":"TB117",
     "Submitter":"JawaDude",
     "GameTitle":"Super Valis IV",
     "GameConsole":"SNES",
@@ -1211,7 +1171,7 @@
   },
   {
     "Timestamp":"12/26/2015 10:57:33",
-    "TBKey":"TB122",
+    "TBKey":"TB118",
     "Submitter":"???",
     "GameTitle":"Metal Gear",
     "GameConsole":"NES",
@@ -1221,7 +1181,7 @@
   },
   {
     "Timestamp":"12/26/2015 11:36:12",
-    "TBKey":"TB123",
+    "TBKey":"TB119",
     "Submitter":"???",
     "GameTitle":"Yoshi's Cookie",
     "GameConsole":"SNES",
@@ -1231,7 +1191,7 @@
   },
   {
     "Timestamp":"12/26/2015 11:41:56",
-    "TBKey":"TB124",
+    "TBKey":"TB120",
     "Submitter":"Smite",
     "GameTitle":"Gradius",
     "GameConsole":"NES",
@@ -1241,7 +1201,7 @@
   },
   {
     "Timestamp":"12/26/2015 11:54:43",
-    "TBKey":"TB125",
+    "TBKey":"TB121",
     "Submitter":"???",
     "GameTitle":"Wario's Woods",
     "GameConsole":"SNES",
@@ -1251,7 +1211,7 @@
   },
   {
     "Timestamp":"12/26/2015 22:35:46",
-    "TBKey":"TB126",
+    "TBKey":"TB122",
     "Submitter":"RWP",
     "GameTitle":"Marble Madness",
     "GameConsole":"NES",
@@ -1261,7 +1221,7 @@
   },
   {
     "Timestamp":"12/26/2015 23:44:47",
-    "TBKey":"TB127",
+    "TBKey":"TB123",
     "Submitter":"???",
     "GameTitle":"Bubble Bobble",
     "GameConsole":"NES",
@@ -1271,7 +1231,7 @@
   },
   {
     "Timestamp":"12/26/2015 23:50:11",
-    "TBKey":"TB128",
+    "TBKey":"TB124",
     "Submitter":"???",
     "GameTitle":"Bubble Bobble",
     "GameConsole":"NES",
@@ -1281,7 +1241,7 @@
   },
   {
     "Timestamp":"12/27/2015 5:12:32",
-    "TBKey":"TB129",
+    "TBKey":"TB125",
     "Submitter":"Smite",
     "GameTitle":"Kirby Super Star",
     "GameConsole":"SNES",
@@ -1291,7 +1251,7 @@
   },
   {
     "Timestamp":"12/27/2015 12:58:50",
-    "TBKey":"TB130",
+    "TBKey":"TB126",
     "Submitter":"???",
     "GameTitle":"Tetris",
     "GameConsole":"NES",
@@ -1301,7 +1261,7 @@
   },
   {
     "Timestamp":"12/28/2015 12:39:20",
-    "TBKey":"TB131",
+    "TBKey":"TB127",
     "Submitter":"The Zed",
     "GameTitle":"Super Mario Bros",
     "GameConsole":"NES",
@@ -1311,7 +1271,7 @@
   },
   {
     "Timestamp":"12/28/2015 12:58:50",
-    "TBKey":"TB132",
+    "TBKey":"TB128",
     "Submitter":"Smite",
     "GameTitle":"Kickle Cubicle",
     "GameConsole":"NES",
@@ -1321,7 +1281,7 @@
   },
   {
     "Timestamp":"12/28/2015 13:25:34",
-    "TBKey":"TB133",
+    "TBKey":"TB129",
     "Submitter":"Apt Funk",
     "GameTitle":"Teenage Mutant Ninja Turtles II - The Arcade Game",
     "GameConsole":"NES",
@@ -1331,7 +1291,7 @@
   },
   {
     "Timestamp":"12/28/2015 13:37:53",
-    "TBKey":"TB134",
+    "TBKey":"TB130",
     "Submitter":"The Zed",
     "GameTitle":"The Little Mermaid",
     "GameConsole":"NES",
@@ -1341,7 +1301,7 @@
   },
   {
     "Timestamp":"12/28/2015 19:44:24",
-    "TBKey":"TB135",
+    "TBKey":"TB131",
     "Submitter":"The Zed",
     "GameTitle":"Snow Brothers",
     "GameConsole":"NES",
@@ -1350,18 +1310,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"12/28/2015 20:21:51",
-    "TBKey":"TB136",
-    "Submitter":"The Zed",
-    "GameTitle":"Super Metroid",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Race to escape the Ceres station. Beat Ridley and get out.",
-    "Stateslot":"2",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"12/29/2015 1:10:46",
-    "TBKey":"TB137",
+    "TBKey":"TB132",
     "Submitter":"???",
     "GameTitle":"Cool Spot",
     "GameConsole":"SNES",
@@ -1371,7 +1321,7 @@
   },
   {
     "Timestamp":"12/30/2015 13:18:59",
-    "TBKey":"TB138",
+    "TBKey":"TB133",
     "Submitter":"???",
     "GameTitle":"Balloon Fight",
     "GameConsole":"NES",
@@ -1381,7 +1331,7 @@
   },
   {
     "Timestamp":"12/30/2015 13:22:52",
-    "TBKey":"TB139",
+    "TBKey":"TB134",
     "Submitter":"???",
     "GameTitle":"Balloon Fight",
     "GameConsole":"NES",
@@ -1391,7 +1341,7 @@
   },
   {
     "Timestamp":"12/30/2015 13:39:23",
-    "TBKey":"TB140",
+    "TBKey":"TB135",
     "Submitter":"???",
     "GameTitle":"Metroid (NES)",
     "GameConsole":"NES",
@@ -1401,7 +1351,7 @@
   },
   {
     "Timestamp":"12/30/2015 19:52:25",
-    "TBKey":"TB141",
+    "TBKey":"TB136",
     "Submitter":"WesSchneider",
     "GameTitle":"Zelda II: The Adventure of Link",
     "GameConsole":"NES",
@@ -1411,7 +1361,7 @@
   },
   {
     "Timestamp":"12/30/2015 20:00:48",
-    "TBKey":"TB142",
+    "TBKey":"TB137",
     "Submitter":"WesSchneider",
     "GameTitle":"Clash at Demonhead",
     "GameConsole":"NES",
@@ -1421,7 +1371,7 @@
   },
   {
     "Timestamp":"12/30/2015 20:31:25",
-    "TBKey":"TB143",
+    "TBKey":"TB138",
     "Submitter":"Fenfel",
     "GameTitle":"ZANAC",
     "GameConsole":"NES",
@@ -1431,7 +1381,7 @@
   },
   {
     "Timestamp":"12/30/2015 22:51:25",
-    "TBKey":"TB144",
+    "TBKey":"TB139",
     "Submitter":"Smite",
     "GameTitle":"Mike Tyson's Punch-Out!!",
     "GameConsole":"NES",
@@ -1441,7 +1391,7 @@
   },
   {
     "Timestamp":"12/31/2015 18:10:38",
-    "TBKey":"TB145",
+    "TBKey":"TB140",
     "Submitter":"golden11535",
     "GameTitle":"F-Zero",
     "GameConsole":"SNES",
@@ -1451,7 +1401,7 @@
   },
   {
     "Timestamp":"1/1/2016 5:23:46",
-    "TBKey":"TB146",
+    "TBKey":"TB141",
     "Submitter":"Mjolna",
     "GameTitle":"Castlevania Bloodlines",
     "GameConsole":"Genesis",
@@ -1460,18 +1410,8 @@
     "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"1/1/2016 5:25:57",
-    "TBKey":"TB147",
-    "Submitter":"Mjolna",
-    "GameTitle":"Mega Man - The Wily Wars",
-    "GameConsole":"Genesis",
-    "ChallengeDetails":"From any of the three games, beat a robot master first. Be fast! Choose wisely!",
-    "Stateslot":"N/A",
-    "SaveStateDownloadLocation":"X"
-  },
-  {
     "Timestamp":"1/1/2016 5:32:47",
-    "TBKey":"TB148",
+    "TBKey":"TB142",
     "Submitter":"NeoTM",
     "GameTitle":"Gradius III",
     "GameConsole":"SNES",
@@ -1481,7 +1421,7 @@
   },
   {
     "Timestamp":"1/1/2016 7:32:47",
-    "TBKey":"TB149",
+    "TBKey":"TB143",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1491,7 +1431,7 @@
   },
   {
     "Timestamp":"1/1/2016 7:35:47",
-    "TBKey":"TB150",
+    "TBKey":"TB144",
     "Submitter":"Smite",
     "GameTitle":"Marble Madness",
     "GameConsole":"NES",
@@ -1501,7 +1441,7 @@
   },
   {
     "Timestamp":"1/2/2016 2:54:39",
-    "TBKey":"TB151",
+    "TBKey":"TB145",
     "Submitter":"Ephraim225",
     "GameTitle":"Tetris & Dr. Mario",
     "GameConsole":"SNES",
@@ -1511,7 +1451,7 @@
   },
   {
     "Timestamp":"1/2/2016 5:21:08",
-    "TBKey":"TB152",
+    "TBKey":"TB146",
     "Submitter":"Mjolna",
     "GameTitle":"Two Crude Dudes",
     "GameConsole":"Genesis",
@@ -1521,7 +1461,7 @@
   },
   {
     "Timestamp":"1/2/2016 17:12:28",
-    "TBKey":"TB153",
+    "TBKey":"TB147",
     "Submitter":"Mjolna",
     "GameTitle":"Sonic the Hedgehog 3",
     "GameConsole":"Genesis",
@@ -1531,7 +1471,7 @@
   },
   {
     "Timestamp":"1/2/2016 17:13:53",
-    "TBKey":"TB154",
+    "TBKey":"TB148",
     "Submitter":"Mjolna",
     "GameTitle":"Sonic the Hedgehog 2",
     "GameConsole":"Genesis",
@@ -1541,7 +1481,7 @@
   },
   {
     "Timestamp":"1/3/2016 4:49:09",
-    "TBKey":"TB155",
+    "TBKey":"TB149",
     "Submitter":"Dallows",
     "GameTitle":"North & South",
     "GameConsole":"NES",
@@ -1551,7 +1491,7 @@
   },
   {
     "Timestamp":"1/5/2016 1:48:40",
-    "TBKey":"TB156",
+    "TBKey":"TB150",
     "Submitter":"Coverkillernation",
     "GameTitle":"Flicky",
     "GameConsole":"Genesis",
@@ -1561,7 +1501,7 @@
   },
   {
     "Timestamp":"1/8/2016 15:43:40",
-    "TBKey":"TB157",
+    "TBKey":"TB151",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1571,7 +1511,7 @@
   },
   {
     "Timestamp":"1/8/2016 15:43:58",
-    "TBKey":"TB158",
+    "TBKey":"TB152",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1581,7 +1521,7 @@
   },
   {
     "Timestamp":"1/8/2016 15:44:39",
-    "TBKey":"TB159",
+    "TBKey":"TB153",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1591,7 +1531,7 @@
   },
   {
     "Timestamp":"1/8/2016 15:44:53",
-    "TBKey":"TB160",
+    "TBKey":"TB154",
     "Submitter":"Smite",
     "GameTitle":"Donkey Kong Country",
     "GameConsole":"SNES",
@@ -1601,432 +1541,492 @@
   },
   {
     "Timestamp":"1/9/2016 6:00:09",
-    "TBKey":"TB161",
+    "TBKey":"TB155",
     "Submitter":"Tallik",
     "GameTitle":"Rollergames",
     "GameConsole":"NES",
-    "ChallengeDetails":"Complete Stage 1 (or first to boss after 3 minutes)",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Complete Stage 1-1 and 1-2, or whoever has highest score after game over. No retries.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/9/2016 6:14:45",
-    "TBKey":"TB162",
-    "Submitter":"ArKadian47",
+    "TBKey":"TB156",
+    "Submitter":"Smite",
     "GameTitle":"Sonic the Hedgehog 2",
     "GameConsole":"GEN",
-    "ChallengeDetails":"Reach the first goalpost in one minute. Gotta go fast! Difficulty 4",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/9/2016 9:13:30",
-    "TBKey":"TB163",
-    "Submitter":"SnoruntPyro",
-    "GameTitle":"Mega Man IV",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Start from the stage select. The first one to get either the Wire (W icon) or Balloon (B icon) Adaptor wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Starting from Chemical Plant Zone, collect the most rings in 2 minutes.",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/9/2016 13:09:31",
-    "TBKey":"TB164",
+    "TBKey":"TB157",
     "Submitter":"Guy Vett",
     "GameTitle":"Columns",
     "GameConsole":"GEN",
-    "ChallengeDetails":"In arcade mode, score the most points on hard difficulty within 1 minute.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"In arcade mode, score the most points on medium difficulty within 2 minutes. No retries. (modified by Smite)",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/9/2016 15:12:16",
-    "TBKey":"TB165",
+    "TBKey":"TB158",
     "Submitter":"KingEffingFrost",
     "GameTitle":"Fire Striker",
     "GameConsole":"SNES",
-    "ChallengeDetails":"Clear the Forest! Challenge begins by selecting the Forest Stage, ends when one team clears it.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0B_iOsFfbAZSzS1pNSVBkTGFSSHc/view?usp=sharing"
-  },
-  {
-    "Timestamp":"1/9/2016 15:14:15",
-    "TBKey":"TB166",
-    "Submitter":"KingEffingFrost",
-    "GameTitle":"Fire Striker",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Defeat SPEL! First team to land the killing blow on SPEL wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0B_iOsFfbAZSzODBMWjRPdm9TTVU/view?usp=sharing"
-  },
-  {
-    "Timestamp":"1/9/2016 15:16:14",
-    "TBKey":"TB167",
-    "Submitter":"KingEffingFrost",
-    "GameTitle":"Fire Striker",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Rock the Scorpions like a hurricane! First team to defeat both Scoprions wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0B_iOsFfbAZSzZ3lTOUNoR0NYSzg/view?usp=sharing"
-  },
-  {
-    "Timestamp":"1/9/2016 15:56:25",
-    "TBKey":"TB168",
-    "Submitter":"KingEffingFrost",
-    "GameTitle":"Mega Man 4",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Starting from the Stage Select screen, the first team to defeat the World's Smartest Robot Master (Brightman) wins!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0B_iOsFfbAZSzSmdEYml4UGVxMWs/view?usp=sharing"
+    "ChallengeDetails":"Clear the Forest! Challenge begins by selecting the Forest Stage, ends when one team clears it. (L/R control the wizard)",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/10/2016 2:11:54",
-    "TBKey":"TB169",
+    "TBKey":"TB159",
     "Submitter":"Zanzibar Ham",
     "GameTitle":"Rockman 3 Endless",
     "GameConsole":"NES",
-    "ChallengeDetails":"Complete the most rooms without dying (2 attempts, highest counts)",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Complete the most rooms in 3 minutes. Retries okay, highest attempt counts",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/10/2016 14:05:31",
-    "TBKey":"TB170",
+    "TBKey":"TB160",
     "Submitter":"Tallik",
-    "GameTitle":"Skate or Die 2 - The Search for Double Trouble",
+    "GameTitle":"Skate or Die 2",
     "GameConsole":"NES",
     "ChallengeDetails":"Attain the higher ramp score in the 3 minute time limit (infinite boards savestate provided)",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://www.dropbox.com/s/8kky41756fuhlcn/Skate%20or%20Die%202%20-%20The%20Search%20for%20Double%20Trouble%20%28U%29.fc0.fcs?dl=0"
-  },
-  {
-    "Timestamp":"1/11/2016 2:14:47",
-    "TBKey":"TB171",
-    "Submitter":"",
-    "GameTitle":"Dr. Mario",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Stage select Level 10.   The person with the least viruses left after a minute wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 2:25:41",
-    "TBKey":"TB172",
-    "Submitter":"Delimann",
-    "GameTitle":"Kung Fu",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Get the highest score on 1P Mode A! Stop when you leave the 1st floor.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 2:32:25",
-    "TBKey":"TB173",
-    "Submitter":"Delimann",
-    "GameTitle":"Paperboy",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Get through Monday with the highest score!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 3:14:34",
-    "TBKey":"TB174",
+    "TBKey":"TB161",
     "Submitter":"AndyAML",
     "GameTitle":"Mega Man X3",
     "GameConsole":"SNES",
     "ChallengeDetails":"First player to clear the intro stage is the winner!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 4:25:30",
-    "TBKey":"TB175",
-    "Submitter":"Delimann",
-    "GameTitle":"Life Force",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Be the first to beat Grabby Brain!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B8grmh-ZpmvpQm9HNklDZktQZmM"
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 4:33:23",
-    "TBKey":"TB176",
+    "TBKey":"TB162",
     "Submitter":"Delimann",
     "GameTitle":"Karnov",
     "GameConsole":"NES",
     "ChallengeDetails":"Stage 1: Rack up the most points you can in 2 minutes!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 5:53:04",
-    "TBKey":"TB177",
-    "Submitter":"Stevo the Human",
-    "GameTitle":"Wiz 'n' Liz",
-    "GameConsole":"GEN",
-    "ChallengeDetails":"Beat Wood Land without taking the golden Time Token",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"You can start at the very beginning. There's a level select after the main hub."
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 11:35:11",
-    "TBKey":"TB178",
+    "TBKey":"TB163",
     "Submitter":"Leylite",
     "GameTitle":"Shatterhand",
     "GameConsole":"NES",
     "ChallengeDetails":"From the start of the game, reach the intro stage boss first. Beating the boss is unnecessary.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 13:17:57",
-    "TBKey":"TB179",
+    "TBKey":"TB164",
     "Submitter":"SnoruntPyro",
     "GameTitle":"Kirby's Adventure",
     "GameConsole":"NES",
     "ChallengeDetails":"Start from the beginning. The first player to clear the first stage wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 13:18:49",
-    "TBKey":"TB180",
-    "Submitter":"SnoruntPyro",
-    "GameTitle":"Mega Man: The Wily Wars",
-    "GameConsole":"GEN",
-    "ChallengeDetails":"Start from the stage select of any game you want. The first to beat one Robot Master wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 14:11:01",
-    "TBKey":"TB181",
-    "Submitter":"Man with Hat",
-    "GameTitle":"Super Mario World",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Race to beat Yoshi's Island 3 without hurting (this includes jumping on things that survive one jump) any enemies or picking up any form of powerup, ie mushrooms, yoshis, checkpoints etc. Coins are fine. Reset upon breaking any of these rules. First to beat it wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 14:40:28",
-    "TBKey":"TB182",
-    "Submitter":"Trivial Man",
-    "GameTitle":"Mega Man",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Score attack! Chose whatever stage you want, die as much as you want, but make sure you have the higher score after 3 minutes. Remember: bonus point items aren't added to your score until you beat the stage.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 14:52:29",
-    "TBKey":"TB183",
+    "TBKey":"TB165",
     "Submitter":"Trivial Man",
     "GameTitle":"Sonic the Hedgehog",
     "GameConsole":"GEN",
-    "ChallengeDetails":"Ring Attack! Start up Green Hill Zone Act 1 and try to have more rings than your opponent when 1 minute is up. In the event of a tie whoever has the higher score wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/11/2016 15:26:47",
-    "TBKey":"TB184",
-    "Submitter":"ProtoIV",
-    "GameTitle":"Mike Tyson's Punch Out!",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Whoever has the most points at the end of Round 3 against Glass Joe wins. You lose if Glass Joe gets KO'd or TKO'd",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0B2v-hrVz4h5TLUFJMnd2aEp3WkU/view?usp=sharing"
-  },
-  {
-    "Timestamp":"1/11/2016 15:30:04",
-    "TBKey":"TB185",
-    "Submitter":"Trivial Man",
-    "GameTitle":"Blue Sphere",
-    "GameConsole":"GEN",
-    "ChallengeDetails":"NOTE TO SMITE: The rom you need for this is Sonic & Knuckles + Sonic the Hedgehog. You aren't going to find an actual game called Blue Sphere, this is just a minigame collection from lock-on cartridge shenanigans.\n\nGet blue spheres, avoid red spheres. First team to beat level 1 wins. If after 3 minutes no one has won, whoever got the blue sphere counter lowest wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvLWJUT2NCRWx5N0U"
+    "ChallengeDetails":"Ring Attack! Green Hill Zone Act 1 and try to have more rings than your opponent when 1 minute is up. Score breaks tie.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/11/2016 16:00:34",
-    "TBKey":"TB186",
+    "TBKey":"TB166",
     "Submitter":"Trivial Man",
     "GameTitle":"Sonic Spinball",
     "GameConsole":"GEN",
-    "ChallengeDetails":"Start at stage 1. First team to get an emerald wins! In the likely event neither team gets an emerald, high score after 3 minutes wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/12/2016 2:25:27",
-    "TBKey":"TB187",
-    "Submitter":"Fragglar",
-    "GameTitle":"Yoshi's Cookie",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"VS mode against CPU, Mario only, beat the cpu once(not full set).",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Start at stage 1. First to get an emerald wins! In the likely event neither team gets an emerald, high score after 3 minutes wins.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/12/2016 2:38:09",
-    "TBKey":"TB188",
+    "TBKey":"TB167",
     "Submitter":"Fragglar",
     "GameTitle":"Battle Blaze (Barrel the Barbarian)",
     "GameConsole":"SNES",
     "ChallengeDetails":"First to beat Gustoff, or last to die.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/12/2016 2:50:46",
-    "TBKey":"TB189",
+    "TBKey":"TB168",
     "Submitter":"Fragglar",
     "GameTitle":"Bust-A-Move",
     "GameConsole":"SNES",
     "ChallengeDetails":"From the first level, first to clear the third stage. ",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/12/2016 2:58:48",
-    "TBKey":"TB190",
-    "Submitter":"Fragglar",
-    "GameTitle":"Tetris Attack",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Time Attack, speed one, game mode on easy, highest score wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
-  },
-  {
-    "Timestamp":"1/12/2016 14:34:02",
-    "TBKey":"TB191",
-    "Submitter":"Trivial Man",
-    "GameTitle":"Pac-Man 2: The New Adventures",
-    "GameConsole":"SNES",
-    "ChallengeDetails":"Make Pac-Man as sad as possible in 2 minutes to win. Smite will be the judge of which Pac-Man is the saddest when time is up.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvSTMtS0dsd3BXMEU"
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/13/2016 0:43:23",
-    "TBKey":"TB192",
-    "Submitter":"Gnoll Queen",
-    "GameTitle":"Sonic 2",
+    "TBKey":"TB169",
+    "Submitter":"Smite",
+    "GameTitle":"Sonic The Hedgehog 2",
     "GameConsole":"GEN",
-    "ChallengeDetails":"Each team competes to end act one of Emerald Hill Zone (the first level) with as many rings as they can.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Competes act one Emerald Hill Zone as fast as possible.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/13/2016 11:55:12",
-    "TBKey":"TB193",
-    "Submitter":"",
+    "TBKey":"TB170",
+    "Submitter":"???",
     "GameTitle":"Super Mario RPG",
     "GameConsole":"SNES",
     "ChallengeDetails":"It's a Moleville Mountain minecar race! Best in-game time wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://www.dropbox.com/s/55k4e32n3ot8wii/Super%20Mario%20RPG%20-%20Legend%20of%20the%20Seven%20Stars.002?dl=0"
+    "Stateslot":"3",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/13/2016 14:47:56",
-    "TBKey":"TB194",
-    "Submitter":"",
+    "TBKey":"TB171",
+    "Submitter":"???",
     "GameTitle":"Super Metroid",
     "GameConsole":"SNES",
     "ChallengeDetails":"Race to escape the Space Colony! The competitor with the most in-game time remaining wins.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"Here's a folder I made on Google Drive that contains the savestate as well as a copy of the rom that I used (not sure if those are universal or not): https://drive.google.com/folderview?id=0B5JbWZvtLY29SGhjblQwYlFJX1k&usp=sharing"
-  },
-  {
-    "Timestamp":"1/15/2016 0:14:09",
-    "TBKey":"TB195",
-    "Submitter":"Trivial Man",
-    "GameTitle":"Galaga",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Outlast your opponent; whoever game overs first loses. Pausing is illegal. If after 5 minutes neither player has reached a game over yet, high score wins. ",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvdDFXdmNrTks4MlU"
+    "Stateslot":"2",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/15/2016 1:52:11",
-    "TBKey":"TB196",
-    "Submitter":"Trivial Man",
+    "TBKey":"TB172",
+    "Submitter":"Smite",
     "GameTitle":"Donkey Kong Jr. Math",
     "GameConsole":"NES",
-    "ChallengeDetails":"Make a bigger number than your opponent in 1 minute. Keep in mind DK Jr. Math isn't that complex, and does weird things if you try to make a number more than 4 digits.\n\nNote to Smite: If you want them to have the same seed feel free to make a state for this, but I like the idea of the RNG possibly screwing someone over by giving them only small numbers on this incredibly stupid challenge.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Get as close to 5458 as you can in 1 minute. This number has no significance!",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/15/2016 21:33:32",
-    "TBKey":"TB197",
+    "TBKey":"TB173",
     "Submitter":"Cheeseincrackers",
     "GameTitle":"Back to the Future",
     "GameConsole":"NES",
-    "ChallengeDetails":"Get as far as possible in Stage 1 ",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Get the most points you can in 2 minutes.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/15/2016 21:38:33",
-    "TBKey":"TB198",
+    "TBKey":"TB174",
     "Submitter":"Cheeseincrackers",
     "GameTitle":"Super Punch Out",
     "GameConsole":"SNES",
-    "ChallengeDetails":"Beat the First Opponent First",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":""
+    "ChallengeDetails":"Beat the first opponent First",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/16/2016 19:40:01",
-    "TBKey":"TB199",
+    "TBKey":"TB175",
     "Submitter":"Trivial Man",
     "GameTitle":"Chip 'n Dale: Rescue Rangers 2",
     "GameConsole":"NES",
-    "ChallengeDetails":"Collect more RR emblems than your opponent in 2 minutes. Timer starts once each player selects a character and pauses in stage 1.\nNote: deaths will not reset your emblem count, but game overs will. Be careful!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvcFR4LUsyMmJKdFU"
-  },
-  {
-    "Timestamp":"1/16/2016 19:47:57",
-    "TBKey":"TB200",
-    "Submitter":"Trivial Man",
-    "GameTitle":"Chip 'n Dale: Rescue Rangers 2",
-    "GameConsole":"NES",
-    "ChallengeDetails":"Collect more RR emblems than your opponent in 2 minutes. Timer starts once both players enter stage 1 and pause.\nNotes: Emblems counts don't reset when you die, but when you game over. Grinding out emblems by utilizing this could be the key to victory. Also the number of emblems you have can be checked with Select.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvcFR4LUsyMmJKdFU"
+    "ChallengeDetails":"Collect more RR emblems than your opponent in 2 minutes. Timer starts once each player selects a character.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/16/2016 21:15:31",
-    "TBKey":"TB201",
+    "TBKey":"TB176",
     "Submitter":"Trivial Man",
     "GameTitle":"Chip 'n Dale: Rescue Rangers 2",
     "GameConsole":"NES",
-    "ChallengeDetails":"Get fewer RR emblems than your opponent. Whoever has the fewest at the end of the stage wins. 3 minute time limit (in game timer resets at death so use your own), failure to complete the level in the time limit is an automatic loss. If both fail to complete the level then subtract points from both of them because that's disgraceful.",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B9DOWF4BJvZvSV9YR1BDU3dJMmM"
+    "ChallengeDetails":"Beat the stage first. If not done by 3 minutes, go by number of RR tokens.",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   },
   {
     "Timestamp":"1/17/2016 2:06:39",
-    "TBKey":"TB202",
+    "TBKey":"TB177",
     "Submitter":"Mjolna",
     "GameTitle":"Sonic the Hedgehog 3",
     "GameConsole":"GEN",
     "ChallengeDetails":"Be the first to clear the Special Stage!",
-    "Stateslot":"",
-    "SaveStateDownloadLocation":"https://www.dropbox.com/s/vvpoclt135lsqzr/Sonic%20The%20Hedgehog%203%20%28U%29%20%5B%21%5D.gs1?dl=0"
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   },
   {
-    "Timestamp":"1/17/2016 2:14:06",
-    "TBKey":"TB203",
-    "Submitter":"Lolo De Puzlo",
-    "GameTitle":"Pac-Man 2: The New Adventures",
-    "GameConsole":"GEN",
-    "ChallengeDetails":"First team to clear the hang-gliding section wins!",
+    "Timestamp":"1/18/2016 8:22:38",
+    "TBKey":"TB178",
+    "Submitter":"johnny longtorso",
+    "GameTitle":"Double Dribble",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Score the most points in the first period, default settings.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/18/2016 9:25:35",
+    "TBKey":"TB179",
+    "Submitter":"Desfore",
+    "GameTitle":"Mike Tyson's Punch Out!!",
+    "GameConsole":"NES",
+    "ChallengeDetails":"From the start screen, whoever can defeat Glass Joe the quickest wins.Score breaks failure.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/18/2016 10:26:29",
+    "TBKey":"TB180",
+    "Submitter":"Angle",
+    "GameTitle":"Kirby's Adventure",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Beat the Quick Draw minigame in 1 minute and 30 seconds.",
     "Stateslot":"",
-    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B0kLipQatZ9iSEhuQzduYklpeGM"
+    "SaveStateDownloadLocation":"NEEDS MADE"
+  },
+  {
+    "Timestamp":"1/18/2016 11:36:15",
+    "TBKey":"TB181",
+    "Submitter":"Zanzibar Ham",
+    "GameTitle":"Wild Guns",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get the highest score in 2 minutes! Boy Howdy!",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/18/2016 17:15:08",
+    "TBKey":"TB182",
+    "Submitter":"Garbonix",
+    "GameTitle":"Super Punch-Out!!",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get as far as you can in Minor Circuit in 3 minutes. (Tie can be broken by Score)",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/19/2016 15:03:07",
+    "TBKey":"TB183",
+    "Submitter":"???",
+    "GameTitle":"Super Hang On",
+    "GameConsole":"GEN",
+    "ChallengeDetails":"First to clear Africa in arcade mode wins. Go by score in the event of failure.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/19/2016 20:10:09",
+    "TBKey":"TB184",
+    "Submitter":"DoubleGomez",
+    "GameTitle":"High Seas Havoc",
+    "GameConsole":"GEN",
+    "ChallengeDetails":"Race to beat the first stage of the game. Score breaks failure.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/22/2016 20:28:14",
+    "TBKey":"TB185",
+    "Submitter":"The Zed",
+    "GameTitle":"Super Metroid",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Climb to the top of the room. The finish line is entering the door to the right at the very top.",
+    "Stateslot":"3",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 0:15:47",
+    "TBKey":"TB186",
+    "Submitter":"D_W",
+    "GameTitle":"Uniracers",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get the highest score on Bowl in the Crawler cup. Beating the CPU is not necessary. ",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 0:16:59",
+    "TBKey":"TB187",
+    "Submitter":"D_W",
+    "GameTitle":"Uniracers",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get the highest score on Jumps in the Shuffler cup. Beating the CPU is not necessary. ",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 0:18:02",
+    "TBKey":"TB188",
+    "Submitter":"D_W",
+    "GameTitle":"Uniracers",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get the highest score on Hill Climb in the Walker cup. ",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 0:18:40",
+    "TBKey":"TB189",
+    "Submitter":"D_W",
+    "GameTitle":"Uniracers",
+    "GameConsole":"SNES",
+    "ChallengeDetails":"Get the highest score on Downer in the Hopper cup.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 2:15:49",
+    "TBKey":"TB190",
+    "Submitter":"NPC46",
+    "GameTitle":"Bucky O'Hare",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Beat the Green Planet first. No retries after game over. Score breaks tie (careful to read score before Game Over pops up!)",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 3:02:49",
+    "TBKey":"TB191",
+    "Submitter":"NPC46",
+    "GameTitle":"Mendel Palace",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Highest Score in 2 minutes, First Stage (Moku Moku)",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 4:12:12",
+    "TBKey":"TB192",
+    "Submitter":"Smite",
+    "GameTitle":"Jackal",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Beat Stage 1 first! Failures broken by score. This battle will make your blood boil.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 4:33:41",
+    "TBKey":"TB193",
+    "Submitter":"James Gloomherald",
+    "GameTitle":"Little Samson ",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Reach the end of the first level playing as the mouse. ",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/23/2016 13:55:51",
+    "TBKey":"TB194",
+    "Submitter":"Chameo Five",
+    "GameTitle":"Super Mario Brothers",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Collect more coins than your opponent in World 1-2 (Using the warp is an automatic disqualification)",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":"https://drive.google.com/open?id=0B07qCLMmyMAsR3RvTloteEZzS1k"
+  },
+  {
+    "Timestamp":"1/24/2016 6:40:36",
+    "TBKey":"TB195",
+    "Submitter":"Mjolna",
+    "GameTitle":"Star Soldier",
+    "GameConsole":"NES",
+    "ChallengeDetails":"2 Minute Score Attack! Enjoy figuring out what is the background.",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":""
+  },
+  {
+    "Timestamp":"1/24/2016 6:57:06",
+    "TBKey":"TB196",
+    "Submitter":"Mjolna",
+    "GameTitle":"Felix the Cat",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Finish Round 1-1 waith as many points as possible, without killing any enemies.",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":""
+  },
+  {
+    "Timestamp":"1/24/2016 7:06:41",
+    "TBKey":"TB197",
+    "Submitter":"Mjolna",
+    "GameTitle":"Ninja Gaiden",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Beat the boss in 1-2. A ninja's blade is mighty.",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":""
+  },
+  {
+    "Timestamp":"1/24/2016 14:54:38",
+    "TBKey":"TB198",
+    "Submitter":"johnny longtorso",
+    "GameTitle":"Jackal",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Stage 1: Run over as many soldiers as possible in 1 minute. No use of weapons except to destroy barriers.",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":""
+  },
+  {
+    "Timestamp":"1/24/2016 15:25:37",
+    "TBKey":"TB199",
+    "Submitter":"Smite",
+    "GameTitle":"Mad City (Bayou Billy)",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Beat the first level before the other player! Failures broken by score.",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/24/2016 16:53:55",
+    "TBKey":"TB200",
+    "Submitter":"Smite",
+    "GameTitle":"Caveman Games",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Mate toss: throw your mate as far as possible. Best toss wins! Spin D-Pad for speed. Hold A for angle, release to throw.",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/24/2016 16:53:56",
+    "TBKey":"TB201",
+    "Submitter":"Bluhman",
+    "GameTitle":"Kid Chameleon",
+    "GameConsole":"GEN",
+    "ChallengeDetails":"Complete Skydragon Castle I with the most diamonds. If both players have the same number of diamonds, the one that completed first wins.",
+    "Stateslot":"",
+    "SaveStateDownloadLocation":"https://drive.google.com/file/d/0BwkRjQd-XEFTT0dTNmw1LXhsTTQ/view?usp=sharing"
+  },
+  {
+    "Timestamp":"1/24/2016 18:38:44",
+    "TBKey":"TB202",
+    "Submitter":"Smite",
+    "GameTitle":"Life Force",
+    "GameConsole":"NES",
+    "ChallengeDetails":"Get the most points from the start in 3 minutes. Get some cool powerups!",
+    "Stateslot":"N/A",
+    "SaveStateDownloadLocation":"X"
+  },
+  {
+    "Timestamp":"1/24/2016 18:39:31",
+    "TBKey":"TB203",
+    "Submitter":"Smite",
+    "GameTitle":"Life Force",
+    "GameConsole":"NES",
+    "ChallengeDetails":"From the state position, get the most points in 3 minutes. There are lots of alternative powerups to unlock if you don't like the loadout.",
+    "Stateslot":"1",
+    "SaveStateDownloadLocation":"X"
   }
 ]
