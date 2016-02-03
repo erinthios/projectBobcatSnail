@@ -169,6 +169,13 @@ var msDelayToUnzoomSquare = 5500;
 var markerMoveSoundPath = "sounds/walking.mp3";
 
 
+/* potential map images */
+var mapImages = [
+	"images/madithen map.gif",
+	"images/madithen map 2.gif"
+];
+
+
 /***** Square creation ******/
 
 /* Supported properties:
@@ -405,6 +412,9 @@ function audioPreloaded()
 
 function initMap()
 {
+	/* set up map image */
+	document.getElementById("mapImage").src = mapImages[Math.floor(mapImages.length*Math.random())];
+	
 	/* set up audio */
 	initAudio();
 	
