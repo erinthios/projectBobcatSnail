@@ -412,9 +412,6 @@ function audioPreloaded()
 
 function initMap()
 {
-	/* set up map image */
-	document.getElementById("mapImage").src = mapImages[Math.floor(mapImages.length*Math.random())];
-	
 	/* set up audio */
 	initAudio();
 	
@@ -497,7 +494,16 @@ function initMap()
 function resetMap()
 {
 	hideAllSquares();
+	document.getElementsByTagName("map")[0].className = "pan";
 	window.setTimeout(initMap, 1000);
+}
+
+function startGame()
+{
+	/* zoom to random map section */
+	document.getElementsByTagName("map")[0].className = "zoom"+Math.floor(1+mapImages.length*Math.random());
+	/* send click to start square */
+	clickMapSquare(document.getElementById("a1"));
 }
 
 /* http://stackoverflow.com/a/2450976 */

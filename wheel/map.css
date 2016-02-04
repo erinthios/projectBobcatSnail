@@ -8,6 +8,37 @@ map
   position: absolute;
   top:0;
   left: 0;
+  transition-property: transform;
+  transition-duration: 3s;
+}
+map.pan
+{
+  animation: pan 30s infinite;
+}
+@keyframes pan {
+    0%, 100% {
+        left: 0;
+    }
+    50% {
+        left: -238px;
+    }
+}
+map.zoom1
+{
+  transform: none;
+}
+map.zoom2
+{
+  transform: none;
+  transform: translateX(-238px);
+}
+
+#mapImage2
+{
+	position: absolute;
+	top: 0;
+	left: 238px;
+	z-index: -1;
 }
 
 /* map tile square */
@@ -163,6 +194,9 @@ currentSquare
 
 /* reset button position */
 #reset { position: absolute; left: 10px; top: 230px; }
+
+/* start button position */
+#start { position: absolute; left: 180px; top: 230px; }
 
 loadIndicator
 {
