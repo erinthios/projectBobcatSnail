@@ -66,6 +66,11 @@
 			position: absolute;
 			left: 890px;
 		}
+		
+		#navContent {
+			transition-property: opacity;
+			transition-duration: 0.5s;
+		}
     </style>
 </head>
 <body>
@@ -136,6 +141,7 @@
         }
     }
     window.onload = function () {
+		setTimeout(function(){ $('#navContent')[0].style.opacity = 0; }, 240000);
         $challenge.loadGame('TB challenges.json');
     }
 </script>
