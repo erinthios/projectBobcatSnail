@@ -45,6 +45,10 @@
 				height:35px;
 				font-size:14px;
 			}
+			#submitter {
+				word-break: break-word;
+				width: 110px;
+			}
 			#description {
 				padding-top: 720px;
 			}
@@ -141,20 +145,20 @@
 								$('#' + i + '-game-name').text(challenge.GameTitle);
 								$('#' + i).text(challenge.GameTitle);
 								$('#' + i + '-challenge').text(challenge.CKey);
-								$('#game-console').text(challenge.GameConsole)
-								$('#submitter').text(challenge.Submitter)
-								$('#challenge-details').text(challenge.ChallengeDetails)
-								$('#challenge-time-limit').text(challenge.ChallengeTimeLimit)
-								$('#difficulty-rating').text(challenge.DifficultyRating)
-								$('#state-slot').text(challenge.StateSlot)
+								$('#game-console').text(challenge.GameConsole);
+								$('#submitter').text(challenge.Submitter);
+								$('#challenge-details').text(challenge.ChallengeDetails);
+								$('#challenge-time-limit').text(challenge.ChallengeTimeLimit);
+								$('#difficulty-rating').text(challenge.DifficultyRating);
+								$('#state-slot').text(challenge.StateSlot);
 							}
 						});
 					}
 				}
-			}
+			};
 			window.onload = function () {
 				$challenge.loadGame('challenges.json');
-			}
+			};
 		</script>
 	</body>
 </html>
