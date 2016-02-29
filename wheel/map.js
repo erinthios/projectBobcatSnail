@@ -1,4 +1,4 @@
-﻿// sound pool names
+// sound pool names
 var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
@@ -104,6 +104,7 @@ soundPools[finishSoundPool] = [
 ];
 soundPools[emptySoundPool] = [
 	"sounds/Horn.ogg",
+	"sounds/smb2 nothing happened.ogg",
 	"sounds/StoogesScream.ogg"
 ];
 
@@ -175,7 +176,8 @@ var markerMoveSoundPath = "sounds/walking.mp3";
 /* potential map images */
 var mapImages = [
 	"images/madithen map.gif",
-	"images/madithen map 2.gif"
+	"images/madithen map 2.gif",
+	"images/madithen map 3.gif"
 ];
 
 
