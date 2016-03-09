@@ -173,11 +173,11 @@ var msDelayToUnzoomSquare = 5500;
 var markerMoveSoundPath = "sounds/walking.mp3";
 
 
-/* potential map images */
-var mapImages = [
-	"images/madithen map.gif",
-	"images/madithen map 2.gif",
-	"images/madithen map 3.gif"
+/* potential map/marker sets */
+var mapSets = [
+	{ map: "images/madithen map.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 2.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 3.gif", marker: "images/snail-turtle.gif" }
 ];
 
 
@@ -418,7 +418,9 @@ function audioPreloaded()
 function initMap()
 {
 	/* set up map image */
-	document.getElementById("mapImage").src = mapImages[Math.floor(mapImages.length*Math.random())];
+	var set = mapSets[Math.floor(mapSets.length*Math.random())];
+	document.getElementById("mapImage").src = set.map;
+	document.getElementById("markerImage").src = set.marker;
 	
 	/* set up audio */
 	initAudio();
