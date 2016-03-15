@@ -58,7 +58,7 @@ var $quiz = {
 				
 				
 				var questions = [];
-				for(var i = 0; i < 8; i++)
+				for(var i = 0; i < 12; i++)
 				{
 					var randomAnswer = Math.floor(Math.random() * (actual_JSON.length - 1) + 1);
 					questions.push(actual_JSON[randomAnswer]);
@@ -111,17 +111,21 @@ var $quiz = {
 				shuffle(diffThree);
 				shuffle(diffFour);
 
-				// get first two questions from each difficulty
+				// get first three questions from each difficulty
                 var questions = [];
 				questions.push(diffOne[0]);
 				questions.push(diffOne[1]);
+                questions.push(diffOne[2]);
 				questions.push(diffTwo[0]);
 				questions.push(diffTwo[1]);
+                questions.push(diffTwo[2]);
 				questions.push(diffThree[0]);
 				questions.push(diffThree[1]);
+                questions.push(diffThree[2]);
 				questions.push(diffFour[0]);
 				questions.push(diffFour[1]);
-
+                questions.push(diffFour[2]);
+                
                 var table = document.getElementById('pointTable').getElementsByTagName('tbody')[0];
                 var tableRow = 0;
                 for (var i = 0; i < questions.length; i++) {
