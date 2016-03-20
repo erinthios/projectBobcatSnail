@@ -3,6 +3,7 @@ var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
 var emptySoundPool = "Empty";
+var blitzSoundPool = "Blitz";
 
 /* Square definitions */
 /* Supported properties:
@@ -18,8 +19,8 @@ var otherSquares = [
 	newEmptySquare(),
 	newEmptySquare(),
 	newEmptySquare(),
-	newEmptySquare(),
-	newEmptySquare(),
+	newBlitzSquare(),
+	newBlitzSquare(),
 	newDummyPrizeSquare(),
 	newDummyPrizeSquare(),
 	newDummyPrizeSquare(),
@@ -79,6 +80,7 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood18.ogg",
 	"sounds/BigGood19.ogg",
 	"sounds/BigGood20.ogg"
+	//removed BigGood10 to reserve for quiz blitz
 ];
 soundPools[finishSoundPool] = [
 	"sounds/Finish1.ogg",
@@ -106,6 +108,10 @@ soundPools[emptySoundPool] = [
 	"sounds/Horn.ogg",
 	"sounds/smb2 nothing happened.ogg",
 	"sounds/StoogesScream.ogg"
+];
+
+soundPools[blitzSoundPool] = [
+	"sounds/BigGood10.ogg"
 ];
 
 /* dummy "prize" text (Webdings characters) */
@@ -177,7 +183,7 @@ var markerMoveSoundPath = "sounds/walking.mp3";
 var mapSets = [
 	{ map: "images/madithen map.gif", marker: "images/Bomberman_Snail.gif" },
 	{ map: "images/madithen map 2.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/madithen map 3.gif", marker: "images/snail-turtle.gif" }
+	{ map: "images/madithen map 3.gif", marker: "images/Bomberman_Snail.gif" }
 ];
 
 
@@ -200,6 +206,10 @@ function newDummyPrizeSquare()
 function newSpecialPrizeSquare()
 {
 	return { text: "+", soundPool: bigGoodSoundPool, cssClass: "prize"};
+}
+function newBlitzSquare()
+{
+	return { image: "images/blitz.png", soundPool: blitzSoundPool, cssClass: "blitz"};
 }
 function newSmallPointsSquare()
 {

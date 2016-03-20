@@ -94,6 +94,14 @@ ms.shown
   color: orange;
   line-height: 62px; /* try to center character */
 }
+.blitz
+{
+  color: pink;
+  /* center background image */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 .bigPoints
 {
   color: cyan;
