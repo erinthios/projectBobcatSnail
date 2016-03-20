@@ -161,6 +161,8 @@ var dummyPrizeTextPct = 50;
 /* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
+/* Square classes the goal square is allowed to replace (if not placing immediately) */
+var allowedGoalClasses = ['empty', 'dummyPrize', 'smallPoints', 'bigPoints'];
 
 /* move # after which to place a goal square in any allowed space (moving to start counts as 1) */
 /* 0 = set on init, use allowedGoalIndices for placement */
@@ -274,7 +276,7 @@ function clickMapSquare(obj)
 		for (var i=0; i<elements.length; ++i)
 		{
 			var node = elements[i];
-			if (node !== obj && !node.isShown && node.className !== "prize" && node.className !== "multiplier")
+			if (node !== obj && !node.isShown && allowedGoalClasses.indexOf(node.className) > -1)
 			{
 				hiddenSquares.push(elements[i]);
 			}
