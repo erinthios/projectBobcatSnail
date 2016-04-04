@@ -23,6 +23,7 @@ p {
 
 .main-content {
     flex: 1;
+    min-height: 560px;
   }
 
 td {
@@ -178,7 +179,7 @@ body {
 }
 
 .questions {
-    min-height: 350px;
+    min-height: 450px;
 }
 
 #question-title {

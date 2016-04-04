@@ -56,8 +56,9 @@ var $quizblitz = {
 		$quizblitz.resetGameBoard();
 		$quizblitz.currentQuestionNumber = 0;
 		$quizblitz.loadQuestion(0, $quizblitz.questions[0]);
-		$('#title-screen').hide();
-        $('#question-template').show();
+		$('#title-screen').fadeOut();
+		$('#ending-screen').fadeOut();
+		$('#question-template').delay(800).fadeIn();
 	},
 	rerollQuestion: function() {
 		shuffle($quizblitz.allQuestions);
@@ -109,9 +110,9 @@ var $quizblitz = {
                 var actual_JSON = first_json.filter(HasNotBeenSeen);
                 $quizblitz.allQuestions = actual_JSON.filter(DiffOneOrTwo);
 
-                $('#title-screen').show();
-				$('#question-template').hide();
-				$('.main-content').show();
+                $('#title-screen').fadeIn();
+				$('#question-template').fadeOut();
+				$('.main-content').fadeIn();
 				// shuffle question arrays
 				shuffle($quizblitz.allQuestions);
                 
@@ -153,7 +154,26 @@ var $quizblitz = {
             //$('.wrong-answer-choice').fadeIn();
         }
 
-        //setTimeout(function () { $quizblitz.setAnswerClearAndReturn(correct) }, 2000);
+        setTimeout(function() {
+            if ($quizblitz.currentQuestionNumber >= 3) {
+                $quizblitz.currentQuestionNumber = 3;
+                $quizblitz.endingScreen();
+                return;
+            } else {
+                $quizblitz.nextQuestion();
+            }
+        }, 2000);
+    },
+    endingScreen: function () {
+        var wrongAnswers = $('.question-bubble.show-wrong').length;
+        var rightAnswers = $('.question-bubble.show-correct').length;
+        $('#quiz-ending-text').text('You got ' + rightAnswers + ' answers right and ' + wrongAnswers + ' wrong.');
+        $('#question-template').fadeOut();
+        $('#ending-screen').delay(800).fadeIn();
+        setTimeout(function () {
+            $('#ending-screen').fadeOut();
+            $quizblitz.loadNewGame('questions.json');
+        }, 30000);
     },
     loadQuestion: function (questionNumber, question) {
         $('#pointTable').fadeOut();
