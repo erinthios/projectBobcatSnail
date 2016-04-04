@@ -52,6 +52,13 @@ var $quizblitz = {
 			$('#question-point-total-' + i).text('');
 		}
 	},
+	fitQuestionText: function() {
+		$quizblitz.textfit($('#question-text'));
+		$quizblitz.textfit($('#1'));
+		$quizblitz.textfit($('#2'));
+		$quizblitz.textfit($('#3'));
+		$quizblitz.textfit($('#4'));
+	},
 	startNewGame: function() {
 		$quizblitz.resetGameBoard();
 		$quizblitz.currentQuestionNumber = 0;
@@ -64,6 +71,8 @@ var $quizblitz = {
 		shuffle($quizblitz.allQuestions);
 		$quizblitz.questions[$quizblitz.currentQuestionNumber] = $quizblitz.allQuestions[0];
 		$quizblitz.loadQuestion($quizblitz.currentQuestionNumber, $quizblitz.questions[$quizblitz.currentQuestionNumber]);
+			
+		$quizblitz.fitQuestionText();
 	},
 	nextQuestion: function() {
 		if($quizblitz.currentQuestionNumber >= 3) {
@@ -79,6 +88,8 @@ var $quizblitz = {
 			$quizblitz.currentQuestionNumber++;
 			$quizblitz.loadQuestion($quizblitz.currentQuestionNumber, $quizblitz.questions[$quizblitz.currentQuestionNumber]);
 			$('#question-template').fadeIn();
+			
+			$quizblitz.fitQuestionText();
 		}, 400);
 	},
 	previousQuestion: function() {
@@ -90,6 +101,8 @@ var $quizblitz = {
         $('.answer').removeClass("show-correct");
 		$quizblitz.currentQuestionNumber--;
 		$quizblitz.loadQuestion($quizblitz.currentQuestionNumber, $quizblitz.questions[$quizblitz.currentQuestionNumber]);
+			
+		$quizblitz.fitQuestionText();
 	},
     loadNewGame: function (path) {
 		$quizblitz.resetGameBoard();
@@ -209,18 +222,6 @@ var $quizblitz = {
 
         $("#" + wrongAnswerBanks[2]).attr("data-correct", false);
         $("#" + wrongAnswerBanks[2]).text(question.FakeAnswer3);
-
-        // $('#question').delay(800).fadeIn();
-
-		// // after fadeIn starts, fit text
-		// setTimeout(function()
-		// {
-			// $quizblitz.textfit($('#question-text'));
-			// $quizblitz.textfit($('#1'));
-			// $quizblitz.textfit($('#2'));
-			// $quizblitz.textfit($('#3'));
-			// $quizblitz.textfit($('#4'));
-		// }, 800);
     },
     setAnswerClearAndReturn: function (correct) {
         $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']').removeClass('answered-right');

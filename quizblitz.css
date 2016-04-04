@@ -194,6 +194,9 @@ body {
 #question-text {
     text-align: center;
 	font-size: 28px;
+    display: table-cell;
+	width: 600px;
+    max-height: 100px;
 }
 
 .title-text {
