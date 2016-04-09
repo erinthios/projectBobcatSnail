@@ -75,8 +75,8 @@ var $quizblitz = {
 		$quizblitz.fitQuestionText();
 	},
 	nextQuestion: function() {
-		if($quizblitz.currentQuestionNumber >= 3) {
-			$quizblitz.currentQuestionNumber = 3;
+		if($quizblitz.currentQuestionNumber >= 4) {
+			$quizblitz.currentQuestionNumber = 4;
 			return;
 		}
 		$('.answer').removeClass("show-wrong");
@@ -106,7 +106,7 @@ var $quizblitz = {
 	},
     loadNewGame: function (path) {
 		$quizblitz.resetGameBoard();
-		$('#quiz-open-text').text('Answer 4 random questions in a row for ' + $('#points-per-question').val() + ' points each');
+		$('#quiz-open-text').text('Answer 5 random questions in a row for ' + $('#points-per-question').val() + ' points each');
 		$quizblitz.currentQuestionNumber = 0;
 		if(!isCalled) {
 			isCalled = true;
@@ -134,11 +134,13 @@ var $quizblitz = {
 				$quizblitz.questions.push($quizblitz.allQuestions[1]);
                 $quizblitz.questions.push($quizblitz.allQuestions[2]);
 				$quizblitz.questions.push($quizblitz.allQuestions[3]);
+                $quizblitz.questions.push($quizblitz.allQuestions[4]);
 				
 				$quizblitz.previousQuizQuestions.push($quizblitz.allQuestions[0]);
 				$quizblitz.previousQuizQuestions.push($quizblitz.allQuestions[1]);
                 $quizblitz.previousQuizQuestions.push($quizblitz.allQuestions[2]);
 				$quizblitz.previousQuizQuestions.push($quizblitz.allQuestions[3]);
+                $quizblitz.previousQuizQuestions.push($quizblitz.allQuestions[4]);
                 
             });
     },
@@ -168,8 +170,8 @@ var $quizblitz = {
         }
 
         setTimeout(function() {
-            if ($quizblitz.currentQuestionNumber >= 3) {
-                $quizblitz.currentQuestionNumber = 3;
+            if ($quizblitz.currentQuestionNumber >= 4) {
+                $quizblitz.currentQuestionNumber = 4;
                 $quizblitz.endingScreen();
                 return;
             } else {
