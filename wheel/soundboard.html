@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SoundBoard</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <style>
+        .audio-slider {
+            margin: 15px;
+        }
+		td{
+		padding-left: 20px;
+		padding-right: 40px;
+		}
+		
+		button{
+		margin-top: 10px;
+		}
+    </style>
+</head>
+
+<!--<body style="background-color: rgb(92, 92, 150)";> !-->
+<body style="background-color: #333333; color: #ffffff; font-family: verdana;"a>
+
+<!--	<h2>Music</h2>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<div>Club Drive</div>
+					<div id="jaguar-club-drive-status">(Stop)</div>
+				    <div>
+				        <button onclick="$soundboard.play('jaguar-club-drive')">Play</button>
+				        <button onclick="$soundboard.pause('jaguar-club-drive')">Pause</button>
+				        <button onclick="$soundboard.stop('jaguar-club-drive')">Stop</button>
+				    </div>
+                    <div class="audio-slider" id="jaguar-club-drive-slider"></div>
+				</td>
+				<td>
+					<div>Family Feud Think Music</div>
+					<div id="think-music-status">(Stop)</div>
+				    <div>
+				        <button onclick="$soundboard.play('think-music')">Play</button>
+				        <button onclick="$soundboard.pause('think-music')">Pause</button>
+				        <button onclick="$soundboard.stop('think-music')">Stop</button>
+				    </div>
+                    <div class="audio-slider" id="think-music-slider"></div>
+				</td>
+				<td>
+					<div>Crimson Fly</div>
+					<div id="crimson-fly-status">(Stop)</div>
+					<div>
+						<button onclick="$soundboard.play('crimson-fly')">Play</button>
+						<button onclick="$soundboard.pause('crimson-fly')">Pause</button>
+						<button onclick="$soundboard.stop('crimson-fly')">Stop</button>
+					</div>
+					<div class="audio-slider" id="crimson-fly-slider"></div>
+				</td>
+				</tr>
+				<tr>
+				<td>
+					<div>Duck Race</div>
+					<div id="Duck-Race-status">(Stop)</div>
+					<div>
+						<button onclick="$soundboard.play('Duck-Race')">Play</button>
+						<button onclick="$soundboard.pause('Duck-Race')">Pause</button>
+						<button onclick="$soundboard.stop('Duck-Race')">Stop</button>
+					</div>
+					<div class="audio-slider" id="Duck-Race-slider"></div>
+				</td>
+				<td>
+					<div>Blues Polka</div>
+					<div id="Blues Polka">(Stop)</div>
+					<div>
+						<button onclick="$soundboard.play('Blues-Polka')">Play</button>
+						<button onclick="$soundboard.pause('Blues-Polka')">Pause</button>
+						<button onclick="$soundboard.stop('Blues-Polka')">Stop</button>
+					</div>
+					<div class="audio-slider" id="Blues-Polka-slider"></div>
+				</td>
+				<td>
+					<div>Easy Day</div>
+					<div id="Easy-Day-status">(Stop)</div>
+					<div>
+						<button onclick="$soundboard.play('Easy-Day')">Play</button>
+						<button onclick="$soundboard.pause('Easy-Day')">Pause</button>
+						<button onclick="$soundboard.stop('Easy-Day')">Stop</button>
+					</div>
+					<div class="audio-slider" id="Easy-Day-slider"></div>
+				</td>
+				<td>
+					<div>Joy-Joy-Spinner</div>
+					<div id="Joy-Joy-Spinner-status">(Stop)</div>
+					<div>
+						<button onclick="$soundboard.play('Joy-Joy-Spinner')">Play</button>
+						<button onclick="$soundboard.pause('Joy-Joy-Spinner')">Pause</button>
+						<button onclick="$soundboard.stop('Joy-Joy-Spinner')">Stop</button>
+					</div>
+					<div class="audio-slider" id="Joy-Joy-Spinner-slider"></div>
+				</td>				
+			</tr>
+		</tbody>
+	</table>
+	!-->
+<br>
+	<table>
+    <tbody>
+    <tr>
+        <td>
+            <div>Right Sound</div>
+            <div id="right-sound-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('right-sound')">Play</button>
+                <button onclick="$soundboard.pause('right-sound')">Pause</button>
+                <button onclick="$soundboard.stop('right-sound')">Stop</button>
+                <div class="audio-slider" id="right-sound-slider"></div>
+            </div>
+        </td>
+        <td>
+            <div>Alternate Right</div>
+            <div id="altright-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('altright')">Play</button>
+                <button onclick="$soundboard.pause('altright')">Pause</button>
+                <button onclick="$soundboard.stop('altright')">Stop</button>
+            </div>
+            <div class="audio-slider" id="altright-slider"></div>
+        </td></tr><tr>
+        <td><br><br>
+            <div>Wrong! Buzzer</div>
+            <div id="wrong-sound-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('wrong-sound')">Play</button>
+                <button onclick="$soundboard.pause('wrong-sound')">Pause</button>
+                <button onclick="$soundboard.stop('wrong-sound')">Stop</button>
+                <div class="audio-slider" id="wrong-sound-slider"></div>
+            </div>
+        </td>
+        <td><br><br>
+            <div>Air Horn</div>
+            <div id="timeup-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('timeup')">Play</button>
+                <button onclick="$soundboard.pause('timeup')">Pause</button>
+                <button onclick="$soundboard.stop('timeup')">Stop</button>
+            </div>
+            <div class="audio-slider" id="timeup-slider"></div>
+        </td>
+    </tr>
+		<tr>
+        <td><br><br>
+            <div>Getting Close!</div>
+            <div id="close-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('close')">Play</button>
+                <button onclick="$soundboard.pause('close')">Pause</button>
+                <button onclick="$soundboard.stop('close')">Stop</button>
+            </div>
+            <div class="audio-slider" id="close-slider"></div>
+        </td>		
+		</tr>
+    </tbody>
+</table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+    window.onload = function () {
+        $soundboard.audioslider('wrong-sound');
+        $soundboard.audioslider('right-sound');
+        $soundboard.audioslider('altright');
+		$soundboard.audioslider('close');
+        $soundboard.audioslider('timeup');					
+    }
+		$soundboard = {
+			play: function(name)
+			{
+				$('#' + name).bind('ended', function(){
+					$('#' + name + '-status').text('(Stop)');
+					});
+				$('#' + name + '-status').text('(Playing)');
+				$('#' + name)[0].play();
+			},
+			pause: function(name)
+			{
+				$('#' + name + '-status').text('(Paused)');
+				$('#' + name)[0].pause();
+			},
+			stop: function(name)
+			{
+				$('#' + name).unbind();
+				$('#' + name + '-status').text('(Stop)');
+				$('#' + name)[0].pause();
+				$('#' + name)[0].currentTime = 0;
+			},
+			audioslider: function(name) {
+			    $('#' + name + "-slider").slider({
+			        orientation: "horizontal",
+			        value: $('#' + name)[0].volume,
+			        min: 0,
+			        max: 1,
+			        range: 'min',
+			        animate: true,
+			        step: .1,
+			        slide: function (e, ui) {
+			            $('#' + name)[0].volume = ui.value;
+			        }
+			    });
+			}
+		}
+	</script>
+	<audio id="right-sound" preload>
+    	<source src="sfx/right.mp3"/>
+	</audio>
+	<audio id="wrong-sound" preload>
+		<source src="sfx/wrong.mp3" />
+	</audio>
+	<audio id="altright" preload>
+		<source src="sfx/altright.mp3" />
+	</audio>
+	<audio id="timeup" preload>
+		<source src="sfx/Air Horn Sound Effect.wav" />
+	</audio>
+	<audio id="close" preload>
+		<source src="sfx/close.mp3" />
+	</audio>
+</body>
+</html>
