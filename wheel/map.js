@@ -185,7 +185,8 @@ var markerMoveSoundPath = "sounds/walking.mp3";
 var mapSets = [
 	{ map: "images/madithen map.gif", marker: "images/Bomberman_Snail.gif" },
 	{ map: "images/madithen map 2.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/madithen map 3.gif", marker: "images/Bomberman_Snail.gif" }
+	{ map: "images/madithen map 3.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 4.gif", marker: "images/Bomberman_Snail.gif" }
 ];
 
 
