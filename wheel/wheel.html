@@ -171,6 +171,8 @@
 				displayFps: false, // display FPS on page
 				displayRpm: true, // display wheel RPM on page
 				
+				hitSegmentIndex: -1, // index of the segment that was landed on
+				
 				updateMaxSpeed: function() {
 					// RPM leading to one revolution
 					// Use multiples of this for random ranges
@@ -204,6 +206,8 @@
 
 					// Start the wheel only if it's not already spinning
 					if (wheel.timerHandle === 0) {
+						wheel.hitSegmentIndex = -1;
+						wheel.hitSegment = 0;
 						wheel.spinStart = new Date().getTime();
 						wheel.updateMaxSpeed();
 						wheel.frames = 0;
@@ -238,6 +242,7 @@
 						wheel.angleCurrent -= Math.PI * 2;
 
 					if (finished) {
+						wheel.hitSegmentIndex = wheel.getSelectedPosition();
 						clearInterval(wheel.timerHandle);
 						wheel.timerHandle = 0;
 						wheel.angleDelta = 0;
@@ -245,7 +250,7 @@
 						if (wheel.displayFps) $("#fpscounter").html((wheel.frames / duration * 1000).toFixed(4) + " FPS");
 						
 						// play sound
-						var segment = segments[wheel.getSelectedPosition()];
+						var segment = segments[wheel.hitSegmentIndex];
 						if (segment.sound) { segment.sound.play(); }
 						
 						// update statistics
@@ -254,6 +259,29 @@
 							addStatistics(segment.text);
 							printStatistics();
 						}
+						
+						// shrink space to nothing
+						var wedge = wedges[wheel.hitSegmentIndex];
+						var weightFraction = wedge.weight / 100;
+						var func = function (i) {
+							wedge.weight = i * weightFraction;
+							if (i < 10)
+							{
+								wedges.splice(wheel.hitSegmentIndex, 1);
+								wheel.hitSegmentIndex = -1;
+							}
+							segments = initSegments();
+							if (i >= 10)
+							{
+								segments[wheel.hitSegmentIndex].shrinkPct = i / 100;
+							}
+							wheel.draw();
+							if (i >= 10)
+							{
+								setTimeout(function(){func(i-5);}, 10);
+							}
+						};
+						setTimeout(function(){func(100);}, 5000);
 						
 						// if testing, spin again
 						if (isTesting)
@@ -319,6 +347,10 @@
 				},
 				currentPosition: -1,
 				isSegmentSelected: function (segment) {
+					if (!wheel.timerHandle)
+					{
+						return wheel.hitSegmentIndex > -1 && segment === segments[wheel.hitSegmentIndex];
+					}
 					var wheelAngle = (-wheel.angleCurrent).mod(PI2);
 					return wheelAngle >= segment.startAngle && wheelAngle < segment.endAngle;
 				},
@@ -353,7 +385,7 @@
 
 					// Which segment is being pointed to?
 					var segNum = wheel.getSelectedPosition();
-					if (wheel.currentPosition !== segNum)
+					if (wheel.currentPosition !== segNum && wheel.timerHandle)
 					{
 						$('#wheel-click')[0].play();
 						$('#wheel-click')[0].currentTime = 0;
@@ -384,8 +416,8 @@
 					if (isSelected)
 					{
 						wedgeBorderColor = '#ffff00';
-						textOutlineColor = '#ffff00';
-						textColor = '#000000';
+						textOutlineColor = "rgba(255,255,0,"+(segment.shrinkPct ? segment.shrinkPct : 1)+")";
+						textColor = "rgba(0,0,0,"+(segment.shrinkPct ? segment.shrinkPct : 1)+")";
 					}
 
 					ctx.save();
@@ -442,12 +474,16 @@
 
 
 					// draw segments, selected last
+					var selectedSegmentNum = wheel.getSelectedPosition();
 					for (var i = 0; i <= segments.length - 1; i++) {
 						if (!wheel.isSegmentSelected(segments[i])) {
 							wheel.drawSegment(i);
 						}
 					}
-					wheel.drawSegment(wheel.getSelectedPosition());
+					if (selectedSegmentNum > -1)
+					{
+						wheel.drawSegment(selectedSegmentNum);
+					}
 
 					// Draw a center circle
 					ctx.save();
