@@ -46,7 +46,7 @@
 				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
 				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
 				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "Drawbage", weight: 1, color: '#800000', sound: 'sounds/Drawbage.ogg'},
+				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
 				{text: "VG Hustle", weight: 1, color: '#379d00', sound: 'sounds/Hustle.ogg'},
 				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
 				{text: "Battle Drawyale", weight: 1, color: '#800000', sound: 'sounds/DrawbageWar.ogg'},
@@ -415,9 +415,10 @@
 					// override colors if this wedge is selected
 					if (isSelected)
 					{
+						var alpha = segment.shrinkPct ? (segment.shrinkPct-0.50)*2 : 1;
 						wedgeBorderColor = '#ffff00';
-						textOutlineColor = "rgba(255,255,0,"+(segment.shrinkPct ? segment.shrinkPct : 1)+")";
-						textColor = "rgba(0,0,0,"+(segment.shrinkPct ? segment.shrinkPct : 1)+")";
+						textOutlineColor = "rgba(255,255,0,"+alpha+")";
+						textColor = "rgba(0,0,0,"+alpha+")";
 					}
 
 					ctx.save();
