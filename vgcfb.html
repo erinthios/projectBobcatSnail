@@ -60,7 +60,7 @@
 		return value.GameConsole.indexOf("Genesis") <= -1;
 	}
 	function isSaveState(value) {
-		return value.SaveStateDownloadLocation.indexOf("X") > -1;
+		return value.SaveStateDownloadLocation === "X";
 	}
     $challenge = {
         loadJSON: function (path, callback) {
