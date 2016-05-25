@@ -311,7 +311,7 @@ var $quizgame = {
             $('#finalRoundTable').delay(800).fadeIn();  
         }
         else {
-            if (!correct || $quizgame.currentQuestionNumber >= 5) {
+            if (!correct || $quizgame.currentQuestionNumber >= 4) {
                 $quizgame.resetQuestionBubbles();
             }
             $('#pointTable').delay(800).fadeIn();
