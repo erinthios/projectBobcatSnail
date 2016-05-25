@@ -50,7 +50,7 @@
     <div class="main-content quiz-game-table">
         <div style="display: none;" id="pointLayout">
             <div class="main-2">
-                <div class="main-content">
+                <div class="main-content-2">
                     <table id="pointTable">
                         <thead>
                         <tr class="header-row">
@@ -84,9 +84,33 @@
                     <table id="finalRoundTable" style="display: none; width: 800px;">
                         <thead>
                         <tr class="header-row">
-                            <td>Player 1</td>
-                            <td>Player 2</td>
-                            <td>Player 3</td>
+                            <td>
+                                <div class="player">
+                                    <img id="player-image-final-1" src="playericons/playericon1.png"/>
+                                    <div style="display: inline-block">
+                                        <p class="player-text" id="player-name-final-1">Player 1</p>
+                                        <div id="player-points-final-1">0</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="player">
+                                    <img id="player-image-final-2" src="playericons/playericon2.png"/>
+                                    <div style="display: inline-block">
+                                        <p class="player-text" id="player-name-final-2">Player 2</p>
+                                        <div id="player-points-final-2">0</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="player">
+                                    <img id="player-image-final-3" src="playericons/playericon2.png"/>
+                                    <div style="display: inline-block">
+                                        <p class="player-text" id="player-name-final-3">Player 3</p>
+                                        <div id="player-points-final-3">0</div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         </thead>
                         <tbody class="game-cell">
@@ -147,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="width: 200px;" class="sidebar">
+                <div id="sidebar-2" class="sidebar-2">
                     <div class="player">
                         <img id="player-image-1" src="playericons/playericon1.png"/>
                         <p class="player-text" id="player-name-1">Player 1</p>
