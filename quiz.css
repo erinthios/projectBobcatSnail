@@ -8,8 +8,20 @@ td {
   flex-direction: row-reverse;
 }
 
+.main-2 {
+  display: flex;
+  flex-direction: row;
+}
+
 .main-content, .sidebar {
   padding: 10px;
+}
+
+.player {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .sidebar a {
@@ -22,15 +34,29 @@ td {
     width: 600px;
 }
 
+.main-content-2 {
+    flex: 1;
+    width: 600px;
+}
+
 .normal-text {
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.quiz-game-table {
+    width: 1280px;
+    height: 720px;
 }
 
 .header-row {
     font-size: 60px;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.player-text {
+    max-height: 50px;
 }
 
 .question-button {
@@ -85,6 +111,16 @@ body {
     color: white;
 }
 
+.question-bubble.show-wrong {
+        background-color: #CC3300;
+		border: 3px solid #800000;
+    }
+
+    .question-bubble.show-correct {
+        background-color: #009900;
+		border: 3px solid #BADA55;
+    }
+
 .submitter-text {
     font-size: 21px;
     color: white;
@@ -109,9 +145,38 @@ body {
     text-align: center;
 }
 
+.completed-answers {
+    margin-right: auto;
+    width: 565px;
+}
+
+.question-bubble-outline {
+    float: left;
+    margin: 23px;
+}
+
+.question-bubble {
+  height: 60px;
+  width: 60px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  background: #12CEFE;
+    font-size: xx-large;
+}
+
 .timer {
    flex: 1;
    margin-top: 60px;
+}
+
+.round {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .answers-container {
@@ -176,8 +241,4 @@ body {
 
 #question-controls {
     margin: 10px;
-}
-
-#pointLayout {
-    width: 600px;
 }

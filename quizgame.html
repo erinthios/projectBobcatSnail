@@ -28,105 +28,175 @@
             <input style="width: 100px;" type="number" id="question-point-multiplier" value="1"/>
             <input type="button" value="Set" onclick="$quizgame.setDefaultPointValues()">
         </div>
-    </div>
-    <div class="main-content">
-        <div style="display: none;" id="pointLayout">
-            <table id="pointTable">
-                <thead>
-                    <tr class="header-row">
-                        <td id="points-0" default-points="1">1</td>
-                        <td id="points-1" default-points="2">2</td>
-                        <td id="points-2" default-points="3">3</td>
-                        <td id="points-3" default-points="4">4</td>
-                    </tr>
-                </thead>
-                <tbody class="game-cell">
-                    <tr>
-                        <td class="game-select-question" data-question-number="0" id="question-0"></td>
-                        <td class="game-select-question" data-question-number="3" id="question-3"></td>
-                        <td class="game-select-question" data-question-number="6" id="question-6"></td>
-                        <td class="game-select-question" data-question-number="9" id="question-9"></td>
-                    </tr>
-                    <tr>
-                        <td class="game-select-question" data-question-number="1" id="question-1"></td>
-                        <td class="game-select-question" data-question-number="4" id="question-4"></td>
-                        <td class="game-select-question" data-question-number="7" id="question-7"></td>
-                        <td class="game-select-question" data-question-number="10" id="question-10"></td>
-                    </tr>
-                    <tr>
-                        <td class="game-select-question" data-question-number="2" id="question-2"></td>
-                        <td class="game-select-question" data-question-number="5" id="question-5"></td>
-                        <td class="game-select-question" data-question-number="8" id="question-8"></td>
-                        <td class="game-select-question" data-question-number="11" id="question-11"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table id="finalRoundTable" style="display: none; width: 800px;">
-                <thead>
-                    <tr class="header-row">
-                        <td>Player 1</td>
-                        <td>Player 2</td>
-                        <td>Player 3</td>
-                    </tr>
-                </thead>
-                <tbody class="game-cell">
-                    <tr>
-                        <td class="game-select-question" data-question-number="0" id="final-question-0"></td>
-                        <td class="game-select-question" data-question-number="3" id="final-question-3"></td>
-                        <td class="game-select-question" data-question-number="6" id="final-question-6"></td>
-                    </tr>
-                    <tr>
-                        <td class="game-select-question" data-question-number="1" id="final-question-1"></td>
-                        <td class="game-select-question" data-question-number="4" id="final-question-4"></td>
-                        <td class="game-select-question" data-question-number="7" id="final-question-7"></td>
-                    </tr>
-                    <tr>
-                        <td class="game-select-question" data-question-number="2" id="final-question-2"></td>
-                        <td class="game-select-question" data-question-number="5" id="final-question-5"></td>
-                        <td class="game-select-question" data-question-number="8" id="final-question-8"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="bonusRound" style="display: none;">
-                <h2 class="normal-text">Drawing Round!111!</h2>
+        <div class="question-button">
+            <p style="color: white;">Players </p>
+            <p style="color: white;">Player 1 </p>
+            <input style="width: 100px;" type="text" id="player-name-input-1" value="Moe"/>
+            <p style="color: white;">Player 2 </p>
+            <input style="width: 100px;" type="text" id="player-name-input-2" value="Larry"/>
+            <p style="color: white;">Player 3 </p>
+            <input style="width: 100px;" type="text" id="player-name-input-3" value="Curly"/>
+            <input type="button" value="Set" onclick="$quizgame.setNames()">
+        </div>
+        <div class="question-button">
+            <p style="color: white;">Select Player: </p>
+            <div style="color: white;">
+                <input class="player-select" checked type="radio" id="player-select-1" name="type" value="1" /> Player 1
+                <input class="player-select" type="radio" id="player-select-2" name="type" value="2"/> Player 2
+                <input class="player-select" type="radio" id="player-select-3" name="type" value="3" /> Player 3
             </div>
-            <div id="question" style="display: none;">
-                <div>
-                    <h3 style="display: none;" class="submitter-text"><span id="question-number"></span>. Submitted by: <span id="submitter-text"></span></h3>
-                    <h2 id="question-text">What unique sword is found in Lake Cave?</h2>
-                    <div class="answers-container">
-                        <table id="answers">
-                            <tr>
-                                <td data-correct="false" id="1" class="answer">Insect Crush</td>
-                            </tr>
-                            <tr>
-                                <td data-correct="true" id="2" class="answer">Insect Crush 2</td>
-                            </tr>
-                            <tr>
-                                <td data-correct="false" id="3" class="answer">Insect Crush 3</td>
-                            </tr>
-                            <tr>
-                                <td data-correct="false" id="4" class="answer">Insect Crush 4</td>
-                            </tr>
-                        </table>
-                        <div class="timer">
-                            <div id="timespan"></div>
+        </div>
+    </div>
+    <div class="main-content quiz-game-table">
+        <div style="display: none;" id="pointLayout">
+            <div class="main-2">
+                <div class="main-content">
+                    <table id="pointTable">
+                        <thead>
+                        <tr class="header-row">
+                            <td id="points-0" default-points="1">1</td>
+                            <td id="points-1" default-points="2">2</td>
+                            <td id="points-2" default-points="3">3</td>
+                            <td id="points-3" default-points="4">4</td>
+                        </tr>
+                        </thead>
+                        <tbody class="game-cell">
+                        <tr>
+                            <td class="game-select-question" data-question-number="0" id="question-0"></td>
+                            <td class="game-select-question" data-question-number="3" id="question-3"></td>
+                            <td class="game-select-question" data-question-number="6" id="question-6"></td>
+                            <td class="game-select-question" data-question-number="9" id="question-9"></td>
+                        </tr>
+                        <tr>
+                            <td class="game-select-question" data-question-number="1" id="question-1"></td>
+                            <td class="game-select-question" data-question-number="4" id="question-4"></td>
+                            <td class="game-select-question" data-question-number="7" id="question-7"></td>
+                            <td class="game-select-question" data-question-number="10" id="question-10"></td>
+                        </tr>
+                        <tr>
+                            <td class="game-select-question" data-question-number="2" id="question-2"></td>
+                            <td class="game-select-question" data-question-number="5" id="question-5"></td>
+                            <td class="game-select-question" data-question-number="8" id="question-8"></td>
+                            <td class="game-select-question" data-question-number="11" id="question-11"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table id="finalRoundTable" style="display: none; width: 800px;">
+                        <thead>
+                        <tr class="header-row">
+                            <td>Player 1</td>
+                            <td>Player 2</td>
+                            <td>Player 3</td>
+                        </tr>
+                        </thead>
+                        <tbody class="game-cell">
+                        <tr>
+                            <td class="game-select-question" data-question-number="0" id="final-question-0"></td>
+                            <td class="game-select-question" data-question-number="3" id="final-question-3"></td>
+                            <td class="game-select-question" data-question-number="6" id="final-question-6"></td>
+                        </tr>
+                        <tr>
+                            <td class="game-select-question" data-question-number="1" id="final-question-1"></td>
+                            <td class="game-select-question" data-question-number="4" id="final-question-4"></td>
+                            <td class="game-select-question" data-question-number="7" id="final-question-7"></td>
+                        </tr>
+                        <tr>
+                            <td class="game-select-question" data-question-number="2" id="final-question-2"></td>
+                            <td class="game-select-question" data-question-number="5" id="final-question-5"></td>
+                            <td class="game-select-question" data-question-number="8" id="final-question-8"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="bonusRound" style="display: none;">
+                        <h2 class="normal-text">Drawing Round!111!</h2>
+                    </div>
+                    <div id="question" style="display: none;">
+                        <div>
+                            <h3 style="display: none;" class="submitter-text"><span id="question-number"></span>. Submitted by: <span id="submitter-text"></span></h3>
+                            <h2 id="question-text">What unique sword is found in Lake Cave?</h2>
+                            <div class="answers-container">
+                                <table id="answers">
+                                    <tr>
+                                        <td data-correct="false" id="1" class="answer">Insect Crush</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-correct="true" id="2" class="answer">Insect Crush 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-correct="false" id="3" class="answer">Insect Crush 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-correct="false" id="4" class="answer">Insect Crush 4</td>
+                                    </tr>
+                                </table>
+                                <div class="timer">
+                                    <div id="timespan"></div>
+                                </div>
+                            </div>
+                            <div style="display: none;" class="right-answer-choice">
+                                RIGHT!
+                                <div class="doughnut"></div>
+                            </div>
+                            <div style="display: none;" class="wrong-answer-choice">
+                                WRONG!
+                                <div class="cross"></div>
+                            </div>
+                            <div class="hiddent-content">
+                                <div id="question-comment"></div>
+                            </div>
                         </div>
                     </div>
-                    <div style="display: none;" class="right-answer-choice">
-                        RIGHT!
-                        <div class="doughnut"></div>
+                </div>
+                <div style="width: 200px;" class="sidebar">
+                    <div class="player">
+                        <img id="player-image-1" src="playericons/playericon1.png"/>
+                        <p class="player-text" id="player-name-1">Player 1</p>
+                        <div id="player-points-1">0</div>
                     </div>
-                    <div style="display: none;" class="wrong-answer-choice">
-                        WRONG!
-                        <div class="cross"></div>
+                    <div class="player">
+                        <img id="player-image-2" src="playericons/playericon2.png"/>
+                        <p class="player-text" id="player-name-2">Player 2</p>
+                        <div id="player-points-2">0</div>
                     </div>
-                    <div class="hiddent-content">
-                        <div id="question-comment"></div>
+                    <div class="player">
+                        <img id="player-image-3" src="playericons/playericon2.png"/>
+                        <p class="player-text" id="player-name-3">Player 3</p>
+                        <div id="player-points-3">0</div>
+                    </div>
+                    <div class="round">
+                        <div id="roundNumber">Round 1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="completed-answers">
+                <div class="question-bubble-outline">
+                    <div class="question-bubble" id="question-bubble-0">
+                        <div id="question-point-total-0"></div>
+                    </div>
+                </div>
+                <div class="question-bubble-outline">
+                    <div class="question-bubble" id="question-bubble-1">
+                        <div id="question-point-total-1"></div>
+                    </div>
+                </div>
+                <div class="question-bubble-outline">
+                    <div class="question-bubble" id="question-bubble-2">
+                        <div id="question-point-total-2"></div>
+                    </div>
+                </div>
+                <div class="question-bubble-outline">
+                    <div class="question-bubble" id="question-bubble-3">
+                        <div id="question-point-total-3"></div>
+                    </div>
+                </div>
+                <div class="question-bubble-outline">
+                    <div class="question-bubble" id="question-bubble-4">
+                        <div id="question-point-total-4"></div>
                     </div>
                 </div>
             </div>
         </div>
+      
     </div>
 </main>
 
@@ -178,6 +248,10 @@
 
     window.onload = function() {
         cdreset();
+        $('.player-select').click(function () {
+            $quizgame.selectedPlayer = parseInt(this.value);
+            $quizgame.resetQuestionBubbles();
+        });
     }
 
 </script>
