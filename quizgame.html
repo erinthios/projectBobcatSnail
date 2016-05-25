@@ -30,13 +30,37 @@
         </div>
         <div class="question-button">
             <p style="color: white;">Players </p>
-            <p style="color: white;">Player 1 </p>
-            <input style="width: 100px;" type="text" id="player-name-input-1" value="Moe"/>
-            <p style="color: white;">Player 2 </p>
-            <input style="width: 100px;" type="text" id="player-name-input-2" value="Larry"/>
-            <p style="color: white;">Player 3 </p>
-            <input style="width: 100px;" type="text" id="player-name-input-3" value="Curly"/>
-            <input type="button" value="Set" onclick="$quizgame.setNames()">
+            <div>
+                <div class="option">
+                    <p style="color: white;">Player 1 </p>
+                    <input style="width: 100px;" type="text" id="player-name-input-1" value="Moe"/>
+                </div>
+                <div class="option">
+                    <p style="color: white;">Avatar Number</p>
+                    <input style="width: 100px;" type="number" id="player-avatar-input-1" value="1"/>
+                </div>
+            </div>
+            <div>
+                <div class="option">
+                    <p style="color: white;">Player 1 </p>
+                    <input style="width: 100px;" type="text" id="player-name-input-2" value="Larry"/>
+                </div>
+                <div class="option">
+                    <p style="color: white;">Avatar Number</p>
+                    <input style="width: 100px;" type="number" id="player-avatar-input-2" value="2"/>
+                </div>
+            </div>
+            <div>
+                <div class="option">
+                    <p style="color: white;">Player 1 </p>
+                    <input style="width: 100px;" type="text" id="player-name-input-3" value="Curly"/>
+                </div>
+                <div class="option">
+                    <p style="color: white;">Avatar Number</p>
+                    <input style="width: 100px;" type="number" id="player-avatar-input-3" value="3"/>
+                </div>
+            </div>
+            <input style="margin: 5px;" type="button" value="Set" onclick="$quizgame.setNames()">
         </div>
         <div class="question-button">
             <p style="color: white;">Select Player: </p>
@@ -173,17 +197,17 @@
                 </div>
                 <div id="sidebar-2" class="sidebar-2">
                     <div class="player">
-                        <img id="player-image-1" src="playericons/playericon1.png"/>
+                        <img id="player-image-1" src="playericons/1.png"/>
                         <p class="player-text" id="player-name-1">Player 1</p>
                         <div id="player-points-1">0</div>
                     </div>
                     <div class="player">
-                        <img id="player-image-2" src="playericons/playericon2.png"/>
+                        <img id="player-image-2" src="playericons/2.png"/>
                         <p class="player-text" id="player-name-2">Player 2</p>
                         <div id="player-points-2">0</div>
                     </div>
                     <div class="player">
-                        <img id="player-image-3" src="playericons/playericon2.png"/>
+                        <img id="player-image-3" src="playericons/3.png"/>
                         <p class="player-text" id="player-name-3">Player 3</p>
                         <div id="player-points-3">0</div>
                     </div>

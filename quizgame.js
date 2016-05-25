@@ -56,6 +56,9 @@ var $quizgame = {
     setNames: function () {
         for (var i = 1; i <= 3; i++) {
             $quizgame.players[i - 1].name = $('#player-name-input-' + i).val();
+            $quizgame.players[i - 1].avatar = $('#player-avatar-input-' + i).val();
+            $('#player-image-' + i).attr('src', 'playericons/' + $quizgame.players[i - 1].avatar + '.png');
+            $('#player-image-final-' + i).attr('src', 'playericons/' + $quizgame.players[i - 1].avatar + '.png');
             $quizgame.textfit($('#player-name-' + i).text($('#player-name-input-' + i).val()));
             $quizgame.textfit($('#player-name-final-' + i).text($('#player-name-input-' + i).val()));
         }
@@ -156,7 +159,7 @@ var $quizgame = {
             for (var i = 1; i <= 3; i++) {
                 $('#player-points-' + i).text('0');
                 $('#player-points-final-' + i).text('0');
-                var player = {name: $('#player-name-' + i).text(), points: 0};
+                var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val()};
                 $quizgame.players[i - 1] = player;
             }
             $('#roundNumber').text('Round 1');
