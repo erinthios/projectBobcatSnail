@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Smite Quiz v3</title>
-    <link rel="stylesheet" type="text/css" href="quiz.css">
+    <link rel="stylesheet" type="text/css" href="quizgame.css">
 </head>
 
 <body>
@@ -105,49 +105,20 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table id="finalRoundTable" style="display: none; width: 800px;">
-                        <thead>
-                        <tr class="header-row">
-                            <td>
-                                <div class="player">
-                                    <img id="player-image-final-1" src="playericons/1.png"/>
-                                    <div style="display: inline-block">
-                                        <p class="player-text" id="player-name-final-1">Player 1</p>
-                                        <div id="player-points-final-1">0</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="player">
-                                    <img id="player-image-final-2" src="playericons/2.png"/>
-                                    <div style="display: inline-block">
-                                        <p class="player-text" id="player-name-final-2">Player 2</p>
-                                        <div id="player-points-final-2">0</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="player">
-                                    <img id="player-image-final-3" src="playericons/2.png"/>
-                                    <div style="display: inline-block">
-                                        <p class="player-text" id="player-name-final-3">Player 3</p>
-                                        <div id="player-points-final-3">0</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </thead>
+                    <table id="finalRoundTable" style="display: none; margin-top: 8px; margin-left: 100px; width: 800px;">
                         <tbody class="game-cell">
                         <tr>
                             <td class="game-select-question" data-question-number="0" id="final-question-0"></td>
                             <td class="game-select-question" data-question-number="3" id="final-question-3"></td>
                             <td class="game-select-question" data-question-number="6" id="final-question-6"></td>
                         </tr>
+                            <tr class="separator" />
                         <tr>
                             <td class="game-select-question" data-question-number="1" id="final-question-1"></td>
                             <td class="game-select-question" data-question-number="4" id="final-question-4"></td>
                             <td class="game-select-question" data-question-number="7" id="final-question-7"></td>
                         </tr>
+                            <tr class="separator" />
                         <tr>
                             <td class="game-select-question" data-question-number="2" id="final-question-2"></td>
                             <td class="game-select-question" data-question-number="5" id="final-question-5"></td>
@@ -196,27 +167,34 @@
                     </div>
                 </div>
                 <div id="sidebar-2" class="sidebar-2">
-                    <div class="player">
-                        <img id="player-image-1" src="playericons/1.png"/>
-                        <p class="player-text" id="player-name-1">Player 1</p>
-                        <div id="player-points-1">0</div>
+                    <div class="player-container">
+                        <div class="player">
+                            <img class="player-image" id="player-image-1" src="playericons/1.png" />
+                            <div class="player-text" id="player-name-1">Player 1</div>
+                            <div class="point-player" id="player-points-1">0</div>
+                            <img class="player-image-on" id="player-on-1" src="quizzler/on.png" />
+                        </div>
                     </div>
-                    <div class="player">
-                        <img id="player-image-2" src="playericons/2.png"/>
-                        <p class="player-text" id="player-name-2">Player 2</p>
-                        <div id="player-points-2">0</div>
+                    <div class="player-container">
+                        <div style="padding-top: 27px;" class="player">
+                            <img class="player-image" id="player-image-2" src="playericons/2.png" />
+                            <div class="player-text" id="player-name-2">Player 2</div>
+                            <div class="point-player" id="player-points-2">0</div>
+                            <img class="player-image-on" id="player-on-2" src="quizzler/off.png" />
+                        </div>
                     </div>
-                    <div class="player">
-                        <img id="player-image-3" src="playericons/3.png"/>
-                        <p class="player-text" id="player-name-3">Player 3</p>
-                        <div id="player-points-3">0</div>
-                    </div>
-                    <div class="round">
-                        <div id="roundNumber">Round 1</div>
+                    <div class="player-container">
+                        <div style="margin-top: 58px;" class="player">
+                            <img class="player-image" id="player-image-3" src="playericons/3.png" />
+                            <div class="player-text" id="player-name-3">Player 3</div>
+                            <div class="point-player" id="player-points-3">0</div>
+                            <img class="player-image-on" id="player-on-3" src="quizzler/off.png" />
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="completed-answers">
+                <img class="quizzler-image" src="quizzler/quizzler.png"/>
                 <div class="question-bubble-outline">
                     <div class="question-bubble" id="question-bubble-0">
                         <div id="question-point-total-0"></div>
@@ -236,6 +214,9 @@
                     <div class="question-bubble" id="question-bubble-3">
                         <div id="question-point-total-3"></div>
                     </div>
+                </div>
+                <div class="round">
+                    <div style="padding-top: 33px; padding-left: 809px;" id="roundNumber">Round 1</div>
                 </div>
             </div>
         </div>
@@ -293,6 +274,8 @@
         cdreset();
         $('.player-select').click(function () {
             $quizgame.selectedPlayer = parseInt(this.value);
+            $('.player-image-on').attr('src', 'quizzler/off.png');
+            $('#player-on-' + parseInt(this.value)).attr('src', 'quizzler/on.png');
             $quizgame.resetQuestionBubbles();
         });
     }

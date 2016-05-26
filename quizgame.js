@@ -58,13 +58,14 @@ var $quizgame = {
             $quizgame.players[i - 1].name = $('#player-name-input-' + i).val();
             $quizgame.players[i - 1].avatar = $('#player-avatar-input-' + i).val();
             $('#player-image-' + i).attr('src', 'playericons/' + $quizgame.players[i - 1].avatar + '.png');
-            $('#player-image-final-' + i).attr('src', 'playericons/' + $quizgame.players[i - 1].avatar + '.png');
             $quizgame.textfit($('#player-name-' + i).text($('#player-name-input-' + i).val()));
-            $quizgame.textfit($('#player-name-final-' + i).text($('#player-name-input-' + i).val()));
         }
     },
     nextRound: function(path) {
         $('#pointTable').fadeOut();
+        $('.quizzler-image').fadeOut();
+        $('.completed-answers').fadeOut();
+        $('.round').fadeOut();
         $('.question-bubble').fadeOut();
         $('#finalRoundTable').fadeOut();
         $('#sidebar-2').fadeOut();
@@ -78,10 +79,16 @@ var $quizgame = {
         $('#bonusRound').delay(5000).fadeOut();
         $('#pointTable').delay(6500).fadeIn();
         $('#sidebar-2').delay(6500).fadeIn();
+        $('.quizzler-image').delay(6500).fadeIn();
+        $('.completed-answers').delay(6500).fadeIn();
+        $('.round').delay(6500).fadeIn();
         $('.question-bubble').delay(6500).fadeIn();
     },
     newRound: function(path) {
         $('#pointTable').fadeOut();
+        $('.completed-answers').fadeOut();
+        $('.quizzler-image').fadeOut();
+        $('.round').fadeOut();
         $('#finalRoundTable').fadeOut();
         $('#sidebar-2').fadeOut();
         setTimeout(function() {
@@ -90,13 +97,15 @@ var $quizgame = {
         }, 400);
         $('#pointTable').delay(500).fadeIn();
         $('#sidebar-2').delay(500).fadeIn();
+        $('.quizzler-image').delay(500).fadeIn();
+        $('.completed-answers').delay(500).fadeIn();
+        $('.round').delay(500).fadeIn();
         $('.question-bubble').delay(500).fadeIn();
     },
     finalRound: function (path) {
         $('#roundNumber').text('Final Round');
         $('#pointTable').fadeOut();
         $('.completed-answers').fadeOut();
-        $('#sidebar-2').fadeOut();
         $quizgame.clearAndReturn();
         setTimeout(function () { 
            $quizgame.loadJSON(path, function (response) {
@@ -158,7 +167,6 @@ var $quizgame = {
             $quizgame.resetQuestionBubbles();
             for (var i = 1; i <= 3; i++) {
                 $('#player-points-' + i).text('0');
-                $('#player-points-final-' + i).text('0');
                 var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val()};
                 $quizgame.players[i - 1] = player;
             }
@@ -235,15 +243,16 @@ var $quizgame = {
         var player = $quizgame.players[$quizgame.selectedPlayer - 1];
         $('[data-correct="false"]').addClass("show-wrong");
         $('[data-correct="true"]').addClass("show-correct");
+        var questionTd = $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']');
+        var pointValue = (questionTd.parent().children().index(questionTd) + 1) * $('#question-point-multiplier').val();
         if (correct) {
-            var questionTd = $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']');
-            var pointValue = (questionTd.parent().children().index(questionTd) + 1) * $('#question-point-multiplier').val();
             player.points = player.points + pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
-            $('#player-points-final-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-correct");
             $('.right-answer-choice').fadeIn();
         } else {
+            player.points = player.points - pointValue;
+            $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-wrong");
             $('.wrong-answer-choice').fadeIn();
         }
@@ -319,7 +328,6 @@ var $quizgame = {
         $('#question').fadeOut();
         if (isFinal) {
             $('#completed-answers').delay(800).fadeOut();
-            $('#sidebar-2').delay(800).fadeOut();
             $('#finalRoundTable').delay(800).fadeIn();  
         }
         else {
