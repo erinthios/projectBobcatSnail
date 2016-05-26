@@ -103,7 +103,6 @@ var $quizgame = {
         $('.question-bubble').delay(500).fadeIn();
     },
     finalRound: function (path) {
-        $('#roundNumber').text('Final Round');
         $('#pointTable').fadeOut();
         $('.completed-answers').fadeOut();
         $quizgame.clearAndReturn();
