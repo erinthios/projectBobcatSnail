@@ -1,5 +1,5 @@
 td {
-    width: 236px;
+    width: 200px;
     text-align: center;
 }
 
@@ -121,9 +121,9 @@ td {
 
 td.game-select-question {
     cursor: pointer;
-    width: 236px;
-    height: 166px;
-    max-height: 166px;
+    width: 200px;
+    height: 150px;
+    max-height: 150px;
     margin: 5px;
     padding-left: 10px;
     padding-right: 10px;
