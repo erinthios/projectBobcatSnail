@@ -19,6 +19,10 @@ function shuffle(array) {
 	return array;
 }
 
+function randomNumber(x, y) {
+    return Math.floor(Math.random() * ((y - x) + 1) + x);
+}
+
 var isCalled = false;
 	function HasNotBeenSeen(value) {
 		return value.HasSeen == false;
@@ -61,7 +65,31 @@ var $quizgame = {
             $quizgame.textfit($('#player-name-' + i).text($('#player-name-input-' + i).val()));
         }
     },
-    nextRound: function(path) {
+    nextRound: function (path) {
+        var num = randomNumber(0, 5);
+        switch(num) {
+            case 0:
+                $('#quiz-round-text').text("Next Up: A Round of Drawbage!");
+                break;
+            case 1:
+                $('#quiz-round-text').text("Next Up: Win! Lose! Drawbage!");
+                break;
+            case 2:
+                $('#quiz-round-text').text("Next Up: Drawbage, or how I learned to stop worrying and draw a nude Dr. Wily.");
+                break;
+            case 3:
+                $('#quiz-round-text').text("Next Up: Drawing Sign!!?! Wait, I mean Round!?!!!");
+                break;
+            case 4:
+                $('#quiz-round-text').text("Next Up: People drawing poor artwork.");
+                break;
+            case 5:
+                $('#quiz-round-text').text("Next Up: Stuff to laugh at. Or with. But probably at. Drawbage.");
+                break;
+            default:
+                $('#quiz-round-text').text("Next Up: Drawbage!");
+                break;
+        }
         $('#pointTable').fadeOut();
         $('.quizzler-image').fadeOut();
         $('.completed-answers').fadeOut();
@@ -245,11 +273,13 @@ var $quizgame = {
         var questionTd = $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']');
         var pointValue = (questionTd.parent().children().index(questionTd) + 1) * $('#question-point-multiplier').val();
         if (correct) {
+            $('#right-sound').clone()[0].play();
             player.points = player.points + pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-correct");
             $('.right-answer-choice').fadeIn();
         } else {
+            $('#wrong-sound').clone()[0].play();
             player.points = player.points - pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-wrong");

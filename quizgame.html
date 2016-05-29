@@ -127,7 +127,7 @@
                         </tbody>
                     </table>
                     <div id="bonusRound" style="display: none;">
-                        <h2 class="normal-text">Drawing Round!111!</h2>
+                        <h2 id="quiz-round-text" class="normal-text">Drawing Round!111!</h2>
                     </div>
                     <div id="question" style="display: none;">
                         <div>
@@ -272,15 +272,22 @@
 
     window.onload = function() {
         cdreset();
-        $('.player-select').click(function () {
-            $quizgame.selectedPlayer = parseInt(this.value);
-            $('.player-image-on').attr('src', 'quizzler/off.png');
-            $('#player-on-' + parseInt(this.value)).attr('src', 'quizzler/on.png');
-            $quizgame.resetQuestionBubbles();
-        });
+        $('.player-select')
+            .click(function() {
+                $quizgame.selectedPlayer = parseInt(this.value);
+                $('.player-image-on').attr('src', 'quizzler/off.png');
+                $('#player-on-' + parseInt(this.value)).attr('src', 'quizzler/on.png');
+                $quizgame.resetQuestionBubbles();
+            });
     }
 
 </script>
+    <audio id="right-sound" preload>
+        <source src="right.mp3" />
+    </audio>
+    <audio id="wrong-sound" preload>
+        <source src="wrong.mp3" />
+    </audio>
 </body>
 
 </html>
