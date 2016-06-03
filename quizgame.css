@@ -22,8 +22,14 @@ td {
 }
 
 #playerSelect {
-    width: 100%;
-    height: 100%;
+    width: 101.6%;
+    height: 103%;
+    margin-left: -10px;
+    margin-top: -30px;
+    background: rgb(35,83,138); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(35,83,138,1) 0%, rgba(48,82,186,1) 50%, rgba(35,83,138,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(35,83,138,1) 0%,rgba(48,82,186,1) 50%,rgba(35,83,138,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(35,83,138,1) 0%,rgba(48,82,186,1) 50%,rgba(35,83,138,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 #avatarList {
@@ -33,26 +39,23 @@ td {
 .avatar-select {
 	background-image: url("playericons/bga.png");
     margin-left: 25px;
-	width: 222px;
-	height: 178px;
+	width: 173px;
+	height: 151px;
     #border: 1px solid #ccc;
     float: left;
     cursor: pointer;
+    background-size: 173px 151px;
 }
 
 .avatar-select img {
 	margin-left: 52px;
 	margin-right: 52px;
-	margin-top: 8px;
-}
-
-#avatarList {
-    overflow-y: scroll;
+	margin-top: 38px;
 }
 
 #avatarList div.desc {
 color: #ffffff;
-    padding-top: 10px;
+    padding-top: 7px;
 	font-family: Trebuchet MS;
 	font-size: 24px;
 	font-weight: bold;
