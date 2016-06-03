@@ -65,6 +65,18 @@ var $quizgame = {
             $quizgame.textfit($('#player-name-' + i).text($('#player-name-input-' + i).val()));
         }
     },
+    openAvatar: function () {
+        $('.avatar-select').css('background-image', 'url("playericons/bga.png")');
+        var playerName = $ ('#player-name-input-' + $quizgame.selectedPlayer).val ();
+        $ ('#avatarSelectTitle').text (playerName + "'s Avatar Selection");
+        $('#pointLayout').fadeOut();
+        $('#playerSelect').delay(500).fadeIn();
+    },
+    closeAvatar: function () {
+        $('.avatar-select').css('background-image', 'url("playericons/bga.png")');
+        $('#playerSelect').fadeOut();
+        $('#pointLayout').delay(500).fadeIn();
+    },
     nextRound: function (path) {
         var num = randomNumber(0, 5);
         switch(num) {
