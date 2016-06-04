@@ -76,6 +76,11 @@ $quizgame.clearAndReturn ();">Back</button>
         <input type="button" value="Change Selected Player Avatar" onclick="$quizgame.openAvatar()">
         <input style="margin: 5px;" type="button" value="Close Selection Screen" onclick="$quizgame.closeAvatar()">
     </div>
+	    <div class="question-button">
+        <p style="color: white;">Add Manual Points: </p>
+        <input style="width: 100px;" type="number" id="manual-points" value="1"/>
+        <input type="button" value="Add Manual Points for Selected Player" onclick="$quizgame.addManualPoints ()">
+    </div>
 </div>
 <div class="main-content quiz-game-table">
     <div style="display: none;" id="playerSelect">

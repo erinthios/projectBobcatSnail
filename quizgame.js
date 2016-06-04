@@ -280,6 +280,11 @@ var $quizgame = {
             node.css("font-size", --fs + "px");
         }
 	},
+	addManualPoints: function() {
+		var player = $quizgame.players[$quizgame.selectedPlayer - 1];
+		player.points = player.points + parseInt($('#manual-points').val());
+		$('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+	},
     isCorrect: function (correct, timeup, isFinal) {
         var player = $quizgame.players[$quizgame.selectedPlayer - 1];
         $('[data-correct="false"]').addClass("show-wrong");
