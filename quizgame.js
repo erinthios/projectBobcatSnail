@@ -110,7 +110,7 @@ var $quizgame = {
         $('#finalRoundTable').fadeOut();
         $('#sidebar-2').fadeOut();
         setTimeout(function() {
-            $quizgame.loadNewGame(path);
+            $quizgame.loadNewGame(path, true);
             $quizgame.clearAndReturn();
             $quizgame.roundNumber = $quizgame.roundNumber + 1;
             $('#roundNumber').text('Round ' + $quizgame.roundNumber);
@@ -197,19 +197,21 @@ var $quizgame = {
         }, 400);
         $('#finalRoundTable').delay(500).fadeIn();
     },
-    loadNewGame: function (path) {
+    loadNewGame: function (path, keepPoints) {
         if (!isCalled) {
             $quizgame.clearAndReturn();
             isCalled = true;
+			if(!keepPoints){
             $quizgame.roundNumber = 1;
             $quizgame.players = [];
             $quizgame.resetQuestionBubbles();
-            for (var i = 1; i <= 3; i++) {
-                $('#player-points-' + i).text('0');
-                var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val()};
-                $quizgame.players[i - 1] = player;
-            }
+				for (var i = 1; i <= 3; i++) {
+					$('#player-points-' + i).text('0');
+					var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val()};
+					$quizgame.players[i - 1] = player;
+				}
             $('#roundNumber').text('Round 1');
+			}
             $quizgame.loadJSON(path, function (response) {
                 var first_json = JSON.parse(response);
                 var actual_JSON = first_json.filter(HasNotBeenSeen);
