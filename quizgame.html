@@ -377,6 +377,9 @@ $quizgame.clearAndReturn ();">Back</button>
                 $quizgame.selectedPlayer = parseInt(this.value);
                 $('.player-image-on').attr('src', 'quizzler/off.png');
                 $('#player-on-' + parseInt(this.value)).attr('src', 'quizzler/on.png');
+				$('.avatar-select').css('background-image', 'url("playericons/bga.png")');
+				var playerName = $ ('#player-name-input-' + $quizgame.selectedPlayer).val ();
+				$ ('#avatarSelectTitle').text (playerName + "'s Avatar Selection");
                 $quizgame.resetQuestionBubbles();
             });
 
