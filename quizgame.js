@@ -299,6 +299,9 @@ var $quizgame = {
             $('.right-answer-choice').fadeIn();
         } else {
             $('#wrong-sound').clone()[0].play();
+			if(pointValue > 2) {
+				pointValue = 2;
+			}
             player.points = player.points - pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-wrong");
