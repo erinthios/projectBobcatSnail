@@ -76,10 +76,16 @@ $quizgame.clearAndReturn ();">Back</button>
         <input type="button" value="Change Selected Player Avatar" onclick="$quizgame.openAvatar()">
         <input style="margin: 5px;" type="button" value="Close Selection Screen" onclick="$quizgame.closeAvatar()">
     </div>
-	    <div class="question-button">
+	<div class="question-button">
         <p style="color: white;">Add Manual Points: </p>
         <input style="width: 100px;" type="number" id="manual-points" value="1"/>
         <input type="button" value="Add Manual Points for Selected Player" onclick="$quizgame.addManualPoints ()">
+    </div>
+	<div class="question-button">
+        <p style="color: white;">Manual Sounds: </p>
+        <button id="question-back" onclick="$quizgame.playRight();">Right</button>
+        <button id="question-back" onclick="$quizgame.playClose();">Getting Close</button>
+        <button id="question-back" onclick="$quizgame.playWrong();">Wrong</button>
     </div>
 </div>
 <div class="main-content quiz-game-table">
@@ -398,6 +404,9 @@ $quizgame.clearAndReturn ();">Back</button>
     </audio>
     <audio id="wrong-sound" preload>
         <source src="wrong.mp3" />
+    </audio>
+	<audio id="close-sound" preload>
+        <source src="close.mp3" />
     </audio>
 </body>
 

@@ -280,6 +280,15 @@ var $quizgame = {
             node.css("font-size", --fs + "px");
         }
 	},
+	playRight() {
+		$('#right-sound').clone()[0].play();
+	},
+	playWrong() {
+		$('#wrong-sound').clone()[0].play();
+	},
+	playClose() {
+		$('#close-sound').clone()[0].play();
+	},
 	addManualPoints: function() {
 		var player = $quizgame.players[$quizgame.selectedPlayer - 1];
 		player.points = player.points + parseInt($('#manual-points').val());
