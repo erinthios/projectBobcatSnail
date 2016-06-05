@@ -38,11 +38,12 @@ td {
 
 .avatar-select {
 	background-image: url("playericons/bga.png");
-    margin-left: 25px;
+    margin-left: 35px;
 	width: 173px;
 	height: 151px;
     #border: 1px solid #ccc;
     float: left;
+	margin-bottom: 18px;
     cursor: pointer;
     background-size: 173px 151px;
 }
