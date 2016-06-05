@@ -65,6 +65,15 @@ var $quizgame = {
             $quizgame.textfit($('#player-name-' + i).text($('#player-name-input-' + i).val()));
         }
     },
+	happyImage: function($img, imagenum) {
+		$img.attr('src', 'playericons/' + imagenum + '_happy.gif');
+	},
+	sadImage: function($img, imagenum) {
+		$img.attr('src', 'playericons/' + imagenum + '_sad.gif');
+	},
+	defaultImage: function ($img, imagenum){
+		$img.attr('src', 'playericons/' + imagenum + '.png');
+	},
     openAvatar: function () {
         $('.avatar-select').css('background-image', 'url("playericons/bga.png")');
         var playerName = $ ('#player-name-input-' + $quizgame.selectedPlayer).val ();
@@ -207,7 +216,7 @@ var $quizgame = {
             $quizgame.resetQuestionBubbles();
 				for (var i = 1; i <= 3; i++) {
 					$('#player-points-' + i).text('0');
-					var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val()};
+					var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val(),avatarNum: i};
 					$quizgame.players[i - 1] = player;
 				}
             $('#roundNumber').text('Round 1');
@@ -304,6 +313,7 @@ var $quizgame = {
             $('#right-sound').clone()[0].play();
             player.points = player.points + pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+			$quizgame.happyImage($('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-correct");
             $('.right-answer-choice').fadeIn();
         } else {
@@ -311,6 +321,7 @@ var $quizgame = {
 			if(pointValue > 2) {
 				pointValue = 2;
 			}
+			$quizgame.sadImage($ ('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
             player.points = player.points - pointValue;
             $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-wrong");

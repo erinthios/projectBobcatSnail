@@ -390,9 +390,13 @@ $quizgame.clearAndReturn ();">Back</button>
             });
 
         $('.avatar-select').click(function () {
+			var player = $quizgame.players[$quizgame.selectedPlayer - 1];
             $('.avatar-select').css('background-image', 'url("playericons/bga.png")');
             $(this).css('background-image', 'url("playericons/bgb.png")');
+			//.attr('src', 'playericons/' + $quizgame.players[i - 1].avatar + '.png');
             var avatarNum = $(this).attr("data-avatar-icon");
+			player.avatarNum = avatarNum;
+			$quizgame.happyImage($($(this).children('img')[0]), avatarNum);
             $ ('#player-avatar-input-' + $quizgame.selectedPlayer).val (avatarNum);
             $quizgame.setNames();
         });
