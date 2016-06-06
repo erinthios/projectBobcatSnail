@@ -302,6 +302,7 @@ var $quizgame = {
 		var player = $quizgame.players[$quizgame.selectedPlayer - 1];
 		player.points = player.points + parseInt($('#manual-points').val());
 		$('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+		$quizgame.setColor(player);
 	},
     isCorrect: function (correct, timeup, isFinal) {
         var player = $quizgame.players[$quizgame.selectedPlayer - 1];
@@ -328,7 +329,11 @@ var $quizgame = {
             $('.wrong-answer-choice').fadeIn();
         }
 
-        if (player.points === 0) {
+        $quizgame.setColor(player);
+        setTimeout(function () { $quizgame.setAnswerClearAndReturn(correct, isFinal) }, 2000);
+    },
+	setColor: function(player) {
+		if (player.points === 0) {
             $('#player-points-' + $quizgame.selectedPlayer).css('color', 'white');
         }
         else if (player.points >= 1) {
@@ -336,9 +341,7 @@ var $quizgame = {
         } else if (player.points <= -1) {
             $('#player-points-' + $quizgame.selectedPlayer).css('color', 'red');
         }
-        setTimeout(function () { $quizgame.setAnswerClearAndReturn(correct, isFinal) }, 2000);
-    },
-
+	},
     loadQuestion: function (questionNumber, question, isFinal) {
         if(isFinal) {
             $('#finalRoundTable').fadeOut();
