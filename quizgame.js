@@ -451,5 +451,9 @@ var $quizgame = {
         $('td').removeClass('answered-wrong');
         $quizgame.resetQuestionBubbles();
         
-    }
+    },
+	backToQuestion: function() {
+		$('#question').fadeOut();
+		$('#pointTable').delay(800).fadeIn();
+	}
 }
