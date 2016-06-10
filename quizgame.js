@@ -67,9 +67,15 @@ var $quizgame = {
     },
 	happyImage: function($img, imagenum) {
 		$img.attr('src', 'playericons/' + imagenum + '_happy.gif');
+		setTimeout(function() {
+			$img.attr('src', 'playericons/' + imagenum + '.png');
+        }, 4500);
 	},
 	sadImage: function($img, imagenum) {
 		$img.attr('src', 'playericons/' + imagenum + '_sad.gif');
+		setTimeout(function() {
+			$img.attr('src', 'playericons/' + imagenum + '.png');
+        }, 4500);
 	},
 	defaultImage: function ($img, imagenum){
 		$img.attr('src', 'playericons/' + imagenum + '.png');
