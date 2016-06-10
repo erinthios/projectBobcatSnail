@@ -224,6 +224,7 @@ var $quizgame = {
 					$('#player-points-' + i).text('0');
 					var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val(),avatarNum: i};
 					$quizgame.players[i - 1] = player;
+					$quizgame.setColor(player);
 				}
             $('#roundNumber').text('Round 1');
 			}
@@ -306,9 +307,15 @@ var $quizgame = {
 	},
 	addManualPoints: function() {
 		var player = $quizgame.players[$quizgame.selectedPlayer - 1];
-		player.points = player.points + parseInt($('#manual-points').val());
+		var pointLevel = parseInt($('#manual-points').val());
+		player.points = player.points + pointLevel;
 		$('#player-points-' + $quizgame.selectedPlayer).text(player.points);
 		$quizgame.setColor(player);
+		if(pointLevel >= 0) {
+			$quizgame.happyImage($('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
+		} else {
+			$quizgame.sadImage($ ('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
+		}
 	},
     isCorrect: function (correct, timeup, isFinal) {
         var player = $quizgame.players[$quizgame.selectedPlayer - 1];
