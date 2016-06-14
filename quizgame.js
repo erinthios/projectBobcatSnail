@@ -167,7 +167,7 @@ var $quizgame = {
                 var actual_JSON = first_json.filter(HasNotBeenSeen);
                 if($quizgame.questions.length > 0) {
                    $quizgame.previousQuestions = _.union($quizgame.previousQuestions, $quizgame.questions);
-                   actual_JSON = _.difference(actual_JSON, $quizgame.previousQuestions);
+                   actual_JSON = _.differenceWith(actual_JSON, $quizgame.previousQuestions, _.isEqual);
                 }
                 
                 var diffThree = actual_JSON.filter(DiffThree);
@@ -233,7 +233,7 @@ var $quizgame = {
                 var actual_JSON = first_json.filter(HasNotBeenSeen);
                 if($quizgame.questions.length > 0) {
                    $quizgame.previousQuestions = _.union($quizgame.previousQuestions, $quizgame.questions);
-                   actual_JSON = _.difference(actual_JSON, $quizgame.previousQuestions);
+                   actual_JSON = _.differenceWith(actual_JSON, $quizgame.previousQuestions, _.isEqual);
                 }
                 
                 var diffOne = actual_JSON.filter(DiffOne);
