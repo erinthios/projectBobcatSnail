@@ -58,6 +58,9 @@ var $quizgame = {
         xobj.send(null);  
     },
     setNames: function () {
+        if ($quizgame.players.length <= 0) {
+            alert("Start a game first!");
+        }
         for (var i = 1; i <= 3; i++) {
             $quizgame.players[i - 1].name = $('#player-name-input-' + i).val();
             $quizgame.players[i - 1].avatar = $('#player-avatar-input-' + i).val();
@@ -222,7 +225,7 @@ var $quizgame = {
             $quizgame.resetQuestionBubbles();
 				for (var i = 1; i <= 3; i++) {
 					$('#player-points-' + i).text('0');
-					var player = {name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val(),avatarNum: i};
+					var player = { name: $('#player-name-' + i).text(), points: 0, avatar: $('#player-avatar-input-' + i).val(), avatarNum: $('#player-avatar-input-' + i).val()};
 					$quizgame.players[i - 1] = player;
 					$quizgame.setColor(player);
 				}
@@ -370,6 +373,8 @@ var $quizgame = {
             $('.submitter-text').show();
             $('#submitter-text').text(question.Submitter);
         }
+
+        $('#game-title').text(question.GameTitle);
 
         $('#question-text').text(question.Question);
         $('#question-number').text(question.QKEY);
