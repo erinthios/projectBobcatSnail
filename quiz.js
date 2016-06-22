@@ -184,6 +184,8 @@ var $quiz = {
         $('#question-number').text(question.QKEY);
         $('#question-comment').text(question.Comments);
 
+        $('#game-title').text(question.GameTitle);
+
         var randomCorrectAnswerBank = Math.floor(Math.random() * (4 - 1) + 1);
         $("#" + randomCorrectAnswerBank).attr("data-correct", true);
         $("#" + randomCorrectAnswerBank).text(question.CorrectAnswer);
