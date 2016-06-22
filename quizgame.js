@@ -336,7 +336,11 @@ var $quizgame = {
         } else {
             $('#wrong-sound').clone()[0].play();
 			if(pointValue > 2) {
-				pointValue = 2;
+			    if ($('#question-point-multiplier').val() > 1) {
+			        pointValue = 4;
+			    } else {
+			        pointValue = 2;
+			    }
 			}
 			$quizgame.sadImage($ ('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
             player.points = player.points - pointValue;
