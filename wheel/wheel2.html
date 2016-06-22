@@ -40,31 +40,16 @@
 			wedges = [
 				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
 				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "B. Drawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
-				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "VG Hustle", weight: 1, color: '#379d00', sound: 'sounds/Hustle.ogg'},
-				{text: "Quizzler Blitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
-				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
 				{text: "Feelin' SAUCY", weight: 1, color: '#eeeeee', sound: 'sounds/Saucy.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
+				{text: "Feelin' Sad", weight: 5, color: '#000000', sound: 'sounds/Sad.ogg'},
 				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
 				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "B. Drawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
-				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "VG Hustle", weight: 1, color: '#379d00', sound: 'sounds/Hustle.ogg'},
-				{text: "Quizzler Blitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
+				{text: "Feelin' Sad", weight: 5, color: '#000000', sound: 'sounds/Sad.ogg'},
+				{text: "Screencrap", weight: 8, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
+				{text: "Quizzler Blitz", weight: 1, color: '#de5600', sound: 'sounds/BigGood10.ogg'},
 				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
-				{text: "Feelin' Sad", weight: 1, color: '#000000', sound: 'sounds/Sad.ogg'}
-
+				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
+				{text: "Feelin' Sad", weight: 5, color: '#000000', sound: 'sounds/Sad.ogg'}
 			];
 			segments = initSegments();
 			function initSegments()
@@ -435,7 +420,7 @@
 					ctx.strokeStyle = '#000000';
 					ctx.textBaseline = "middle";
 					ctx.textAlign = "right";
-					ctx.font = "1.2em Righteous";
+					ctx.font = "1.4em Righteous";
 					// draw segments, selected last
 					var selectedSegmentNum = wheel.getSelectedPosition();
 					for (var i = 0; i <= segments.length - 1; i++) {
@@ -451,7 +436,7 @@
 					ctx.save();
 					ctx.translate(centerX, centerY);
 					ctx.rotate(wheel.angleCurrent - wheel.emblemAngle);
-					ctx.drawImage(emblemImg, -100, -100, 200, 200);
+					ctx.drawImage(emblemImg, -75, -76, 150, 150);
 					ctx.restore();
 					//mine outer white
 					ctx.beginPath();

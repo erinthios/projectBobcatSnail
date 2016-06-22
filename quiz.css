@@ -8,24 +8,8 @@ td {
   flex-direction: row-reverse;
 }
 
-.main-2 {
-  display: flex;
-}
-
-.sidebar-2 {
-    display: inline-block;
-}
-
 .main-content, .sidebar {
   padding: 10px;
-  width: 410px;
-}
-
-.player {
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .sidebar a {
@@ -38,37 +22,10 @@ td {
     width: 600px;
 }
 
-.main-content-2 {
-    display: inline-block;
-    width: 850px;
-}
-
-.normal-text {
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.quiz-game-table {
-    width: 1280px;
-    height: 700px;
-    background-image: url(Quiz2BG.png);
-}
-
 .header-row {
     font-size: 60px;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-.option {
-    display: inline-block;
-}
-.player-text {
-    max-height: 50px;
-    max-width: 135px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .question-button {
@@ -123,16 +80,6 @@ body {
     color: white;
 }
 
-.question-bubble.show-wrong {
-        background-color: #CC3300;
-		border: 3px solid #800000;
-    }
-
-    .question-bubble.show-correct {
-        background-color: #009900;
-		border: 3px solid #BADA55;
-    }
-
 .submitter-text {
     font-size: 21px;
     color: white;
@@ -157,44 +104,9 @@ body {
     text-align: center;
 }
 
-.completed-answers {
-    margin-right: auto;
-    margin-top: -120px;
-}
-
-.quizzler-image {
-    float: left;
-    width: 169px;
-    margin-right: 30px;
-}
-
-.question-bubble-outline {
-    float: left;
-    margin: 23px;
-}
-
-.question-bubble {
-  height: 60px;
-  width: 60px;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 50%;
-  border: 3px solid #ffffff;
-  background: #12CEFE;
-    font-size: xx-large;
-}
-
 .timer {
    flex: 1;
    margin-top: 60px;
-}
-
-.round {
-    margin-top: 40px;
-    font-size: 40px;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .answers-container {
@@ -259,4 +171,8 @@ body {
 
 #question-controls {
     margin: 10px;
+}
+
+#pointLayout {
+    width: 600px;
 }
