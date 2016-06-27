@@ -34,6 +34,9 @@ Animation.prototype.start = function start() {
     var context = this.canvasContext;
     var objects = this.objects;
     var factory = this.factory;
+	
+	var redrawMs = 50; // default: 25
+	var updateSteps = Math.floor(redrawMs / 25);
 
     var redraw = function redraw() {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -46,7 +49,7 @@ Animation.prototype.start = function start() {
                 context.fillStyle = particle.color;
                 context.fill();
             }
-            objects[f].update();
+            objects[f].update(updateSteps);
         }
     };
 
@@ -57,7 +60,7 @@ Animation.prototype.start = function start() {
         }
     };
 
-    this.redrawInterval = setInterval(redraw, 25 /* ms */);
+    this.redrawInterval = setInterval(redraw, redrawMs /* ms */);
     this.factoryInterval = setInterval(launch, 1500 /* ms */);
 }
 
@@ -76,7 +79,8 @@ function Firework(centerX, centerY, color) {
     this.centerX = centerX;
     this.centerY = centerY;
     this.color = color;
-    this.particles = new Array(500);
+    this.particles = new Array(250); // default: 500
+	this.ageStep = 500 / this.particles.length;
     this.Δr = 20;
     this.age = 0;
 
@@ -90,16 +94,18 @@ function Firework(centerX, centerY, color) {
     }
 }
 
-Firework.prototype.update = function update() {
+Firework.prototype.update = function update(numSteps) {
+	for (var step = 0; step < numSteps; ++step) {
     for (var i = 0; i < this.particles.length; i++) {
         this.particles[i].r += this.Δr;
         this.particles[i].recalcCartesianProjection();
 
-        this.Δr -= 0.00005 * this.Δr * this.Δr;                     // Air resist
+        for (var j=0; j<this.ageStep; ++j) this.Δr -= 0.00005 * this.Δr * this.Δr;                     // Air resist
         this.particles[i].y += 0.00000008 * this.age * this.age;   // Gravity
         this.particles[i].size *= 0.98;                            // Fade
-        this.age++;
+        this.age += this.ageStep;
     }
+	}
 };
 
 //////////////////////////////////////////////////////////////////////
