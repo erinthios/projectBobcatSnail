@@ -3,6 +3,10 @@ td {
     text-align: center;
 }
 
+#has-seen-wrapper {
+	display: none;
+}
+
 .main {
   display: flex;
   flex-direction: row-reverse;

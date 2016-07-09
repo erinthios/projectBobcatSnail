@@ -87,6 +87,10 @@ $quizgame.backToQuestion ();"> Back (Main Game Only!)</button>
         <button id="question-back" onclick="$quizgame.playClose();">Getting Close</button>
         <button id="question-back" onclick="$quizgame.playWrong();">Wrong</button>
     </div>
+	<div class="question-button">
+		<input type="button" value="Show HasSeen" onclick="$quizgame.showHasSeen ()">
+		<input type="button" value="Hide HasSeen" onclick="$quizgame.hideHasSeen ()">
+	</div>
 </div>
 <div class="main-content quiz-game-table">
     <div style="display: none;" id="playerSelect">
@@ -238,9 +242,10 @@ $quizgame.backToQuestion ();"> Back (Main Game Only!)</button>
                 <div id="question" style="display: none;">
                     <div>
                         <h3 class="submitter-text"><span id="game-title"></span></h3>
+						<h3 style="display: none;" id="has-seen-wrapper" class="submitter-text">Has Seen: <span id="has-seen"></span></h3>
                         <h3 style="display: none;" class="submitter-text"><span id="question-number"></span>. Submitted by: <span id="submitter-text"></span></h3>
                         <h2 id="question-text">What unique sword is found in Lake Cave?</h2>
-                        <div class="answers-container">
+						<div class="answers-container">
                             <table id="answers">
                                 <tr>
                                     <td data-correct="false" id="1" class="answer">Insect Crush</td>

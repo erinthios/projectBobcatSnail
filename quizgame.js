@@ -362,6 +362,12 @@ var $quizgame = {
             $('#player-points-' + $quizgame.selectedPlayer).css('color', 'red');
         }
 	},
+	showHasSeen: function () {
+		$('#has-seen-wrapper').show();
+	},
+	hideHasSeen: function () {
+		$('#has-seen-wrapper').hide();
+	},
     loadQuestion: function (questionNumber, question, isFinal) {
         if(isFinal) {
             $('#finalRoundTable').fadeOut();
@@ -377,7 +383,10 @@ var $quizgame = {
             $('.submitter-text').show();
             $('#submitter-text').text(question.Submitter);
         }
-
+		
+		$('#has-seen').text(question.HasSeen);
+		$('#has-seen-wrapper').hide();
+		
         $('#game-title').text(question.GameTitle);
 
         $('#question-text').text(question.Question);
