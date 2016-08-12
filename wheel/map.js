@@ -3,7 +3,6 @@ var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
 var emptySoundPool = "Empty";
-/*var blitzSoundPool = "Blitz";*/
 
 /* Square definitions */
 /* Supported properties:
@@ -109,12 +108,6 @@ soundPools[emptySoundPool] = [
 "sounds/StoogesScream.ogg"
 ];
 
-/*
-soundPools[blitzSoundPool] = [
-"sounds/BigGood10.ogg"
-];
-*/
-
 /* dummy "prize" text (Webdings characters) */
 var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
 
@@ -163,6 +156,8 @@ var dummyPrizeTextPct = 50;
 /* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
 /* Current setting: squares 6+ moves from start */
 var allowedGoalIndices = [9,13,14,17,18,19];
+/* Square classes the goal square is allowed to replace (if not placing immediately) */
+var allowedGoalClasses = ['empty', 'dummyPrize', 'smallPoints', 'bigPoints'];
 
 /* move # after which to place a goal square in any allowed space (moving to start counts as 1) */
 /* 0 = set on init, use allowedGoalIndices for placement */
@@ -181,12 +176,12 @@ var msDelayToUnzoomSquare = 5500;
 var markerMoveSoundPath = "sounds/walking.mp3";
 
 
-/* potential map images */
-var mapImages = [
-	"images/madithen map.gif",
-	"images/madithen map 2.gif",
-	"images/madithen map 3.gif",
-	"images/madithen map 4.gif"
+/* potential map/marker images */
+var mapSets = [
+	{ map: "images/madithen map.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 2.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 3.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/madithen map 4.gif", marker: "images/Bomberman_Snail.gif" }
 ];
 
 
@@ -210,10 +205,6 @@ function newSpecialPrizeSquare()
 {
 	return { text: "+", soundPool: bigGoodSoundPool, cssClass: "prize"};
 }
-/*function newBlitzSquare()
-{
-	return { image: "images/blitz.png", soundPool: blitzSoundPool, cssClass: "blitz"};
-}*/
 function newSmallPointsSquare()
 {
 	return { text: "+5", soundPool: goodSoundPool, cssClass: "smallPoints"};
@@ -277,8 +268,7 @@ function clickMapSquare(obj)
 		for (var i=0; i<elements.length; ++i)
 		{
 			var node = elements[i];
-			if (node !== obj && !node.isShown && node.className !== "prize" && node.className !== "multiplier")
-			/*if (node !== obj && !node.isShown && node.className !== "prize" && node.className !== "multiplier" && node.className !== "blitz")  <-- BLITZ ADDED*/
+			if (node !== obj && !node.isShown && allowedGoalClasses.indexOf(node.className) > -1)
 			{
 				hiddenSquares.push(elements[i]);
 			}
@@ -432,7 +422,9 @@ function audioPreloaded()
 function initMap()
 {
 	/* set up map image */
-	document.getElementById("mapImage").src = mapImages[Math.floor(mapImages.length*Math.random())];
+	var set = mapSets[Math.floor(mapSets.length*Math.random())];
+	document.getElementById("mapImage").src = set.map;
+	document.getElementById("markerImage").src = set.marker;
 	
 	/* set up audio */
 	initAudio();
