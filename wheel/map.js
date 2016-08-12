@@ -105,7 +105,8 @@ soundPools[finishSoundPool] = [
 soundPools[emptySoundPool] = [
 "sounds/Horn.ogg",
 "sounds/smb2 nothing happened.ogg",
-"sounds/StoogesScream.ogg"
+"sounds/StoogesScream.ogg",
+"sounds/nothing-Bubsy-hair.ogg"
 ];
 
 /* dummy "prize" text (Webdings characters) */
@@ -178,10 +179,12 @@ var markerMoveSoundPath = "sounds/walking.mp3";
 
 /* potential map/marker images */
 var mapSets = [
-	{ map: "images/madithen map.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/madithen map 2.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/madithen map 3.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/madithen map 4.gif", marker: "images/Bomberman_Snail.gif" }
+	{ map: "images/map 1 west madi.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/map 2 east madi.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/map 3 ocean madi.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/map 4 japan madi.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/map 5 space madi.gif", marker: "images/Bomberman_Snail.gif" },
+	{ map: "images/map 6 egypt staghorn.gif", marker: "images/Bomberman_Snail.gif" }
 ];
 
 
