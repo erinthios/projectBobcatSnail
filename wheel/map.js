@@ -3,6 +3,7 @@ var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
 var emptySoundPool = "Empty";
+var testYourSmiteSoundPool = "TestYourSmite";
 
 /* Square definitions */
 /* Supported properties:
@@ -17,7 +18,7 @@ var otherSquares = [
 	newEmptySquare(),
 	newEmptySquare(),
 	newEmptySquare(),
-	newEmptySquare(),
+	newTestYourSmiteSquare(),
 	newDummyPrizeSquare(),
 	newDummyPrizeSquare(),
 	newDummyPrizeSquare(),
@@ -107,6 +108,9 @@ soundPools[emptySoundPool] = [
 "sounds/smb2 nothing happened.ogg",
 "sounds/StoogesScream.ogg",
 "sounds/nothing-Bubsy-hair.ogg"
+];
+soundPools[testYourSmiteSoundPool] = [
+	"sounds/Test_Your_Smite.mp3"
 ];
 
 /* dummy "prize" text (Webdings characters) */
@@ -219,6 +223,10 @@ function newBigPointsSquare()
 function newMultipliedPointsSquare()
 {
 	return { text: "x2", soundPool: bigGoodSoundPool, cssClass: "multiplier"};
+}
+function newTestYourSmiteSquare()
+{
+	return { image: "images/Test_Your_Smite.png", soundPool: testYourSmiteSoundPool, cssClass: "tys"};
 }
 
 

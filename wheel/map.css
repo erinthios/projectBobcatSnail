@@ -53,7 +53,7 @@ ms.shown
   text-shadow: none;
 }
 /* dummy prize (image) */
-.dummyPrizeImage
+.dummyPrizeImage, .tys
 {
   /* center background image */
   background-repeat: no-repeat;
@@ -85,7 +85,7 @@ ms.shown
   z-index: 10 !important; /* ensure it's on top */
   background-color: rgba(0,0,0,0.8); /* color of ms element, only darker */
 }
-.dummyPrizeImage.zoomed
+.dummyPrizeImage.zoomed, .tys.zoomed
 {
   background-color: rgba(255,255,255,0.8); /* color of dummyPrizeImage class, only darker */
 }
