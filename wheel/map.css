@@ -59,7 +59,9 @@ ms.shown
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  
+}
+.dummyPrizeImage
+{
   /* invert contents */
   -webkit-filter: invert(100%);
   /* set background color to inverse of normal so when inverted it'll be right */
@@ -85,7 +87,7 @@ ms.shown
   z-index: 10 !important; /* ensure it's on top */
   background-color: rgba(0,0,0,0.8); /* color of ms element, only darker */
 }
-.dummyPrizeImage.zoomed, .tys.zoomed
+.dummyPrizeImage.zoomed
 {
   background-color: rgba(255,255,255,0.8); /* color of dummyPrizeImage class, only darker */
 }

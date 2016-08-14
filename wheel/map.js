@@ -110,7 +110,7 @@ soundPools[emptySoundPool] = [
 "sounds/nothing-Bubsy-hair.ogg"
 ];
 soundPools[testYourSmiteSoundPool] = [
-	"sounds/Test_Your_Smite.mp3"
+	"sounds/Test_Your_Smite.ogg"
 ];
 
 /* dummy "prize" text (Webdings characters) */
