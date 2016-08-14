@@ -11,8 +11,8 @@ var emptySoundPool = "Empty";
  * - soundPool: sound pool name to play a random entry from when square revealed
  * - cssClass: CSS class name to set on the square
  */
-var startSquare = { text: "" };
-var goalSquare = { text: "%", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
+var startSquare = { text: "★", cssClass: "start" };
+var goalSquare = { text: "🏆", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
 var otherSquares = [
 	newEmptySquare(),
 	newEmptySquare(),
@@ -151,7 +151,7 @@ var dummyPrizeImages = [
 ];
 
 /* % chance for each dummy prize square to be text vs. an image */
-var dummyPrizeTextPct = 50;
+var dummyPrizeTextPct = 0;
 
 
 /* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
@@ -179,12 +179,12 @@ var markerMoveSoundPath = "sounds/walking.mp3";
 
 /* potential map/marker images */
 var mapSets = [
-	{ map: "images/map 1 west madi.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/map 2 east madi.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/map 3 ocean madi.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/map 4 japan madi.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/map 5 space madi.gif", marker: "images/Bomberman_Snail.gif" },
-	{ map: "images/map 6 egypt staghorn.gif", marker: "images/Bomberman_Snail.gif" }
+	{ map: "images/map 1 west madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 2 east madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 3 ocean madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 4 japan madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 5 space madi.gif", marker: "images/map snail in space.gif" },
+	{ map: "images/map 6 egypt staghorn.gif", marker: "images/map snail.gif" }
 ];
 
 
@@ -198,7 +198,7 @@ var mapSets = [
  */
 function newEmptySquare()
 {
-	return { text: "a", soundPool: emptySoundPool, cssClass: "empty"};
+	return { text: "✓", soundPool: emptySoundPool, cssClass: "empty"};
 }
 function newDummyPrizeSquare()
 {
@@ -206,7 +206,7 @@ function newDummyPrizeSquare()
 }
 function newSpecialPrizeSquare()
 {
-	return { text: "+", soundPool: bigGoodSoundPool, cssClass: "prize"};
+	return { text: "🎆", soundPool: bigGoodSoundPool, cssClass: "prize"};
 }
 function newSmallPointsSquare()
 {
@@ -246,7 +246,7 @@ function clickMapSquare(obj)
 	
 	/* move marker */
 	var marker = document.getElementsByTagName("marker")[0];
-	marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2;
+	marker.style.top = obj.offsetTop+(obj.offsetHeight-marker.offsetHeight)/2+"px";
 	var newLeft = obj.offsetLeft+(obj.offsetWidth-marker.offsetWidth)/2;
 	if (newLeft > marker.offsetLeft+1)
 	{
@@ -258,7 +258,7 @@ function clickMapSquare(obj)
 		/* face marker left */
 		marker.className = "faceLeft";
 	}
-	marker.style.left = newLeft;
+	marker.style.left = newLeft+"px";
 
 	/* wait, then uncover square */
 	window.setTimeout(showMapSquare, msDelayToRevealSquare, obj);
@@ -504,8 +504,8 @@ function initMap()
 
 	/* move marker */
 	var marker = document.getElementsByTagName("marker")[0];
-	marker.style.top = 230;
-	marker.style.left = 270;
+	marker.style.top = 230+"px";
+	marker.style.left = 270+"px";
 }
 
 function resetMap()

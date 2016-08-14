@@ -16,12 +16,13 @@ ms
   cursor: pointer;
   opacity: 0.0;
   position: absolute;
-  height: 54px;
-  width: 60.4px;
-  background-color: rgba(0,0,0,0.3);
+  border: 1px solid rgb(200,200,200);
+  height: 53px;
+  width: 59.4px;
+  background-color: rgba(55,35,55,0.8);
   z-index: 0;
   color: rgba(255,255,255,0.9);
-  font-family: webdings;
+  font-family: sans-serif;
   font-size: 52px; 
   text-align: center;
   vertical-align: middle;
@@ -62,10 +63,11 @@ ms.shown
   /* invert contents */
   -webkit-filter: invert(100%);
   /* set background color to inverse of normal so when inverted it'll be right */
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(200,220,200,0.8);
+  border-color: rgb(55,55,55);
 }
 
-.multiplier, .smallPoints, .bigPoints
+.multiplier, .smallPoints, .bigPoints, .start
 {
   font-family: sans-serif;
   font-size: 20px;
