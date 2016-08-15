@@ -53,14 +53,14 @@ ms.shown
   text-shadow: none;
 }
 /* dummy prize (image) */
-.dummyPrizeImage, .tys
+.dummyPrizeImage, .tys, .empty, .prize, .goal
 {
   /* center background image */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
-.dummyPrizeImage
+.dummyPrizeImage, .empty
 {
   /* invert contents */
   -webkit-filter: invert(100%);
@@ -87,17 +87,12 @@ ms.shown
   z-index: 10 !important; /* ensure it's on top */
   background-color: rgba(0,0,0,0.8); /* color of ms element, only darker */
 }
-.dummyPrizeImage.zoomed
+.dummyPrizeImage.zoomed, .empty.zoomed
 {
   background-color: rgba(255,255,255,0.8); /* color of dummyPrizeImage class, only darker */
 }
 
 /* square text colors */
-.prize
-{
-  color: orange;
-  line-height: 62px; /* try to center character */
-}
 .blitz
 {
   color: pink;
@@ -117,11 +112,6 @@ ms.shown
 .multiplier
 {
   color: chartreuse;
-}
-.goal
-{
-  color: gold;
-  line-height: 60px; /* try to center character */
 }
 
 /* map marker piece */
@@ -150,7 +140,7 @@ currentSquare
   height: 54px;
   width: 60.4px;
   color: white;
-  font-family: webdings;
+  font-family: sans-serif;
   font-size: 52px; 
   text-align: center;
   vertical-align: middle;

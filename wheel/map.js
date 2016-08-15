@@ -13,7 +13,7 @@ var testYourSmiteSoundPool = "TestYourSmite";
  * - cssClass: CSS class name to set on the square
  */
 var startSquare = { text: "★", cssClass: "start" };
-var goalSquare = { text: "🏆", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
+var goalSquare = { image: "images/wd trophy.png", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
 var otherSquares = [
 	newEmptySquare(),
 	newEmptySquare(),
@@ -113,9 +113,6 @@ soundPools[testYourSmiteSoundPool] = [
 	"sounds/Test_Your_Smite.ogg"
 ];
 
-/* dummy "prize" text (Webdings characters) */
-var dummyPrizes = ["!","@","&","w","e","t","o","j","k","b",",","Q","E","T","Y","I","P","S","H","J","L","Z","C","M","²","µ","Ä","ä","å","ç"];
-
 /* dummy "prize" images */
 var dummyPrizeImages = [
 	"images/alcoholism.png",
@@ -151,11 +148,35 @@ var dummyPrizeImages = [
 	"images/tamagotchi.png",
 	"images/vcr_tape.png",
 	"images/wily_ship.png",
-	"images/madilion.png"	
+	"images/madilion.png",
+	"images/wd bike.png",
+	"images/wd boat.png",
+	"images/wd camping.png",
+	"images/wd city.png",
+	"images/wd condemned.png",
+	"images/wd desert trip.png",
+	"images/wd eye.png",
+	"images/wd flowers.png",
+	"images/wd forest.png",
+	"images/wd gift.png",
+	"images/wd golf.png",
+	"images/wd home.png",
+	"images/wd magnifying glass.png",
+	"images/wd medal.png",
+	"images/wd megaphone.png",
+	"images/wd mountain.png",
+	"images/wd oasis.png",
+	"images/wd plane.png",
+	"images/wd police.png",
+	"images/wd satellite.png",
+	"images/wd stadium.png",
+	"images/wd suburbs.png",
+	"images/wd sunglasses.png",
+	"images/wd train tracks.png",
+	"images/wd train.png",
+	"images/wd vacation.png",
+	"images/wd yacht.png"
 ];
-
-/* % chance for each dummy prize square to be text vs. an image */
-var dummyPrizeTextPct = 0;
 
 
 /* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
@@ -202,7 +223,7 @@ var mapSets = [
  */
 function newEmptySquare()
 {
-	return { text: "✓", soundPool: emptySoundPool, cssClass: "empty"};
+	return { image: "images/wd checkmark.png", soundPool: emptySoundPool, cssClass: "empty"};
 }
 function newDummyPrizeSquare()
 {
@@ -210,7 +231,7 @@ function newDummyPrizeSquare()
 }
 function newSpecialPrizeSquare()
 {
-	return { text: "🎆", soundPool: bigGoodSoundPool, cssClass: "prize"};
+	return { image: "images/wd wildcard.png", soundPool: bigGoodSoundPool, cssClass: "prize"};
 }
 function newSmallPointsSquare()
 {
@@ -364,7 +385,7 @@ function setSquareContext(node, context)
 	node.className = context.cssClass;
 	if (context.image)
 	{
-		node.style.backgroundImage = "url("+context.image+")";
+		node.style.backgroundImage = "url('"+context.image+"')";
 	}
 	else
 	{
@@ -447,26 +468,15 @@ function initMap()
 	shuffle(otherSquares);
 
 	/* set up dummy prize text */
-	shuffle(dummyPrizes);
 	shuffle(dummyPrizeImages);
-	var dummyPrizesUsed = 0;
 	var dummyPrizeImagesUsed = 0;
 	for (var i=0; i<otherSquares.length; ++i)
 	{
 		if (otherSquares[i].cssClass.startsWith("dummyPrize"))
 		{
-			if (Math.floor(Math.random() * 100) < dummyPrizeTextPct)
-			{
-				otherSquares[i].cssClass = "dummyPrize";
-				otherSquares[i].text = dummyPrizes[dummyPrizesUsed++];
-				otherSquares[i].image = null;
-			}
-			else
-			{
-				otherSquares[i].cssClass = "dummyPrizeImage";
-				otherSquares[i].text = null;
-				otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
-			}
+			otherSquares[i].cssClass = "dummyPrizeImage";
+			otherSquares[i].text = null;
+			otherSquares[i].image = dummyPrizeImages[dummyPrizeImagesUsed++];
 		}
 	}
 
