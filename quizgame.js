@@ -97,29 +97,6 @@ var $quizgame = {
     },
     nextRound: function (path) {
         var num = randomNumber(0, 5);
-        switch(num) {
-            case 0:
-                $('#quiz-round-text').text("Next Up: A Round of Drawbage!");
-                break;
-            case 1:
-                $('#quiz-round-text').text("Next Up: Win! Lose! Drawbage!");
-                break;
-            case 2:
-                $('#quiz-round-text').text("Next Up: Drawbage, or how I learned to stop worrying and draw a nude Dr. Wily.");
-                break;
-            case 3:
-                $('#quiz-round-text').text("Next Up: Drawing Sign!!?! Wait, I mean Round!?!!!");
-                break;
-            case 4:
-                $('#quiz-round-text').text("Next Up: People drawing poor artwork.");
-                break;
-            case 5:
-                $('#quiz-round-text').text("Next Up: Stuff to laugh at. Or with. But probably at. Drawbage.");
-                break;
-            default:
-                $('#quiz-round-text').text("Next Up: Drawbage!");
-                break;
-        }
         $('#pointTable').fadeOut();
         $('.quizzler-image').fadeOut();
         $('.completed-answers').fadeOut();
@@ -320,31 +297,46 @@ var $quizgame = {
 			$quizgame.sadImage($ ('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
 		}
 	},
+	getPointValue: function (questionTd, correct) {
+        var pointColumn = questionTd.parent().children().index(questionTd) + 1;
+        if (correct) {
+            return pointColumn * $('#question-point-multiplier').val();
+        } else {
+            if ($quizgame.roundNumber <= 2) {
+                if (pointColumn == 1 || pointColumn == 2) {
+                    return 1;
+                } else {
+                    return 2;
+                }
+            } else {
+                return pointColumn;
+            }
+        }
+    },
     isCorrect: function (correct, timeup, isFinal) {
         var player = $quizgame.players[$quizgame.selectedPlayer - 1];
         $('[data-correct="false"]').addClass("show-wrong");
         $('[data-correct="true"]').addClass("show-correct");
         var questionTd = $('td[data-question-number=' + $('#question').attr("data-selected-question") + ']');
-        var pointValue = (questionTd.parent().children().index(questionTd) + 1) * $('#question-point-multiplier').val();
+        var pointValue;
         if (correct) {
+            pointValue = $quizgame.getPointValue(questionTd, true);
             $('#right-sound').clone()[0].play();
-            player.points = player.points + pointValue;
-            $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+            if (!isFinal) {
+                player.points = player.points + pointValue;
+                $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+            }
 			$quizgame.happyImage($('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-correct");
             $('.right-answer-choice').fadeIn();
         } else {
+            pointValue = $quizgame.getPointValue(questionTd, false);
             $('#wrong-sound').clone()[0].play();
-			if(pointValue > 2) {
-			    if ($('#question-point-multiplier').val() > 1) {
-			        pointValue = 4;
-			    } else {
-			        pointValue = 2;
-			    }
-			}
 			$quizgame.sadImage($ ('#player-image-' + $quizgame.selectedPlayer), player.avatarNum);
-            player.points = player.points - pointValue;
-            $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+			if (!isFinal) {
+			    player.points = player.points - pointValue;
+			    $('#player-points-' + $quizgame.selectedPlayer).text(player.points);
+			}
             $('#question-bubble-' + $quizgame.currentQuestionNumber).toggleClass("show-wrong");
             $('.wrong-answer-choice').fadeIn();
         }
