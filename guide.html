@@ -37,36 +37,42 @@
 
 <h1>Arcade Pit Player's Manual<hr></h1>
 <p>Hello! If you're reading this, it's because you're getting ready to play on Arcade Pit and need to set up your stuff.<br><br>You'll need to do the following:
-<ol><li>Join the <a href="https://discord.gg/0cvzxuPud44gVE23"><b>Discord Server</b></a></li>
-<li>Acquire both of the <a href="http://racebox.in/arcade/arcadefiles/"><b>File Packs</b></a> containing emulators, states, etc.</li>
-<li>Configure OBS to stream directly to me, and double-check the emulator settings (does it load states? Control properly?)</li>
-<li>You'll be using <a href="http://racebox.in/flowviewer/viewerpit.html?k=ap"><b>this viewer</b></a> to watch the show live as well as see the other players.</li></ol>
+<ol><li>Join the <a href="https://discord.gg/Smite"><b>Discord Server</b></a>. You should join one of the hangouts about 20 minutes before show time, so we can get ready!</li>
+<li>Acquire the <a href="http://racebox.in/arcade/arcadefiles/"><b>challenges pack and bizhawk files</b></a> (you <i>may</i> need the prereqs files for Bizhawk too).</li>
+<li>Configure OBS to stream directly to me, and double-check Bizhawk's settings (does it load states? Controls set properly?)</li>
+<li>You'll be using <a href="http://racebox.in/flowviewer/viewerpit.html?k=ap"><b>my stream viewer</b></a> to watch the show, as well as see the other players, with minimal delay.</li></ol>
  All the information you need is right on this page. There's also a very comprehensive setup guide <a href="guide/obsguide.html"><b>here</b></a>. I'm willing to help directly; just ask! None of this is too complicated, despite how it may seem.</p>
+ 
+ A helpful setup video, covering all of this:<br>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/cA0UyGDp9rY" frameborder="1" allowfullscreen align="middle"></iframe>
+ <strong style="font-size:200%; font-family: Verdana;"><-- play me!</strong>
 <hr>
 <h3>1. Discord Channel</h3>
-<p>Follow <a href="https://discord.gg/0cvzxuPud44gVE23"><b>this link</b></a> to join my discord server, for communicating during the show. If you're unfamiliar with Discord, you can use a web version of it or an installed client; both should work fine. There will be some large chat rooms that you can completely ignore if you want, and there will also be a few locked voice rooms, which we will be using. Being on my server will allow me to message you directly in case you need help setting things up and PM you drawing prompts during the show.</p>
+<p>Click <a href="https://discord.gg/smite"><b>https//discord.gg/Smite</b></a> to join my discord server for communicating during the show. If you're unfamiliar with Discord, you can use a web version of it or an installed client; both should work fine. There will be some large chat rooms that you can completely ignore, and there will also be a few locked voice rooms which we will be using. Once in my server, I can message you directly about setting things up and provide you drawing prompts during the show.</p>
 <hr>
 <h3>2. Arcade Pit Files</h3>
-<p>You need two zip files, which are both found here: <a href="http://racebox.in/arcade/arcadefiles/"><b>Emulator Pack and Rom/States Pack</b></a></p>
+<p>You need a few files, which are found <a href="http://racebox.in/arcade/arcadefiles/"><b>here</b></a>. You need to get the Challenges Pack, and you need Bizhawk to actually use them.</p>
 
-<p>The first is an emulator folder with all the files necessary to run Snes9x (1.53), Fusion, and FCE Ultra 2.2.2. Set them up however you like, including your controller options.</p>
+<p>The Bizhawk prereqs installer will make sure you have C++ and the other assorted stuff that you need to run it (you may already have all of it). Once that's done, the other bizhawk.zip actually contains the emulator. If you are on OSX, you can just grab that one instead.</p>
 
-<p>The other file has the roms and states you need to be able to do the challenges. Drop everything into the same folder and you should be good to go. If you want to merge it with your own files, just make sure the paths work by trying to load any of the states (batman on the nes has a few you can try).</p>
+<p>The challenges pack has everything you need to be able to do the challenges. Drop everything into the same folder as bizhawk. It should ask to overwrite a bunch of folders if you've done it correctly (say yes). To make sure it worked right, load Batman on the NES and press P to try and load a state.</p>
 <hr>
 <h3>3. Broadcasting Settings</h3>
-<p>OBS or XSplit are fine; take your pick and make a new profile/scene collection. You need to set it for a custom streaming server, which is: <b>rtmp://racebox.in/ap</b> and your path/stream key will be a single digit, 1-4, which I will assign. You will need to stream to me at a <b>512x448 resolution</b>, and a <b>bitrate of 1000 kbps</b>. This is the SNES resolution, so the other two will blackbox a little bit; that's fine! Also make sure MSPaint is ready. Note that Fusion, the genesis emulator, might require monitor capture, or disabling Aero. It is some sort of Windows 7 issue.</p>
+<p>OBS or XSplit are fine; make a new profile/scene collection. You need to set it for a custom streaming server, which is: <b>rtmp://racebox.in/ap</b> and your path/stream key will be a single digit, 1-4, which I will assign right before the show. You will need to stream to me at a <b>512x448 resolution</b>, and a <b>bitrate of 1000 kbps</b>. This is the SNES resolution, so the other two will stretch a little bit; that's fine! Also make sure MSPaint is ready.
+
+<p>I pre-configured Bizhawk to stay at 1024x896 (that's 512x448 doubled). Hopefully it saved this setting. If not, force it to by going to config->Display and setting 'use custom size' to 1024 x 896. Otherwise it will change resolution based on the current console, which is a pain to capture. If the resolution is right, it should be very close to a perfect fit. Click edit scene, then drag the corners of bizhawk outward until both the top/bottom toolbars are hidden on stream.</p>
 <hr>
-<p>I hope to see that you're ready to go by show time (typically 8 pm EST on Sunday). We tend to show up 30m early to make sure everything is ready. If you need more detailed help with the setup, here you go!</p>
+<p>I hope to see that you're ready to go by show time (typically 8 pm EST on Sunday). We tend to show up 20m early to make sure everything is ready. If you need more detailed help with the setup, here you go!</p>
 <p><a href="guide/obsguide.html"><b>A Comprehensive OBS guide for Arcade Pit!</b></a></p>
 <hr>
-<h3><strong>Useful Emulator Keyboard Shortcuts</strong></h3>
-<ul><li>Snes 9x: F1-F12 load states 1-12</li><br>
-<li>FCEUX (NES): Number keys choose the state and 'p' loads the state</li><br>
-<li>Fusion (GEN): Choose the State with F6/F7 and load the state with F8... CAUTION: don't hit F9 (saves over the state)</li></ul>
+<h3><strong>Useful Emulator Tips</strong></h3>
+<ul><li>1 through 0 choose the state and 'p' loads it.</li><br>
+<li>Ctrl-O chooses the game to open, and it should default to the last folder you were in. So if you are switching between consoles, move up 1 folder.</li><br>
+<li>Drag and Drop works, if you prefer! Find the game you want to play and drop it in bizhawk to make it run.</li></ul>
 <hr>
 <h3>Show Format</h3>
-<p>The show will begin with a team battle (a 1v1) of a random game challenge. Whoever wins will control the board, which means they move the single avatar on the map in some direction for a random prize. After their move, the wheel is spun to select what event they play. There are a number of possible events; we will review the rules of each as they appear.</p>
-<p>Teams will alternate turns after every event. The only exception is team battles, where whoever wins gains control. The game continues until the 20-point goal trophy is found on the map, at which point a final battle involving all 4 players begins for up to 40 bonus points. Afterwards, the team with the highest score will win. Note: the goal square is randomized on the map, and cannot possibly be found until at least half the map is uncovered.</p>
+<p>The show will begin with an intro for guests and then we start a team battle (1v1) of a random game challenge. Whoever wins will control the board, which means they move the single avatar on the map in some direction for a random prize. After their move, the wheel is spun to see which event they play. There are a number of possible events; we will review the rules of each as they appear.</p>
+<p>Teams alternate turns after every event (the only exception is team battles, where whoever wins gains control). The game continues until the 20-point goal is found on the map, at which point a final battle involving all 4 players begins for up to 40 bonus points. Afterwards, the team with the highest score wins. Note: the goal square is randomized on the map, and cannot possibly be found until at least half the map is uncovered.</p>
 
 </div>
 </div>

@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
 
-		<title>Team Battles</title>
+		<title>Test Your Smite</title>
 		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
 		<style>
@@ -24,9 +25,19 @@
 				background-color: rgba(0, 0, 0, .0);
 			}
 
+			#challenge-handicap {
+				position: absolute;
+				top: 30px;
+				padding: 16px 3px 3px 3px;
+				height: auto;
+				width: 890px;
+				transform: translateY(-30%);
+				font-style: italic;
+			}
+
 			#challenge-details {
 				position: absolute;
-				top: 35px;
+				top: 50px;
 				padding: 16px 3px 3px 3px;
 				height: auto;
 				width: 890px;
@@ -94,6 +105,7 @@
 					<div class="info" id="state-slot">None</div>				
 
 					<div class="info" id="challenge-details">Stuff</div>
+					<div class="info" id="challenge-handicap">handicap info</div>
 				</div>
 			</div>
 		</div>
@@ -125,17 +137,17 @@
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
 							var filteredChallenges = challenges.filter(isNotGenesis);
-							filteredChallenges = filteredChallenges.filter(isSaveState);
 							// $('#navContent')
 							for (var i = 0; i < 1; i++) {
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$('#' + i + '-game-name').text(challenge.GameTitle);
 								$('#' + i).text(challenge.GameTitle);
-								$('#' + i + '-challenge').text(challenge.TBKey);
+								$('#' + i + '-challenge').text(challenge.CKey);
 								$('#game-console').text(challenge.GameConsole);
 								$('#submitter').text(challenge.Submitter);
 								$('#challenge-details').text(challenge.ChallengeDetails);
-								$('#state-slot').text(challenge.Stateslot);
+								$('#state-slot').text(challenge.StateSlot);
+								$('#challenge-handicap').text("Handicap: "+challenge.Handicap);
 							}
 						});
 					}
@@ -145,7 +157,7 @@
 				setTimeout(function () {
 					$('#navContent')[0].style.opacity = 0;
 				}, 240000);
-				$challenge.loadGame('TB challenges.json');
+				$challenge.loadGame('challenges-smite.json');
 			};
 		</script>
 	</body>

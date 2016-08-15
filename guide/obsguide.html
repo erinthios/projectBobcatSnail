@@ -15,29 +15,28 @@
  <body bgcolor="#EEEEEE"> 
 <h1>Connecting and streaming to Arcade Pit</h1>
 
-<p>Hey you must've been invited to the show! Cool, but I expect you'll take the time to set things up properly beforehand. this guide will cover every little detail of getting your OBS in top shape for the broadcast. Feel free to ask me questions if you're having trouble.</p>
+<p>Hey you must've been invited to the show! This guide will cover every little detail of getting your OBS in top shape for the broadcast. Feel free to ask me questions if you're having trouble.</p>
 
-<p>Note: if you're a savvy OBS user, you won't need this guide. Here is everything you need, summed up: Set your broadcast to "Custom Server" with the FMS URL: rtmp://racebox.in/ap (I will give you the path/stream key when we start). Set your resolution to 512x448, FPS: 60, Bitrate: 1000. No need to stream audio or mic, discord will do that part. Create scenes for all 3 emulators and mspaint (you may have to use Monitor Capture on the Fusion emulator). Make sure you have the most recent <a href="http://racebox.in/arcade/arcadefiles/"><b>files packs</b></a>.</p>
+<p>Note: if you're a savvy OBS user, you won't need this guide. Here is everything you need, summed up: Set your broadcast to "Custom Server" with the FMS URL: rtmp://racebox.in/ap (I will give you the path/stream key when we start). Set your resolution to 512x448, FPS: 60, Bitrate: 1000. No need to stream audio or mic, discord will do that part. Create scenes for both Bizhawk and mspaint (window capture for Bizhawk). Make sure you have the most recent <a href="http://racebox.in/arcade/arcadefiles/"><b>Challenge pack</b></a>.</p>
 
 <p>Everyone will need this open as well, the show viewer: <a href="http://racebox.in/flowviewer/viewerpit.html?k=ap"><b>Arcade Pit Viewer.</b></a> This will let you view everyone in real time. My screen will be the 5th one, mute everyone but me (don't worry, my audio is all set up for no echo).</p>
 
 <p>If you need more details or don't know how to use OBS, the information below has step-by-step instructions.</p>
 <hr>
-<h2>Step 1: Get the packs and software</h2>
+<h2>Step 1: Get the Challenge Pack and software</h2>
 <ul>
-<li><b><a href="http://racebox.in/arcade/arcadefiles/">Arcade Pit Packs</a></b> - The rom & states pack is usually updated on a weekly basis; make sure you have the latest.</li><br>
-<li><b><a href="https://obsproject.com/">OBS</a></b> - Streaming software. This guide uses the Windows build of OBS 0.657. XSplit or OBS-MP will also work.</li></ul>
+<li><b><a href="http://racebox.in/arcade/arcadefiles/">Challenge Pack</a></b> - The Challenges pack is usually updated on a weekly basis; make sure you have the latest. You'll also find both Bizhawk here, as well as the prereqs Bizhawk needs in order to run.</li><br>
+<li><b><a href="https://obsproject.com/">OBS</a></b> - Streaming software. Any version of OBS or OBS-Studio should be good.</li></ul>
 <hr>
-<h2>Step 2: Setting up the emulators</h2>
+<h2>Step 2: Setting up Bizhawk</h2>
 
-<p>The emulators are as follows:
-<ul><li>fceux.exe - NES emulator</li>
-<li>snes9x.exe - SNES emulator</li>
-<li>Fusion.exe - Genesis emulator</li></ul>
+<p>Bizhawk is an all-in-one emulator and should handle every game we use. I've tried to streamline this configuration as much as possible.
 
-<p>Set the controls as you see fit for all 3. If you're adjusting the screen size, use a multiplier like 2x or 3x; don't stretch it.</p>
+<p>Controls will need checked for each console. You have to load some game from each console to do that. It's possible that they are already set for you, but you should double-check!</p>
 
-<p>You should also make sure that the roms and states are being found correctly. Open fceu.exe and load 'Batman.' Press 1, to choose state 1, followed by 'P' and it should load the state. If this works, you're in good shape. If not, adjust the folder locations.</p>
+<p>You should also make sure that the states are being found correctly. Open Batman on the NES, Press 1  (to choose state 1) followed by 'p' and it should load the first state. If this works, you're in good shape. If not, make sure everything was unzipped properly.</p>
+
+<p>Display settings are under <b>'Config' -> 'Display'</b>. Hopefully, the res is being forced to be 1024 x 896. This will make it much easier to capture. If this setting didn't transfer over properly, you can put it in under custom size. If you're adjusting the screen size, use a multiplier like 2x or 3x from the view options.
 <hr>
 <h2>Step 3: Configuring OBS Settings</h2>
 
@@ -70,19 +69,16 @@
 <img src="OBS3.png">
 <hr>
 
-<h2>Step 4: Capture Settings (getting the emulators on OBS)</h2>
+<h2>Step 4: Capture Settings (getting Bizhawk on OBS)</h2>
 
-<p>Hey, we're nearly done now! The complicated part is over. Now we just need to get those emulators on screen. It's up to you if you want them all on one scene or not. The instructions below will have you create 4.</p>
+<p>Hey, we're nearly done now! The complicated part is over. Now we just need to get the scenes made.</p>
 
-<p>Back in the main section of OBS, you should see two white boxes on the bottom-left. One says 'Scenes' and the other, 'Sources.' You should already have 1 scene. Right-click on the white box and add 3 more. Rename them to: nes, snes, gen, draw.</p>
+<p>Back in the main section of OBS, you should see two white boxes on the bottom-left. One says 'Scenes' and the other, 'Sources.' You should already have 1 scene. Right-click on the white box and add 1 more. Rename them to: Bizhawk, MSPaint.</p>
 
-<ul><li>Click the nes scene. The emulator has to be running first, or it won't show up to configure... So with fceu.exe open, right-click on the sources box and add a 'window capture.' Pick FCEUX from the dropdown bar and make sure 'capture mouse cursor' is off.</li><br>
+<ul><li>Click the Bizhawk scene. Emuhawk has to be running first, or it won't show up to configure... So with emuhawk.exe open, right-click on the sources box and add a 'window capture.' Pick Emuhawk from the dropdown bar and make sure 'capture mouse cursor' is off. Right-click on the new source and tell it to fit to screen. Now, because of the two status bars, it doesn't quite fit. You can make it fit by clicking <b>edit scene</b> in OBS, then clicking the preview and dragging the boxes in the corners.</li><br>
 
 <img src="OBS4.png">
 <br>
-<li>Click the snes scene. with snes9x.exe, you can either do another window capture like before or do a game capture; both should work well but game capture is better. Set it up the same way that FCEU was set up.</li><br>
-
-<li>Click the gen scene. This one is a pain if you're on Windows 7. If you aren't, window capture is fine. For windows 7, you have to either disable Aero or use monitor capture. If you want to use monitor capture, right-click on the sources box and add a 'monitor capture.' Tell it you want to select a sub-region and then click the 'Select Region' button. You'll get a big gray box on your whole monitor. Drag the edges to the insides of your emulator and press enter.</li><br>
 
 <li>For the drawing scene, that's easy. Just open up mspaint (WinKey + R -> 'mspaint.exe') and use window capture. By the way, other drawing programs are against the rules!</li></ul>
 

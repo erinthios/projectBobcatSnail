@@ -157,6 +157,16 @@
                 <button onclick="$soundboard.stop('close')">Stop</button>
             </div>
             <div class="audio-slider" id="close-slider"></div>
+        </td>
+        <td><br><br>
+            <div>Airhorn FF3!</div>
+            <div id="ff3horn-status">(Stop)</div>
+            <div>
+                <button onclick="$soundboard.play('ff3horn')">Play</button>
+                <button onclick="$soundboard.pause('ff3horn')">Pause</button>
+                <button onclick="$soundboard.stop('ff3horn')">Stop</button>
+            </div>
+            <div class="audio-slider" id="ff3horn-slider"></div>
         </td>		
 		</tr>
     </tbody>
@@ -170,7 +180,9 @@
         $soundboard.audioslider('right-sound');
         $soundboard.audioslider('altright');
 		$soundboard.audioslider('close');
-        $soundboard.audioslider('timeup');					
+        $soundboard.audioslider('timeup');
+        $soundboard.audioslider('ff3horn');				
+		
     }
 		$soundboard = {
 			play: function(name)
@@ -223,6 +235,9 @@
 	</audio>
 	<audio id="close" preload>
 		<source src="sfx/close.mp3" />
+	</audio>
+		<audio id="ff3horn" preload>
+		<source src="sfx/airhornFF3.ogg" />
 	</audio>
 </body>
 </html>
