@@ -60,6 +60,10 @@ ms.shown
   background-position: center;
   background-size: contain;
 }
+.empty
+{
+  background-size: 40%; /* checkmark way too big normally */
+}
 .dummyPrizeImage, .empty
 {
   /* invert contents */
