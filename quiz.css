@@ -116,7 +116,14 @@ body {
 #answers {
     border-collapse: separate;
     border-spacing: 15px;
-    width: 80%;
+    margin-left: -10px;
+    width: 520px;
+}
+
+.rowid {
+	width: auto;
+	color: white;
+	font-size: 20px;
 }
 
 .answer {
