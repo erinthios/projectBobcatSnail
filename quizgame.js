@@ -23,6 +23,17 @@ function randomNumber(x, y) {
     return Math.floor(Math.random() * ((y - x) + 1) + x);
 }
 
+/* pool of bonus round phrases to be shown between quiz rounds */
+var bonusRoundPhrases = [
+	"Next Up: A Round of Drawbage!",
+	"Next Up: Win! Lose! Drawbage!",
+	"Next Up: Drawbage, or how I learned to stop worrying and draw a nude Dr. Wily.",
+	"Next Up: Drawing Sign!!?! Wait, I mean Round!?!!!",
+	"Next Up: People drawing poor artwork.",
+	"Next Up: Stuff to laugh at. Or with. But probably at. Drawbage.",
+	"Next Up: Drawbage!"
+];
+
 var isCalled = false;
 	function HasNotBeenSeen(value) {
 		return value.HasSeen == false;
@@ -95,8 +106,12 @@ var $quizgame = {
         $('#playerSelect').fadeOut();
         $('#pointLayout').delay(500).fadeIn();
     },
+	randomBonusRoundText: function () {
+		shuffle(bonusRoundPhrases);
+		return bonusRoundPhrases[0];
+	},
     nextRound: function (path) {
-        var num = randomNumber(0, 5);
+        $('#quiz-round-text').text($quizgame.randomBonusRoundText());
         $('#pointTable').fadeOut();
         $('.quizzler-image').fadeOut();
         $('.completed-answers').fadeOut();
