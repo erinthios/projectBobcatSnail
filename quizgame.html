@@ -91,6 +91,10 @@ $quizgame.backToQuestion ();"> Back (Main Game Only!)</button>
 		<input type="button" value="Show HasSeen" onclick="$quizgame.showHasSeen ()">
 		<input type="button" value="Hide HasSeen" onclick="$quizgame.hideHasSeen ()">
 	</div>
+	<div class="question-button">
+        <p style="color: white;">Seen Questions: </p>
+		<textarea id="seen-question-list" readonly="readonly"></textarea>
+	</div>
 </div>
 <div class="main-content quiz-game-table">
     <div style="display: none;" id="playerSelect">
