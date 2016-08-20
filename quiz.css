@@ -25,7 +25,7 @@ td {
 .header-row {
     font-size: 60px;
     color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 2px black, 0 1px 2px black, 1px 0 2px black, 0 -1px 2px black;
 }
 
 .question-button {
@@ -78,12 +78,14 @@ body {
     display: table-cell;
     max-height: 100px;
     color: white;
+    text-shadow: 1px 1px 5px #000000;
 }
 
 .submitter-text {
     font-size: 21px;
     color: white;
     margin-top: 5px;
+    text-shadow: 1px 1px 5px #000000;
 }
 
 .right-answer-choice {
@@ -143,6 +145,7 @@ body {
     .answer.show-wrong {
         background-color: #CC3300;
         color: black;
+        text-shadow: 1px 1px 5px #000000;
     }
 
     .answer.show-correct {
