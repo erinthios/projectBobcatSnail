@@ -52,9 +52,8 @@
 				{text: "Feelin' Sad", weight: 5, color: '#000000', sound: 'sounds/Sad.ogg'}
 			];
 			segments = initSegments();
-			function initSegments()
+			function updateSizeSegments(segs)
 			{
-				var result = [];
 				var lastAngle = 0;
 				var totalWeight = 0;
 				for (var i = 0; i < wedges.length; ++i)
@@ -66,17 +65,28 @@
 				{
 					var wedge = wedges[i];
 					var wedgeAngle = wedge.weight * unitAngle;
+					segs[i].startAngle = lastAngle;
+					segs[i].endAngle = lastAngle + wedgeAngle;
+					lastAngle += wedgeAngle;
+				}
+			}
+			function initSegments()
+			{
+				var result = [];
+				for (var i = 0; i < wedges.length; ++i)
+				{
+					var wedge = wedges[i];
 					result.push(
 							{
 								text: wedge.text,
-								startAngle: lastAngle,
-								endAngle: lastAngle + wedgeAngle,
+								startAngle: 0,
+								endAngle: 0,
 								color: wedge.color,
 								sound: new Audio(wedge.sound)
 							}
 					);
-					lastAngle += wedgeAngle;
 				}
+				updateSizeSegments(result);
 				return result;
 			}
 			
@@ -242,9 +252,10 @@
 							if (i < 10)
 							{
 								wedges.splice(wheel.hitSegmentIndex, 1);
+								segments.splice(wheel.hitSegmentIndex, 1);
 								wheel.hitSegmentIndex = -1;
 							}
-							segments = initSegments();
+							updateSizeSegments(segments);
 							if (i >= 10)
 							{
 								segments[wheel.hitSegmentIndex].shrinkPct = i / 100;
