@@ -32,42 +32,43 @@
 				return ((this % n) + n) % n;
 			};
 			/* Wedge definitions:
+			 * - imageId: id of img element (see bottom of HTML) to display
 			 * - text: text to display
 			 * - weight: weighting factor to use in determining size
 			 * - color: background color
 			 * - sound: path of sound to play if wedge landed on
 			 */
 			wedges = [
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "Grab Bag", weight: 1, color: '#2fbf2f', sound: 'sounds/Grab-bag.ogg'},				
-				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "B. Drawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
-				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "VG Hustle", weight: 1, color: '#008000', sound: 'sounds/Hustle.ogg'},
-				{text: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
-				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "Quizzler Blitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
-				{text: "Feelin' SAUCY", weight: 1, color: '#eeeeee', sound: 'sounds/Saucy.ogg'},
-				{text: "Feelin' Sad", weight: 1, color: '#000000', sound: 'sounds/Sad.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "Grab Bag", weight: 1, color: '#2fbf2f', sound: 'sounds/Grab-bag.ogg'},	
-				{text: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
-				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "B. Drawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
-				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
-				{text: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
-				{text: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
-				{text: "VG Hustle", weight: 1, color: '#008000', sound: 'sounds/Hustle.ogg'},
-				{text: "Team Battle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
-				{text: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
-				{text: "Quizzler Blitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
-				{text: "Sound Test", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
-				{text: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'}
+				{imageId: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
+				{imageId: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
+				{imageId: "GrabBag", weight: 1, color: '#2fbf2f', sound: 'sounds/Grab-bag.ogg'},				
+				{imageId: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
+				{imageId: "TeamBattle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
+				{imageId: "BDrawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
+				{imageId: "SoundTest", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
+				{imageId: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
+				{imageId: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
+				{imageId: "VGHustle", weight: 1, color: '#008000', sound: 'sounds/Hustle.ogg'},
+				{imageId: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
+				{imageId: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
+				{imageId: "QuizzlerBlitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
+				{imageId: "FeelinSaucy", weight: 1, color: '#eeeeee', sound: 'sounds/Saucy.ogg'},
+				{imageId: "FeelinSad", weight: 1, color: '#000000', sound: 'sounds/Sad.ogg'},
+				{imageId: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
+				{imageId: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
+				{imageId: "GrabBag", weight: 1, color: '#2fbf2f', sound: 'sounds/Grab-bag.ogg'},	
+				{imageId: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
+				{imageId: "TeamBattle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
+				{imageId: "BDrawyale", weight: 1, color: '#FFCBA4', sound: 'sounds/DrawbageWar.ogg'},
+				{imageId: "SoundTest", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
+				{imageId: "Gamebler", weight: 1, color: '#e4b200', sound: 'sounds/Gamebler.ogg'},
+				{imageId: "Quizzler", weight: 1, color: '#2272aa', sound: 'sounds/Quizzler.ogg'},
+				{imageId: "VGHustle", weight: 1, color: '#008000', sound: 'sounds/Hustle.ogg'},
+				{imageId: "TeamBattle", weight: 1, color: '#dc322f', sound: 'sounds/TeamBattle.ogg'},
+				{imageId: "Drawbage", weight: 1, color: '#713697', sound: 'sounds/Drawbage.ogg'},
+				{imageId: "QuizzlerBlitz", weight: 1, color: '#66ccff', sound: 'sounds/BigGood10.ogg'},
+				{imageId: "SoundTest", weight: 1, color: '#c6037e', sound: 'sounds/SoundTest.ogg'},
+				{imageId: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'}
 			];
 			
 			segments = initSegments();
@@ -98,6 +99,7 @@
 					result.push(
 							{
 								text: wedge.text,
+								imageId: wedge.imageId,
 								startAngle: 0,
 								endAngle: 0,
 								color: wedge.color,
@@ -392,7 +394,9 @@
 					var centerY = wheel.centerY;
 					var size = wheel.size;
 					var segment = segments[key];
-					var value = segment.text.substr(0, 20);
+					var imageId = segment.imageId || null;
+					var imageAlpha = 1.0;
+					var value = segment.text ? segment.text.substr(0, 20) : null;
 					var startAngle = segment.startAngle;
 					var endAngle = segment.endAngle;
 					var isSelected = wheel.isSegmentSelected(segment);
@@ -406,10 +410,15 @@
 					// override colors if this wedge is selected
 					if (isSelected)
 					{
-						var alpha = segment.shrinkPct ? (segment.shrinkPct-0.50)*2 : 1;
+						var alpha = segment.shrinkPct ? Math.max((segment.shrinkPct-0.50)*2,0) : 1;
 						wedgeBorderColor = '#ffff00';
 						textOutlineColor = "rgba(255,255,0,"+alpha+")";
 						textColor = "rgba(0,0,0,"+alpha+")";
+						if (imageId)
+						{
+							imageAlpha = alpha;
+							imageId += '_B';
+						}
 					}
 					ctx.save();
 					// rebase coordinates to make drawing simpler
@@ -429,16 +438,32 @@
 					// draw
 					ctx.fill();
 					ctx.stroke();
-					// Now draw the text
-					ctx.save(); // The save ensures this works on Android devices
-					ctx.lineWidth = 3;
-					// outline
-					ctx.strokeStyle = textOutlineColor;
-					ctx.strokeText(value, size - 25, 0);
-					// regular text
-					ctx.fillStyle = textColor;
-					ctx.fillText(value, size - 25, 0);
-					ctx.restore();
+					
+					if (imageId)
+					{
+						var imgElement = $('#'+imageId)[0];
+						if (imgElement)
+						{
+							ctx.save(); // The save ensures this works on Android devices
+							ctx.globalAlpha = imageAlpha;
+							ctx.drawImage(imgElement, size - 25 - imgElement.width, -imgElement.height/2);
+							ctx.restore();
+						}
+					}
+					else
+					{
+						// Now draw the text
+						ctx.save(); // The save ensures this works on Android devices
+						ctx.lineWidth = 3;
+						// outline
+						ctx.strokeStyle = textOutlineColor;
+						ctx.strokeText(value, size - 25, 0);
+						// regular text
+						ctx.fillStyle = textColor;
+						ctx.fillText(value, size - 25, 0);
+						ctx.restore();
+					}
+					
 					ctx.restore();
 				},
 				drawWheel: function () {
@@ -552,5 +577,31 @@
 		<p id="rpmcounter"></p>
 		<button id="testButton" onclick="toggleTesting()">Start test</button>
 		<p id="statistics"></p>
+		<div id="imagePool" style="visibility: collapse;">
+			<img id="BDrawyale" src="images/wheel-spaces/BDrawyale.png" alt="*"/>
+			<img id="BDrawyale_B" src="images/wheel-spaces/BDrawyale_B.png" alt="*"/>
+			<img id="Drawbage" src="images/wheel-spaces/Drawbage.png" alt="*"/>
+			<img id="Drawbage_B" src="images/wheel-spaces/Drawbage_B.png" alt="*"/>
+			<img id="FeelinSad" src="images/wheel-spaces/FeelinSad.png" alt="*"/>
+			<img id="FeelinSad_B" src="images/wheel-spaces/FeelinSad_B.png" alt="*"/>
+			<img id="FeelinSaucy" src="images/wheel-spaces/FeelinSaucy.png" alt="*"/>
+			<img id="FeelinSaucy_B" src="images/wheel-spaces/FeelinSaucy_B.png" alt="*"/>
+			<img id="Gamebler" src="images/wheel-spaces/Gamebler.png" alt="*"/>
+			<img id="Gamebler_B" src="images/wheel-spaces/Gamebler_B.png" alt="*"/>
+			<img id="GrabBag" src="images/wheel-spaces/GrabBag.png" alt="*"/>
+			<img id="GrabBag_B" src="images/wheel-spaces/GrabBag_B.png" alt="*"/>
+			<img id="Quizzler" src="images/wheel-spaces/Quizzler.png" alt="*"/>
+			<img id="Quizzler_B" src="images/wheel-spaces/Quizzler_B.png" alt="*"/>
+			<img id="QuizzlerBlitz" src="images/wheel-spaces/QuizzlerBlitz.png" alt="*"/>
+			<img id="QuizzlerBlitz_B" src="images/wheel-spaces/QuizzlerBlitz_B.png" alt="*"/>
+			<img id="Screencrap" src="images/wheel-spaces/Screencrap.png" alt="*"/>
+			<img id="Screencrap_B" src="images/wheel-spaces/Screencrap_B.png" alt="*"/>
+			<img id="SoundTest" src="images/wheel-spaces/SoundTest.png" alt="*"/>
+			<img id="SoundTest_B" src="images/wheel-spaces/SoundTest_B.png" alt="*"/>
+			<img id="TeamBattle" src="images/wheel-spaces/TeamBattle.png" alt="*"/>
+			<img id="TeamBattle_B" src="images/wheel-spaces/TeamBattle_B.png" alt="*"/>
+			<img id="VGHustle" src="images/wheel-spaces/VGHustle.png" alt="*"/>
+			<img id="VGHustle_B" src="images/wheel-spaces/VGHustle_B.png" alt="*"/>
+		</div>
 	</body>
 </html>
