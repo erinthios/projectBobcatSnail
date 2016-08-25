@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>VG Challenge Wall</title>
+		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+		<style>
+			#tv0, #tv1, #tv2 {
+				position: absolute;
+				top: 47px;
+			}
+			#tv3, #tv4, #tv5 {
+				position: absolute;
+				top: 415px;
+			}
+			#tv0, #tv3 {
+				left: 41px;
+			}
+			#tv1, #tv4 {
+				left: 462px;
+			}
+			#tv2, #tv5 {
+				left: 882px;
+			}
+			
+			div .gamen {
+				background-image: url("TV on.png");
+				background-repeat: no-repeat;
+				width: 360px;
+				height: 230px;
+				text-align: center;
+				line-height: 230px;
+				font-family: 'Sigmar One', cursive;
+			}
+			
+			.gamen.hidden {
+				background-image: none;
+			}
+			.gamen.hidden .game-name, .gamen.hidden .challenge-console {
+				visibility: hidden;
+			}
+
+			.gamen span {
+				display: inline-block;
+				vertical-align: middle;
+				line-height: normal;
+				padding-left: 20px;
+				padding-right: 20px;
+				font-size: 36px;
+				color: orange;
+				text-shadow: 3px 3px 0px #000000;
+			}
+			
+			.show-hide {
+				position: relative;
+				height: 115px;
+				top: -230px;
+			}
+
+			.reroll {
+				position: relative;
+				height: 115px;
+				top: -230px;
+			}
+
+			body {
+				background-color: rgba(0, 0, 0, 0);
+				overflow: hidden;
+			}
+
+			.challenge-console {
+				position: absolute;
+				top: 96px;
+				left: 60px;
+				font-size: 125%;
+			}
+			
+			#header {
+				width:400px;
+				height:35px;
+				font-size:14px;
+			}
+			#submitter {
+				word-break: break-word;
+				width: 110px;
+			}
+			#description {
+				position: absolute;
+				top: 440px;
+				left: 1450px;
+			}
+			#description.hidden {
+				visibility: hidden;
+			}
+			#details {
+				width: 300px;
+				font-size:12px;
+				clear: left;
+			}
+			
+			.select-desc {
+				color: white;
+				font-family: Arial, sans-serif;
+				position: absolute;
+			}
+			
+			#descNone {
+				top: 390px;
+				left: 1460px;
+			}
+			#desc0, #desc1, #desc2, #desc3, #desc4, #desc5 {
+				width: 100px;
+				text-align: right;
+				left: 1340px;
+			}
+			#desc0 {
+				top: 430px;
+			}
+			#desc1 {
+				top: 460px;
+			}
+			#desc2 {
+				top: 490px;
+			}
+			#desc3 {
+				top: 520px;
+			}
+			#desc4 {
+				top: 550px;
+			}
+			#desc5 {
+				top: 580px;
+			}
+			#descSad {
+				top: 620px;
+				left: 1445px;
+			}
+			#descGrabBag {
+				top: 620px;
+				left: 1600px;
+			}
+			
+			#gameLogo {
+				position: absolute;
+				top: 153px;
+				left: 1422px;
+				width: 343px;
+				height: 115px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			#gameLogo.gamebler {
+				background-image: url('Gamebler_Tiny.png');
+			}
+			#gameLogo.sad {
+				background-image: url('Feelin_Sad.png');
+			}
+			#gameLogo.grabBag {
+				background-image: url('Grab_Bag.png');
+			}
+
+			div.info{
+				display: block;
+				float: left;
+			}
+			.info{
+				color: #b7e4ec;
+				font-weight: bold;
+				font-family: Verdana;
+			}
+			p.info {
+				margin: 0;
+			}
+			
+			hr {
+				width: 290px;
+				margin: 5px 0 5px 0;
+			}
+
+		</style>
+	</head>
+	<body background="eh.png">
+		<audio id="ding">
+			<source src="Ding.mp3" type="audio/mpeg">
+		</audio>
+		<div class="spacer"></div>
+
+		<div id="navContent">
+
+			<!-- TV bank -->
+			<div id="tv0" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(0);"></div><div class="reroll" onclick="$challenge.reroll(0);"></div></div>
+			<div id="tv1" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(1);"></div><div class="reroll" onclick="$challenge.reroll(1);"></div></div>
+			<div id="tv2" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(2);"></div><div class="reroll" onclick="$challenge.reroll(2);"></div></div>
+			<div id="tv3" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(3);"></div><div class="reroll" onclick="$challenge.reroll(3);"></div></div>
+			<div id="tv4" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(4);"></div><div class="reroll" onclick="$challenge.reroll(4);"></div></div>
+			<div id="tv5" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(5);"></div><div class="reroll" onclick="$challenge.reroll(5);"></div></div>
+
+			<!-- game logo area -->
+			<div id="gameLogo"></div>
+			
+			<!-- description selections -->
+			<p id="descNone" class="select-desc"><label for="rNone">None</label><input id="rNone" type="radio" name="desc" value="-1" onclick="$challenge.showDesc(-1)"></p>
+			<p id="desc0" class="select-desc"><label for="r0">1</label><input id="r0" type="radio" name="desc" value="0" onclick="$challenge.showDesc(0)"></p>
+			<p id="desc1" class="select-desc"><label for="r1">2</label><input id="r1" type="radio" name="desc" value="1" onclick="$challenge.showDesc(1)"></p>
+			<p id="desc2" class="select-desc"><label for="r2">3</label><input id="r2" type="radio" name="desc" value="2" onclick="$challenge.showDesc(2)"></p>
+			<p id="desc3" class="select-desc"><label for="r3">4</label><input id="r3" type="radio" name="desc" value="3" onclick="$challenge.showDesc(3)"></p>
+			<p id="desc4" class="select-desc"><label for="r4">5</label><input id="r4" type="radio" name="desc" value="4" onclick="$challenge.showDesc(4)"></p>
+			<p id="desc5" class="select-desc"><label for="r5">6</label><input id="r5" type="radio" name="desc" value="5" onclick="$challenge.showDesc(5)"></p>
+			<p id="descSad" class="select-desc"><label for="rSad">Sad</label><input id="rSad" type="radio" name="desc" value="6" onclick="$challenge.showDesc(6)"> <button onclick="$challenge.reroll(6);">Reroll</button></p>
+			<p id="descGrabBag" class="select-desc"><label for="rGrabBag">Grab Bag</label><input id="rGrabBag" type="radio" name="desc" value="7" onclick="$challenge.showDesc(7)"> <button onclick="$challenge.reroll(7);">Reroll</button></p>
+			
+			<!-- selected challenge description -->
+			<div id="description" class="hidden">
+				<div id="header">
+					
+					<div class="info" style="width: 130px; padding-left: 5px;" id="game-name">Game</div>
+					<div class="info" style="padding-left: 20px;">By: </div>
+					<div class="info" style="padding-left: 5px;" id="submitter"></div>
+				</div>
+				<div id="details">
+					<p class="info" style="padding: 5px;"><span id="challenge">C000</span>: <span id="challenge-details">Stuff</span></p>
+
+					<hr>
+
+					<p class="info"><span style="padding-left: 18px;">Time: </span>
+					<span id="challenge-time-limit">1</span>m
+
+					<span style="padding-left: 15px;">Difficulty: </span>
+					<span id="difficulty-rating"></span>
+
+					<span style="padding-left: 15px;">State: </span>
+					<span id="state-slot">None</span></p>
+
+					<hr>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>
+			var isCalled = false;
+			function isNotGenesis(value) {
+				return value.GameConsole.indexOf("Genesis") <= -1;
+			}
+			function isSaveState(value) {
+				return value.SaveStateDownloadLocation === "X";
+			}
+			function isHard(value) {
+				return value.DifficultyRating >= 4;
+			}
+			function isEasy(value) {
+				return !isHard(value);
+			}
+			$challenge = {
+				challenges: [null,null,null,null,null,null,null,null],
+				shownChallenge: -1,
+				loadJSON: function (path, callback) {
+					var xobj = new XMLHttpRequest();
+					xobj.overrideMimeType("application/json");
+					xobj.open('GET', path, true);
+					xobj.onreadystatechange = function () {
+						if (xobj.readyState == 4 && xobj.status == "200") {
+							callback(xobj.responseText);
+						}
+					};
+					xobj.send(null);
+				},
+				loadGame: function (i) {
+					$challenge.shownChallenge = i;
+					var challenge = $challenge.challenges[i];
+					if (!challenge)
+					{
+						$challenge.clearGame();
+						return;
+					}
+					$('#description').removeClass('hidden');
+					$('#game-name').text(challenge.GameTitle);
+					$('#challenge').text(challenge.CKey);
+					$('#submitter').text(challenge.Submitter);
+					$('#challenge-details').text(challenge.ChallengeDetails);
+					$('#challenge-time-limit').text(challenge.ChallengeTimeLimit);
+					$('#difficulty-rating').text(challenge.DifficultyRating);
+					$('#state-slot').text(challenge.StateSlot);
+				},
+				clearGame: function () {
+					$('#description').addClass('hidden');
+				},
+				reroll: function(i) {
+					switch (i)
+					{
+						case 0:
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+						case 5:
+							$challenge.loadJSON('challenges.json', function (response) {
+								var challenges = JSON.parse(response);
+								var filteredChallenges = challenges.filter(isNotGenesis);
+								filteredChallenges = filteredChallenges.filter(isSaveState);
+
+								// get new challenge
+								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+								$('#tv' + i).children('.game-name').text(challenge.GameTitle);
+								$('#tv' + i).children('.challenge-console').text(challenge.GameConsole);
+								$challenge.challenges[i] = challenge;
+
+								// show TV
+								$('#tv' + i).removeClass('hidden');
+
+								// update game description
+								if ($challenge.shownChallenge === i)
+								{
+									$challenge.showDesc(i);
+								}
+
+								// ding
+								$('#ding')[0].pause();
+								$('#ding')[0].currentTime = 0;
+								$('#ding')[0].play();
+							});
+							break;
+							
+						case 6:
+							// Feelin' Sad
+							$challenge.loadJSON('challenges.json', function (response) {
+								var challenges = JSON.parse(response);
+								var filteredChallenges = challenges.filter(isNotGenesis);
+								filteredChallenges = filteredChallenges.filter(isSaveState);
+								filteredChallenges = filteredChallenges.filter(isHard);
+
+								// get new challenge
+								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+								$challenge.challenges[i] = challenge;
+
+								// update game description
+								if ($challenge.shownChallenge === i)
+								{
+									$challenge.showDesc(i);
+								}
+
+								// ding
+								$('#ding')[0].pause();
+								$('#ding')[0].currentTime = 0;
+								$('#ding')[0].play();
+							});
+							break;
+							
+						case 7:
+							// Grab Bag
+							$challenge.loadJSON('challenges.json', function (response) {
+								var challenges = JSON.parse(response);
+								var filteredChallenges = challenges.filter(isNotGenesis);
+								filteredChallenges = filteredChallenges.filter(isSaveState);
+								filteredChallenges = filteredChallenges.filter(isEasy);
+
+								// get new challenge
+								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+								$challenge.challenges[i] = challenge;
+
+								// update game description
+								if ($challenge.shownChallenge === i)
+								{
+									$challenge.showDesc(i);
+								}
+
+								// ding
+								$('#ding')[0].pause();
+								$('#ding')[0].currentTime = 0;
+								$('#ding')[0].play();
+							});
+							break;
+					}
+				},
+				showHide: function(i) {
+					// select radio button (which will show description)
+					$('#r' + i).click();
+					
+					if ($('#tv' + i).hasClass('hidden') === false)
+					{
+						$('#tv' + i).addClass('hidden');
+						$challenge.challenges[i] = null;
+					}
+					else
+					{
+						$challenge.reroll(i);
+					}
+				},
+				showDesc: function(i) {
+					if (i >= 0)
+					{
+						$('#gameLogo').removeClass();
+						switch (i)
+						{
+							case 0:
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							case 5:
+								$('#gameLogo').addClass('gamebler');
+								break;
+
+							case 6:
+								$('#gameLogo').addClass('sad');
+								break;
+
+							case 7:
+								$('#gameLogo').addClass('grabBag');
+								break;
+						}
+
+						$challenge.loadGame(i);
+					}
+					else
+					{
+						$challenge.clearGame();
+					}
+				}
+			};
+			window.onload = function () {
+				$challenge.loadGame('challenges.json');
+			};
+		</script>
+	</body>
+</html>
