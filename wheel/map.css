@@ -53,7 +53,7 @@ ms.shown
   text-shadow: none;
 }
 /* dummy prize (image) */
-.dummyPrizeImage, .tys, .empty, .prize, .goal
+.dummyPrizeImage, .tys, .empty, .prize, .goal, .consumable
 {
   /* center background image */
   background-repeat: no-repeat;

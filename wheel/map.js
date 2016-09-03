@@ -25,12 +25,12 @@ var otherSquares = [
 	newSpecialPrizeSquare(),
 	newBigPointsSquare(),
 	newBigPointsSquare(),
-	newBigPointsSquare(),
 	newSmallPointsSquare(),
 	newSmallPointsSquare(),
 	newSmallPointsSquare(),
 	newSmallPointsSquare(),
-	newSmallPointsSquare(),
+	newConsumableSquare(),
+	newConsumableSquare(),
 	newMultipliedPointsSquare(),
 	newMultipliedPointsSquare()
 ];
@@ -252,6 +252,10 @@ function newMultipliedPointsSquare()
 function newTestYourSmiteSquare()
 {
 	return { image: "images/Test_Your_Smite.png", soundPool: testYourSmiteSoundPool, cssClass: "tys"};
+}
+function newConsumableSquare()
+{
+	return { image: "images/rolling-dices.png", soundPool: bigGoodSoundPool, cssClass: "consumable"};
 }
 
 
