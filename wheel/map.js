@@ -1,4 +1,4 @@
-﻿// sound pool names
+// sound pool names
 var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
@@ -57,7 +57,9 @@ soundPools[goodSoundPool] = [
 	"sounds/Good17.ogg",
 	"sounds/Good18.ogg",
 	"sounds/Good19.ogg",
-	"sounds/Good20.ogg"
+	"sounds/Good20.ogg",
+	"sounds/Good21 Zelda Recorder.ogg",
+	"sounds/Good22 ctbell.ogg"
 ];
 soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood1.ogg",
@@ -79,7 +81,11 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood17.ogg",
 	"sounds/BigGood18.ogg",
 	"sounds/BigGood19.ogg",
-	"sounds/BigGood20.ogg"
+	"sounds/BigGood20.ogg",
+	"sounds/BigGood21 Zelda Fanfare 2.ogg",
+	"sounds/BigGood22 Zelda Fanfare.ogg",
+	"sounds/BigGood23 MegaMan4.ogg"
+	
 ];
 soundPools[finishSoundPool] = [
 	"sounds/Finish1.ogg",
@@ -107,7 +113,11 @@ soundPools[emptySoundPool] = [
 "sounds/Horn.ogg",
 "sounds/smb2 nothing happened.ogg",
 "sounds/StoogesScream.ogg",
-"sounds/nothing-Bubsy-hair.ogg"
+"sounds/MM3 Protowhistle.ogg",
+"sounds/nothing-Bubsy-hair.ogg",
+"sounds/ctlavosscream.ogg",
+"sounds/Bubsy Dies.ogg"
+
 ];
 soundPools[testYourSmiteSoundPool] = [
 	"sounds/Test_Your_Smite.ogg"
@@ -179,7 +189,41 @@ var dummyPrizeImages = [
 	"images/wd train tracks.png",
 	"images/wd train.png",
 	"images/wd vacation.png",
-	"images/wd yacht.png"
+	"images/wd yacht.png",
+	/*Game icons added Sept 11*/
+	"images/banknote.png",
+	"images/bear-head.png",
+	"images/bottled-bolt.png",
+	"images/brass-knuckles.png",
+	"images/brick-wall.png",
+	"images/cake-slice.png",
+	"images/cash.png",
+	"images/centipede.png",
+	"images/chainsaw.png",
+	"images/coins.png",
+	"images/crown-coin.png",
+	"images/gold-mine.png",
+	"images/grapes.png",
+	"images/graveyard.png",
+	"images/ham-shank.png",
+	"images/locked-chest.png",
+	"images/meat.png",
+	"images/metroid.png",
+	"images/money-stack.png",
+	"images/nunchaku.png",
+	"images/parrot-head.png",
+	"images/pie-slice.png",
+	"images/pineapple.png",
+	"images/police-badge.png",
+	"images/praying-mantis.png",
+	"images/sai.png",
+	"images/shiny-apple.png",
+	"images/sperm-whale.png",
+	"images/stomp.png",
+	"images/strawberry.png",
+	"images/unlit-bomb.png",
+	"images/wolf-howl.png",
+	"images/yv.png"
 ];
 
 
@@ -255,7 +299,7 @@ function newTestYourSmiteSquare()
 }
 function newConsumableSquare()
 {
-	return { image: "images/rolling-dices.png", soundPool: bigGoodSoundPool, cssClass: "consumable"};
+	return { image: "images/rolling-dice.png", soundPool: bigGoodSoundPool, cssClass: "consumable"};
 }
 
 
