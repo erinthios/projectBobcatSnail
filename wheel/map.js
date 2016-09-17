@@ -1,4 +1,4 @@
-// sound pool names
+﻿// sound pool names
 var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
@@ -223,7 +223,29 @@ var dummyPrizeImages = [
 	"images/strawberry.png",
 	"images/unlit-bomb.png",
 	"images/wolf-howl.png",
-	"images/yv.png"
+	"images/yv.png",
+/*Game icons added Sept 17*/
+"images/gi-astro.png",
+"images/gi-batteries.png",
+"images/gi-comet.png",
+"images/gi-dragon.png",
+"images/gi-ghost.png",
+"images/gi-golly.png",
+"images/gi-goshrock.png",
+"images/gi-jaws.png",
+"images/gi-lamp.png",
+"images/gi-loco.png",
+"images/gi-meteor.png",
+"images/gi-potion.png",
+"images/gi-potion2.png",
+"images/gi-rocket.png",
+"images/gi-rocket2.png",
+"images/gi-scroll.png",
+"images/gi-stomp.png",
+"images/gi-twister.png",
+"images/gi-viking.png",
+"images/gi-yell.png",
+"images/gi-zeppelin.png"
 ];
 
 
@@ -247,7 +269,7 @@ var msDelayToRevealSquare = 3000;
 var msDelayToUnzoomSquare = 5500;
 
 /* sound to play when marker moves on map */
-var markerMoveSoundPath = "sounds/walking.mp3";
+var markerMoveSoundPath = null;
 
 
 /* potential map/marker images */
@@ -291,7 +313,7 @@ function newBigPointsSquare()
 }
 function newMultipliedPointsSquare()
 {
-	return { text: "x2", soundPool: bigGoodSoundPool, cssClass: "multiplier"};
+	return { image: "images/x2.png", soundPool: bigGoodSoundPool, cssClass: "multiplier"};
 }
 function newTestYourSmiteSquare()
 {

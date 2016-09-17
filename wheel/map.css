@@ -53,7 +53,7 @@ ms.shown
   text-shadow: none;
 }
 /* dummy prize (image) */
-.dummyPrizeImage, .tys, .empty, .prize, .goal, .consumable
+.dummyPrizeImage, .tys, .empty, .prize, .goal, .consumable, .multiplier
 {
   /* center background image */
   background-repeat: no-repeat;
@@ -73,7 +73,7 @@ ms.shown
   border-color: rgb(55,55,55);
 }
 
-.multiplier, .smallPoints, .bigPoints, .start
+ .smallPoints, .bigPoints, .start
 {
   font-family: sans-serif;
   font-size: 20px;
