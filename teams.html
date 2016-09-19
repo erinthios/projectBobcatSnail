@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+	<HEAD>
+		<TITLE>Arcade Pit Team Setup</TITLE>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-minimal.css" />
+
+		<script type="text/javascript">
+			window.odometerOptions = {
+				format: 'ddd'
+			};
+			
+		// based on https://github.com/nbrunt/TextFit
+		// modified to require a max-height
+		function textfit(node) {
+			node[0].style["font-size"] = null;
+			var fs = parseInt(node.css("font-size"), 10);
+			var mh = parseInt(node.css("max-height"), 10);
+			while (node[0].scrollHeight > mh) {
+				node.css("font-size", --fs + "px");
+			}
+		};
+		</script>
+		<script src="http://github.hubspot.com/odometer/odometer.js" type="text/javascript"></script>
+
+		<!-- Extra styles for this example -->
+		<style type="text/css">
+			.odometer {
+				font-size: 40px;
+				width: 80px;
+				text-align: right;
+				font-family: "Consolas", Georgia, Serif;
+				font-weight: bold;
+			}
+
+			.onTopOfEachOther {
+				position: relative;
+				height: 64px;
+				font-weight: bold;
+				font-size: 24px;
+				font-family: "Consolas", Georgia, Serif;
+			}
+			.onTopOfEachOther span {
+				position: absolute;
+				top: 6px;
+				left: 90px;
+				width: 370px;
+				line-height: 64px;
+				vertical-align: middle;
+				max-height: 64px;	/* for textfit */
+				font-size: 24px;	/* for textfit */
+			}
+			#redDisplay.onTopOfEachOther span {
+				left: auto;
+				right: 90px;
+				text-align: right;
+			}
+			#ys {
+				position: absolute;
+				top: 12px;
+				left: 0;
+			}
+			#rs {
+				position: absolute;
+				top: 92px;
+				left: 0;
+				width: 630px;
+			}
+
+			#management {
+				position: absolute;
+				top: 0px;
+				left: 300px;
+			}
+
+			#yellowScore, #redScore {
+				width: 50px;
+			}
+			
+			#yellowDisplay, #redDisplay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-image: url("Score-Overlay.png");
+				background-repeat: no-repeat;
+				width: 640px;
+			}
+			#redDisplay {
+				top: 80px;
+				background-position: right;
+			}
+			
+			#yellowManagement, #redManagement {
+				padding: 0 10px;
+				position: absolute;
+				top: 160px;
+			}
+			#yellowManagement {
+				left: 10px;
+				background-color: palegoldenrod;
+			}
+			#redManagement {
+				left: 350px;
+				background-color: palevioletred;
+			}
+
+			/* style overrides for odometer-theme-train-station.css */
+
+			.odometer.odometer-auto-theme .odometer-digit + .odometer-digit, .odometer.odometer-theme-train-station .odometer-digit + .odometer-digit {
+				margin-left: 0;
+			}
+			.odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-train-station .odometer-digit {
+				color: black;
+			}
+			.odometer.negative.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-train-station .odometer-digit {
+				color: red;
+			}
+			.odometer-negation-mark {
+				color: red;
+			}
+		</style>
+
+	</HEAD>
+	<BODY style="background-color: rgb(92, 92, 150);">	  
+		<script type="text/javascript">
+			function addYellow(i)
+			{
+				$('#yellowScore')[0].value = parseInt($('#yellowScore')[0].value) + parseInt(i);
+			}
+			function addRed(i)
+			{
+				$('#redScore')[0].value = parseInt($('#redScore')[0].value) + parseInt(i);
+			}
+			$(function () {
+
+				setInterval(function () {
+					updateValues();
+				}, 1000);
+				setInterval(function () {
+					fadeSwitchElements('yt', 'ym');
+				}, 30000);
+				setInterval(function () {
+					fadeSwitchElements('rt', 'rm');
+				}, 30000);
+
+				function updateValues()
+				{
+					$('#yt').text($('#yellowTeamName')[0].value);
+					$('#ym').text($('#yellowMember1')[0].value + ' & ' + $('#yellowMember2')[0].value);
+					$('#ys').text($('#yellowScore')[0].value);
+					$('#rt').text($('#redTeamName')[0].value);
+					$('#rm').text($('#redMember1')[0].value + ' & ' + $('#redMember2')[0].value);
+					$('#rs').text($('#redScore')[0].value);
+
+					if ($('#yellowScore')[0].value[0] == '-')
+					{
+						$('#ys').addClass("negative");
+					} else
+					{
+						$('#ys').removeClass("negative");
+					}
+					if ($('#redScore')[0].value[0] == '-')
+					{
+						$('#rs').addClass("negative");
+					} else
+					{
+						$('#rs').removeClass("negative");
+					}
+					
+					// textfit
+					textfit($('#yt'));
+					textfit($('#ym'));
+					textfit($('#rt'));
+					textfit($('#rm'));
+				}
+				function fadeSwitchElements(id1, id2)
+				{
+					var element1 = $('#' + id1);
+					var element2 = $('#' + id2);
+
+					if (element1.is(':visible'))
+					{
+						element1.fadeToggle(500);
+						element2.fadeToggle(500);
+					} else
+					{
+						element2.fadeToggle(500);
+						element1.fadeToggle(500);
+					}
+				}
+
+			});</script>	  
+
+
+		<div id="yellowDisplay" class="onTopOfEachOther">
+			<span id="yt">YT</span>
+			<span id="ym" style="display: none;">YM</span>
+		</div>
+		<div id="ys" class="odometer">0</div>
+		<div id="yellowManagement">
+			<p>Yellow team name: <input type="text" id="yellowTeamName" value="Yellow"></p>
+			<p>Yellow member 1: <input type="text" id="yellowMember1" value="Y1"></p>
+			<p>Yellow member 2: <input type="text" id="yellowMember2" value="Y2"></p>
+			<p>Yellow score: <input type="text" id="yellowScore" value="0"></p>
+			<p>
+				<button onclick="addYellow(1)">+1</button>
+				<button onclick="addYellow(5)">+5</button>
+				<button onclick="addYellow(10)">+10</button>
+				<button onclick="addYellow(15)">+15</button>
+				<button onclick="addYellow(20)">+20</button>
+			</p>
+			<p>
+				<button onclick="addYellow(-1)">-1</button>
+				<button onclick="addYellow(-5)">-5</button>
+				<button onclick="addYellow(-10)">-10</button>
+				<button onclick="addYellow(-15)">-15</button>
+				<button onclick="addYellow(-20)">-20</button>
+			</p>
+		</div>
+		
+		<div id="redDisplay" class="onTopOfEachOther">
+			<span id="rt">RT</span>
+			<span id="rm" style="display: none;">RM</span>
+		</div>
+		<div id="rs" class="odometer">0</div>
+		<div id="redManagement">
+			<p>Red team name: <input type="text" id="redTeamName" value="Red"></p>
+			<p>Red member 1: <input type="text" id="redMember1" value="R1"></p>
+			<p>Red member 2: <input type="text" id="redMember2" value="R2"></p>
+			<p>Red score: <input type="text" id="redScore" value="0"></p>
+			<p>
+				<button onclick="addRed(1)">+1</button>
+				<button onclick="addRed(5)">+5</button>
+				<button onclick="addRed(10)">+10</button>
+				<button onclick="addRed(15)">+15</button>
+				<button onclick="addRed(20)">+20</button>
+			</p>
+			<p>
+				<button onclick="addRed(-1)">-1</button>
+				<button onclick="addRed(-5)">-5</button>
+				<button onclick="addRed(-10)">-10</button>
+				<button onclick="addRed(-15)">-15</button>
+				<button onclick="addRed(-20)">-20</button>
+			</p>
+		</div>
+
+	</BODY>
+</HTML>
