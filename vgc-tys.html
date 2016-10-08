@@ -234,12 +234,33 @@
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
 							var filteredChallenges = shuffle(challenges.filter(isNotGenesis));
-							for (var i = 0; i < 3; i++) {
-								var challenge = filteredChallenges[i];
-								$challenge.challenges[i] = challenge;
-								$('#game-'+i).text(challenge.GameTitle);
-								textfit($('#game-'+i));
-							}
+							
+							// disallow duplicate game titles, so keep a separate counter
+							var i=0;
+							
+							// game 1
+							var challenge0 = filteredChallenges[i];
+							$challenge.challenges[i] = challenge0;
+							$('#game-0').text(challenge0.GameTitle);
+							textfit($('#game-0'));
+							
+							// game 2
+							var challenge1;
+							do {
+								challenge1 = filteredChallenges[++i];
+								$challenge.challenges[1] = challenge1;
+								$('#game-1').text(challenge1.GameTitle);
+								textfit($('#game-1'));
+							} while(challenge1.GameTitle == challenge0.GameTitle);
+							
+							// game 3
+							var challenge2;
+							do {
+								challenge2 = filteredChallenges[++i];
+								$challenge.challenges[2] = challenge2;
+								$('#game-2').text(challenge2.GameTitle);
+								textfit($('#game-2'));
+							} while(challenge2.GameTitle == challenge0.GameTitle || challenge2.GameTitle == challenge1.GameTitle);
 						});
 					}
 				}
