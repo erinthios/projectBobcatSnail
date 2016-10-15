@@ -78,7 +78,6 @@
 			
 			#header {
 				width:400px;
-				height:35px;
 				font-size:14px;
 			}
 			#submitter {
@@ -99,6 +98,9 @@
 				width: 302px;
 				font-size: 12px;
 				clear: left;
+			}
+			#details {
+				max-height: 115px;
 			}
 			#footer {
 				width: 302px;
@@ -193,6 +195,21 @@
 				color: pink;
 			}
 
+			.controllerNES {
+				background: url('controllers/nes_2.png');
+			}
+			.controllerSNES {
+				background: url('controllers/snes_2.png');
+			}
+			.controllerGBA {
+				background: url('controllers/gba_2.png');
+			}
+			.controllerN64 {
+				background: url('controllers/64_2.png');
+			}
+			.controllerGEN {
+				background: url('controllers/gen_2.png');
+			}
 		</style>
 	</head>
 	<body background="vgcWall.png">
@@ -228,9 +245,7 @@
 			<!-- selected challenge description -->
 			<div id="description" class="hidden">
 				<div id="header">
-					<div class="info" style="width: 130px; padding-left: 5px;" id="game-name">Game</div>
-					<div class="info header" style="padding-left: 20px;">By: </div>
-					<div class="info" style="padding-left: 5px;" id="submitter"></div>
+					<div class="info" style="width: 297px; padding-left: 5px;" id="game-name">Game</div>
 				</div>
 				<div id="details">
 					<p class="info" style="padding: 5px;"><span id="challenge">C000</span>: <span id="challenge-details">Stuff</span></p>
@@ -238,28 +253,47 @@
 				<div id="footer">
 					<hr>
 
-					<div class="info" style="display: table; width: 292px; margin: 0 5px;">
-						<div style="display: table-cell; width: 45px;">
-							<span id="game-console"></span>
-						</div>
-					
-						<div style="display: table-cell;">
-							<span class="header">Time:</span> <span id="challenge-time-limit">1</span>m
-						</div>
+					<div class="info" style="width: 292px; margin: 0 5px;">
+						<div style="float: left; width: 50px; height: 40px; background-size: auto; background-position: center; background-repeat:no-repeat;" id="game-console"></div>
+						
+						<table style="table-layout: fixed; padding-left: 5px; height: 40px; width: 242px; white-space: nowrap;">
+							<tr>
+								<td style="width: auto; text-overflow: ellipsis; overflow: hidden;">
+									<span class="header">By: </span>
+									<span id="submitter"></span>
+								</td>
+								
+								<td style="width: 79px;">
+									<span class="header">State:</span> <span id="state-slot">None</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="header">Time:</span> <span id="challenge-time-limit">1</span>m
+								</td>
 
-						<div style="display: table-cell;">
-							<span class="header">Difficulty:</span> <span id="difficulty-rating"></span>
-						</div>
-
-						<div style="display: table-cell;">
-							<span class="header">State:</span> <span id="state-slot">None</span>
-						</div>
+								<td>
+									<span class="header">Difficulty:</span> <span id="difficulty-rating"></span>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
+			// based on https://github.com/nbrunt/TextFit
+			// modified to require a max-height
+			function textfit(node) {
+				node[0].style["font-size"] = null;
+				var fs = parseInt(node.css("font-size"), 10);
+				var mh = parseInt(node.css("max-height"), 10);
+				while (node[0].scrollHeight > mh) {
+					node.css("font-size", --fs + "px");
+				}
+			};
+			
 			var isCalled = false;
 			function isNotGenesis(value) {
 				return value.GameConsole.indexOf("Genesis") <= -1;
@@ -297,13 +331,17 @@
 					}
 					$('#description').removeClass('hidden');
 					$('#game-name').text(challenge.GameTitle);
-					$('#game-console').text(challenge.GameConsole);
 					$('#challenge').text(challenge.CKey);
 					$('#submitter').text(challenge.Submitter);
 					$('#challenge-details').text(challenge.ChallengeDetails);
 					$('#challenge-time-limit').text(challenge.ChallengeTimeLimit);
 					$('#difficulty-rating').text(challenge.DifficultyRating);
 					$('#state-slot').text(challenge.StateSlot);
+					
+					var cssClass = 'controller'+challenge.GameConsole;
+					$('#game-console').removeClass().addClass(cssClass);
+					
+					textfit($('#details'));
 				},
 				clearGame: function () {
 					$('#description').addClass('hidden');
