@@ -11,13 +11,22 @@
 				background-color: rgba(0, 0, 0, 0);
 				overflow: hidden;
 			}
+			
+			#frame {
+				background-image: url("controllers/tb box.png");
+				background-size: auto;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 1058px;
+				height: 70px;
+			}
 
 			div .info{
 				color: #dddddd;
 				text-shadow: 2px 2px 2px #000000;
 				display: block;
 				float: left;
-				font-size: 14px;
+				font-size: 13px;
 				font-family: Verdana;
 				height: 20px;
 				padding-top: 2px;
@@ -26,50 +35,89 @@
 
 			#challenge-details {
 				position: absolute;
-				top: 35px;
-				padding: 16px 3px 3px 3px;
+				top: 31px;
+				padding: 16px 5px 3px 5px;
 				height: auto;
-				width: 890px;
-				transform: translateY(-30%);
+				width: 910px;
+				transform: translateY(-40%);
 			}
 
-			#\30-challenge {
+			#challenge {
 				font-weight: bold;
 				position: absolute;
-				left: 25px;
+				right: 5px;
+				bottom: 5px;
+				height: auto;
+				font-size: 10px;
 			}
 			#game-console {
 				font-weight: bold;
 				position: absolute;
-				left: 110px;
+				left: 590px;
 			}
-			#\30-game-name {
+			#game-name {
 				font-weight: bold;
 				position: absolute;
-				left: 180px;
+				left: 5px;
 			}
 			#by-heading {
 				font-weight: bold;
 				position: absolute;
-				left: 640px;
+				left: 664px;
 			}
 			#submitter {
 				position: absolute;
-				left: 670px;
+				left: 690px;
 			}
 			#state-heading {
 				font-weight: bold;
 				position: absolute;
-				left: 840px;
+				left: 838px;
 			}
 			#state-slot {
 				position: absolute;
-				left: 890px;
+				left: 885px;
 			}
 
-			#navContent {
+			#description {
+				position: absolute;
+				top: 11px;
+				left: 80px;
+				width: 913px;
+				height: 63px;
+				background-color: rgba(0, 0, 0, .85);
+				
 				transition-property: opacity;
 				transition-duration: 0.5s;
+			}
+			
+			#controllerA, #controllerB {
+				position: absolute;
+				top: 12px;
+				width: 65px;
+				height: 62px;
+				background-size: cover;
+			}
+			#controllerA {
+				left: 12px;
+			}
+			#controllerB {
+				left: 997px;
+			}
+			.controllerNES {
+				background: url('controllers/nes_controller.png'), linear-gradient(to bottom, red 0%, white 50%, red 100%);
+			}
+			.controllerSNES {
+				background: url('controllers/snes_controller.png'), linear-gradient(to bottom, green 0%, white 50%, green 100%);
+			}
+			.controllerGBA {
+				background: url('controllers/gba_controller.png'), linear-gradient(to bottom, blue 0%, white 50%, blue 100%);
+			}
+			.controllerN64 {
+				background: url('controllers/64_controller.png'), linear-gradient(to bottom, purple 0%, white 50%, purple 100%);
+			}
+			.controllerGEN {
+				background: url('controllers/genesis_controller.png'), linear-gradient(to bottom, orange 0%, white 50%, orange 100%);
 			}
 		</style>
 	</head>
@@ -77,25 +125,23 @@
 		<audio autoplay>
 			<source src="Ding.mp3" type="audio/mpeg">
 		</audio>
-		<div class="spacer"></div>
 
-		<div id="navContent">
-			<div style="width:1280px;">
-				<div style = "width: 70%; height: 65px; display: inline-block; padding-left: 10px; padding-right: 10px; border: thick double #888888;background-color: rgba(0, 0, 0, .85);">
+		<div id="frame">
+			<div id="controllerA"></div>
+			<div id="description">
+				<div class="info" id="challenge">TB#</div>
+				<div class="info" id="game-console"></div>
+				<div class="info" id="game-name">Game</div>
 
-					<div class="info" id="0-challenge">TB#</div>
-					<div class="info" id="game-console"></div>
-					<div class="info" id="0-game-name">Game</div>
+				<div class="info" id="by-heading">By: </div>
+				<div class="info" id="submitter">Name</div>
 
-					<div class="info" id="by-heading">By: </div>
-					<div class="info" id="submitter">Name</div>
+				<div class="info" id="state-heading">State: </div>
+				<div class="info" id="state-slot">None</div>				
 
-					<div class="info" id="state-heading">State: </div>
-					<div class="info" id="state-slot">None</div>				
-
-					<div class="info" id="challenge-details">Stuff</div>
-				</div>
+				<div class="info" id="challenge-details">Stuff</div>
 			</div>
+			<div id="controllerB"></div>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -126,17 +172,18 @@
 							var challenges = JSON.parse(response);
 							var filteredChallenges = challenges.filter(isNotGenesis);
 							filteredChallenges = filteredChallenges.filter(isSaveState);
-							// $('#navContent')
-							for (var i = 0; i < 1; i++) {
-								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-								$('#' + i + '-game-name').text(challenge.GameTitle);
-								$('#' + i).text(challenge.GameTitle);
-								$('#' + i + '-challenge').text(challenge.TBKey);
-								$('#game-console').text(challenge.GameConsole);
-								$('#submitter').text(challenge.Submitter);
-								$('#challenge-details').text(challenge.ChallengeDetails);
-								$('#state-slot').text(challenge.Stateslot);
-							}
+
+							var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+							$('#game-name').text(challenge.GameTitle);
+							$('#challenge').text(challenge.TBKey);
+							$('#game-console').text(challenge.GameConsole);
+							$('#submitter').text(challenge.Submitter);
+							$('#challenge-details').text(challenge.ChallengeDetails);
+							$('#state-slot').text(challenge.Stateslot);
+							
+							var cssClass = 'controller'+challenge.GameConsole;
+							$('#controllerA').addClass(cssClass);
+							$('#controllerB').addClass(cssClass);
 						});
 					}
 				}
