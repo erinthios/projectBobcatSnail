@@ -101,6 +101,7 @@
 				clear: left;
 			}
 			#footer {
+				width: 302px;
 				position: absolute;
 				bottom: 2px;
 				left: 0px;
@@ -173,7 +174,7 @@
 				float: left;
 			}
 			.info{
-				color: #b7e4ec;
+				color: white;
 				font-weight: bold;
 				font-family: Verdana;
 			}
@@ -183,6 +184,13 @@
 			
 			hr {
 				margin: 5px;
+			}
+			
+			#game-name {
+				color: magenta;
+			}
+			.header {
+				color: pink;
 			}
 
 		</style>
@@ -221,7 +229,7 @@
 			<div id="description" class="hidden">
 				<div id="header">
 					<div class="info" style="width: 130px; padding-left: 5px;" id="game-name">Game</div>
-					<div class="info" style="padding-left: 20px;">By: </div>
+					<div class="info header" style="padding-left: 20px;">By: </div>
 					<div class="info" style="padding-left: 5px;" id="submitter"></div>
 				</div>
 				<div id="details">
@@ -230,14 +238,23 @@
 				<div id="footer">
 					<hr>
 
-					<p class="info"><span style="padding-left: 18px;">Time: </span>
-					<span id="challenge-time-limit">1</span>m
+					<div class="info" style="display: table; width: 292px; margin: 0 5px;">
+						<div style="display: table-cell; width: 45px;">
+							<span id="game-console"></span>
+						</div>
+					
+						<div style="display: table-cell;">
+							<span class="header">Time:</span> <span id="challenge-time-limit">1</span>m
+						</div>
 
-					<span style="padding-left: 15px;">Difficulty: </span>
-					<span id="difficulty-rating"></span>
+						<div style="display: table-cell;">
+							<span class="header">Difficulty:</span> <span id="difficulty-rating"></span>
+						</div>
 
-					<span style="padding-left: 15px;">State: </span>
-					<span id="state-slot">None</span></p>
+						<div style="display: table-cell;">
+							<span class="header">State:</span> <span id="state-slot">None</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -280,6 +297,7 @@
 					}
 					$('#description').removeClass('hidden');
 					$('#game-name').text(challenge.GameTitle);
+					$('#game-console').text(challenge.GameConsole);
 					$('#challenge').text(challenge.CKey);
 					$('#submitter').text(challenge.Submitter);
 					$('#challenge-details').text(challenge.ChallengeDetails);
