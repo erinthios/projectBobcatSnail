@@ -21,16 +21,22 @@
 				height: 70px;
 			}
 
-			div .info{
+			#description {
 				color: #dddddd;
 				text-shadow: 2px 2px 2px #000000;
-				display: block;
-				float: left;
 				font-size: 13px;
 				font-family: Verdana;
 				height: 20px;
 				padding-top: 2px;
 				background-color: rgba(0, 0, 0, .0);
+			}
+			#header {
+				display: table;
+				width: 903px;
+				padding: 0px 5px;
+			}
+			#header > div {
+				display: table-cell;
 			}
 
 			#challenge-details {
@@ -44,42 +50,33 @@
 
 			#challenge {
 				font-weight: bold;
-				position: absolute;
-				right: 5px;
-				bottom: 5px;
-				height: auto;
-				font-size: 10px;
+				padding-left: 15px;
 			}
 			#game-console {
 				font-weight: bold;
-				position: absolute;
-				left: 590px;
+				padding-left: 15px;
 			}
 			#game-name {
 				font-weight: bold;
-				position: absolute;
-				left: 5px;
 				color: magenta;
+				width: 100%;
 			}
 			#by-heading {
 				font-weight: bold;
-				position: absolute;
-				left: 664px;
 				color: pink;
+				padding-left: 15px;
 			}
 			#submitter {
-				position: absolute;
-				left: 690px;
+				padding-left: 5px;
+				white-space: nowrap;
 			}
 			#state-heading {
 				font-weight: bold;
-				position: absolute;
-				left: 838px;
 				color: pink;
+				padding-left: 15px;
 			}
 			#state-slot {
-				position: absolute;
-				left: 885px;
+				padding-left: 5px;
 			}
 
 			#description {
@@ -132,17 +129,19 @@
 		<div id="frame">
 			<div id="controllerA"></div>
 			<div id="description">
-				<div class="info" id="challenge">TB#</div>
-				<div class="info" id="game-console"></div>
-				<div class="info" id="game-name">Game</div>
+				<div id="header">
+					<div id="game-name">Game</div>
 
-				<div class="info" id="by-heading">By: </div>
-				<div class="info" id="submitter">Name</div>
+					<div id="game-console"></div>
+					<div id="challenge">TB#</div>
 
-				<div class="info" id="state-heading">State: </div>
-				<div class="info" id="state-slot">None</div>				
+					<div id="by-heading">By: </div>
+					<div id="submitter">Name</div>
 
-				<div class="info" id="challenge-details">Stuff</div>
+					<div id="state-heading">State: </div>
+					<div id="state-slot">None</div>				
+				</div>
+				<div id="challenge-details">Stuff</div>
 			</div>
 			<div id="controllerB"></div>
 		</div>
