@@ -1,4 +1,5 @@
-﻿// sound pool names
+
+// sound pool names
 var goodSoundPool = "Good";
 var bigGoodSoundPool = "BigGood";
 var finishSoundPool = "Finish";
@@ -59,7 +60,15 @@ soundPools[goodSoundPool] = [
 	"sounds/Good19.ogg",
 	"sounds/Good20.ogg",
 	"sounds/Good21 Zelda Recorder.ogg",
-	"sounds/Good22 ctbell.ogg"
+	"sounds/Good22 ctbell.ogg",
+	"sounds/oct1 - Crowd Clapping.ogg",
+	"sounds/oct1 - F-Zero start.ogg",
+	"sounds/oct1 - GenericFanfare.ogg",
+	"sounds/oct1 - jellyboy.ogg",
+	"sounds/oct1 - Wonderful Ding.ogg",
+	"sounds/oct3 - duck hunt got ducks.ogg",
+	"sounds/oct3 - duck hunt start.ogg"
+	
 ];
 soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood1.ogg",
@@ -84,7 +93,19 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood20.ogg",
 	"sounds/BigGood21 Zelda Fanfare 2.ogg",
 	"sounds/BigGood22 Zelda Fanfare.ogg",
-	"sounds/BigGood23 MegaMan4.ogg"
+	"sounds/BigGood23 MegaMan4.ogg",
+	"sounds/oct1 - Contra 3 Pattern Clear.ogg",
+	"sounds/oct1 - FF3 Item Get.ogg",
+	"sounds/oct1 - Suikoden 2 victory.ogg",
+	"sounds/oct1 - Suikoden Fanfare.ogg",
+	"sounds/oct1 - Super C Game Over.ogg",
+	"sounds/oct1 - Super C Win.ogg",
+	"sounds/oct1 - wild arms ac clear.ogg",
+	"sounds/oct1 - FF3 Piano Practice.ogg",
+	"sounds/oct3 - duck hunt round clear.ogg",
+	"sounds/oct3 - duck hunt title.ogg"
+
+
 	
 ];
 soundPools[finishSoundPool] = [
@@ -116,11 +137,26 @@ soundPools[emptySoundPool] = [
 "sounds/MM3 Protowhistle.ogg",
 "sounds/nothing-Bubsy-hair.ogg",
 "sounds/ctlavosscream.ogg",
-"sounds/Bubsy Dies.ogg"
+"sounds/Bubsy Dies.ogg",
+"sounds/oct1 - BK2000 GiveMeYourMoney.ogg",
+"sounds/oct1 - BK2000 I am the Black Knight.ogg",
+"sounds/oct1 - Kefka.ogg",
+"sounds/oct1 - Mario Fantastic.ogg",
+"sounds/oct1 - Mario Good Player.ogg",
+"sounds/oct1 - Suikoden nope.ogg",
+"sounds/oct1 - duckhunt laugh.ogg",
+"sounds/oct3 - duck hunt failed.ogg"
+
+
 
 ];
 soundPools[testYourSmiteSoundPool] = [
-	"sounds/Test_Your_Smite.ogg"
+	"sounds/Test_Your_Smite_madi.ogg",
+	"sounds/Test_Your_Smite_cats1.ogg",
+	"sounds/Test_Your_Smite_cats2.ogg",
+	"sounds/Test_Your_Smite_cats3.ogg",
+	"sounds/Test_Your_Smite_psych.ogg",
+	"sounds/Test_Your_Smite_FF.ogg"
 ];
 
 /* dummy "prize" images */
@@ -224,29 +260,29 @@ var dummyPrizeImages = [
 	"images/unlit-bomb.png",
 	"images/wolf-howl.png",
 	"images/yv.png",
-/*Game icons added Sept 17*/
-"images/gi-astro.png",
-"images/gi-batteries.png",
-"images/gi-comet.png",
-"images/gi-dragon.png",
-"images/gi-ghost.png",
-"images/gi-golly.png",
-"images/gi-goshrock.png",
-"images/gi-jaws.png",
-"images/gi-lamp.png",
-"images/gi-loco.png",
-"images/gi-meteor.png",
-"images/gi-potion.png",
-"images/gi-potion2.png",
-"images/gi-rocket.png",
-"images/gi-rocket2.png",
-"images/gi-scroll.png",
-"images/gi-stomp.png",
-"images/gi-twister.png",
-"images/gi-viking.png",
-"images/gi-yell.png",
-"images/gi-zeppelin.png"
-];
+	/*Game icons added Sept 17*/
+	"images/gi-astro.png",
+	"images/gi-batteries.png",
+	"images/gi-comet.png",
+	"images/gi-dragon.png",
+	"images/gi-ghost.png",
+	"images/gi-golly.png",
+	"images/gi-goshrock.png",
+	"images/gi-jaws.png",
+	"images/gi-lamp.png",
+	"images/gi-loco.png",
+	"images/gi-meteor.png",
+	"images/gi-potion.png",
+	"images/gi-potion2.png",
+	"images/gi-rocket.png",
+	"images/gi-rocket2.png",
+	"images/gi-scroll.png",
+	"images/gi-stomp.png",
+	"images/gi-twister.png",
+	"images/gi-viking.png",
+	"images/gi-yell.png",
+	"images/gi-zeppelin.png"
+	];
 
 
 /* Indices the goal square is allowed to be at (if placing immediately), with 0 in the upper left and moving right, then down. */
@@ -279,7 +315,9 @@ var mapSets = [
 	{ map: "images/map 3 ocean madi.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 4 japan madi.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 5 space madi.gif", marker: "images/map snail in space.gif" },
-	{ map: "images/map 6 egypt staghorn.gif", marker: "images/map snail.gif" }
+	{ map: "images/map 6 egypt staghorn.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 7 sky madi.gif", marker: "images/map snail in plane.gif" },
+	{ map: "images/map 8 city madi.gif", marker: "images/map snail.gif" }
 ];
 
 
