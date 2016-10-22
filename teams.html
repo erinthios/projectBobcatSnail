@@ -95,7 +95,7 @@
 			#yellowManagement, #redManagement {
 				padding: 0 10px;
 				position: absolute;
-				top: 160px;
+				top: 220px;
 			}
 			#yellowManagement {
 				left: 10px;
@@ -105,6 +105,36 @@
 				left: 350px;
 				background-color: palevioletred;
 			}
+			
+			#wagerManagement, #wagerDisplay {
+				padding: 0 10px;
+				position: absolute;
+				top: 160px;
+			}
+			#wagerManagement {
+				left: 10px;
+				background-color: darkseagreen;
+			}
+			#wager {
+				width: 50px;
+			}
+			#wagerDisplay {
+				left: 200px;
+				background-color: black;
+				color: white;
+				
+				font-size: 30px;
+				width: 60px;
+				text-align: center;
+				font-family: Arimo, monospace;
+				font-weight: bold;
+			}
+			#wg {
+				background: linear-gradient(to bottom, white 20%, #3399ff 80%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			
 
 			/* style overrides for odometer-theme-train-station.css */
 
@@ -153,6 +183,7 @@
 					$('#rt').text($('#redTeamName')[0].value);
 					$('#rm').text($('#redMember1')[0].value + ' & ' + $('#redMember2')[0].value);
 					$('#rs').text($('#redScore')[0].value);
+					$('#wg').text($('#wager')[0].value);
 
 					if ($('#yellowScore')[0].value[0] == '-')
 					{
@@ -245,6 +276,11 @@
 				<button onclick="addRed(-20)">-20</button>
 			</p>
 		</div>
+		
+		<div id="wagerManagement">
+			<p>Wager: <input type="text" id="wager" value="20"></p>
+		</div>
+		<div id="wagerDisplay"><div id="wg"></div></div>
 
 	</BODY>
 </HTML>
