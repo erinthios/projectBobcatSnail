@@ -513,8 +513,31 @@
 								var newLine = Chat.vars.queue.pop();
 								$('#chat_box').append(newLine);
 								var newNode = $('#chat_box .chat_line').eq(-1);
-								var posx = (Math.random() * ($('#chat_box').width() - newNode.width() - xpadding)).toFixed();
-								var posy = (Math.random() * ($('#chat_box').height() - newNode.height() - ypadding)).toFixed();
+								
+								// determine message position
+								var posx = 0;
+								var posy = 0;
+								var collide = function (el1, el2) {
+									var rect1 = el1.getBoundingClientRect();
+									var rect2 = el2.getBoundingClientRect();
+
+									return !(
+									  rect1.top > rect2.bottom ||
+									  rect1.right < rect2.left ||
+									  rect1.bottom < rect2.top ||
+									  rect1.left > rect2.right
+									);
+								};
+								do {
+									posx = (Math.random() * ($('#chat_box').width() - newNode.width() - xpadding)).toFixed();
+									posy = (Math.random() * ($('#chat_box').height() - newNode.height() - ypadding)).toFixed();
+									newNode.css({
+										'position': 'absolute',
+										'left': posx+'px',
+										'top': posy+'px'
+									});
+								} while (collide(newNode[0], $('#no_chat_box')[0]))
+								
 								newNode.css({
 									'position': 'absolute',
 									'left': posx+'px',
@@ -714,6 +737,13 @@
 				width: 1280px !important;
 				height: 200px !important;
 			}
+			#no_chat_box {
+				position: absolute;
+				top: 72px;
+				left: 312px;
+				width: 648px;
+				height: 128px;
+			}
 
 			.chat_line {
 				font-size: 13px;
@@ -747,5 +777,6 @@
     </head>
     <body>
         <div id="chat_box"></div>
+		<div id="no_chat_box"></div>
     </body>
 </html>
