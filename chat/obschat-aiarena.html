@@ -301,6 +301,12 @@
                     } else {
                         $('#chat_box').css('height', 'calc(100% - 10px)');
                     }
+					
+					// !!!!! added for ArcadePit !!!!!
+					if (Chat.vars.randomizePlacement)
+					{
+						$('#chat_box').addClass('randomize');
+					}
 
                     Chat.loadEmotes(function() {
                         Chat.loadSubscriberBadge(function() {
@@ -523,53 +529,59 @@
                 vars: {
                     queue: [],
                     maxDisplayTime: getParameterByName('fade') === 'true' ? 30 : parseInt(getParameterByName('fade')),
+                    randomizePlacement: getParameterByName('randomize') === 'true' ? true : false,
                     queueTimer: setInterval(function() {
                         if(Chat.vars.queue.length > 0) {
 							// !!!!! modified for ArcadePit !!!!!
-                            //var newLines = Chat.vars.queue.join('');
-                            //Chat.vars.queue = [];
-                            //$('#chat_box').append(newLines);
-							
-							// !!!!! added for ArcadePit !!!!!
-							var xpadding = 14;
-							var ypadding = 8;
-							while (Chat.vars.queue.length > 0)
+							if (!Chat.vars.randomizePlacement)
 							{
-								var newLine = Chat.vars.queue.pop();
-								$('#chat_box').append(newLine);
-								var newNode = $('#chat_box .chat_line').eq(-1);
-								
-								// determine message position
-								var posx = 0;
-								var posy = 0;
-								var collide = function (el1, el2) {
-									var rect1 = el1.getBoundingClientRect();
-									var rect2 = el2.getBoundingClientRect();
+								var newLines = Chat.vars.queue.join('');
+								Chat.vars.queue = [];
+								$('#chat_box').append(newLines);
+							}
+							// !!!!! added for ArcadePit !!!!!
+							else
+							{
+								var xpadding = 24;	// sum of all left/right margin/padding values
+								var ypadding = 18;	// sum of all top/bottom margin/padding values
+								while (Chat.vars.queue.length > 0)
+								{
+									var newLine = Chat.vars.queue.pop();
+									$('#chat_box').append(newLine);
+									var newNode = $('#chat_box .chat_line').eq(-1);
 
-									return !(
-									  rect1.top > rect2.bottom ||
-									  rect1.right < rect2.left ||
-									  rect1.bottom < rect2.top ||
-									  rect1.left > rect2.right
-									);
-								};
-								do {
-									posx = (Math.random() * ($('#chat_box').width() - newNode.width() - xpadding)).toFixed();
-									posy = (Math.random() * ($('#chat_box').height() - newNode.height() - ypadding)).toFixed();
+									// determine message position
+									var posx = 0;
+									var posy = 0;
+									var collide = function (el1, el2) {
+										var rect1 = el1.getBoundingClientRect();
+										var rect2 = el2.getBoundingClientRect();
+
+										return !(
+										  rect1.top > rect2.bottom ||
+										  rect1.right < rect2.left ||
+										  rect1.bottom < rect2.top ||
+										  rect1.left > rect2.right
+										);
+									};
+									do {
+										posx = (Math.random() * ($('#chat_box').width() - newNode.width() - xpadding)).toFixed();
+										posy = (Math.random() * ($('#chat_box').height() - newNode.height() - ypadding)).toFixed();
+										newNode.css({
+											'position': 'absolute',
+											'left': posx+'px',
+											'top': posy+'px'
+										});
+									} while (collide(newNode[0], $('#no_chat_box')[0]))
+
 									newNode.css({
 										'position': 'absolute',
 										'left': posx+'px',
-										'top': posy+'px'
+										'top': posy+'px',
+										'display': 'none'
 									});
-								} while (collide(newNode[0], $('#no_chat_box')[0]))
-								
-								newNode.css({
-									'position': 'absolute',
-									'left': posx+'px',
-									'top': posy+'px',
-									'display': 'none'
-								});
-								newNode.fadeIn();
+									newNode.fadeIn();
+								}
 							}
 							// !!!!! end addition for ArcadePit !!!!!
 
@@ -761,6 +773,7 @@
 			#chat_box {
 				width: 1280px !important;
 				height: 200px !important;
+				background-color: transparent !important;
 			}
 			#no_chat_box {
 				position: absolute;
@@ -774,15 +787,20 @@
 				font-size: 13px;
 				line-height: 13px;
 				/*opacity: .8 !important;*/
+				font-weight: bold;
+				
+				border: 2px solid black;
+				border-radius: 8px;
+				background-color: white;
+				padding: 8px;
+				
+				width: max-content;	/* 'auto' doesn't seem to work as expected here */
+			}
+			#chat_box.randomize .chat_line {
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: auto;
-				
-				border: 1px solid black;
-				border-radius: 3px;
-				background-color: white;
-				padding: 3px
 			}
 			.chat_line .nick {
 				font-weight: bold;
