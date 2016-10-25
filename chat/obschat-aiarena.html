@@ -72,6 +72,25 @@
                 escape: function(message) {
                     return message.replace(/</g,'&lt;').replace(/>/g, '&gt;');
                 },
+				// !!!!! added for ArcadePit !!!!!
+                bitsTemplate: function(str, count, offset, s) {
+					if (parseInt(count) < 1)
+					{
+						return 'cheer' + count;
+					}
+					var id;
+					if (parseInt(count) < 100)
+					{ id = 'gray'; }
+					else if (parseInt(count) < 1000)
+					{ id = 'purple'; }
+					else if (parseInt(count) < 5000)
+					{ id = 'green'; }
+					else if (parseInt(count) < 10000)
+					{ id = 'blue'; }
+					else
+					{ id = 'red'; }
+                    return '<img class="emoticon" src="//static-cdn.jtvnw.net/bits/light/animated/' + id + '/1" srcset="//static-cdn.jtvnw.net/bits/light/animated/' + id + '/2 2x" /><b>'+count+'</b>';
+                },
                 extraEmoteTemplate: function(emote) {
                     return '<img class="emoticon ' + emote.source + '-emo-' + emote.id + '" src="' + emote['1x'] + '" srcset="' + emote['2x'] + ' 2x" />';
                 },
@@ -119,6 +138,10 @@
                     tokenizedMessage.unshift(punycode.ucs2.encode(message));
 
                     return tokenizedMessage;
+                },
+				// !!!!! added for ArcadePit !!!!!
+                emoticonizeBits: function(message) {
+                    return message.replace(/\bcheer([0-9]+)\b/g, Chat.bitsTemplate);
                 },
                 extraEmoticonize: function(sender, message, emote) {
                     if(emote.restrictions) {
@@ -256,6 +279,8 @@
                     }
 
                     message = tokenizedMessage.join(' ');
+					// !!!!! added for ArcadePit !!!!!!
+					message = Chat.emoticonizeBits(message);
 
                     $formattedMessage.html(message);
                     $newLine.append($formattedMessage);
