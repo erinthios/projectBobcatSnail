@@ -1,0 +1,26 @@
+{
+	"questions" : [
+		{
+			"questionGame": "Super Mario (series)",
+			"questionNo": "Q273: Submitted by: ???",
+			"question": "What color is Mario's hat?",
+			"smiteQuestion": "What is the color of Mario's hat?",
+			"answerA": "Red",
+			"answerB": "Blue",
+			"answerC": "Black",
+			"answerD": "Yellow",
+			"playerAnswer": "Blue?"
+		},
+		{
+			"questionGame": "Donkey Kong (series)",
+			"questionNo": "Q101: Submitted by: ???",
+			"question": "What is Donkey's last name?",
+			"smiteQuestion": "What is Donkey's last name?",
+			"answerA": "Kong",
+			"answerB": "Smith",
+			"answerC": "Jones",
+			"answerD": "Mario",
+			"playerAnswer": "Mario?"
+		}
+	]
+}
