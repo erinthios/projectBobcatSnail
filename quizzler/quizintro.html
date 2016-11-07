@@ -18,13 +18,16 @@
 				width: 560px;
 			}
 			#questionGame {
-				top: 45px;
+				top: 25px;
 			}
 			#questionNo {
-				top: 118px;
+				top: 98px;
 			}
 			#question {
-				top: 190px;
+				top: 170px;
+			}
+			#questionGame.slide, #questionNo.slide, #question.slide {
+				left: 1394px;
 			}
 			
 			#answerA, #answerB, #answerC, #answerD {
@@ -51,6 +54,9 @@
 			#answerD {
 				top: 516px;
 			}
+			#answerA.slide, #answerB.slide, #answerC.slide, #answerD.slide {
+				left: 1444px;
+			}
 			
 			#smiteQuestion {
 				position: absolute;
@@ -59,7 +65,7 @@
 				height: 160px;
 				width: 248px;
 				
-				font-size: 43px;
+				font-size: 36px;
 				font-family: Calibri;
 			}
 			
@@ -73,6 +79,13 @@
 				
 				font-size: 43px;
 				font-family: Calibri;
+			}
+			#playerAnswer.slide {
+				left: 1572px;
+			}
+			
+			.slide {
+				transition: left 5s linear;
 			}
 			
 			/* temp backgrounds */
@@ -120,37 +133,38 @@
 			}
 			function setQuestion(question)
 			{
-				$('#questionGame').text(question.questionGame);
-				$('#questionNo').text(question.questionNo);
-				$('#question').text(question.question);
-				
 				// Smite asks the question
-				typeText($('#smiteQuestion'), question.smiteQuestion, 2000);
+				setTimeout(function(){typeText($('#smiteQuestion'), question.smiteQuestion, 2000);}, 500);
+ 
+				// hide Smite text
+				setTimeout(function(){$('#smiteQuestion').text('');}, 3350);
+				
+				// question shown
+				setTimeout(function(){
+					$('#questionGame').text(question.questionGame);
+					$('#questionNo').text(question.questionNo);
+					$('#question').text(question.question);
+				}, 4000);
 				
 				// answers shown
-				setTimeout(function(){typeText($('#answerA'), question.answerA, 50);}, 2600);
-				setTimeout(function(){typeText($('#answerB'), question.answerB, 50);}, 3100);
-				setTimeout(function(){typeText($('#answerC'), question.answerC, 50);}, 3600);
-				setTimeout(function(){typeText($('#answerD'), question.answerD, 50);}, 4100);
+				setTimeout(function(){typeText($('#answerA'), question.answerA, 50);}, 4250);
+				setTimeout(function(){typeText($('#answerB'), question.answerB, 50);}, 4850);
+				setTimeout(function(){typeText($('#answerC'), question.answerC, 50);}, 5450);
+				setTimeout(function(){typeText($('#answerD'), question.answerD, 50);}, 6050);
 				
 				// player guesses
-				setTimeout(function(){typeText($('#playerAnswer'), question.playerAnswer, 500);}, 5000);
+				setTimeout(function(){typeText($('#playerAnswer'), question.playerAnswer, 500);}, 7100);
 				
-				// TODO: hide question bubble
-				setTimeout(function(){$('#smiteQuestion').text('');}, 5600);
-				
-				// TODO: hide answer bubble
-				setTimeout(function(){$('#playerAnswer').text('');}, 6500);
-				
-				// clear all text
-				var finalClearTimeout = 7500;
-				setTimeout(function(){$('#questionGame').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#questionNo').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#question').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#answerA').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#answerB').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#answerC').text('');}, finalClearTimeout);
-				setTimeout(function(){$('#answerD').text('');}, finalClearTimeout);
+				// slide all text
+				var finalClearTimeout = 8100;
+				setTimeout(function(){$('#playerAnswer').addClass('slide');}, 8100);
+				setTimeout(function(){$('#questionGame').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#questionNo').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#question').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#answerA').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#answerB').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#answerC').addClass('slide');}, finalClearTimeout);
+				setTimeout(function(){$('#answerD').addClass('slide');}, finalClearTimeout);
 			}
 			window.onload = function () {
 				init("quizintro.json");
