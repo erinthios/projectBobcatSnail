@@ -771,9 +771,11 @@
 			}
 			
 			#chat_box {
+				background-color: transparent !important;
+			}
+			#chat_box.randomize {
 				width: 1280px !important;
 				height: 200px !important;
-				background-color: transparent !important;
 			}
 			#no_chat_box {
 				position: absolute;
@@ -795,6 +797,7 @@
 				padding: 8px;
 				
 				width: max-content;	/* 'auto' doesn't seem to work as expected here */
+				max-width: calc(100% - 24px);
 			}
 			#chat_box.randomize .chat_line {
 				position: absolute;
