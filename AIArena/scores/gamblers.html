@@ -64,6 +64,7 @@
 							var stats = juser[name];
 							
 							var user = {
+								id: i+1,
 								name: name,
 								balance: stats[0],
 								level: stats[1],
@@ -81,49 +82,30 @@
 				},
 				updateTable: function () {
 					$('#tb').empty();
+					var contents = "";
 					for (var i=0; i<$leaderboard.users.length; ++i)
 					{
 						var user = $leaderboard.users[i];
 						var name = user.name;
 
-						var row = document.createElement("tr");
-
-						var cell;
-
-						cell = document.createElement("td");
-						cell.innerHTML = name;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.balance;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.level;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.numBets;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.numWins;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.numLosses;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.numDraws;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = user.numBegs;
-						row.appendChild(cell);
-
-						$('#tb').append(row);
+						contents += "<tr>"+
+						"<td>"+user.id+"</td>"+
+						"<td>"+name+"</td>"+
+						"<td>"+user.balance+"</td>"+
+						"<td>"+user.level+"</td>"+
+						"<td>"+user.numBets+"</td>"+
+						"<td>"+user.numWins+"</td>"+
+						"<td>"+user.numLosses+"</td>"+
+						"<td>"+user.numDraws+"</td>"+
+						"<td>"+user.numBegs+"</td>"+
+						"</tr>";
 					}
+					$('#tb').html(contents);
+				
+					// make table sortable
+					$('#leaderboard').tablesorter({ widgets: ['zebra'], debug: true });
+					$('#leaderboard').trigger("update");
+					$('#leaderboard').trigger("sorton",[[[2,1]]]);
 				}
 			};
 
@@ -144,67 +126,79 @@
 					$history.loadJSON(path, function (response) {
 						var json = JSON.parse(response);
 						var jgambles = json.gambles;
+						var id=0;
 						
 						for (var i=0; i<jgambles.length; ++i)
 						{
 							var jgamble = jgambles[i];
 							
 							var gamble = {
+								id: ++id,
 								startTime: new Date(jgamble[0] * 1000),
 								endTime: new Date(jgamble[1] * 1000),
+								type: "Main",
 								maxBet: jgamble[2],
 								choices: jgamble[3],
 								totalBet: jgamble[4],
 								numBets: jgamble[5],
 								winChoice: jgamble[6],
-								bets: jgamble[7]
+								multiplier: jgamble[7],
+								bets: jgamble[8]
 							};
 							
 							$history.gambles.push(gamble);
+							
+							// sidebets
+							for (var j=0; j<jgamble[9].length; ++j)
+							{
+								var jgamble2 = jgamble[9][j];
+								
+								var gamble2 = {
+									id: ++id,
+									startTime: new Date(jgamble2[0] * 1000),
+									endTime: new Date(jgamble2[1] * 1000),
+									type: "Side",
+									maxBet: jgamble2[2],
+									choices: jgamble2[4],
+									totalBet: jgamble2[5],
+									numBets: jgamble2[6],
+									winChoice: jgamble2[7],
+									multiplier: jgamble2[8],
+									bets: jgamble2[9]
+								};
+								
+								$history.gambles.push(gamble2);
+							}
 						}
 						$history.updateTable();
 					});
 				},
 				updateTable: function () {
 					$('#tb2').empty();
+					var contents = "";
 					for (var i=0; i<$history.gambles.length; ++i)
 					{
 						var gamble = $history.gambles[i];
 
-						var row = document.createElement("tr");
-
-						var cell;
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.startTime.toLocaleString();
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.endTime.toLocaleString();
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.maxBet;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.choices;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.totalBet;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.numBets;
-						row.appendChild(cell);
-
-						cell = document.createElement("td");
-						cell.innerHTML = gamble.winChoice;
-						row.appendChild(cell);
-
-						$('#tb2').append(row);
+						contents += "<tr>"+
+						"<td>"+gamble.id+"</td>"+
+						"<td>"+gamble.startTime.toLocaleString()+"</td>"+
+						"<td>"+gamble.endTime.toLocaleString()+"</td>"+
+						"<td>"+gamble.type+"</td>"+
+						"<td>"+gamble.maxBet+"</td>"+
+						"<td>"+gamble.choices+"</td>"+
+						"<td>"+gamble.totalBet+"</td>"+
+						"<td>"+gamble.numBets+"</td>"+
+						"<td>"+gamble.winChoice+"</td>"+
+						"<td>"+gamble.multiplier+"</td>"+
+						"</tr>";
 					}
+					$('#tb2').html(contents);
+					
+					// make table sortable
+					$('#gambles').tablesorter({ widgets: ['zebra'], debug: true });
+					$('#gambles').trigger("update");
+					$('#gambles').trigger("sorton",[[[1,1]]]);
 				}
 			};
 			
@@ -226,19 +220,9 @@
 				$leaderboard.load('leaderboard.json');
 				$history.load('gambles.json');
 				
-				$('#leaderboard').tablesorter({ widgets: ['zebra'], debug: true });
-				$('#gambles').tablesorter({ widgets: ['zebra'], debug: true });
-				$('#leaderboard').trigger("update");
-				$('#leaderboard').trigger("sorton",[[[1,0]]]);
-				$('#gambles').trigger("update");
-				$('#gambles').trigger("sorton",[[[0,1]]]);
-				
-				showLeaderboard();
+				// show leaderboard after short timeout (to let zebra styling work)
+				setTimeout(function(){showLeaderboard();}, 200);
 			};
-			$(document).ready(function() 
-				{ 
-				} 
-			);
 		</script>
 	</head>
 	<body>
@@ -249,6 +233,7 @@
 		<table id="leaderboard" class="tablesorter">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Name</th>
 					<th>Smackers</th>
 					<th>Level</th>
@@ -275,17 +260,22 @@
 		<table id="gambles" class="tablesorter">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Start</th>
 					<th>End</th>
+					<th>Type</th>
 					<th>Max bet</th>
 					<th>Choices</th>
 					<th>Smackers bet</th>
 					<th># bets</th>
 					<th>Winning choice</th>
+					<th>Multiplier</th>
 				</tr>
 			</thead>
 			<tbody id="tb2">
 				<tr>
+					<td></td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
