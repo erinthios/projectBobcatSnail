@@ -1,0 +1,19 @@
+{
+	"isActive": true,
+	"name": "Main bet",
+	"multiplier": 1,
+	"maxBet": 10000,
+	"options":
+			[
+				{
+					"name": "luigi",
+					"numBets": 1,
+					"total": 200
+				},
+				{
+					"name": "mario",
+					"numBets": 0,
+					"total": 0
+				}
+			]
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bet Info</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<style type="text/css">
+			.hidden {
+				display: none;
+			}
+			
+			#bet, #sidebet {
+				min-width: 250px;
+				width: max-content;
+				max-width: 450px;
+				border: 1px solid black;
+				margin: 5px 0;
+				
+				font-family: Verdana;
+				font-size: 15px;
+				
+				background-color: rgba(0, 0, 0, .85);
+				color: white;
+			}
+			
+			p {
+				margin: 5px;
+			}
+			
+			ul.options {
+				padding: 0;
+				margin: 5px;
+				list-style: none;
+			}
+			
+			.title {
+				color: magenta;
+			}
+			
+			.name {
+				color: pink;
+			}
+		</style>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			$betinfo = {
+				betinfo: [],
+				sidebetinfo: [],
+				infoToHtml: function (arg) {
+					return '<span class="name">'+arg.name+'</span> ('+arg.numBets+(arg.numBets != 1 ? ' bets' : ' bet')+', '+arg.total+(arg.total != 1 ? ' smackers' : ' smacker')+')';
+				},
+				loadJSON: function (path, callback) {
+					var xobj = new XMLHttpRequest();
+					xobj.overrideMimeType("application/json");
+					xobj.open('GET', path, true);
+					xobj.onreadystatechange = function () {
+						if (xobj.readyState == 4 && xobj.status == "200") {
+							callback(xobj.responseText);
+						}
+					};
+					xobj.send(null);
+				},
+				load: function (betPath, sidebetPath) {
+					$betinfo.loadJSON(betPath, function (response) {
+						$betinfo.betinfo = JSON.parse(response);
+						$betinfo.updateBetInfo();
+					});
+					$betinfo.loadJSON(sidebetPath, function (response) {
+						$betinfo.sidebetinfo = JSON.parse(response);
+						$betinfo.updateSidebetInfo();
+					});
+				},
+				updateBetInfo: function () {
+					if (!$betinfo.betinfo || !$betinfo.betinfo.isActive) {
+						$('#bet').addClass('hidden');
+						return;
+					}
+					$('#bet').removeClass('hidden');
+					
+					$('#bet .type').html($betinfo.betinfo.name);
+					$('#bet .multiplier').html($betinfo.betinfo.multiplier);
+					$('#bet .maxBet').html($betinfo.betinfo.maxBet);
+					$('#bet .options').html('<li>'+$betinfo.betinfo.options
+					.map($betinfo.infoToHtml)
+					.join('</li><li>')+'</li>');
+				},
+				updateSidebetInfo: function () {
+					if (!$betinfo.sidebetinfo || !$betinfo.sidebetinfo.isActive) {
+						$('#sidebet').addClass('hidden');
+						return;
+					}
+					$('#sidebet').removeClass('hidden');
+					
+					$('#sidebet .type').html($betinfo.sidebetinfo.name);
+					$('#sidebet .multiplier').html($betinfo.sidebetinfo.multiplier);
+					$('#sidebet .maxBet').html($betinfo.sidebetinfo.maxBet);
+					$('#sidebet .options').html('<li>'+$betinfo.sidebetinfo.options
+					.map($betinfo.infoToHtml)
+					.join('</li><li>')+'</li>');
+				}
+			};
+
+			window.onload = function () {
+				setInterval(function(){$betinfo.load('betinfo.json', 'sidebetinfo.json');}, 1000);
+			};
+		</script>
+	</head>
+	<body>
+		<div id="bet" class="hidden">
+			<p class="title">Main bet: <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
+			<ul class="options"></ul>
+		</div>
+		<div id="sidebet" class="hidden">
+			<p class="title">Sidebet: "<span class="type"></span>" <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
+			<ul class="options"></ul>
+		</div>
+	</body>
+</html>

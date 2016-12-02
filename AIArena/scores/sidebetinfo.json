@@ -1,0 +1,11 @@
+{ 
+"isActive": true,
+"name": "first blood",
+"multiplier": 1,
+"maxBet": 5000,
+"options":
+[
+{"name":"luigi", "numBets":0, "total":0},
+{"name":"mario", "numBets":1, "total":15}
+]
+}
