@@ -24,6 +24,10 @@
 				color: white;
 			}
 			
+			.timer {
+				font-size: 13px;
+			}
+			
 			p {
 				margin: 5px;
 			}
@@ -85,6 +89,11 @@
 					$('#bet .options').html('<li>'+$betinfo.betinfo.options
 					.map($betinfo.infoToHtml)
 					.join('</li><li>')+'</li>');
+					
+					var timeLeftMs = Math.max(120000 - (Date.now()-$betinfo.betinfo.startTime), 0);
+					var timeLeftMinPart = Math.floor(timeLeftMs / 60000);
+					var timeLeftSecPart = Math.floor((timeLeftMs % 60000) / 1000);
+					$('#bet .time').html(timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart);
 				},
 				updateSidebetInfo: function () {
 					if (!$betinfo.sidebetinfo || !$betinfo.sidebetinfo.isActive) {
@@ -99,6 +108,11 @@
 					$('#sidebet .options').html('<li>'+$betinfo.sidebetinfo.options
 					.map($betinfo.infoToHtml)
 					.join('</li><li>')+'</li>');
+					
+					var timeLeftMs = Math.max(120000 - (Date.now()-$betinfo.sidebetinfo.startTime), 0);
+					var timeLeftMinPart = Math.floor(timeLeftMs / 60000);
+					var timeLeftSecPart = Math.floor((timeLeftMs % 60000) / 1000);
+					$('#sidebet .time').html(timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart);
 				}
 			};
 
@@ -111,10 +125,12 @@
 		<div id="bet" class="hidden">
 			<p class="title">Main bet: <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
 			<ul class="options"></ul>
+			<p class="timer">Time left: <span class="time"></span></p>
 		</div>
 		<div id="sidebet" class="hidden">
 			<p class="title">Sidebet: "<span class="type"></span>" <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
 			<ul class="options"></ul>
+			<p class="timer">Time left: <span class="time"></span></p>
 		</div>
 	</body>
 </html>

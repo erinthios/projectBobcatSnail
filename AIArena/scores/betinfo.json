@@ -1,6 +1,7 @@
 {
 	"isActive": true,
 	"name": "Main bet",
+	"startTime": 1480775035,
 	"multiplier": 1,
 	"maxBet": 10000,
 	"options":
