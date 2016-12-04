@@ -307,6 +307,10 @@
 					{
 						$('#chat_box').addClass('randomize');
 					}
+					if (Chat.vars.bubbles)
+					{
+						$('#chat_box').addClass('bubbles');
+					}
 
                     Chat.loadEmotes(function() {
                         Chat.loadSubscriberBadge(function() {
@@ -531,6 +535,7 @@
                     queue: [],
                     maxDisplayTime: getParameterByName('fade') === 'true' ? 30 : parseInt(getParameterByName('fade')),
                     randomizePlacement: getParameterByName('randomize') === 'true' ? true : false,
+                    bubbles: getParameterByName('bubbles') === 'false' ? false : true,
                     queueTimer: setInterval(function() {
                         if(Chat.vars.queue.length > 0) {
 							// !!!!! modified for ArcadePit !!!!!
@@ -788,10 +793,10 @@
 
 			.chat_line {
 				font-size: 13px;
-				line-height: 13px;
 				/*opacity: .8 !important;*/
 				font-weight: bold;
-				
+			}
+			#chat_box.bubbles .chat_line {
 				border: 2px solid black;
 				border-radius: 8px;
 				background-color: white;
@@ -808,7 +813,7 @@
 				max-width: 200px;
 				text-align: center;
 			}
-			#chat_box.dark .chat_line {
+			#chat_box.bubbles.dark .chat_line {
 				border: 2px solid white;
 				background-color: black;
 				color: white;
