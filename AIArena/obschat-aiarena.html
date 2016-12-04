@@ -349,6 +349,7 @@
                                         if(getParameterByName('bot_activity').toLowerCase() !== 'true') {
                                             if(message.params[1].charAt(0) === '!') return;
                                             if(/bot$/.test(nick)) return;
+                                            if(nick === 'ArcadePit') return;
                                         }
 
                                         if (Chat.vars.spammers.indexOf(nick) > -1) return;
