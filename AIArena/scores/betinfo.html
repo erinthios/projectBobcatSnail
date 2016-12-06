@@ -50,6 +50,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
 			$betinfo = {
+				timerDurationMs: 120000,	// 2 minutes
 				betinfo: [],
 				sidebetinfo: [],
 				infoToHtml: function (arg) {
@@ -69,50 +70,31 @@
 				load: function (betPath, sidebetPath) {
 					$betinfo.loadJSON(betPath, function (response) {
 						$betinfo.betinfo = JSON.parse(response);
-						$betinfo.updateBetInfo();
+						$betinfo.updateInfo($betinfo.betinfo, '#bet');
 					});
 					$betinfo.loadJSON(sidebetPath, function (response) {
 						$betinfo.sidebetinfo = JSON.parse(response);
-						$betinfo.updateSidebetInfo();
+						$betinfo.updateInfo($betinfo.sidebetinfo, '#sidebet');
 					});
 				},
-				updateBetInfo: function () {
-					if (!$betinfo.betinfo || !$betinfo.betinfo.isActive) {
-						$('#bet').addClass('hidden');
+				updateInfo: function (info, elementId) {
+					if (!info || !info.isActive || (Date.now()-info.startTime) > $betinfo.timerDurationMs) {
+						$(elementId).addClass('hidden');
 						return;
 					}
-					$('#bet').removeClass('hidden');
+					$(elementId).removeClass('hidden');
 					
-					$('#bet .type').html($betinfo.betinfo.name);
-					$('#bet .multiplier').html($betinfo.betinfo.multiplier);
-					$('#bet .maxBet').html($betinfo.betinfo.maxBet);
-					$('#bet .options').html('<li>'+$betinfo.betinfo.options
+					$(elementId+' .type').html(info.name);
+					$(elementId+' .multiplier').html(info.multiplier);
+					$(elementId+' .maxBet').html(info.maxBet);
+					$(elementId+' .options').html('<li>'+info.options
 					.map($betinfo.infoToHtml)
 					.join('</li><li>')+'</li>');
 					
-					var timeLeftMs = Math.max(120000 - (Date.now()-$betinfo.betinfo.startTime), 0);
+					var timeLeftMs = Math.max($betinfo.timerDurationMs - (Date.now()-info.startTime), 0);
 					var timeLeftMinPart = Math.floor(timeLeftMs / 60000);
 					var timeLeftSecPart = Math.floor((timeLeftMs % 60000) / 1000);
-					$('#bet .time').html(timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart);
-				},
-				updateSidebetInfo: function () {
-					if (!$betinfo.sidebetinfo || !$betinfo.sidebetinfo.isActive) {
-						$('#sidebet').addClass('hidden');
-						return;
-					}
-					$('#sidebet').removeClass('hidden');
-					
-					$('#sidebet .type').html($betinfo.sidebetinfo.name);
-					$('#sidebet .multiplier').html($betinfo.sidebetinfo.multiplier);
-					$('#sidebet .maxBet').html($betinfo.sidebetinfo.maxBet);
-					$('#sidebet .options').html('<li>'+$betinfo.sidebetinfo.options
-					.map($betinfo.infoToHtml)
-					.join('</li><li>')+'</li>');
-					
-					var timeLeftMs = Math.max(120000 - (Date.now()-$betinfo.sidebetinfo.startTime), 0);
-					var timeLeftMinPart = Math.floor(timeLeftMs / 60000);
-					var timeLeftSecPart = Math.floor((timeLeftMs % 60000) / 1000);
-					$('#sidebet .time').html(timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart);
+					$(elementId+' .time').html(timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart);
 				}
 			};
 
