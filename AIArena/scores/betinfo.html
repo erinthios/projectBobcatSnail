@@ -70,10 +70,18 @@
 				load: function (betPath, sidebetPath) {
 					$betinfo.loadJSON(betPath, function (response) {
 						$betinfo.betinfo = JSON.parse(response);
+						if (Date.now() / $betinfo.betinfo.startTime > 999)
+						{
+							$betinfo.betinfo.startTime *= 1000;
+						}
 						$betinfo.updateInfo($betinfo.betinfo, '#bet');
 					});
 					$betinfo.loadJSON(sidebetPath, function (response) {
 						$betinfo.sidebetinfo = JSON.parse(response);
+						if (Date.now() / $betinfo.sidebetinfo.startTime > 999)
+						{
+							$betinfo.sidebetinfo.startTime *= 1000;
+						}
 						$betinfo.updateInfo($betinfo.sidebetinfo, '#sidebet');
 					});
 				},
