@@ -67,7 +67,16 @@ soundPools[goodSoundPool] = [
 	"sounds/oct1 - jellyboy.ogg",
 	"sounds/oct1 - Wonderful Ding.ogg",
 	"sounds/oct3 - duck hunt got ducks.ogg",
-	"sounds/oct3 - duck hunt start.ogg"
+	"sounds/oct3 - duck hunt start.ogg",
+	"sounds/dec - bases loaded.ogg",
+	"sounds/dec - castlevania clear.ogg",
+	"sounds/dec - ice climbers.ogg",
+	"sounds/dec - ninja gaiden interlude.ogg",
+	"sounds/dec - RC Pro Am race end.ogg",
+	"sounds/dec - stage 6 clear.ogg",
+	"sounds/dec - startropics.ogg",
+	"sounds/dec - TMNT victory.ogg",
+	"sounds/dec - wizwar.ogg"
 	
 ];
 soundPools[bigGoodSoundPool] = [
@@ -103,7 +112,12 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/oct1 - wild arms ac clear.ogg",
 	"sounds/oct1 - FF3 Piano Practice.ogg",
 	"sounds/oct3 - duck hunt round clear.ogg",
-	"sounds/oct3 - duck hunt title.ogg"
+	"sounds/oct3 - duck hunt title.ogg",
+	"sounds/dec - duck tales remastered win.ogg",
+	"sounds/dec - HOMM2 win.ogg",
+	"sounds/dec - nomad tents.ogg",
+	"sounds/dec - tecmo interception.ogg",
+	"sounds/dec - vandal hearts level up.ogg"
 
 
 	
@@ -128,7 +142,9 @@ soundPools[finishSoundPool] = [
 	"sounds/Finish17.ogg",
 	"sounds/Finish18.ogg",
 	"sounds/Finish19.ogg",
-	"sounds/Finish20.ogg"
+	"sounds/Finish20.ogg",
+	"sounds/dec - double dragon 2 win.ogg",
+	"sounds/dec - dracula x clear.ogg"
 ];
 soundPools[emptySoundPool] = [
 "sounds/Horn.ogg",
@@ -145,7 +161,10 @@ soundPools[emptySoundPool] = [
 "sounds/oct1 - Mario Good Player.ogg",
 "sounds/oct1 - Suikoden nope.ogg",
 "sounds/oct1 - duckhunt laugh.ogg",
-"sounds/oct3 - duck hunt failed.ogg"
+"sounds/oct3 - duck hunt failed.ogg",
+"sounds/dec - nes game over.ogg",
+"sounds/dec - roger rabbit.ogg",
+"sounds/dec - turtle captured.ogg"
 
 
 
@@ -311,7 +330,7 @@ var markerMoveSoundPath = null;
 /* potential map/marker images */
 var mapSets = [
 	{ map: "images/map 1 west madi.gif", marker: "images/map snail.gif" },
-	{ map: "images/map 2 east madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 2 castle madi.gif", marker: "images/map snail and belmont.gif" },
 	{ map: "images/map 3 ocean madi.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 4 japan madi.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 5 space madi.gif", marker: "images/map snail in space.gif" },
