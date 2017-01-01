@@ -17,16 +17,16 @@ ms
   opacity: 0.0;
   position: absolute;
   border: 1px solid rgb(200,200,200);
-  height: 53px;
-  width: 59.4px;
+  height: 80px;
+  width: 89.6px;
   background-color: rgba(55,35,55,0.8);
   z-index: 0;
   color: rgba(255,255,255,0.9);
   font-family: sans-serif;
-  font-size: 52px; 
+  font-size: 78px; 
   text-align: center;
   vertical-align: middle;
-  line-height: 54px;
+  line-height: 81px;
   text-shadow:
       /* outline */
       -1px 0 black, 1px 0 black, 0 -1px black, 0 1px black,
@@ -76,7 +76,7 @@ ms.shown
  .smallPoints, .bigPoints, .start
 {
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 900;
 }
 
@@ -84,10 +84,10 @@ ms.shown
 .zoomed
 {
   transform: scale(4);
-  width: 77.5px !important; /* 1/4 of map width, plus 2px */
-  height: 56px !important; /* 1/4 of map height, plus 2px */
-  top: 80px !important; /* centered */
-  left: 112.25px !important; /* centered */
+  width: 115.25px !important; /* 1/4 of map width, plus 2px */
+  height: 83px !important; /* 1/4 of map height, plus 2px */
+  top: 120.5px !important; /* centered */
+  left: 168.875px !important; /* centered */
   z-index: 10 !important; /* ensure it's on top */
   background-color: rgba(0,0,0,0.8); /* color of ms element, only darker */
 }
@@ -140,7 +140,7 @@ currentSquare
 {
   position: absolute;
   left: 100px;
-  top: 230px;
+  top: 338px;
   height: 54px;
   width: 60.4px;
   color: white;
@@ -157,22 +157,22 @@ currentSquare
 
 /* individual square positioning */
 #a1, #a2, #a3, #a4, #a5 { top: 0px }
-#b1, #b2, #b3, #b4, #b5 { top: 54px }
-#c1, #c2, #c3, #c4, #c5 { top: 108px }
-#d1, #d2, #d3, #d4, #d5 { top: 162px }
+#b1, #b2, #b3, #b4, #b5 { top: 81px }
+#c1, #c2, #c3, #c4, #c5 { top: 162px }
+#d1, #d2, #d3, #d4, #d5 { top: 243px }
 
 #a1, #b1, #c1, #d1 { left: 0px }
-#a2, #b2, #c2, #d2 { left: 60.4px }
-#a3, #b3, #c3, #d3 { left: 120.8px }
-#a4, #b4, #c4, #d4 { left: 181.2px }
-#a5, #b5, #c5, #d5 { left: 241.6px }
+#a2, #b2, #c2, #d2 { left: 90.6px }
+#a3, #b3, #c3, #d3 { left: 181.2px }
+#a4, #b4, #c4, #d4 { left: 271.8px }
+#a5, #b5, #c5, #d5 { left: 362.4px }
 
 /* reset button position */
-#reset { position: absolute; left: 10px; top: 230px; }
+#reset { position: absolute; left: 10px; top: 338px; }
 
 loadIndicator
 {
-	position: absolute; left: 10px; top: 270px;
+	position: absolute; left: 10px; top: 378px;
 	font-family: sans-serif;
 	font-size: 12px;
 	color: white;

@@ -653,7 +653,7 @@ function initMap()
 
 	/* move marker */
 	var marker = document.getElementsByTagName("marker")[0];
-	marker.style.top = 230+"px";
+	marker.style.top = 338+"px";
 	marker.style.left = 270+"px";
 }
 
