@@ -332,11 +332,11 @@ var mapSets = [
 	{ map: "images/map 1 west madi.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 2 castle madi.gif", marker: "images/map snail and belmont.gif" },
 	{ map: "images/map 3 ocean madi.gif", marker: "images/map snail.gif" },
-	{ map: "images/map 4 japan madi.gif", marker: "images/map snail.gif" },
+	{ map: "images/map 4 japan madi.gif", marker: "images/map snail in car.gif" },
 	{ map: "images/map 5 space madi.gif", marker: "images/map snail in space.gif" },
 	{ map: "images/map 6 egypt staghorn.gif", marker: "images/map snail.gif" },
 	{ map: "images/map 7 sky madi.gif", marker: "images/map snail in plane.gif" },
-	{ map: "images/map 8 city madi.gif", marker: "images/map snail.gif" }
+	{ map: "images/map 8 city madi.gif", marker: "images/map snail in car.gif" }
 ];
 
 
