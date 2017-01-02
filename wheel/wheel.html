@@ -70,6 +70,7 @@
 				{imageId: "Screencrap", weight: 1, color: '#de5600', sound: 'sounds/Screencrap.ogg'},
 				{imageId: "AIArena", weight: 1, color: '#fd68c6', sound: 'sounds/AIArena.ogg'}
 			];
+			sounds = {};
 			
 			segments = initSegments();
 			function updateSizeSegments(segs)
@@ -96,6 +97,10 @@
 				for (var i = 0; i < wedges.length; ++i)
 				{
 					var wedge = wedges[i];
+					if (!sounds[wedge.sound])
+					{
+						sounds[wedge.sound] = new Audio(wedge.sound);
+					}
 					result.push(
 							{
 								text: wedge.text,
@@ -103,7 +108,7 @@
 								startAngle: 0,
 								endAngle: 0,
 								color: wedge.color,
-								sound: new Audio(wedge.sound)
+								sound: sounds[wedge.sound]
 							}
 					);
 				}
@@ -315,9 +320,7 @@
 					}
 				},
 				initAudio: function () {
-					var sound = document.createElement('audio');
-					sound.setAttribute('src', 'sound.mp3');
-					wheel.sound = sound;
+					wheel.sound = new Audio('sound.mp3');
 				},
 				initCanvas: function () {
 					var canvas = $('#wheel #canvas').get(0);
