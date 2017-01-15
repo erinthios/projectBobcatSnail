@@ -7,7 +7,6 @@
 
 		<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-minimal.css" />
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
 		
 		<script type="text/javascript">
 			window.odometerOptions = {
@@ -30,16 +29,16 @@
 		<!-- Extra styles for this example -->
 		<style type="text/css">
 			.odometer {
-				font-size: 30px;
+				font-size: 28px;
 				width: 82px;
 				height: 37px;
 				overflow: hidden;
 				text-align: center;
-				font-family: "Droid Sans Mono", monospace;
+				font-family: Verdana, monospace;
 				font-weight: bold;
 			}
 			.odometer-inside {
-				margin: -3px; /* adjust vertical centering within .odometer without changing size */
+				margin: -1px; /* adjust vertical centering within .odometer without changing size */
 			}
 
 			.onTopOfEachOther {
@@ -52,7 +51,7 @@
 			.onTopOfEachOther span {
 				position: absolute;
 				top: 6px;
-				left: 93px;
+				left: 94px;
 				width: 370px;
 				line-height: 64px;
 				vertical-align: middle;
@@ -61,7 +60,7 @@
 			}
 			#blueDisplay.onTopOfEachOther span {
 				left: auto;
-				right: 93px;
+				right: 94px;
 				text-align: right;
 			}
 			#ys {
@@ -136,11 +135,12 @@
 				font-size: 30px;
 				width: 60px;
 				text-align: center;
-				font-family: "Droid Sans Mono", monospace;
+				font-family: Righteous, Arimo, monospace;
 				font-weight: bold;
 			}
 			#wg {
-				background: linear-gradient(to bottom, white 20%, #3399ff 80%);
+				background: linear-gradient(to bottom, white 20%, #3399ff 50%);
+				text-shadow: 1px 1px 1px #79bdff, 0 0 0 #000, 1px 1px 1px #000;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
@@ -167,6 +167,9 @@
 			}
 			.odometer-negation-mark {
 				color: red;
+			}
+			button{
+				width: 40px;
 			}
 		</style>
 
@@ -279,6 +282,8 @@
 				<button onclick="addYellow(10)">+10</button>
 				<button onclick="addYellow(15)">+15</button>
 				<button onclick="addYellow(20)">+20</button>
+				<button onclick="addYellow(30)">+30</button>
+				<button onclick="addYellow(40)">+40</button>				
 			</p>
 			<p>
 				<button onclick="addYellow(-1)">-1</button>
@@ -286,6 +291,8 @@
 				<button onclick="addYellow(-10)">-10</button>
 				<button onclick="addYellow(-15)">-15</button>
 				<button onclick="addYellow(-20)">-20</button>
+				<button onclick="addYellow(-30)">-30</button>
+				<button onclick="addYellow(-40)">-40</button>
 			</p>
 		</div>
 		
@@ -305,6 +312,8 @@
 				<button onclick="addBlue(10)">+10</button>
 				<button onclick="addBlue(15)">+15</button>
 				<button onclick="addBlue(20)">+20</button>
+				<button onclick="addBlue(30)">+30</button>
+				<button onclick="addBlue(40)">+40</button>
 			</p>
 			<p>
 				<button onclick="addBlue(-1)">-1</button>
@@ -312,6 +321,8 @@
 				<button onclick="addBlue(-10)">-10</button>
 				<button onclick="addBlue(-15)">-15</button>
 				<button onclick="addBlue(-20)">-20</button>
+				<button onclick="addBlue(-30)">-30</button>
+				<button onclick="addBlue(-40)">-40</button>
 			</p>
 		</div>
 		
