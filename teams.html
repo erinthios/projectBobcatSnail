@@ -7,6 +7,7 @@
 
 		<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-minimal.css" />
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
 		
 		<script type="text/javascript">
 			window.odometerOptions = {
@@ -34,7 +35,7 @@
 				height: 37px;
 				overflow: hidden;
 				text-align: center;
-				font-family: Righteous, monospace;
+				font-family: "Droid Sans Mono", monospace;
 				font-weight: bold;
 			}
 			.odometer-inside {
@@ -58,7 +59,7 @@
 				max-height: 64px;	/* for textfit */
 				font-size: 24px;	/* for textfit */
 			}
-			#redDisplay.onTopOfEachOther span {
+			#blueDisplay.onTopOfEachOther span {
 				left: auto;
 				right: 93px;
 				text-align: right;
@@ -68,7 +69,7 @@
 				top: 19px;
 				left: 5px;
 			}
-			#rs {
+			#bs {
 				position: absolute;
 				top: 99px;
 				left: 553px;
@@ -80,11 +81,11 @@
 				left: 300px;
 			}
 
-			#yellowScore, #redScore {
+			#yellowScore, #blueScore {
 				width: 50px;
 			}
 			
-			#yellowDisplay, #redDisplay {
+			#yellowDisplay, #blueDisplay {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -92,12 +93,16 @@
 				background-repeat: no-repeat;
 				width: 640px;
 			}
-			#redDisplay {
+			#yellowDisplay.active, #blueDisplay.active {
+				color: white;
+				-webkit-text-stroke: 1px black;
+			}
+			#blueDisplay {
 				top: 80px;
 				background-position: right;
 			}
 			
-			#yellowManagement, #redManagement {
+			#yellowManagement, #blueManagement {
 				padding: 0 10px;
 				position: absolute;
 				top: 220px;
@@ -106,9 +111,9 @@
 				left: 10px;
 				background-color: palegoldenrod;
 			}
-			#redManagement {
+			#blueManagement {
 				left: 350px;
-				background-color: palevioletred;
+				background-color: paleturquoise;
 			}
 			
 			#wagerManagement, #wagerDisplay {
@@ -131,13 +136,21 @@
 				font-size: 30px;
 				width: 60px;
 				text-align: center;
-				font-family: Righteous, Arimo, monospace;
+				font-family: "Droid Sans Mono", monospace;
 				font-weight: bold;
 			}
 			#wg {
 				background: linear-gradient(to bottom, white 20%, #3399ff 80%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+			}
+			
+			#currentTeam {
+				padding: 0 10px;
+				position: absolute;
+				top: 160px;
+				left: 350px;
+				background: lightgrey;
 			}
 			
 
@@ -160,13 +173,33 @@
 	</HEAD>
 	<BODY style="background-color: rgb(92, 92, 150);">	  
 		<script type="text/javascript">
+			function setActiveYellow()
+			{
+				$('#yellowDisplay').addClass('active');
+				$('#blueDisplay').removeClass('active');
+			}
+			function setActiveBlue()
+			{
+				$('#yellowDisplay').removeClass('active');
+				$('#blueDisplay').addClass('active');
+			}
+			function setActiveBoth()
+			{
+				$('#yellowDisplay').addClass('active');
+				$('#blueDisplay').addClass('active');
+			}
+			function setActiveNone()
+			{
+				$('#yellowDisplay').removeClass('active');
+				$('#blueDisplay').removeClass('active');
+			}
 			function addYellow(i)
 			{
 				$('#yellowScore')[0].value = parseInt($('#yellowScore')[0].value) + parseInt(i);
 			}
-			function addRed(i)
+			function addBlue(i)
 			{
-				$('#redScore')[0].value = parseInt($('#redScore')[0].value) + parseInt(i);
+				$('#blueScore')[0].value = parseInt($('#blueScore')[0].value) + parseInt(i);
 			}
 			$(function () {
 
@@ -177,7 +210,7 @@
 					fadeSwitchElements('yt', 'ym');
 				}, 30000);
 				setInterval(function () {
-					fadeSwitchElements('rt', 'rm');
+					fadeSwitchElements('bt', 'bm');
 				}, 30000);
 
 				function updateValues()
@@ -185,9 +218,9 @@
 					$('#yt').text($('#yellowTeamName')[0].value);
 					$('#ym').text($('#yellowMember1')[0].value + ' & ' + $('#yellowMember2')[0].value);
 					$('#ys').text($('#yellowScore')[0].value);
-					$('#rt').text($('#redTeamName')[0].value);
-					$('#rm').text($('#redMember1')[0].value + ' & ' + $('#redMember2')[0].value);
-					$('#rs').text($('#redScore')[0].value);
+					$('#bt').text($('#blueTeamName')[0].value);
+					$('#bm').text($('#blueMember1')[0].value + ' & ' + $('#blueMember2')[0].value);
+					$('#bs').text($('#blueScore')[0].value);
 					$('#wg').text($('#wager')[0].value);
 
 					if ($('#yellowScore')[0].value[0] == '-')
@@ -197,19 +230,19 @@
 					{
 						$('#ys').removeClass("negative");
 					}
-					if ($('#redScore')[0].value[0] == '-')
+					if ($('#blueScore')[0].value[0] == '-')
 					{
-						$('#rs').addClass("negative");
+						$('#bs').addClass("negative");
 					} else
 					{
-						$('#rs').removeClass("negative");
+						$('#bs').removeClass("negative");
 					}
 					
 					// textfit
 					textfit($('#yt'));
 					textfit($('#ym'));
-					textfit($('#rt'));
-					textfit($('#rm'));
+					textfit($('#bt'));
+					textfit($('#bm'));
 				}
 				function fadeSwitchElements(id1, id2)
 				{
@@ -256,29 +289,29 @@
 			</p>
 		</div>
 		
-		<div id="redDisplay" class="onTopOfEachOther">
-			<span id="rt">RT</span>
-			<span id="rm" style="display: none;">RM</span>
+		<div id="blueDisplay" class="onTopOfEachOther">
+			<span id="bt">BT</span>
+			<span id="bm" style="display: none;">BM</span>
 		</div>
-		<div id="rs" class="odometer">0</div>
-		<div id="redManagement">
-			<p>Red team name: <input type="text" id="redTeamName" value="Red"></p>
-			<p>Red member 1: <input type="text" id="redMember1" value="R1"></p>
-			<p>Red member 2: <input type="text" id="redMember2" value="R2"></p>
-			<p>Red score: <input type="text" id="redScore" value="0"></p>
+		<div id="bs" class="odometer">0</div>
+		<div id="blueManagement">
+			<p>Blue team name: <input type="text" id="blueTeamName" value="Blue"></p>
+			<p>Blue member 1: <input type="text" id="blueMember1" value="B1"></p>
+			<p>Blue member 2: <input type="text" id="blueMember2" value="B2"></p>
+			<p>Blue score: <input type="text" id="blueScore" value="0"></p>
 			<p>
-				<button onclick="addRed(1)">+1</button>
-				<button onclick="addRed(5)">+5</button>
-				<button onclick="addRed(10)">+10</button>
-				<button onclick="addRed(15)">+15</button>
-				<button onclick="addRed(20)">+20</button>
+				<button onclick="addBlue(1)">+1</button>
+				<button onclick="addBlue(5)">+5</button>
+				<button onclick="addBlue(10)">+10</button>
+				<button onclick="addBlue(15)">+15</button>
+				<button onclick="addBlue(20)">+20</button>
 			</p>
 			<p>
-				<button onclick="addRed(-1)">-1</button>
-				<button onclick="addRed(-5)">-5</button>
-				<button onclick="addRed(-10)">-10</button>
-				<button onclick="addRed(-15)">-15</button>
-				<button onclick="addRed(-20)">-20</button>
+				<button onclick="addBlue(-1)">-1</button>
+				<button onclick="addBlue(-5)">-5</button>
+				<button onclick="addBlue(-10)">-10</button>
+				<button onclick="addBlue(-15)">-15</button>
+				<button onclick="addBlue(-20)">-20</button>
 			</p>
 		</div>
 		
@@ -286,6 +319,15 @@
 			<p>Wager: <input type="text" id="wager" value="20"></p>
 		</div>
 		<div id="wagerDisplay"><div id="wg"></div></div>
+		
+		<div id="currentTeam">
+			<p>Active team: 
+				<label><input type="radio" name="active" value="yellow" onclick="setActiveYellow()">Yellow</label>
+				<label><input type="radio" name="active" value="blue" onclick="setActiveBlue()">Blue</label>
+				<label><input type="radio" name="active" value="both" onclick="setActiveBoth()">both</label>
+				<label><input type="radio" name="active" value="none" onclick="setActiveNone()" checked="checked">none</label>
+			</p>
+		</div>
 
 	</BODY>
 </HTML>
