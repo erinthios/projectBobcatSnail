@@ -4,6 +4,7 @@
 		<title>Bet Info</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 		
 		<style type="text/css">
 			.hidden {
@@ -17,7 +18,7 @@
 				border: 1px solid black;
 				margin: 5px 0;
 				
-				font-family: Verdana;
+				font-family: Righteous, Verdana, sans-serif;
 				font-size: 15px;
 				
 				background-color: rgba(0, 0, 0, .85);
@@ -107,7 +108,7 @@
 			};
 
 			window.onload = function () {
-				setInterval(function(){$betinfo.load('betinfo.json', 'sidebetinfo.json');}, 1000);
+				setInterval(function(){$betinfo.load('betinfo.json?'+Date.now(), 'sidebetinfo.json?'+Date.now());}, 1000);
 			};
 		</script>
 	</head>
