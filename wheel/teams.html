@@ -154,6 +154,46 @@
 				background: lightgrey;
 			}
 			
+			#yellowTitleDisplay, #blueTitleDisplay {
+				position: absolute;
+				left: 20px;
+				width: 400px;
+				height: 150px;
+				padding-top: 10px;
+			}
+			#yellowTitleDisplay span, #blueTitleDisplay span {
+				display: block;
+				width: 380px;
+				margin: 0 10px;
+				font-size: 30px;
+				line-height: 40px;
+				max-height: 40px;
+				text-align: center;
+				font-family: Righteous, Arimo, monospace;
+				font-weight: bold;
+				color: white;
+			}
+			span#ytt, span#btt {
+				font-size: 40px;
+				line-height: 50px;
+				max-height: 50px;
+				text-shadow: 4px 4px black;
+			}
+			span#ytt {
+				color: #fff600;
+			}
+			span#btt {
+				color: #06a2ff;
+			}
+			#yellowTitleDisplay {
+				background: url('Box_Yellow.png') no-repeat;
+				top: 460px;
+			}
+			#blueTitleDisplay {
+				background: url('Blue_Box.png') no-repeat;
+				top: 660px;
+			}
+			
 
 			/* style overrides for odometer-theme-train-station.css */
 
@@ -226,6 +266,13 @@
 					$('#bm').text($('#blueMember1')[0].value + ' & ' + $('#blueMember2')[0].value);
 					$('#bs').text($('#blueScore')[0].value);
 					$('#wg').text($('#wager')[0].value);
+					
+					$('#ytt').text($('#yellowTeamName')[0].value);
+					$('#ytm1').text($('#yellowMember1')[0].value);
+					$('#ytm2').text($('#yellowMember2')[0].value);
+					$('#btt').text($('#blueTeamName')[0].value);
+					$('#btm1').text($('#blueMember1')[0].value);
+					$('#btm2').text($('#blueMember2')[0].value);
 
 					if ($('#yellowScore')[0].value[0] == '-')
 					{
@@ -247,6 +294,12 @@
 					textfit($('#ym'));
 					textfit($('#bt'));
 					textfit($('#bm'));
+					textfit($('#ytt'));
+					textfit($('#ytm1'));
+					textfit($('#ytm2'));
+					textfit($('#btt'));
+					textfit($('#btm1'));
+					textfit($('#btm2'));
 				}
 				function fadeSwitchElements(id1, id2)
 				{
@@ -339,6 +392,18 @@
 				<label><input type="radio" name="active" value="both" onclick="setActiveBoth()">both</label>
 				<label><input type="radio" name="active" value="none" onclick="setActiveNone()" checked="checked">none</label>
 			</p>
+		</div>
+		
+		<div id="yellowTitleDisplay">
+			<span id="ytm1"></span>
+			<span id="ytm2"></span>
+			<span id="ytt"></span>
+		</div>
+		
+		<div id="blueTitleDisplay">
+			<span id="btm1"></span>
+			<span id="btm2"></span>
+			<span id="btt"></span>
 		</div>
 
 	</BODY>
