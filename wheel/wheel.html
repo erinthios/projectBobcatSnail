@@ -76,6 +76,12 @@
 			];
 			sounds = {};
 			
+			centerEmblems = [
+				'centerEmblem.png',
+				'centerEmblemB.png'
+			];
+			currentEmblemIndex = 0;
+			
 			segments = initSegments();
 			function updateSizeSegments(segs)
 			{
@@ -174,7 +180,12 @@
 		</script>
 		<script type="text/javascript">// WHEEL!
 			var emblemImg = document.createElement('img');
-			emblemImg.src = 'centerEmblem.png';
+			emblemImg.src = centerEmblems[currentEmblemIndex];
+			function cycleEmblem() {
+				currentEmblemIndex = ++currentEmblemIndex % centerEmblems.length;
+				emblemImg.src = centerEmblems[currentEmblemIndex];
+				setTimeout(wheel.draw, 100);
+			}
 			var wheel = {
 				timerHandle: 0,
 				timerDelay: 1000 / 30, // interval on timer calls, in ms
@@ -542,7 +553,7 @@
 			#fpscounter {
 				font-family: Righteous;
 				position: absolute;
-				top: 750px;
+				top: 590px;
 				left: 30px;
 				color: yellow;
 			}
@@ -569,11 +580,15 @@
 	<body style="background-color: rgb(92, 92, 150);">
 
 		<div id="wheel">
-			<canvas id="canvas" width="1000" height="600"></canvas>
+			<canvas id="canvas" width="620" height="600"></canvas>
 		</div>
 		<audio id="wheel-click" preload>
 			<source src="wheelclick.wav" />
 		</audio>
+		<p id="controls">
+			<button onclick="cycleEmblem()">Cycle emblem</button>
+			<button onclick="location.reload()">Reload</button>
+		</p>
 		<p id="fpscounter"></p>
 		<p id="rpmcounter"></p>
 		<button id="testButton" onclick="toggleTesting()">Start test</button>
