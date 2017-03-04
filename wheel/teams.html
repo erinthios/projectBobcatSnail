@@ -74,6 +74,25 @@
 				top: 99px;
 				left: 553px;
 			}
+			#ys2, #bs2 {
+				font-size: 28px;
+				width: 82px;
+				height: 37px;
+				overflow: hidden;
+				text-align: center;
+				font-family: Verdana, monospace;
+				font-weight: bold;
+				
+				position: absolute;
+				left: 550px
+			}
+			#ys2 {
+				top: 460px;
+			}
+			#bs2 {
+				top: 660px;
+			}
+
 
 			#management {
 				position: absolute;
@@ -265,9 +284,11 @@
 					$('#yt').text($('#yellowTeamName')[0].value);
 					$('#ym').text($('#yellowMember1')[0].value + ' & ' + $('#yellowMember2')[0].value);
 					$('#ys').text($('#yellowScore')[0].value);
+					$('#ys2').text($('#yellowScore')[0].value);
 					$('#bt').text($('#blueTeamName')[0].value);
 					$('#bm').text($('#blueMember1')[0].value + ' & ' + $('#blueMember2')[0].value);
 					$('#bs').text($('#blueScore')[0].value);
+					$('#bs2').text($('#blueScore')[0].value);
 					$('#wg').text($('#wager')[0].value);
 					
 					$('#ytt').text($('#yellowTeamName')[0].value);
@@ -280,16 +301,20 @@
 					if ($('#yellowScore')[0].value[0] == '-')
 					{
 						$('#ys').addClass("negative");
+						$('#ys2').addClass("negative");
 					} else
 					{
 						$('#ys').removeClass("negative");
+						$('#ys2').removeClass("negative");
 					}
 					if ($('#blueScore')[0].value[0] == '-')
 					{
 						$('#bs').addClass("negative");
+						$('#bs2').addClass("negative");
 					} else
 					{
 						$('#bs').removeClass("negative");
+						$('#bs2').removeClass("negative");
 					}
 					
 					// textfit
@@ -328,6 +353,7 @@
 			<span id="ym" style="display: none;">YM</span>
 		</div>
 		<div id="ys" class="odometer">0</div>
+		<div id="ys2">0</div>
 		<div id="yellowManagement">
 			<p>Yellow team name: <input type="text" id="yellowTeamName" value="Yellow"></p>
 			<p>Yellow member 1: <input type="text" id="yellowMember1" value="Y1"></p>
@@ -358,6 +384,7 @@
 			<span id="bm" style="display: none;">BM</span>
 		</div>
 		<div id="bs" class="odometer">0</div>
+		<div id="bs2">0</div>
 		<div id="blueManagement">
 			<p>Blue team name: <input type="text" id="blueTeamName" value="Blue"></p>
 			<p>Blue member 1: <input type="text" id="blueMember1" value="B1"></p>

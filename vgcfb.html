@@ -22,6 +22,29 @@
 			height: 12px;
 			padding-top: 2px;
         }
+		
+		#game-name {
+			font-weight: bold;
+			color: magenta;
+		}
+		#by-heading {
+			font-weight: bold;
+			color: pink;
+			padding-left: 15px;
+		}
+		#submitter {
+			font-weight: bold;
+			padding-left: 5px;
+		}
+		#state-heading {
+			font-weight: bold;
+			color: pink;
+			padding-left: 15px;
+		}
+		#state-slot {
+			font-weight: bold;
+			padding-left: 5px;
+		}
     </style>
 </head>
 <body>
@@ -31,25 +54,20 @@
     <div class="spacer"></div>
  
     <div id="navContent">
-<div style="width:360px;height:110px;">
+<div style="width:330px;height:140px;">
  <div style = "width: 100%; height: 100%;display: inline-block;">
  
-				<div class ="info" style="padding-left: 0px; font-weight: bold;" id="0-game-name">Game</div>
+				<div class ="info" id="game-name">Game</div>
 
-				<div class ="info" style="padding-left: 25px; font-weight: bold;">State: </div>
-				<div class = "info" style="padding-left: 10px;font-weight: bold;" id="state-slot">None</div>
-				<div class ="info" style="padding-left: 25px; font-weight: bold;">By: </div>
-				<div class = "info" style="padding-left: 10px;font-weight: bold;" id="submitter">Name</div>				
+				<div class ="info" id="state-heading">State: </div>
+				<div class = "info" id="state-slot">None</div>
+				<div class ="info" id="by-heading">By: </div>
+				<div class = "info" id="submitter">Name</div>				
 				<div class = "info" style="width: 10px;"></div>
 			
 				<br><br>
 
-			<!-- <div class ="info" style="font-weight: bold;">Details: </div> !-->
-                <div class ="info" style="padding-left: 0px;font-weight: bold;"id="challenge-details">Stuff</div>
-				
-			<!--	<div class ="info" style="padding-left: 0px; font-weight: bold;" id="0-challenge">TB#</div>!-->
-
-			<!---	<div class = "info" style="width: 10px; border-right: thick double #888888; border-bottom: thick double #888888;border-top: thick double #888888;"></div> !-->
+                <div class ="info" style="padding-left: 0px;font-weight: bold;" id="challenge-details">Stuff</div>
     </div>
 </div>
 	
@@ -81,17 +99,13 @@
                     var challenges = JSON.parse(response);
 					var filteredChallenges = challenges.filter(isNotGenesis);
 				    filteredChallenges = filteredChallenges.filter(isSaveState);
-                    // $('#navContent')
-                    for (var i = 0; i < 1; i++) {
-                        var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-                        $('#' + i + '-game-name').text(challenge.GameTitle);
-						$('#' + i).text(challenge.GameTitle);
-						$('#' + i + '-challenge').text(challenge.TBKey);
-						$('#game-console').text(challenge.GameConsole)
-						$('#submitter').text(challenge.Submitter)
-						$('#challenge-details').text(challenge.ChallengeDetails)
-						$('#state-slot').text(challenge.Stateslot)
-                    }
+
+					var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+					$('#game-name').text(challenge.GameTitle);
+					$('#game-console').text(challenge.GameConsole);
+					$('#submitter').text(challenge.Submitter);
+					$('#challenge-details').text(challenge.ChallengeDetails);
+					$('#state-slot').text(challenge.Stateslot);
                 });
             }
         }
