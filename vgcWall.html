@@ -5,6 +5,7 @@
 		<title>VG Challenge Wall</title>
 		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 		<style>
 			#tv0, #tv1, #tv2 {
 				position: absolute;
@@ -210,6 +211,37 @@
 			.controllerGEN {
 				background: url('controllers/gen_2.png');
 			}
+			
+			#wagerManagement, #wagerDisplay {
+				padding: 0 10px;
+				position: absolute;
+				top: 320px;
+			}
+			#wagerManagement {
+				left: 1450px;
+				color: white;
+				font-family: Arial, sans-serif;
+			}
+			#wager {
+				width: 50px;
+			}
+			#wagerDisplay {
+				left: 1600px;
+				background-color: black;
+				color: white;
+				
+				font-size: 30px;
+				width: 60px;
+				text-align: center;
+				font-family: Righteous, Arimo, monospace;
+				font-weight: bold;
+			}
+			#wg {
+				background: linear-gradient(to bottom, white 20%, #3399ff 50%);
+				text-shadow: 1px 1px 1px #79bdff, 0 0 0 #000, 1px 1px 1px #000;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
 		</style>
 	</head>
 	<body background="vgcWall.png">
@@ -280,6 +312,12 @@
 					</div>
 				</div>
 			</div>
+			
+			<!-- wager for Gamebler, etc. -->
+			<div id="wagerManagement">
+				<p>Wager: <input type="text" id="wager" value="20"></p>
+			</div>
+			<div id="wagerDisplay"><div id="wg"></div></div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
@@ -481,6 +519,9 @@
 			};
 			window.onload = function () {
 				$challenge.loadGame('challenges.json');
+				setInterval(function () {
+					$('#wg').text($('#wager')[0].value);
+				}, 1000);
 			};
 		</script>
 	</body>
