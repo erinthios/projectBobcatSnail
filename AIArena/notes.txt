@@ -1,0 +1,7 @@
+For randomly-positioned dark bubbles that fade after 5 seconds: ?style=dark&randomize=true&fade=5
+
+For bubbles that just go down the left side (and ignore the #no_chat_box), leave our the randomize.
+
+To change the allowable area, change the size/position of #chat_box in the CSS. To change the "no chat allowed" area, change the size/position of #no_chat_box.
+
+remove the bubbles by having a URL parameter of bubbles=false

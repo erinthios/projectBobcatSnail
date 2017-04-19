@@ -76,8 +76,11 @@ soundPools[goodSoundPool] = [
 	"sounds/dec - stage 6 clear.ogg",
 	"sounds/dec - startropics.ogg",
 	"sounds/dec - TMNT victory.ogg",
-	"sounds/dec - wizwar.ogg"
-	
+	"sounds/dec - wizwar.ogg",
+	"sounds/small prize medi.ogg",
+	"sounds/small prize medi 2.ogg",
+	"sounds/small prize medi 3.ogg",
+	"sounds/small prize medi 4.ogg"
 ];
 soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood1.ogg",
@@ -89,7 +92,7 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood7.ogg",
 	"sounds/BigGood8.ogg",
 	"sounds/BigGood9.ogg",
-	"sounds/BigGood10.ogg",
+	"sounds/BigGood10 MegaMan4.ogg",
 	"sounds/BigGood11.ogg",
 	"sounds/BigGood12.ogg",
 	"sounds/BigGood13.ogg",
@@ -102,7 +105,6 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/BigGood20.ogg",
 	"sounds/BigGood21 Zelda Fanfare 2.ogg",
 	"sounds/BigGood22 Zelda Fanfare.ogg",
-	"sounds/BigGood23 MegaMan4.ogg",
 	"sounds/oct1 - Contra 3 Pattern Clear.ogg",
 	"sounds/oct1 - FF3 Item Get.ogg",
 	"sounds/oct1 - Suikoden 2 victory.ogg",
@@ -117,10 +119,11 @@ soundPools[bigGoodSoundPool] = [
 	"sounds/dec - HOMM2 win.ogg",
 	"sounds/dec - nomad tents.ogg",
 	"sounds/dec - tecmo interception.ogg",
-	"sounds/dec - vandal hearts level up.ogg"
-
-
-	
+	"sounds/dec - vandal hearts level up.ogg",
+	"sounds/big prize medi.ogg",
+	"sounds/double super jackpot.ogg",
+	"sounds/prize medi.ogg",
+	"sounds/prize oldblitz.ogg"
 ];
 soundPools[finishSoundPool] = [
 	"sounds/Finish1.ogg",
@@ -164,10 +167,9 @@ soundPools[emptySoundPool] = [
 "sounds/oct3 - duck hunt failed.ogg",
 "sounds/dec - nes game over.ogg",
 "sounds/dec - roger rabbit.ogg",
-"sounds/dec - turtle captured.ogg"
-
-
-
+"sounds/dec - turtle captured.ogg",
+"sounds/nothing-Bubsy-out.ogg",
+"sounds/nothing-Bubsy-whoa.ogg"
 ];
 soundPools[testYourSmiteSoundPool] = [
 	"sounds/Test_Your_Smite_madi.ogg",

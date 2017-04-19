@@ -1,0 +1,44 @@
+=======================
+ADMINISTRATION COMMANDS
+=======================
+
+!startbet (multiplier) (max bet amount) (list of options) - starts a main bet with the specified multiplier, max bet, and the available options. 
+
+Options must be in quotes. [e.g. !startbet 1.5 10000 "mario" "luigi"]
+----------------------------------------------------------------------
+
+!startsidebet (multiplier) (max bet amount) (description) (list of options) - starts a side bet with the specified multiplier, max bet, a description of the sidebet and the available options. 
+
+Description and options must be in quotes. [e.g. !startsidebet 1.5 10000 "Who will lose a life first?" "mario" "luigi"]
+----------------------------------------------------------------------
+
+!winningbet (option) - Sets the winning main bet
+!winningsidebet (option) - Sets the winning side bet
+
+!drawbet - cancels the main bet
+!drawsidebet - cancels the side bet
+
+!closebet - closes the main bet early. Automatic after 2m
+!closesidebet - closes the side bet early. Automatic after 2m
+----------------------------------------------------------------------
+
+
+=======================
+USER COMMANDS
+=======================
+
+!beg - gives user smackers if they are below their smacker threshhold
+
+!stats - lists user stats, via whisper.
+
+!betinfo - lists info about main bet
+!sidebetinfo - lists info about sidebet
+
+!bet allin - goes all in on main bet option up to maximum bet possible
+!bet (amount) (option) - places main bet on option
+
+!sidebet allin (option) - goes all in on sidebet option up to maximum bet
+!sidebet (amount) (option) - places sidebet on option
+
+!top5 - lists top 5
+!bethelp - display preset message about how betting works

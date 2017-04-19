@@ -20,9 +20,12 @@
 			}
 			
 			#logoLayer {
-				background: url('quizz logo.png');
+				background: url('intro/quizz logo.png');
 			}
 			
+			#applemanLayer {
+				background: url('intro/appleman.png');
+			}
 			#applemanLayer.zoom {
 				top: -50%;
 				left: 50%;
@@ -31,11 +34,11 @@
 			}
 			
 			#applemanSpeech {
-				background: url('speech bub for appleman.png');
+				background: url('intro/speech bub for appleman.png');
 			}
 			
 			#playerLayer {
-				background: url('contestant, question board.png');
+				background: url('intro/contestant, question board.png');
 				left: 700px;
 			}
 			#playerLayer.slideIn {
@@ -43,7 +46,7 @@
 				transition: left 1s ease-out;
 			}
 			#playerLayer.slideOut {
-				/*background: url('contestant, ui, speed bub when they move away.png');*/
+				/*background: url('intro/contestant, ui, speed bub when they move away.png');*/
 				left: 700px;
 				transition: left 5s linear,  opacity 5s linear;
 			}
@@ -163,13 +166,11 @@
 			}
 			function setQuestion(question)
 			{
-				// start Appleman animation
-				$('#applemanLayer').prepend($('<img></img>').attr('src', 'appleman.gif?'+Math.random()));
-
 				// Smite asks the question
 				setTimeout(function(){
 					$('#applemanSpeech').removeClass('hide');
-					$('#backgroundLayer').prepend($('<img></img>').attr('src', 'background.gif?'+Math.random()));
+					$('#backgroundLayer').prepend($('<img></img>').attr('src', 'intro/background.gif?'+Math.random()));
+					$('#applemanLayer').prepend($('<img></img>').attr('src', 'intro/appleman.gif?'+Math.random()));
 					typeText($('#smiteQuestion'), question.smiteQuestion, 2000);
 				}, 500);
 				// replace static background image separately to avoid a flicker
@@ -200,7 +201,7 @@
 				// player guesses
 				setTimeout(function(){
 					$('#logoLayer').addClass('hide');
-					$('#playerLayer').prepend($('<img></img>').attr('src', 'the guess animation.gif?'+Math.random()));
+					$('#playerLayer').prepend($('<img></img>').attr('src', 'intro/the guess animation.gif?'+Math.random()));
 					typeText($('#playerAnswer'), question.playerAnswer, 500);
 				}, 7100);
 				
@@ -208,10 +209,10 @@
 				setTimeout(function(){$('#playerLayer').addClass('slideOut');}, 8100);
 				
 				// zoom appleman
-				setTimeout(function(){$('#applemanLayer').addClass('zoom');}, 9100);
+				setTimeout(function(){$('#applemanLayer').addClass('zoom');}, 14000);
 				
 				// fade to transparent
-				setTimeout(function(){$('div').addClass('fadeOut');}, 12100);
+				setTimeout(function(){$('div').addClass('fadeOut');}, 17000);
 			}
 			window.onload = function () {
 				init("quizintro.json");

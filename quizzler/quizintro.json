@@ -1,26 +1,26 @@
 {
 	"questions" : [
 		{
-			"questionGame": "Super Mario (series)",
-			"questionNo": "Q273: Submitted by: ???",
-			"question": "What color is Mario's hat?",
-			"smiteQuestion": "What is the color of Mario's hat?",
-			"answerA": "Red",
-			"answerB": "Blue",
-			"answerC": "Black",
-			"answerD": "Yellow",
-			"playerAnswer": "Blue?"
+			"questionGame": "Legend of Zelda (Series)",
+			"questionNo": "Q273: Submitted by: Nerdprime",
+			"question": "What hero saves Hyrule with the Master Sword..?",
+			"smiteQuestion": "Who saves Hyrule with the Master Sword?",
+			"answerA": "Zelda",
+			"answerB": "Navi",
+			"answerC": "Link",
+			"answerD": "Ganon",
+			"playerAnswer": "Zelda?"
 		},
 		{
-			"questionGame": "Donkey Kong (series)",
+			"questionGame": "Donkey Kong Country (series)",
 			"questionNo": "Q101: Submitted by: ???",
-			"question": "What is Donkey's last name?",
-			"smiteQuestion": "What is Donkey's last name?",
-			"answerA": "Kong",
-			"answerB": "Smith",
+			"question": "What is Diddy's last name?",
+			"smiteQuestion": "What is Diddy's last name?",
+			"answerA": "Lord",
+			"answerB": "Kong",
 			"answerC": "Jones",
-			"answerD": "Mario",
-			"playerAnswer": "Mario?"
+			"answerD": "K.Rool",
+			"playerAnswer": "Lord?"
 		}
 	]
 }
