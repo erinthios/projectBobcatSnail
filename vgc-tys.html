@@ -189,12 +189,6 @@
 			}
 
 			var isCalled = false;
-			function isNotGenesis(value) {
-				return value.GameConsole.indexOf("Genesis") <= -1;
-			}
-			function isSaveState(value) {
-				return value.SaveStateDownloadLocation === "X";
-			}
 			$challenge = {
 				challenges: [null,null,null,null,null,null,null,null],
 				shownChallenge: -1,
@@ -219,11 +213,11 @@
 					}
 					$('#navContent').removeClass('hidden');
 					$('#game-list').addClass('hidden');
-					$('#game-name').text(challenge.GameTitle);
+					$('#game-name').text(challenge["Game Title"]);
 					$('#challenge').text(challenge.CKey);
-					$('#game-console').text(challenge.GameConsole);
+					$('#game-console').text(challenge["Game Console"]);
 					$('#submitter').text(challenge.Submitter);
-					$('#challenge-details').text(challenge.ChallengeDetails);
+					$('#challenge-details').text(challenge["Challenge Details"]);
 					$('#state-slot').text(challenge.StateSlot);
 					$('#challenge-handicap').text("Handicap: "+challenge.Handicap);
 
@@ -237,7 +231,7 @@
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
-							var filteredChallenges = shuffle(challenges.filter(isNotGenesis));
+							var filteredChallenges = shuffle(challenges);
 							
 							// disallow duplicate game titles, so keep a separate counter
 							var i=0;
@@ -245,7 +239,7 @@
 							// game 1
 							var challenge0 = filteredChallenges[i];
 							$challenge.challenges[i] = challenge0;
-							$('#game-0').text(challenge0.GameTitle);
+							$('#game-0').text(challenge0["Game Title"]);
 							textfit($('#game-0'));
 							
 							// game 2
@@ -253,18 +247,18 @@
 							do {
 								challenge1 = filteredChallenges[++i];
 								$challenge.challenges[1] = challenge1;
-								$('#game-1').text(challenge1.GameTitle);
+								$('#game-1').text(challenge1["Game Title"]);
 								textfit($('#game-1'));
-							} while(challenge1.GameTitle == challenge0.GameTitle);
+							} while(challenge1["Game Title"] == challenge0["Game Title"]);
 							
 							// game 3
 							var challenge2;
 							do {
 								challenge2 = filteredChallenges[++i];
 								$challenge.challenges[2] = challenge2;
-								$('#game-2').text(challenge2.GameTitle);
+								$('#game-2').text(challenge2["Game Title"]);
 								textfit($('#game-2'));
-							} while(challenge2.GameTitle == challenge0.GameTitle || challenge2.GameTitle == challenge1.GameTitle);
+							} while(challenge2["Game Title"] == challenge0["Game Title"] || challenge2["Game Title"] == challenge1["Game Title"]);
 						});
 					}
 				}

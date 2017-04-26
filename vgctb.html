@@ -149,11 +149,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
 			var isCalled = false;
-			function isNotGenesis(value) {
-				return value.GameConsole.indexOf("Genesis") <= -1;
-			}
 			function isSaveState(value) {
-				return value.SaveStateDownloadLocation === "X";
+				return value["Save State Download Location"] === "X";
 			}
 			$challenge = {
 				loadJSON: function (path, callback) {
@@ -172,18 +169,17 @@
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
-							var filteredChallenges = challenges.filter(isNotGenesis);
-							filteredChallenges = filteredChallenges.filter(isSaveState);
+							var filteredChallenges = challenges.filter(isSaveState);
 
 							var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-							$('#game-name').text(challenge.GameTitle);
+							$('#game-name').text(challenge["Game Title"]);
 							$('#challenge').text(challenge.TBKey);
-							$('#game-console').text(challenge.GameConsole);
+							$('#game-console').text(challenge["Game Console"]);
 							$('#submitter').text(challenge.Submitter);
-							$('#challenge-details').text(challenge.ChallengeDetails);
+							$('#challenge-details').text(challenge["Challenge Details"]);
 							$('#state-slot').text(challenge.Stateslot);
 							
-							var cssClass = 'controller'+challenge.GameConsole;
+							var cssClass = 'controller'+challenge["Game Console"];
 							$('#controllerA').addClass(cssClass);
 							$('#controllerB').addClass(cssClass);
 						});

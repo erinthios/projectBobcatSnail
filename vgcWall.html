@@ -58,6 +58,21 @@
 				height: 115px;
 				top: -230px;
 			}
+			
+			.emblem {
+				position: absolute;
+				top: 188px;
+				left: -41px;
+				width: 90px;
+				height: 90px;
+				z-index: 100;
+			}
+			.rare1 .emblem {
+				background: url('images/rare1.png') no-repeat center;
+			}
+			.rare2 .emblem {
+				background: url('images/rare2.png') no-repeat center;
+			}
 
 			.reroll {
 				position: relative;
@@ -197,19 +212,19 @@
 			}
 
 			.controllerNES {
-				background: url('controllers/nes_2.png');
+				background: url('playericons/controllers/nes_2.png');
 			}
 			.controllerSNES {
-				background: url('controllers/snes_2.png');
+				background: url('playericons/controllers/snes_2.png');
 			}
 			.controllerGBA {
-				background: url('controllers/gba_2.png');
+				background: url('playericons/controllers/gba_2.png');
 			}
 			.controllerN64 {
-				background: url('controllers/64_2.png');
+				background: url('playericons/controllers/64_2.png');
 			}
 			.controllerGEN {
-				background: url('controllers/gen_2.png');
+				background: url('playericons/controllers/gen_2.png');
 			}
 			
 			#wagerManagement, #wagerDisplay {
@@ -253,12 +268,12 @@
 		<div id="navContent">
 
 			<!-- TV bank -->
-			<div id="tv0" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(0);"></div><div class="reroll" onclick="$challenge.reroll(0);"></div></div>
-			<div id="tv1" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(1);"></div><div class="reroll" onclick="$challenge.reroll(1);"></div></div>
-			<div id="tv2" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(2);"></div><div class="reroll" onclick="$challenge.reroll(2);"></div></div>
-			<div id="tv3" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(3);"></div><div class="reroll" onclick="$challenge.reroll(3);"></div></div>
-			<div id="tv4" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(4);"></div><div class="reroll" onclick="$challenge.reroll(4);"></div></div>
-			<div id="tv5" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(5);"></div><div class="reroll" onclick="$challenge.reroll(5);"></div></div>
+			<div id="tv0" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(0);"></div><div class="reroll" onclick="$challenge.reroll(0);"></div><div class="emblem"></div></div>
+			<div id="tv1" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(1);"></div><div class="reroll" onclick="$challenge.reroll(1);"></div><div class="emblem"></div></div>
+			<div id="tv2" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(2);"></div><div class="reroll" onclick="$challenge.reroll(2);"></div><div class="emblem"></div></div>
+			<div id="tv3" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(3);"></div><div class="reroll" onclick="$challenge.reroll(3);"></div><div class="emblem"></div></div>
+			<div id="tv4" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(4);"></div><div class="reroll" onclick="$challenge.reroll(4);"></div><div class="emblem"></div></div>
+			<div id="tv5" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(5);"></div><div class="reroll" onclick="$challenge.reroll(5);"></div><div class="emblem"></div></div>
 
 			<!-- game logo area -->
 			<div id="gameLogo"></div>
@@ -333,17 +348,17 @@
 			};
 			
 			var isCalled = false;
-			function isNotGenesis(value) {
-				return value.GameConsole.indexOf("Genesis") <= -1;
-			}
 			function isSaveState(value) {
-				return value.SaveStateDownloadLocation === "X";
+				return value["Save State Download Location"] === "X";
 			}
 			function isHard(value) {
-				return value.DifficultyRating >= 4;
+				return value["Difficulty Rating"] >= 4;
 			}
 			function isEasy(value) {
 				return !isHard(value);
+			}
+			function isRare(value) {
+				return value["Rare"] > 0;
 			}
 			$challenge = {
 				challenges: [null,null,null,null,null,null,null,null],
@@ -368,15 +383,15 @@
 						return;
 					}
 					$('#description').removeClass('hidden');
-					$('#game-name').text(challenge.GameTitle);
+					$('#game-name').text(challenge["Game Title"]);
 					$('#challenge').text(challenge.CKey);
 					$('#submitter').text(challenge.Submitter);
-					$('#challenge-details').text(challenge.ChallengeDetails);
-					$('#challenge-time-limit').text(challenge.ChallengeTimeLimit);
-					$('#difficulty-rating').text(challenge.DifficultyRating);
+					$('#challenge-details').text(challenge["Challenge Details"]);
+					$('#challenge-time-limit').text(challenge["Challenge Time Limit"]);
+					$('#difficulty-rating').text(challenge["Difficulty Rating"]);
 					$('#state-slot').text(challenge.StateSlot);
 					
-					var cssClass = 'controller'+challenge.GameConsole;
+					var cssClass = 'controller'+challenge["Game Console"];
 					$('#game-console').removeClass().addClass(cssClass);
 					
 					textfit($('#details'));
@@ -395,17 +410,30 @@
 						case 5:
 							$challenge.loadJSON('challenges.json', function (response) {
 								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isNotGenesis);
-								filteredChallenges = filteredChallenges.filter(isSaveState);
+								var filteredChallenges = challenges.filter(isSaveState);
+								if (i === 5)
+								{
+									filteredChallenges = filteredChallenges.filter(isRare);
+								}
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-								$('#tv' + i).children('.game-name').text(challenge.GameTitle);
-								$('#tv' + i).children('.challenge-console').text(challenge.GameConsole);
+								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
+								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
 								$challenge.challenges[i] = challenge;
 
 								// show TV
 								$('#tv' + i).removeClass('hidden');
+								$('#tv' + i).removeClass('rare1');
+								$('#tv' + i).removeClass('rare2');
+								if (challenge.Rare === 1)
+								{
+									$('#tv' + i).addClass('rare1');
+								}
+								else if (challenge.Rare === 2)
+								{
+									$('#tv' + i).addClass('rare2');
+								}
 
 								// update game description
 								if ($challenge.shownChallenge === i)
@@ -424,8 +452,7 @@
 							// Feelin' Sad
 							$challenge.loadJSON('challenges.json', function (response) {
 								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isNotGenesis);
-								filteredChallenges = filteredChallenges.filter(isSaveState);
+								var filteredChallenges = challenges.filter(isSaveState);
 								filteredChallenges = filteredChallenges.filter(isHard);
 
 								// get new challenge
@@ -449,8 +476,7 @@
 							// Grab Bag
 							$challenge.loadJSON('challenges.json', function (response) {
 								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isNotGenesis);
-								filteredChallenges = filteredChallenges.filter(isSaveState);
+								var filteredChallenges = challenges.filter(isSaveState);
 								filteredChallenges = filteredChallenges.filter(isEasy);
 
 								// get new challenge
@@ -475,6 +501,8 @@
 					// select radio button (which will show description)
 					$('#r' + i).click();
 					
+					$('#tv' + i).removeClass('rare1');
+					$('#tv' + i).removeClass('rare2');
 					if ($('#tv' + i).hasClass('hidden') === false)
 					{
 						$('#tv' + i).addClass('hidden');
