@@ -152,6 +152,9 @@
 			function isSaveState(value) {
 				return value["Save State Download Location"] === "X";
 			}
+			function isNotOnlyRelay(value) {
+				return value["Relay"] != 2;
+			}
 			$challenge = {
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
@@ -169,7 +172,7 @@
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
-							var filteredChallenges = challenges.filter(isSaveState);
+							var filteredChallenges = challenges.filter(isSaveState).filter(isNotOnlyRelay);
 
 							var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 							$('#game-name').text(challenge["Game Title"]);

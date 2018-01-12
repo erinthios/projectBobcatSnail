@@ -169,7 +169,8 @@ soundPools[emptySoundPool] = [
 "sounds/dec - roger rabbit.ogg",
 "sounds/dec - turtle captured.ogg",
 "sounds/nothing-Bubsy-out.ogg",
-"sounds/nothing-Bubsy-whoa.ogg"
+"sounds/nothing-Bubsy-whoa.ogg",
+"sounds/nowaydude.ogg"
 ];
 soundPools[testYourSmiteSoundPool] = [
 	"sounds/Test_Your_Smite_madi.ogg",
@@ -436,6 +437,18 @@ function clickMapSquare(obj)
 			if (node !== obj && !node.isShown && allowedGoalClasses.indexOf(node.className) > -1)
 			{
 				hiddenSquares.push(elements[i]);
+			}
+		}
+		if (hiddenSquares.length === 0)
+		{
+			/* no allowed spaces, fall back on replacing anything */
+			for (var i=0; i<elements.length; ++i)
+			{
+				var node = elements[i];
+				if ((obj == null || node !== obj) && !node.isShown)
+				{
+					hiddenSquares.push(elements[i]);
+				}
 			}
 		}
 		shuffle(hiddenSquares);

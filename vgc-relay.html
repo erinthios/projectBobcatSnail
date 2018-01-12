@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Relay Battle</title>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+    <style>
+ 
+        body {
+            background-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+		
+        div .info{
+			color: #dddddd;
+			text-shadow: 0 0 3px #000000, 0 0 6px #000000;
+            display: block;
+            float: left;
+			font-size: 12px;
+			font-family: Verdana;
+			height: 12px;
+			padding-top: 2px;
+        }
+		
+		#game-name1, #game-name2 {
+			font-weight: bold;
+			color: magenta;
+		}
+		#by-heading1, #by-heading2 {
+			font-weight: bold;
+			color: pink;
+			padding-left: 15px;
+		}
+		#submitter1, #submitter2 {
+			font-weight: bold;
+			padding-left: 5px;
+		}
+		#state-heading1, #state-heading2 {
+			font-weight: bold;
+			color: pink;
+			padding-left: 15px;
+		}
+		#state-slot1, #state-slot2 {
+			font-weight: bold;
+			padding-left: 5px;
+		}
+    </style>
+</head>
+<body>
+    <audio autoplay>
+        <source src="Ding.mp3" type="audio/mpeg">
+    </audio>
+    <div class="spacer"></div>
+ 
+    <div id="navContent">
+<div style="width:330px;height:140px;">
+ <div style = "width: 100%; height: 100%;display: inline-block;">
+ 
+				<div class ="info" id="game-name1">Game</div>
+
+				<div class ="info" id="state-heading1">State: </div>
+				<div class = "info" id="state-slot1">None</div>
+				<div class ="info" id="by-heading1">By: </div>
+				<div class = "info" id="submitter1">Name</div>				
+				<div class = "info" style="width: 10px;"></div>
+			
+				<br><br>
+
+                <div class ="info" style="padding-left: 0px;font-weight: bold;" id="challenge-details1">Stuff</div>
+    </div>
+</div>
+<div style="width:330px;height:140px;">
+ <div style = "width: 100%; height: 100%;display: inline-block;">
+ 
+				<div class ="info" id="game-name2">Game</div>
+
+				<div class ="info" id="state-heading2">State: </div>
+				<div class = "info" id="state-slot2">None</div>
+				<div class ="info" id="by-heading2">By: </div>
+				<div class = "info" id="submitter2">Name</div>				
+				<div class = "info" style="width: 10px;"></div>
+			
+				<br><br>
+
+                <div class ="info" style="padding-left: 0px;font-weight: bold;" id="challenge-details2">Stuff</div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	/* http://stackoverflow.com/a/2450976 */
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
+
+    var isCalled = false;
+	function isSaveState(value) {
+		return value["Save State Download Location"] === "X";
+	}
+	function isRelay(value) {
+		return value["Relay"] > 0;
+	}
+    $challenge = {
+        loadJSON: function (path, callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', path, true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        },
+        loadGame: function (path1, path2) {
+            if (!isCalled) {
+                isCalled = true;
+                $challenge.loadJSON(path1, function (response1) {
+					$challenge.loadJSON(path2, function (response2) {
+						var challenges1 = JSON.parse(response1);
+						var challenges2 = JSON.parse(response2);
+						var filteredChallenges = challenges1.concat(challenges2);
+						filteredChallenges = shuffle(filteredChallenges.filter(isSaveState).filter(isRelay));
+
+						var challenge = filteredChallenges[0];
+						$('#game-name1').text(challenge["Game Title"]);
+						$('#game-console1').text(challenge["Game Console"]);
+						$('#submitter1').text(challenge.Submitter);
+						$('#challenge-details1').text(challenge["Challenge Details"]);
+						$('#state-slot1').text(challenge.Stateslot);
+
+						challenge = filteredChallenges[1];
+						$('#game-name2').text(challenge["Game Title"]);
+						$('#game-console2').text(challenge["Game Console"]);
+						$('#submitter2').text(challenge.Submitter);
+						$('#challenge-details2').text(challenge["Challenge Details"]);
+						$('#state-slot2').text(challenge.Stateslot);
+					});
+                });
+            }
+        }
+    }
+    window.onload = function () {
+        $challenge.loadGame('challenges.json', 'TB challenges.json');
+    }
+</script>
+</body>
+</html>

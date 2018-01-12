@@ -188,6 +188,10 @@
 				return array;
 			}
 
+			function isNotOnlyRelay(value) {
+				return value["Relay"] != 2;
+			}
+			
 			var isCalled = false;
 			$challenge = {
 				challenges: [null,null,null,null,null,null,null,null],
@@ -231,7 +235,7 @@
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
 							var challenges = JSON.parse(response);
-							var filteredChallenges = shuffle(challenges);
+							var filteredChallenges = shuffle(challenges.filter(isNotOnlyRelay));
 							
 							// disallow duplicate game titles, so keep a separate counter
 							var i=0;

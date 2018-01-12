@@ -360,8 +360,16 @@
 			function isRare(value) {
 				return value["Rare"] > 0;
 			}
+			function isNotOnlyRelay(value) {
+				return value["Relay"] != 2;
+			}
+			function notSeen(value) {
+				return !$challenge.seenChallenges.includes(value);
+			}
 			$challenge = {
+				availableChallenges: [],
 				challenges: [null,null,null,null,null,null,null,null],
+				seenChallenges: [],
 				shownChallenge: -1,
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
@@ -373,6 +381,11 @@
 						}
 					};
 					xobj.send(null);
+				},
+				init: function (path) {
+					$challenge.loadJSON('challenges.json', function (response) {
+						$challenge.availableChallenges = JSON.parse(response);
+					});
 				},
 				loadGame: function (i) {
 					$challenge.shownChallenge = i;
@@ -408,9 +421,7 @@
 						case 3:
 						case 4:
 						case 5:
-							$challenge.loadJSON('challenges.json', function (response) {
-								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isSaveState);
+								var filteredChallenges = $challenge.availableChallenges.filter(isSaveState).filter(notSeen).filter(isNotOnlyRelay);
 								if (i === 5)
 								{
 									filteredChallenges = filteredChallenges.filter(isRare);
@@ -421,6 +432,7 @@
 								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
 								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
 								$challenge.challenges[i] = challenge;
+								$challenge.seenChallenges.push(challenge);
 
 								// show TV
 								$('#tv' + i).removeClass('hidden');
@@ -445,19 +457,17 @@
 								$('#ding')[0].pause();
 								$('#ding')[0].currentTime = 0;
 								$('#ding')[0].play();
-							});
 							break;
 							
 						case 6:
 							// Feelin' Sad
-							$challenge.loadJSON('challenges.json', function (response) {
-								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isSaveState);
+								var filteredChallenges = $challenge.availableChallenges.filter(isSaveState).filter(notSeen);
 								filteredChallenges = filteredChallenges.filter(isHard);
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$challenge.challenges[i] = challenge;
+								$challenge.seenChallenges.push(challenge);
 
 								// update game description
 								if ($challenge.shownChallenge === i)
@@ -469,19 +479,17 @@
 								$('#ding')[0].pause();
 								$('#ding')[0].currentTime = 0;
 								$('#ding')[0].play();
-							});
 							break;
 							
 						case 7:
 							// Grab Bag
-							$challenge.loadJSON('challenges.json', function (response) {
-								var challenges = JSON.parse(response);
-								var filteredChallenges = challenges.filter(isSaveState);
+								var filteredChallenges = $challenge.availableChallenges.filter(isSaveState).filter(notSeen);
 								filteredChallenges = filteredChallenges.filter(isEasy);
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$challenge.challenges[i] = challenge;
+								$challenge.seenChallenges.push(challenge);
 
 								// update game description
 								if ($challenge.shownChallenge === i)
@@ -493,7 +501,6 @@
 								$('#ding')[0].pause();
 								$('#ding')[0].currentTime = 0;
 								$('#ding')[0].play();
-							});
 							break;
 					}
 				},
@@ -546,7 +553,7 @@
 				}
 			};
 			window.onload = function () {
-				$challenge.loadGame('challenges.json');
+				$challenge.init('challenges.json');
 				setInterval(function () {
 					$('#wg').text($('#wager')[0].value);
 				}, 1000);
