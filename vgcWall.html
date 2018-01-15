@@ -6,63 +6,79 @@
 		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+		<link href="fonts/dseg7/modern.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 		<style>
 			#tv0, #tv1, #tv2 {
 				position: absolute;
-				top: 47px;
+				top: 32px;
 			}
 			#tv3, #tv4, #tv5 {
 				position: absolute;
-				top: 386px;
+				top: 360px;
 			}
 			#tv0, #tv3 {
-				left: 41px;
+				left: 35px;
 			}
 			#tv1, #tv4 {
-				left: 462px;
+				left: 463px;
 			}
 			#tv2, #tv5 {
-				left: 882px;
+				left: 888px;
 			}
 			
 			div .gamen {
-				background-image: url("TV on.png");
-				background-repeat: no-repeat;
-				width: 360px;
-				height: 230px;
-				text-align: center;
-				line-height: 230px;
-				font-family: 'Sigmar One', cursive;
+				width: 264px;
+				height: 232px;
+				font-family: Righteous;
 			}
 			
 			.gamen.hidden {
 				background-image: none;
 			}
-			.gamen.hidden .game-name, .gamen.hidden .challenge-console {
-				visibility: hidden;
-			}
 
-			.gamen span {
+			.gamen .game-name {
+				position: absolute;
 				display: inline-block;
-				vertical-align: middle;
-				line-height: normal;
-				padding-left: 20px;
-				padding-right: 20px;
-				font-size: 36px;
-				color: orange;
+				top: 262px;
+				left: 10px;
+				width: 280px;
+				font-size: 18px;
+				color: #a2dae9;
 				text-shadow: 3px 3px 0px #000000;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			
+			.gamen .challenge-console {
+				position: absolute;
+				display: inline-block;
+				top: 264px;
+				left: 300px;
+				font-size: 16px;
+				color: #a2dae9;
+				text-shadow: 3px 3px 0px #000000;
+			}
+			
+			.gamen .channel {
+				font-family: 'DSEG7 Modern';
+				color: palegreen;
+				font-size: 36px;
+				position: absolute;
+				top: 2px;
+				left: 295px;
 			}
 			
 			.show-hide {
 				position: relative;
-				height: 115px;
-				top: -230px;
+				height: 116px;
 			}
 			
 			.emblem {
 				position: absolute;
-				top: 188px;
-				left: -41px;
+				top: 182px;
+				left: 300px;
 				width: 90px;
 				height: 90px;
 				z-index: 100;
@@ -76,8 +92,7 @@
 
 			.reroll {
 				position: relative;
-				height: 115px;
-				top: -230px;
+				height: 116px;
 			}
 
 			body {
@@ -85,11 +100,61 @@
 				overflow: hidden;
 			}
 
-			.challenge-console {
+			.tv-cover {
 				position: absolute;
-				top: 96px;
-				left: 60px;
-				font-size: 125%;
+				top: -6px;
+				left: -8px;
+				width: 280px;
+				height: 244px;
+			}
+			.title-card {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 264px;
+				height: 232px;
+			}
+			.title-card {
+				background-color: #e1eef6;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				content: " ";
+				overflow: hidden;
+				background: #16222A;
+				background: -webkit-linear-gradient(to left, #16222A, #3A6073);
+				background: linear-gradient(to left, #16222A, #3A6073);
+				background-size: cover;
+				color: #e1eef6;
+			}
+			.title-card img {
+				/* make image fill space, can't use background-image with the "turn on" JS */
+				width: 100%;
+				height: 100%;
+			}
+			.hidden .title-card, .hidden .channel, .hidden .game-name, .hidden .challenge-console {
+				opacity: 0;
+			}
+			.title-card, .channel, .game-name, .challenge-console {
+				transition: opacity .5s;
+				opacity: 1;
+			}
+			.tv-cover {
+				opacity: 1;
+				transition: opacity 0s; /* show immediately */
+			}
+			.hidden .tv-cover {
+				opacity: 0;
+				transition: opacity 0s linear .5s; /* delay hiding until above is done */
+			}
+			.title-card.load-failed {
+				background-image: url('tv-test.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			
+			.tv-cover {
+				background: url('TV on.png') no-repeat;
 			}
 			
 			#header {
@@ -268,12 +333,12 @@
 		<div id="navContent">
 
 			<!-- TV bank -->
-			<div id="tv0" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(0);"></div><div class="reroll" onclick="$challenge.reroll(0);"></div><div class="emblem"></div></div>
-			<div id="tv1" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(1);"></div><div class="reroll" onclick="$challenge.reroll(1);"></div><div class="emblem"></div></div>
-			<div id="tv2" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(2);"></div><div class="reroll" onclick="$challenge.reroll(2);"></div><div class="emblem"></div></div>
-			<div id="tv3" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(3);"></div><div class="reroll" onclick="$challenge.reroll(3);"></div><div class="emblem"></div></div>
-			<div id="tv4" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(4);"></div><div class="reroll" onclick="$challenge.reroll(4);"></div><div class="emblem"></div></div>
-			<div id="tv5" class="box gamen hidden"><span class="game-name"></span><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(5);"></div><div class="reroll" onclick="$challenge.reroll(5);"></div><div class="emblem"></div></div>
+			<div id="tv0" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(0);"></div><div class="reroll" onclick="$challenge.reroll(0);"></div><div class="emblem"></div><div class="channel"></div></div>
+			<div id="tv1" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(1);"></div><div class="reroll" onclick="$challenge.reroll(1);"></div><div class="emblem"></div><div class="channel"></div></div>
+			<div id="tv2" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(2);"></div><div class="reroll" onclick="$challenge.reroll(2);"></div><div class="emblem"></div><div class="channel"></div></div>
+			<div id="tv3" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(3);"></div><div class="reroll" onclick="$challenge.reroll(3);"></div><div class="emblem"></div><div class="channel"></div></div>
+			<div id="tv4" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(4);"></div><div class="reroll" onclick="$challenge.reroll(4);"></div><div class="emblem"></div><div class="channel"></div></div>
+			<div id="tv5" class="box gamen hidden"><span class="game-name"></span><div class="title-card"><img></div><div class="tv-cover"></div><div class="challenge-console"></div><div class="show-hide" onclick="$challenge.showHide(5);"></div><div class="reroll" onclick="$challenge.reroll(5);"></div><div class="emblem"></div><div class="channel"></div></div>
 
 			<!-- game logo area -->
 			<div id="gameLogo"></div>
@@ -336,6 +401,32 @@
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
+			// based on https://codepen.io/francescostella/pen/ONaWvZ
+			var timeline = [];
+
+			function buildTimeline() {
+				for (var i=0; i<6; ++i) {
+					timeline[i] = new TimelineMax({
+						paused: true
+					});
+
+					timeline[i]
+					.to("#tv"+i+" .title-card", .2, {
+						width: '264px',
+						height: '2px',
+						background: '#ffffff',
+						ease: Power2.easeOut
+					})
+					.to("#tv"+i+" .title-card", .2, {
+						width: '0',
+						height: '0',
+						background: '#ffffff'
+					});
+					
+					timeline[i].restart();
+				}
+			}
+
 			// based on https://github.com/nbrunt/TextFit
 			// modified to require a max-height
 			function textfit(node) {
@@ -365,6 +456,10 @@
 			}
 			function notSeen(value) {
 				return !$challenge.seenChallenges.includes(value);
+			}
+			function getTitleCardUrl(name) {
+				var cleanName = name.replace(/[\\\/:*?"<>|]/g,'');
+				return "images/titlecards/" + cleanName + ".gif";
 			}
 			$challenge = {
 				availableChallenges: [],
@@ -431,8 +526,26 @@
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
 								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
+								$('#tv' + i).children('.channel').text(10+5*Math.floor(Math.random()*7));
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
+								
+								// handle image
+								var titleCard = $('#tv' + i).children('.title-card').children('img');
+								var titleImageUrl = getTitleCardUrl(challenge["Game Title"]);
+								var titleImage = new Image();
+								titleCard.removeClass('load-failed');
+								//titleCard.css("background-image", "");
+								titleCard[0].src = "";
+								titleImage.onload = function() {
+									//titleCard.css("background-image", 'url("'+titleImageUrl+'")');
+									titleCard[0].src = titleImageUrl;
+								};
+								titleImage.onerror = function() {
+									//titleCard.addClass('load-failed');
+									titleCard[0].src = 'tv-test.png';
+								};
+								titleImage.src = titleImageUrl;
 
 								// show TV
 								$('#tv' + i).removeClass('hidden');
@@ -457,6 +570,9 @@
 								$('#ding')[0].pause();
 								$('#ding')[0].currentTime = 0;
 								$('#ding')[0].play();
+								
+								// turn TV on
+								timeline[i].reverse();
 							break;
 							
 						case 6:
@@ -512,6 +628,7 @@
 					$('#tv' + i).removeClass('rare2');
 					if ($('#tv' + i).hasClass('hidden') === false)
 					{
+						timeline[i].restart();
 						$('#tv' + i).addClass('hidden');
 						$challenge.challenges[i] = null;
 					}
@@ -553,6 +670,7 @@
 				}
 			};
 			window.onload = function () {
+				buildTimeline();
 				$challenge.init('challenges.json');
 				setInterval(function () {
 					$('#wg').text($('#wager')[0].value);

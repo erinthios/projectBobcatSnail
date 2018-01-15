@@ -119,6 +119,48 @@
 			.controllerGEN {
 				background: url('playericons/controllers/genesis_controller.png'), linear-gradient(to bottom, orange 0%, white 50%, orange 100%);
 			}
+
+			#frame, #game-list {
+				transition-property: opacity, visibility;
+				transition-duration: 0.5s;
+			}
+			#frame.hidden, #game-list.hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+			
+			#game-list {
+				width: 1058px;
+				position: relative;
+				top: -70px;
+				text-align: center;
+			}
+			#game-list > button {
+				width: 33%;
+				padding: 15px 25px;
+				font-size: 24px;
+				line-height: 24px;
+				max-height: 54px;
+				vertical-align: middle;
+				text-align: center;
+				cursor: pointer;
+				outline: none;
+				color: #000;
+				background-color: #cc99ff;
+				border: none;
+				border-radius: 15px;
+				box-shadow: 0 9px #999;
+			}
+			#game-list > button:hover {
+				background-color: #9966cc;
+				color: #fff;
+			}
+			#game-list > button:active {
+				background-color: #9966cc;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+				color: #fff;
+			}
 		</style>
 	</head>
 	<body>
@@ -126,7 +168,7 @@
 			<source src="Ding.mp3" type="audio/mpeg">
 		</audio>
 
-		<div id="frame">
+		<div id="frame" class="hidden">
 			<div id="controllerA"></div>
 			<div id="description">
 				<div id="header">
@@ -145,11 +187,47 @@
 			</div>
 			<div id="controllerB"></div>
 		</div>
+		<div id="game-list">
+			<button id="game-0" onclick="$challenge.loadGame(0);">Game 1</button>
+			<button id="game-1" onclick="$challenge.loadGame(1);">Game 2</button>
+			<button id="game-2" onclick="$challenge.loadGame(2);">Game 3</button>
+		</div>
 		
 		<p><button id="next" onclick="getNext();">Next</button></p>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
+			// based on https://github.com/nbrunt/TextFit
+			// modified to require a max-height
+			function textfit(node) {
+				node[0].style["font-size"] = null;
+				var fs = parseInt(node.css("font-size"), 10);
+				var mh = parseInt(node.css("max-height"), 10);
+				while (node[0].scrollHeight > mh) {
+					node.css("font-size", --fs + "px");
+				}
+			};
+			
+			/* http://stackoverflow.com/a/2450976 */
+			function shuffle(array) {
+				var currentIndex = array.length, temporaryValue, randomIndex;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			}
+
 			var isCalled = false;
 			function isSaveState(value) {
 				return value["Save State Download Location"] === "X";
@@ -163,6 +241,8 @@
 			$challenge = {
 				availableChallenges: [],
 				seenChallenges: [],
+				activeChallenges: [null,null,null],
+				shownChallenge: -1,
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
 					xobj.overrideMimeType("application/json");
@@ -178,43 +258,82 @@
 					if (!isCalled) {
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
-							$challenge.availableChallenges = JSON.parse(response);
-							$challenge.loadGame();
+							$challenge.availableChallenges = shuffle(JSON.parse(response));
+							$challenge.nextChoices();
 						});
 					}
 				},
-				loadGame: function () {
-							var filteredChallenges = $challenge.availableChallenges.filter(isSaveState).filter(notSeen).filter(isNotOnlyRelay);
-
-							var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-							$('#game-name').text(challenge["Game Title"]);
-							$('#challenge').text(challenge.TBKey);
-							$('#game-console').text(challenge["Game Console"]);
-							$('#submitter').text(challenge.Submitter);
-							$('#challenge-details').text(challenge["Challenge Details"]);
-							$('#state-slot').text(challenge.Stateslot);
-							
-							var cssClass = 'controller'+challenge["Game Console"];
-							$('#controllerA').addClass(cssClass);
-							$('#controllerB').addClass(cssClass);
-							
-							$challenge.seenChallenges.push(challenge);
-							
-						clearTimeout();
-						setTimeout(function () {
-							$('#navContent')[0].style.opacity = 0;
-						}, 240000);
-						var ding = document.getElementById("ding");
-						ding.pause();
-						ding.currentTime = 0;
-						ding.play();
+				nextChoices: function () {
+					$('#frame').addClass('hidden');
+					$('#game-list').removeClass('hidden');
+					
+					var filteredChallenges = shuffle($challenge.availableChallenges.filter(isSaveState).filter(notSeen).filter(isNotOnlyRelay));
+					
+					// disallow duplicate game titles, so keep a separate counter
+					var i=0;
+					
+					// game 1
+					var challenge0 = filteredChallenges[i];
+					$challenge.activeChallenges[i] = challenge0;
+					$('#game-0').text(challenge0["Game Title"]);
+					textfit($('#game-0'));
+					
+					// game 2
+					var challenge1;
+					do {
+						challenge1 = filteredChallenges[++i];
+						$challenge.activeChallenges[1] = challenge1;
+						$('#game-1').text(challenge1["Game Title"]);
+						textfit($('#game-1'));
+					} while(challenge1["Game Title"] == challenge0["Game Title"]);
+					
+					// game 3
+					var challenge2;
+					do {
+						challenge2 = filteredChallenges[++i];
+						$challenge.activeChallenges[2] = challenge2;
+						$('#game-2').text(challenge2["Game Title"]);
+						textfit($('#game-2'));
+					} while(challenge2["Game Title"] == challenge0["Game Title"] || challenge2["Game Title"] == challenge1["Game Title"]);
+				},
+				loadGame: function (i) {
+					$challenge.shownChallenge = i;
+					var challenge = $challenge.activeChallenges[i];
+					if (!challenge)
+					{
+						$challenge.clearGame();
+						return;
+					}
+					$('#frame').removeClass('hidden');
+					$('#game-list').addClass('hidden');
+					$('#game-name').text(challenge["Game Title"]);
+					$('#challenge').text(challenge.TBKey);
+					$('#game-console').text(challenge["Game Console"]);
+					$('#submitter').text(challenge.Submitter);
+					$('#challenge-details').text(challenge["Challenge Details"]);
+					$('#state-slot').text(challenge.Stateslot);
+					
+					var cssClass = 'controller'+challenge["Game Console"];
+					$('#controllerA').addClass(cssClass);
+					$('#controllerB').addClass(cssClass);
+					
+					$challenge.seenChallenges.push(challenge);
+						
+					clearTimeout();
+					setTimeout(function () {
+						$('#navContent')[0].style.opacity = 0;
+					}, 240000);
+					var ding = document.getElementById("ding");
+					ding.pause();
+					ding.currentTime = 0;
+					ding.play();
 				}
 			};
 			window.onload = function () {
 				$challenge.init('TB challenges.json');
 			};
 			function getNext() {
-				$challenge.loadGame();
+				$challenge.nextChoices();
 			}
 		</script>
 	</body>
