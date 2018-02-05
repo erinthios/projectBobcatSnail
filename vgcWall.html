@@ -498,6 +498,7 @@
 					$('#challenge-time-limit').text(challenge["Challenge Time Limit"]);
 					$('#difficulty-rating').text(challenge["Difficulty Rating"]);
 					$('#state-slot').text(challenge.StateSlot);
+					$('#wager')[0].value = challenge.Points;
 					
 					var cssClass = 'controller'+challenge["Game Console"];
 					$('#game-console').removeClass().addClass(cssClass);
@@ -526,7 +527,8 @@
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
 								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
-								$('#tv' + i).children('.channel').text(10+5*Math.floor(Math.random()*7));
+								challenge["Points"] = 10+5*Math.floor(Math.random()*5);
+								$('#tv' + i).children('.channel').text(challenge["Points"]);
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
 								
@@ -554,10 +556,12 @@
 								if (challenge.Rare === 1)
 								{
 									$('#tv' + i).addClass('rare1');
+									challenge.Points += 5;
 								}
 								else if (challenge.Rare === 2)
 								{
 									$('#tv' + i).addClass('rare2');
+									challenge.Points += 10;
 								}
 
 								// update game description
@@ -582,6 +586,7 @@
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+								challenge["Points"] = -10;
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
 
@@ -604,6 +609,7 @@
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+								challenge["Points"] = 20;
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
 

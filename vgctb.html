@@ -4,12 +4,22 @@
 
 		<title>Team Battles</title>
 		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Faster+One' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 		<style>
 
 			body {
 				background-color: rgba(0, 0, 0, 0);
 				overflow: hidden;
+				transition: background-color 2s;
+			}
+			body.selectTv {
+				background-color: rgba(0, 0, 0, 0.7);
+			}
+			
+			#next {
+				position: absolute;
+				top: 730px;
 			}
 			
 			#frame {
@@ -19,6 +29,9 @@
 				background-repeat: no-repeat;
 				width: 1058px;
 				height: 70px;
+				position: absolute;
+				top: 592px;
+				left: 111px;
 			}
 
 			#description {
@@ -81,8 +94,8 @@
 
 			#description {
 				position: absolute;
-				top: 11px;
-				left: 80px;
+				top: 3px;
+				left: 73px;
 				width: 913px;
 				height: 63px;
 				background-color: rgba(0, 0, 0, .85);
@@ -93,16 +106,16 @@
 			
 			#controllerA, #controllerB {
 				position: absolute;
-				top: 12px;
+				top: 4px;
 				width: 65px;
 				height: 62px;
 				background-size: cover;
 			}
 			#controllerA {
-				left: 12px;
+				left: 4px;
 			}
 			#controllerB {
-				left: 997px;
+				left: 989px;
 			}
 			.controllerNES {
 				background: url('playericons/controllers/nes_controller.png'), linear-gradient(to bottom, red 0%, white 50%, red 100%);
@@ -121,47 +134,126 @@
 			}
 
 			#frame, #game-list {
-				transition-property: opacity, visibility;
+				transition-property: opacity, visibility, top;
 				transition-duration: 0.5s;
 			}
-			#frame.hidden, #game-list.hidden {
+			#game-list {
+				transition-duration: 2s;
+			}
+			#game-list.hidden {
 				opacity: 0;
 				visibility: hidden;
 			}
+			#frame.hidden {
+				top: 1080px;
+			}
 			
 			#game-list {
-				width: 1058px;
-				position: relative;
-				top: -70px;
-				text-align: center;
+				width: 1280px;
+				height: 327px;
+				position: absolute;
+				top: 360px;
+				left: 0;
+				transform: translateY(-50%);
+				background-image: url('TV bank.png');
+				backface-visibility: hidden;
 			}
 			#game-list > button {
-				width: 33%;
-				padding: 15px 25px;
-				font-size: 24px;
-				line-height: 24px;
-				max-height: 54px;
-				vertical-align: middle;
-				text-align: center;
+				position: absolute;
+				top: 34px;
+				width: 264px;
+				height: 232px;
+				color: transparent;
 				cursor: pointer;
 				outline: none;
-				color: #000;
-				background-color: #cc99ff;
 				border: none;
-				border-radius: 15px;
-				box-shadow: 0 9px #999;
 			}
-			#game-list > button:hover {
-				background-color: #9966cc;
-				color: #fff;
+			#game-0 {
+				left: 35px;
 			}
-			#game-list > button:active {
-				background-color: #9966cc;
-				box-shadow: 0 5px #666;
-				transform: translateY(4px);
-				color: #fff;
+			#game-1 {
+				left: 463px;
 			}
-		</style>
+			#game-2 {
+				left: 888px;
+			}
+			
+			#game-0-overlay, #game-1-overlay, #game-2-overlay {
+				background: url('TV on.png') no-repeat;
+				position: absolute;
+				top: 26px;
+				width: 280px;
+				height: 244px;
+				pointer-events: none;
+			}
+			#game-0-overlay {
+				left: 27px;
+			}
+			#game-1-overlay {
+				left: 455px;
+			}
+			#game-2-overlay {
+				left: 880px;
+			}
+			.load-failed {
+				background-image: url('tv-test.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			
+			#game-0-name, #game-1-name, #game-2-name {
+				position: absolute;
+				display: inline-block;
+				top: 294px;
+				left: 45px;
+				width: 280px;
+				font-family: Righteous;
+				font-size: 18px;
+				color: #a2dae9;
+				text-shadow: 3px 3px 0px #000000;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			#game-1-name {
+				left: 473px;
+			}
+			#game-2-name {
+				left: 898px;
+			}
+			
+			#game-0-console, #game-1-console, #game-2-console {
+				position: absolute;
+				display: inline-block;
+				top: 296px;
+				left: 335px;
+				font-family: Righteous;
+				font-size: 16px;
+				color: #a2dae9;
+				text-shadow: 3px 3px 0px #000000;
+			}
+			#game-1-console {
+				left: 763px;
+			}
+			#game-2-console {
+				left: 1188px;
+			}
+			
+			#game-0-channel, #game-1-channel, #game-2-channel {
+				position: absolute;
+				top: 32px;
+				left: 335px;
+				font-family: "Faster One";
+				font-size: 36px;
+				color: palegreen;
+			}
+			#game-1-channel {
+				left: 763px;
+			}
+			#game-2-channel {
+				left: 1188px;
+			}
+			</style>
 	</head>
 	<body>
 		<audio id="ding">
@@ -187,10 +279,22 @@
 			</div>
 			<div id="controllerB"></div>
 		</div>
-		<div id="game-list">
+		<div id="game-list" class="hidden">
 			<button id="game-0" onclick="$challenge.loadGame(0);">Game 1</button>
 			<button id="game-1" onclick="$challenge.loadGame(1);">Game 2</button>
 			<button id="game-2" onclick="$challenge.loadGame(2);">Game 3</button>
+			<div id="game-0-overlay"></div>
+			<div id="game-1-overlay"></div>
+			<div id="game-2-overlay"></div>
+			<div id="game-0-name"></div>
+			<div id="game-1-name"></div>
+			<div id="game-2-name"></div>
+			<div id="game-0-console"></div>
+			<div id="game-1-console"></div>
+			<div id="game-2-console"></div>
+			<div id="game-0-channel">TB</div>
+			<div id="game-1-channel">TB</div>
+			<div id="game-2-channel">TB</div>
 		</div>
 		
 		<p><button id="next" onclick="getNext();">Next</button></p>
@@ -238,6 +342,24 @@
 			function notSeen(value) {
 				return !$challenge.seenChallenges.includes(value);
 			}
+			function getTitleCardUrl(name) {
+				var cleanName = name.replace(/[\\\/:*?"<>|]/g,'');
+				return "images/titlecards/" + cleanName + ".gif";
+			}
+			function setImage(jqueryPath) {
+				var titleCard = $(jqueryPath);
+				var titleImageUrl = getTitleCardUrl(titleCard.text());
+				var titleImage = new Image();
+				titleCard.removeClass('load-failed');
+				titleCard.css("background-image", "");
+				titleImage.onload = function() {
+					titleCard.css("background-image", 'url("'+titleImageUrl+'")');
+				};
+				titleImage.onerror = function() {
+					titleCard.addClass('load-failed');
+				};
+				titleImage.src = titleImageUrl;
+			}
 			$challenge = {
 				availableChallenges: [],
 				seenChallenges: [],
@@ -264,6 +386,7 @@
 					}
 				},
 				nextChoices: function () {
+					$('body').addClass('selectTv');
 					$('#frame').addClass('hidden');
 					$('#game-list').removeClass('hidden');
 					
@@ -276,6 +399,8 @@
 					var challenge0 = filteredChallenges[i];
 					$challenge.activeChallenges[i] = challenge0;
 					$('#game-0').text(challenge0["Game Title"]);
+					$('#game-0-name').text(challenge0["Game Title"]);
+					$('#game-0-console').text(challenge0["Game Console"]);
 					textfit($('#game-0'));
 					
 					// game 2
@@ -284,6 +409,8 @@
 						challenge1 = filteredChallenges[++i];
 						$challenge.activeChallenges[1] = challenge1;
 						$('#game-1').text(challenge1["Game Title"]);
+						$('#game-1-name').text(challenge1["Game Title"]);
+						$('#game-1-console').text(challenge1["Game Console"]);
 						textfit($('#game-1'));
 					} while(challenge1["Game Title"] == challenge0["Game Title"]);
 					
@@ -293,8 +420,19 @@
 						challenge2 = filteredChallenges[++i];
 						$challenge.activeChallenges[2] = challenge2;
 						$('#game-2').text(challenge2["Game Title"]);
+						$('#game-2-name').text(challenge2["Game Title"]);
+						$('#game-2-console').text(challenge2["Game Console"]);
 						textfit($('#game-2'));
 					} while(challenge2["Game Title"] == challenge0["Game Title"] || challenge2["Game Title"] == challenge1["Game Title"]);
+					
+					// handle image
+					setImage('#game-0');
+					setImage('#game-1');
+					setImage('#game-2');
+					
+					// show selection controls (do like this to allow fade in)
+					$('body').addClass('selectTv');
+					$('#game-list').removeClass('hidden');
 				},
 				loadGame: function (i) {
 					$challenge.shownChallenge = i;
@@ -304,6 +442,9 @@
 						$challenge.clearGame();
 						return;
 					}
+					
+					$('body').removeClass('selectTv');
+					
 					$('#frame').removeClass('hidden');
 					$('#game-list').addClass('hidden');
 					$('#game-name').text(challenge["Game Title"]);

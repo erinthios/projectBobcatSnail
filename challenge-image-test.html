@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>VG Challenge Wall Image Test</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Missing Images</h1>
+		<table id="missingImages">
+			<thead><tr><th>Game name</th><th>Missing URL</th></tr></thead>
+		</table>
+		
+		<h1>All Games</h1>
+		<table id="allGames">
+			<thead><tr><th>Game name</th></tr></thead>
+		</table>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>
+			function getTitleCardUrl(name) {
+				var cleanName = name.replace(/[\\\/:*?"<>|]/g,'');
+				return "images/titlecards/" + cleanName + ".gif";
+			}
+			function unique(a) {
+				return a.sort().filter(function(value, index, array) {
+					return (index === 0) || (value !== array[index-1]);
+				});
+			}
+			function getUniqueValuesOfKey(array, key){
+				return array.reduce(function(carry, item){
+					if(item[key] && !~carry.indexOf(item[key])) carry.push(item[key]);
+					return carry;
+				}, []);
+			}
+			function checkImage(name) {
+				var url = getTitleCardUrl(name);
+				var img = new Image();
+				img.onerror = function() {
+					$("#missingImages").append("<tr><td>\""+name+"\"</td><td>\""+url+"\"</td></tr>");
+				};
+				img.src = url;
+			}
+			$challenge = {
+				availableChallenges: [],
+				gameNames: [],
+				loadJSON: function (path, callback) {
+					var xobj = new XMLHttpRequest();
+					xobj.overrideMimeType("application/json");
+					xobj.open('GET', path, true);
+					xobj.onreadystatechange = function () {
+						if (xobj.readyState == 4 && xobj.status == "200") {
+							callback(xobj.responseText);
+						}
+					};
+					xobj.send(null);
+				},
+				init: function (path) {
+					$challenge.loadJSON('challenges.json', function (response1) {
+						$challenge.loadJSON('TB challenges.json', function (response2) {
+							$challenge.availableChallenges = JSON.parse(response1).concat(JSON.parse(response2));
+							
+							$challenge.gameNames = getUniqueValuesOfKey($challenge.availableChallenges, "Game Title").sort();
+							
+							for (var i=0; i<$challenge.gameNames.length; ++i) {
+								var name = $challenge.gameNames[i];
+								var url = getTitleCardUrl(name);
+								$("#allGames").append("<tr><td>\""+name+"\"</tr></td>");
+								checkImage(name);
+							}
+						});
+					});
+				},
+			};
+			window.onload = function () {
+				$challenge.init('challenges.json');
+			};
+		</script>
+	</body>
+</html>
