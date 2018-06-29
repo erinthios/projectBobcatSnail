@@ -527,7 +527,7 @@
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
 								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
-								challenge["Points"] = 10+5*Math.floor(Math.random()*5);
+								challenge["Points"] = 15+5*Math.floor(Math.random()*4);
 								$('#tv' + i).children('.channel').text(challenge["Points"]);
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
