@@ -7,60 +7,226 @@
 		<link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 		
 		<style type="text/css">
-			.hidden {
-				display: none;
-			}
-			
 			body {
-			background-color: #5c5c96;
+				background-color: #5c5c96;
+				background-repeat: no-repeat;
+				width: 1280px;
+				height: 150px;
+				margin: 0;
+				padding: 0;
 			}
 			
 			#bet, #sidebet {
-				min-width: 250px;
-				width: max-content;
-				max-width: 450px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				
+				height: 146px;
+				width: 626px;
 				border: 2px solid white;
 				border-radius: 10px;
-				margin: 5px 0;
-				
-				font-family: Righteous, Verdana, sans-serif;
-				font-size: 15px;
 				
 				background-color: rgba(0, 0, 0, .85);
 				color: white;
+				
+				transition: opacity 0s linear, left 0.5s linear;
+			}
+			.hidden {
+				opacity: 0;
+				transition: opacity 1s linear, left 0.5s linear !important;
+			}
+			#bet.hidden {
+				left: -630px;
+			}
+			#sidebet {
+				left: 650px;
+				transition: opacity 0.5s linear, left 0s linear;
+			}
+			#sidebet.hidden {
+				left: 1290px;
 			}
 			
-			.timer {
-				font-size: 13px;
+			.info p:last-child {
+				text-align: left;
+				position: absolute;
+				bottom: 0px;
+				width: 100%;
+			}
+			
+			.info {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 30%;
+				height: 100%;
 			}
 			
 			p {
 				margin: 5px;
 			}
+			p > span {
+				display: inline-block;
+			}
+			span:first-child {
+				width: 55%;
+				text-align: right;
+			}
 			
-			ul.options {
+			div.optionsContainer {
+				display: table-cell;
+				position: relative;
+				top: 0;
+				left: 188px;
+				width: 438px;
+				height: 146px;
+				vertical-align: middle;
+				margin: 0;
 				padding: 0;
-				margin: 5px;
+			}
+			ul.options {
+				display: table;
+				width: min-content;
+				max-width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: auto 0 auto auto;
 				list-style: none;
 			}
-			
-			.title {
-				color: magenta;
+			ul.options li {
+				display: table-row;
+				vertical-align: middle;
+			}
+			ul.options span {
+				display: table-cell;
+				text-align: right;
+				vertical-align: middle;
+				padding: 0 5px 0 0;
+			}
+			ul.options .name {
+				text-align: left;
+				white-space: nowrap;
 			}
 			
-			.name {
-				color: pink;
+			/* allow centering list of options (not 100% height) */
+			ul.options.center {
+				height: auto;
+			}
+
+			/***********
+			* EDIT FONTS
+			***********/
+			
+			/* default font/size */
+			#bet, #sidebet {
+				font-family: Righteous, Verdana, sans-serif;
+				font-size: 15px;
+			}
+			/* first line of description ("Main Bet", "Sidebet", etc.) */
+			.title {
+				font-size: 18px;
+			}
+			/* last line of description (for the timer) */
+			.info p:last-child span {
+				font-size: 18px;
+			}
+			
+			/***********
+			* EDIT COLORS
+			***********/
+			
+			/* bet count (just the #) */
+			.numBets {
+				color: red;
+			}
+			/* smackers count (just the #) */
+			.numSmackers {
+				color: pink !important;
+			}
+			/* first span in a container (for the "label" on each info line) */
+			span:first-child {
+				color: plum;
+			}
+			/* time, when time's about to run out */
+			.almostDone .time, .done .time {
+				color: red;
+			}
+			
+			/* colors for each individual option's name */
+			.options :nth-child(1) .name {
+				color: cornflowerblue;
+			}
+			.options :nth-child(2) .name {
+				color: limegreen;
+			}
+			.options :nth-child(3) .name {
+				color: gold;
+			}
+			.options :nth-child(4) .name {
+				color: red;
+			}
+			.options :nth-child(5) .name {
+				color: orange;
+			}
+			.options :nth-child(6) .name {
+				color: mediumpurple;
+			}
+			.options :nth-child(7) .name {
+				color: khaki;
+			}
+			.options :nth-child(8) .name {
+				color: powderblue;
+			}
+			
+			/***********
+			* EDIT OPTIONS BASED ON COUNT
+			***********/
+			
+			/* overrides for font sizes for a particular number of options */
+			/* 2 options, make text larger */
+			li:first-child:nth-last-child(2), li:first-child:nth-last-child(2) ~ li {
+				font-size: 22px;
+				line-height: 36px;
+			}
+			/* 3 options, make text larger */
+			li:first-child:nth-last-child(3), li:first-child:nth-last-child(3) ~ li {
+				font-size: 21px;
+				line-height: 36px;
+			}
+			/* 4 options, make text larger */
+			li:first-child:nth-last-child(4), li:first-child:nth-last-child(4) ~ li {
+				font-size: 20px;
+				line-height: 36px;
+			}
+			/* 5 options */
+			li:first-child:nth-last-child(5), li:first-child:nth-last-child(5) ~ li {
+				font-size: 18px;
+			}
+			/* 6 options */
+			li:first-child:nth-last-child(6), li:first-child:nth-last-child(6) ~ li {
+				font-size: 16px;
+			}
+			/* 7 options */
+			li:first-child:nth-last-child(7), li:first-child:nth-last-child(7) ~ li {
+				font-size: 15px;
+			}
+			/* 8 options, make text smaller to fit */
+			li:first-child:nth-last-child(8), li:first-child:nth-last-child(8) ~ li {
+				font-size: 13px;
 			}
 		</style>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
 			$betinfo = {
-				timerDurationMs: 120000,	// 2 minutes
+				timerDurationMs: 120000,	// count down to [ 2 minutes ] after start time
+				almostDoneMs: 30000,		// trigger warning at [ 30 seconds ] remaining
+				shouldPlayStart: false,		// play sound when first bet starts?
+				shouldPlayAlmostDone: true,	// play sound when either bet is almost done?
+				shouldPlayDone: true,		// play sound when all bets done?
 				betinfo: [],
 				sidebetinfo: [],
 				infoToHtml: function (arg) {
-					return '<span class="name">'+arg.name+'</span> ('+arg.numBets+(arg.numBets != 1 ? ' bets' : ' bet')+', '+arg.total+(arg.total != 1 ? ' smackers' : ' smacker')+')';
+					return '<span class="name">'+arg.name+'</span> <span>[</span><span class="numBets">'+arg.numBets+'</span><span>'+(arg.numBets != 1 ? ' bets' : ' bet')+',</span><span class="numSmackers">'+arg.total+'</span><span>'+(arg.total != 1 ? ' smackers' : ' smacker')+'&nbsp;]</span>';
 				},
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
@@ -93,14 +259,42 @@
 				},
 				updateInfo: function (info, elementId) {
 					if (!info || !info.isActive || (Date.now()-info.startTime) > $betinfo.timerDurationMs) {
-						$(elementId).addClass('hidden');
+						$(elementId).addClass('done');
+						if ($('#bet').is('.done, .hidden') && $('#sidebet').is('.done, .hidden') && $('body').css('background-image') != 'none') {
+							$('#bet').addClass('hidden');
+							$('#sidebet').addClass('hidden');
+							$('body').css('background-image', '');
+							if ($betinfo.shouldPlayDone) playAudio('#done');
+						}
 						return;
 					}
+					if ((Date.now()-info.startTime+$betinfo.almostDoneMs+1000) > $betinfo.timerDurationMs) {
+						if (!$(elementId).hasClass('almostDone')) {
+							$(elementId).addClass('almostDone');
+							if ($betinfo.shouldPlayAlmostDone) playAudio('#almostDone');
+						}
+					} else {
+						$(elementId).removeClass('almostDone');
+					}
+					if ($('body').css('background-image') == 'none')
+					{
+						$('body').css('background-image', 'url(doorclose.gif?'+Date.now()+')');
+						if ($betinfo.shouldPlayStart) playAudio('#start');
+					}
+					$(elementId).removeClass('done');
 					$(elementId).removeClass('hidden');
 					
+					/* center the options if only have 3 or less */
+					if (info.options.length <= 3) {
+						$(elementId+' .options').addClass('center');
+					} else {
+						$(elementId+' .options').removeClass('center');
+					}
+					
+					$(elementId+' .info .numBets').html(getTotalNumBets(info));
+					$(elementId+' .info .numSmackers').html(getTotalNumSmackers(info));
 					$(elementId+' .type').html(info.name);
-					$(elementId+' .multiplier').html(info.multiplier);
-					$(elementId+' .maxBet').html(info.maxBet);
+					$(elementId+' .multiplier').html(info.multiplier == 1 ? 'none' : (info.multiplier == 0 ? 'free bet!' : info.multiplier+'x'));
 					$(elementId+' .options').html('<li>'+info.options
 					.map($betinfo.infoToHtml)
 					.join('</li><li>')+'</li>');
@@ -115,18 +309,61 @@
 			window.onload = function () {
 				setInterval(function(){$betinfo.load('betinfo.json?'+Date.now(), 'sidebetinfo.json?'+Date.now());}, 1000);
 			};
+			
+			function playAudio(id) {
+				$(id)[0].pause();
+				$(id)[0].currentTime = 0;
+				$(id)[0].play();
+			}
+			
+			function getTotalNumBets(info) {
+				var numBets = 0;
+				info.options.forEach(function(arg) {
+					numBets += arg.numBets;
+				});
+				return numBets;
+			}
+			function getTotalNumSmackers(info) {
+				var numSmackers = 0;
+				info.options.forEach(function(arg) {
+					numSmackers += arg.total;
+				});
+				return numSmackers;
+			}
 		</script>
 	</head>
 	<body>
+		<audio id="start">
+			<source src="bet-start.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="almostDone">
+			<source src="bet-almost-done.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="done">
+			<source src="bet-done.mp3" type="audio/mpeg">
+		</audio>
 		<div id="bet" class="hidden">
-			<p class="title">Main bet: <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
-			<ul class="options"></ul>
-			<p class="timer">Time left: <span class="time"></span></p>
+			<div class="info">
+				<p class="title"><span>Main Bet&nbsp;-&nbsp;</span><span class="numBets"></span><span>&nbsp;bets</span></p>
+				<p><span class="numSmackers"></span><span>&nbsp;smackers</span></p>
+				<p><span>Bonus&nbsp;-&nbsp;</span><span class="multiplier"></span></p>
+				<p class="timer"><span>Time left&nbsp;-&nbsp;</span><span class="time"></span></p>
+			</div>
+			<div class="optionsContainer">
+				<ul class="options"></ul>
+			</div>
 		</div>
 		<div id="sidebet" class="hidden">
-			<p class="title">Sidebet: "<span class="type"></span>" <span class="multiplier"></span>x <span class="maxBet"></span> max bet</p>
-			<ul class="options"></ul>
-			<p class="timer">Time left: <span class="time"></span></p>
+			<div class="info">
+				<p class="title"><span>Sidebet&nbsp;-&nbsp;</span><span class="numBets"></span><span>&nbsp;bets</span></p>
+				<p><span class="numSmackers"></span><span>&nbsp;smackers</span></p>
+				<p><span>Bet On&nbsp;-&nbsp;</span><span class="type"></span></p>
+				<p><span>Bonus&nbsp;-&nbsp;</span><span class="multiplier"></span></p>
+				<p class="timer"><span>Time left&nbsp;-&nbsp;</span><span class="time"></span></p>
+			</div>
+			<div class="optionsContainer">
+				<ul class="options"></ul>
+			</div>
 		</div>
 	</body>
 </html>
