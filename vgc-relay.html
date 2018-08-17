@@ -90,6 +90,7 @@
 <div id="reroll">
 	<button onclick="$challenge.reroll(1);">Reroll top</button>
 	<button onclick="$challenge.reroll(2);">Reroll bottom</button>
+	<button onclick="$challenge.swap();">Swap</button>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
@@ -158,6 +159,25 @@
 			$('#submitter'+id).text(challenge.Submitter);
 			$('#challenge-details'+id).text(challenge["Challenge Details"]);
 			$('#state-slot'+id).text(challenge.Stateslot);
+		},
+		swap: function() {
+			var game1name = $('#game-name'+1).text();
+			var game1console = $('#game-console'+1).text();
+			var game1submitter = $('#submitter'+1).text();
+			var game1details = $('#challenge-details'+1).text();
+			var game1state = $('#state-slot'+1).text();
+			
+			$('#game-name'+1).text($('#game-name'+2).text());
+			$('#game-console'+1).text($('#game-console'+2).text());
+			$('#submitter'+1).text($('#submitter'+2).text());
+			$('#challenge-details'+1).text($('#challenge-details'+2).text());
+			$('#state-slot'+1).text($('#state-slot'+2).text());
+			
+			$('#game-name'+2).text(game1name);
+			$('#game-console'+2).text(game1console);
+			$('#submitter'+2).text(game1submitter);
+			$('#challenge-details'+2).text(game1details);
+			$('#state-slot'+2).text(game1state);
 		}
     }
     window.onload = function () {
