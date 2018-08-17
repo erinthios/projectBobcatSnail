@@ -122,10 +122,6 @@
 		</style>
 	</head>
 	<body>
-		<audio autoplay>
-			<source src="Ding.mp3" type="audio/mpeg">
-		</audio>
-
 		<div id="frame">
 			<div id="controllerA"></div>
 			<div id="description">
@@ -156,6 +152,19 @@
 				return value["Relay"] != 2;
 			}
 			$challenge = {
+				challenges: [],
+				loadChallenges: function (challenges) {
+					var filteredChallenges = challenges.filter(isSaveState).filter(isNotOnlyRelay);
+					
+					$challenge.challenges = [];
+					for (var i=0; i<filteredChallenges.length; ++i) {
+						var c = filteredChallenges[i];
+						if ($challenge.challenges[c["Game Title"]] == null) {
+							$challenge.challenges[c["Game Title"]] = [];
+						}
+						$challenge.challenges[c["Game Title"]].push(c);
+					}
+				},
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
 					xobj.overrideMimeType("application/json");
@@ -171,10 +180,12 @@
 					if (!isCalled) {
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
-							var challenges = JSON.parse(response);
-							var filteredChallenges = challenges.filter(isSaveState).filter(isNotOnlyRelay);
+							$challenge.loadChallenges(JSON.parse(response));
 
-							var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
+							var gameNames = Object.keys($challenge.challenges);
+							var gameName = gameNames[Math.floor(Math.random() * gameNames.length)];
+							var gameChallenges = $challenge.challenges[gameName];
+							var challenge = gameChallenges[Math.floor(Math.random() * gameChallenges.length)];
 							$('#game-name').text(challenge["Game Title"]);
 							$('#challenge').text(challenge.TBKey);
 							$('#game-console').text(challenge["Game Console"]);

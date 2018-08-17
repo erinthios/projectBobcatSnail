@@ -365,6 +365,18 @@
 				seenChallenges: [],
 				activeChallenges: [null,null,null],
 				shownChallenge: -1,
+				loadChallenges: function (challenges) {
+					var filteredChallenges = challenges.filter(isSaveState).filter(isNotOnlyRelay);
+					
+					$challenge.availableChallenges = [];
+					for (var i=0; i<filteredChallenges.length; ++i) {
+						var c = filteredChallenges[i];
+						if ($challenge.availableChallenges[c["Game Title"]] == null) {
+							$challenge.availableChallenges[c["Game Title"]] = [];
+						}
+						$challenge.availableChallenges[c["Game Title"]].push(c);
+					}
+				},
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
 					xobj.overrideMimeType("application/json");
@@ -380,7 +392,7 @@
 					if (!isCalled) {
 						isCalled = true;
 						$challenge.loadJSON(path, function (response) {
-							$challenge.availableChallenges = shuffle(JSON.parse(response));
+							$challenge.loadChallenges(JSON.parse(response));
 							$challenge.nextChoices();
 						});
 					}
@@ -390,40 +402,37 @@
 					$('#frame').addClass('hidden');
 					$('#game-list').removeClass('hidden');
 					
-					var filteredChallenges = shuffle($challenge.availableChallenges.filter(isSaveState).filter(notSeen).filter(isNotOnlyRelay));
-					
-					// disallow duplicate game titles, so keep a separate counter
-					var i=0;
+					var gameNames = shuffle(Object.keys($challenge.availableChallenges));
 					
 					// game 1
-					var challenge0 = filteredChallenges[i];
-					$challenge.activeChallenges[i] = challenge0;
+					var gameName0 = gameNames[0];
+					var gameChallenges0 = $challenge.availableChallenges[gameName0];
+					var challenge0 = gameChallenges0[Math.floor(Math.random() * gameChallenges0.length)];
+					$challenge.activeChallenges[0] = challenge0;
 					$('#game-0').text(challenge0["Game Title"]);
 					$('#game-0-name').text(challenge0["Game Title"]);
 					$('#game-0-console').text(challenge0["Game Console"]);
 					textfit($('#game-0'));
 					
 					// game 2
-					var challenge1;
-					do {
-						challenge1 = filteredChallenges[++i];
-						$challenge.activeChallenges[1] = challenge1;
-						$('#game-1').text(challenge1["Game Title"]);
-						$('#game-1-name').text(challenge1["Game Title"]);
-						$('#game-1-console').text(challenge1["Game Console"]);
-						textfit($('#game-1'));
-					} while(challenge1["Game Title"] == challenge0["Game Title"]);
+					var gameName1 = gameNames[1];
+					var gameChallenges1 = $challenge.availableChallenges[gameName1];
+					var challenge1 = gameChallenges1[Math.floor(Math.random() * gameChallenges1.length)];
+					$challenge.activeChallenges[1] = challenge1;
+					$('#game-1').text(challenge1["Game Title"]);
+					$('#game-1-name').text(challenge1["Game Title"]);
+					$('#game-1-console').text(challenge1["Game Console"]);
+					textfit($('#game-1'));
 					
 					// game 3
-					var challenge2;
-					do {
-						challenge2 = filteredChallenges[++i];
-						$challenge.activeChallenges[2] = challenge2;
-						$('#game-2').text(challenge2["Game Title"]);
-						$('#game-2-name').text(challenge2["Game Title"]);
-						$('#game-2-console').text(challenge2["Game Console"]);
-						textfit($('#game-2'));
-					} while(challenge2["Game Title"] == challenge0["Game Title"] || challenge2["Game Title"] == challenge1["Game Title"]);
+					var gameName2 = gameNames[2];
+					var gameChallenges2 = $challenge.availableChallenges[gameName2];
+					var challenge2 = gameChallenges2[Math.floor(Math.random() * gameChallenges2.length)];
+					$challenge.activeChallenges[2] = challenge2;
+					$('#game-2').text(challenge2["Game Title"]);
+					$('#game-2-name').text(challenge2["Game Title"]);
+					$('#game-2-console').text(challenge2["Game Console"]);
+					textfit($('#game-2'));
 					
 					// handle image
 					setImage('#game-0');
@@ -459,6 +468,10 @@
 					$('#controllerB').addClass(cssClass);
 					
 					$challenge.seenChallenges.push(challenge);
+					$challenge.availableChallenges[challenge["Game Title"]].splice($challenge.availableChallenges[challenge["Game Title"]].indexOf(challenge));
+					if ($challenge.availableChallenges[challenge["Game Title"]].length == 0) {
+						delete $challenge.availableChallenges[challenge["Game Title"]];
+					}
 						
 					clearTimeout();
 					setTimeout(function () {
