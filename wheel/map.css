@@ -79,6 +79,33 @@ ms.shown
   font-size: 30px;
   font-weight: 900;
 }
+.text, .lootbox, .lootbox2
+{
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+ms > span
+{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes pulseGlow
+{
+	0% { filter: drop-shadow(0 0 3px yellow); }
+	66% { filter: drop-shadow(0 0 3px gold) drop-shadow(0 0 5px yellow); }
+	100% { filter: drop-shadow(0 0 3px yellow) drop-shadow(0 0 5px gold); }
+}
+.lootbox span, .lootbox2 span
+{
+	animation: pulseGlow 3s linear infinite alternate;
+}
 
 /* zoomed-in settings */
 .zoomed
@@ -116,6 +143,10 @@ ms.shown
 .multiplier
 {
   color: chartreuse;
+}
+.text, .lootbox, .lootbox2
+{
+  color: white;
 }
 
 /* map marker piece */
@@ -176,4 +207,40 @@ loadIndicator
 	font-family: sans-serif;
 	font-size: 12px;
 	color: white;
+}
+
+@keyframes lootboxOpenText
+{
+	0% { filter: drop-shadow(0 0 1px black) drop-shadow(0 0 3px yellow); }
+	50% { filter: drop-shadow(0 0 1px black) drop-shadow(0 0 3px yellow) drop-shadow(0 0 5px yellow); }
+	100% { filter: drop-shadow(0 0 1px black) drop-shadow(0 0 3px yellow) drop-shadow(0 0 5px gold) drop-shadow(0 0 7px gold); }
+}
+
+#lootbox {
+	position: absolute;
+	z-index: 1000;
+	top: 100px;
+	left: 126px;
+	width: 200px;
+	height: 200px;
+	pointer-events: none;
+	transition: opacity 1s;
+}
+#lootbox.hidden {
+	opacity: 0;
+}
+#lootboxText {
+	position: absolute;
+	top: 45px;
+	left: -4px;
+	width: 200px;
+	font-family: sans-serif;
+	font-size: 30px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-weight: bold;
+	filter: drop-shadow(0 0 1px black) drop-shadow(0 0 3px yellow);
 }
