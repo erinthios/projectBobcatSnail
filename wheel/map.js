@@ -17,12 +17,13 @@ var startSquare = { text: "★", cssClass: "start" };
 var goalSquare = { image: "images/wd trophy.png", soundPool: finishSoundPool, cssClass: "goal", isGoal: true };
 var lootboxPool = [
 	newLootboxSquare("Shiny Medal", "sounds/SmightMedal.mp3"),
-	newLootbox2Square("Artwork by Doc", "images/lootbox_beast.gif", "sounds/lootboxart.mp3")/*,
+	newLootbox2Square("Artwork by Doc", "images/lootbox_beast.gif", "sounds/lootboxart.mp3"),
 	newLootboxSquare("Super Names", "sounds/supernames.mp3"),
 	newLootboxSquare("Cool Stripes", "sounds/coolstripes.mp3"),
+	newLootbox2Square("Lootbox in a lootbox?", "images/lootbox_turducken.gif", "sounds/lootboxinsidelootbox.mp3")/*,
 	newLootboxSquare("Golden Rims", "sounds/goldenrims.mp3"),
 	newLootboxSquare("Ultra Reskin!", "sounds/ultraskin.mp3"),
-	newLootbox2Square("Lootbox in a lootbox?", "images/lootbox_turducken.gif", "sounds/lootboxinsidelootbox.mp3")*/
+	*/
 ];
 var otherSquares = [];
 function initOtherSquares() {

@@ -7,6 +7,8 @@
 
 		<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-minimal.css" />
 		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Exo+2:600,700,800,900' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 		
 		<script type="text/javascript">
 			window.odometerOptions = {
@@ -45,19 +47,22 @@
 				position: relative;
 				height: 64px;
 				font-weight: bold;
-				font-size: 24px;
-				font-family: Righteous, "Consolas", Georgia, Serif;
+				font-weight: 700;
+				font-family: 'Exo 2';
+				color: black;
 			}
 			.onTopOfEachOther span {
 				position: absolute;
 				top: 6px;
 				left: 120px;
 				width: 370px;
-				line-height: 64px;
+				line-height: 60px;
 				vertical-align: middle;
 				max-height: 64px;	/* for textfit */
-				font-size: 24px;	/* for textfit */
+				font-size: 48px;	/* for textfit */
 				word-break: break-word;
+				display: inline-block;
+				font-variant: small-caps;
 			}
 			#blueDisplay.onTopOfEachOther .text {
 				left: auto;
@@ -73,6 +78,19 @@
 				position: absolute;
 				top: 99px;
 				left: 553px;
+			}
+			
+			.text {
+				text-decoration: none;
+				transform: perspective(3.5em) rotateX(15deg) scaleY(0.8);
+			}
+			.active .text {
+				color: #fbd62a;
+				text-shadow: 0 -1px 15px rgba(0, 0, 0, 0.9), 0 1px 0 #332b09, 0 3px 0 #38300a, 0 5px 0 #3d340a, 0 7px 0 #42380b, 0 6px 50px rgba(252, 223, 92, 0.8);
+			}
+			#blueDisplay.active .text {
+				color: #2afaf0;
+				text-shadow: 0 -1px 15px rgba(0, 0, 0, 0.9), 0 1px 0 #01332f, 0 3px 0 #013833, 0 5px 0 #013d38, 0 7px 0 #02423d, 0 6px 50px rgba(92, 252, 244, 0.8);
 			}
 			
 			#finalBattleDisplay {
@@ -138,7 +156,6 @@
 			}
 			#yellowDisplay.active, #blueDisplay.active {
 				color: white;
-				-webkit-text-stroke: 1px black;
 			}
 			#yellowDisplay.active .background, #blueDisplay.active .background {
                 background-image: url("Score-Overlay-On.png");
@@ -251,41 +268,64 @@
 			}
 			
 			#yellowDisplay.stripes span.stripes {
-				background-image: linear-gradient(45deg, transparent, transparent 36px,
-					black 36px, black 52px, transparent 52px, transparent 70px,
-					black 70px, black 86px, transparent 86px, transparent 104px,
-					black 104px, black 120px, transparent 120px, transparent 138px,
-					black 138px, black 154px, transparent 154px);
-				height: 52px;
+				background-image: linear-gradient(45deg, transparent, /*transparent 36px,
+					#333 36px, #333 52px, transparent 52px,*/ transparent 70px,
+					#333 70px, #333 86px, transparent 86px, transparent 104px,
+					#333 104px, #333 120px, transparent 120px, transparent 138px,
+					#333 138px, #333 154px, transparent 154px);
+				height: 54px;
 				position: absolute;
-				top: 12px;
-				left: 250px;
+				top: 10px;
+				left: 230px;
 				width: 220px;
 			}
 			#blueDisplay.stripes span.stripes {
-				background-image: linear-gradient(-45deg, transparent, transparent 36px,
-					black 36px, black 52px, transparent 52px, transparent 70px,
-					black 70px, black 86px, transparent 86px, transparent 104px,
-					black 104px, black 120px, transparent 120px, transparent 138px,
-					black 138px, black 154px, transparent 154px);
-				height: 52px;
+				background-image: linear-gradient(-45deg, transparent, /*transparent 36px,
+					#333 36px, #333 52px, transparent 52px,*/ transparent 70px,
+					#333 70px, #333 86px, transparent 86px, transparent 104px,
+					#333 104px, #333 120px, transparent 120px, transparent 138px,
+					#333 138px, #333 154px, transparent 154px);
+				height: 54px;
 				position: absolute;
-				top: 12px;
-				left: 170px;
+				top: 10px;
+				left: 190px;
 				width: 220px;
 			}
 			
-			.names .text {
-				background: linear-gradient(to bottom, #ff3 40%, #f6f 70%);
-				text-shadow: none;
-				-webkit-text-stroke: 1.5px black;
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				font-family: Impact;
-				font-size: 150%;
+			.names {
+				-webkit-text-stroke: 0px !important;
 			}
-			#yellowDisplay.names .text {
-				background-image: linear-gradient(to bottom, #3ff 40%, #93f 70%);
+			.names .text {
+				font-family: "Permanent Marker", cursive;
+				font-size: 40px;
+				font-variant: normal;
+				transform: none;
+			}
+			.names.active .text {
+				color: #c6e2ff;
+				animation: neonBlue .08s ease-in-out infinite alternate;
+			}
+			#yellowDisplay.names.active .text {
+				color: #fcffc6;
+				animation: neonYellow .08s ease-in-out infinite alternate;
+			}
+
+			/*-- Animation Keyframes --*/
+			@keyframes neonBlue {
+				from {
+					text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+				}
+				to {
+					text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58), 0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
+				}
+			}
+			@keyframes neonYellow {
+				from {
+					text-shadow: 0 0 6px rgba(228, 222, 202, 0.92), 0 0 30px rgba(228, 222, 202, 0.34), 0 0 12px rgba(242, 217, 30, 0.52), 0 0 21px rgba(242, 217, 30, 0.92), 0 0 34px rgba(242, 217, 30, 0.78), 0 0 54px rgba(242, 217, 30, 0.92);
+				}
+				to {
+					text-shadow: 0 0 6px rgba(228, 222, 202, 0.98), 0 0 30px rgba(228, 222, 202, 0.42), 0 0 12px rgba(242, 217, 30, 0.58), 0 0 22px rgba(242, 217, 30, 0.84), 0 0 38px rgba(242, 217, 30, 0.88), 0 0 60px #f2d91e;
+				}
 			}
 			
 			.reskin .background {
@@ -459,6 +499,11 @@
 			function toggleNames(cb, id)
 			{
 				toggleClass(cb, id, 'names');
+				// re-fit name fields for new style
+				textfit($('#yt'));
+				textfit($('#ym'));
+				textfit($('#bt'));
+				textfit($('#bm'));
 			}
 			function toggleRims(cb, id)
 			{
@@ -483,9 +528,15 @@
 				}, 1000);
 				setInterval(function () {
 					fadeSwitchElements('yt', 'ym');
+					// re-fit name fields (lose sizes when hidden)
+					textfit($('#yt'));
+					textfit($('#ym'));
 				}, 30000);
 				setInterval(function () {
 					fadeSwitchElements('bt', 'bm');
+					// re-fit name fields (lose sizes when hidden)
+					textfit($('#bt'));
+					textfit($('#bm'));
 				}, 30000);
 
 				function updateValues()
@@ -676,22 +727,22 @@
 			<p>Yellow effects:
 				<label><input type="checkbox" onclick="toggleMedal(this,'#yellowDisplay');">Medal</label>
 				<label><input type="checkbox" onclick="toggleBeast(this,'#yellowDisplay');">Beast</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleStripes(this,'#yellowDisplay');">Stripes</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleNames(this,'#yellowDisplay');">Names</label>
+				<label><input type="checkbox" onclick="toggleNames(this,'#yellowDisplay');">Names</label>
+				<label><input type="checkbox" onclick="toggleStripes(this,'#yellowDisplay');">Stripes</label>
+				<label><input type="checkbox" onclick="toggleLootbox(this,'#yellowDisplay');">Lootbox</label>
 				<label><input type="checkbox" disabled="disabled" onclick="toggleRims(this,'#yellowDisplay');">Rims</label>
 				<label><input type="checkbox" disabled="disabled" onclick="toggleReskin(this,'#yellowDisplay');">Reskin</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleLootbox(this,'#yellowDisplay');">Lootbox</label>
 			</p>
 		</div>
 		<div id="blueEffects">
 			<p>Blue effects:
 				<label><input type="checkbox" onclick="toggleMedal(this,'#blueDisplay');">Medal</label>
 				<label><input type="checkbox" onclick="toggleBeast(this,'#blueDisplay');">Beast</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleStripes(this,'#blueDisplay');">Stripes</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleNames(this,'#blueDisplay');">Names</label>
+				<label><input type="checkbox" onclick="toggleNames(this,'#blueDisplay');">Names</label>
+				<label><input type="checkbox" onclick="toggleStripes(this,'#blueDisplay');">Stripes</label>
+				<label><input type="checkbox" onclick="toggleLootbox(this,'#blueDisplay');">Lootbox</label>
 				<label><input type="checkbox" disabled="disabled" onclick="toggleRims(this,'#blueDisplay');">Rims</label>
 				<label><input type="checkbox" disabled="disabled" onclick="toggleReskin(this,'#blueDisplay');">Reskin</label>
-				<label><input type="checkbox" disabled="disabled" onclick="toggleLootbox(this,'#blueDisplay');">Lootbox</label>
 			</p>
 		</div>
 
