@@ -194,16 +194,16 @@
 		
 		#revealIcon {
 			position: absolute;
-			top: 16px;
-			left: 605px;
-			height: 70px;
-			width: 70px;
+			top: -20px;
+			left: 590px;
+			height: 100px;
+			width: 100px;
 			
 			background-size: contain;
 			
 			transition: top 0.5s;
 			
-			animation: iconAnim 0.5s alternate 2s 2;
+			/*animation: iconAnim 0.5s alternate 2s 2;*/
 		}
 		#revealIcon.hidden {
 			top: -1000px;
@@ -214,19 +214,19 @@
 		}
 		
 		.controllerNES {
-			background-image: url('playericons/controllers/nes_controller.png');
+			background-image: url('images/FB_NES_Man.gif');
 		}
 		.controllerSNES {
-			background-image: url('playericons/controllers/snes_controller.png');
+			background-image: url('images/FB_SNES_Man.gif');
 		}
 		.controllerGBA {
-			background-image: url('playericons/controllers/gba_controller.png');
+			background-image: url('images/FB_GBA_Man.gif');
 		}
 		.controllerN64 {
 			background-image: url('playericons/controllers/64_controller.png');
 		}
 		.controllerGEN {
-			background-image: url('playericons/controllers/genesis_controller.png');
+			background-image: url('images/FB_GEN_Man.gif');
 		}
 		
 		#revealName {
@@ -244,8 +244,8 @@
 		}
 		#navContent > div {
 			position: absolute;
-			top: 290px;
-			left: 475px;
+			top: 272px;
+			left: 478px;
 			width: 330px;
 			height: 140px;
 		}
@@ -266,10 +266,22 @@
 	</style>
 </head>
 <body>
-	<audio id="introAudio">
+	<audio id="introAudioNES">
+		<source src="sounds/FB NES Mega Man 2 intro.mp3" type="audio/mpeg">
+	</audio>
+ 	<audio id="introAudioSNES">
+		<source src="sounds/FB SNES Mega Man X intro.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="introAudioGBA">
+		<source src="sounds/FB GBA Mega Man Bass intro.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="introAudioN64">
 		<source src="vgcfb-intro.mp3" type="audio/mpeg">
 	</audio>
- 
+	<audio id="introAudioGEN">
+		<source src="sounds/FB GEN Wily Wars intro.mp3" type="audio/mpeg">
+	</audio>
+
     <div id="navContent">
 		<div>
 			<div class ="info" id="game-name">Game</div>
@@ -358,6 +370,7 @@
 						$('#revealIcon').addClass('controller'+challenge["Game Console"]);
 						$('#revealIcon').removeClass('hidden');
 						$('#revealName').html('<span style="animation: typing 0.5s steps('+challenge["Game Title"].length+', end) forwards 3s;">'+challenge["Game Title"]+'</span>');
+						playAudio(challenge["Game Console"]);
 					}, 1000); // delay 1s for the #curtain div to fade out
 					$('#curtain').addClass('hidden');
                 });
@@ -366,38 +379,17 @@
     }
     $( document ).ready(function () {
         $challenge.loadGame('TB challenges.json');
-		
-		var dispatchMouseEvent = function(target, var_args) {
-			var e = document.createEvent("MouseEvents");
-			// If you need clientX, clientY, etc., you can call
-			// initMouseEvent instead of initEvent
-			e.initEvent.apply(e, Array.prototype.slice.call(arguments, 1));
-			target.dispatchEvent(e);
-		};
-		
-		window.setTimeout(function () {
-			// auto-click on dummy button so hopefully Chrome thinks the user's engaged with the page and will allow audio
-			var element = document.getElementById('dummyButton');
-			dispatchMouseEvent(element, 'mouseover', true, true);
-			dispatchMouseEvent(element, 'mousedown', true, true);
-			dispatchMouseEvent(element, 'click', true, true);
-			dispatchMouseEvent(element, 'mouseup', true, true);
-			
-			// lower volume (can remove whenever it's balanced with the others)
-			//document.getElementById('introAudio').volume = 0.5;
-			//document.getElementById('introAudio').play();
-		}, 1000); // delay 1s for the #curtain div to fade out
     });
 	
-	function playAudio() {
-		// lower volume (can remove whenever it's balanced with the others)
-		document.getElementById('introAudio').volume = 0.5;
-		document.getElementById('introAudio').pause();
-		document.getElementById('introAudio').currentTime = 0;
-		document.getElementById('introAudio').play();
+	function playAudio(console) {
+		var audio = document.getElementById('introAudio'+console);
+		if (audio) {
+			//audio.volume = 0.5;
+			audio.pause();
+			audio.currentTime = 0;
+			audio.play();
+		}
 	}
 </script>
-
-<button id="dummyButton" style="position: absolute; top: 1000px; left: 0;" onclick="playAudio();">Dummy</button>
 </body>
 </html>
