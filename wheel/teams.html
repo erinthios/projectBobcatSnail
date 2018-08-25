@@ -364,9 +364,21 @@
 			
 			@keyframes shake {
 				0% { transform: rotate(0deg); }
-				25% { transform: rotate(10deg); }
-				75% { transform: rotate(-10deg); }
-				100% { transform: rotate(0deg); }
+				0.5% { transform: rotate(10deg); }
+				1.5% { transform: rotate(-10deg); }
+				2% { transform: rotate(0deg); }
+				2.5% { transform: rotate(10deg); }
+				3.5% { transform: rotate(-10deg); }
+				4% { transform: rotate(0deg); }
+				4.5% { transform: rotate(10deg); }
+				5.5% { transform: rotate(-10deg); }
+				6% { transform: rotate(0deg); }
+				6.5% { transform: rotate(10deg); }
+				7.5% { transform: rotate(-10deg); }
+				8% { transform: rotate(0deg); }
+				8.5% { transform: rotate(10deg); }
+				9.5% { transform: rotate(-10deg); }
+				10% { transform: rotate(0deg); }
 			}
 			@keyframes wiggle {
 				0% { transform: rotate(0deg); }
@@ -392,7 +404,7 @@
 				opacity: 1;
 			}
 			span.lootbox img {
-				animation: shake 0.2s linear infinite;
+				animation: shake 10s linear infinite;
 			}
 			
 			span.beast {
