@@ -40,10 +40,23 @@
 			}
 			#sidebet {
 				left: 650px;
-				transition: opacity 0.5s linear, left 0s linear;
+				/*transition: opacity 0.5s linear, left 0s linear;*/
 			}
 			#sidebet.hidden {
 				left: 1290px;
+			}
+			
+			#betBackground, #sidebetBackground {
+				left: 640px;
+				width: 640px;
+				height: 150px;
+				overflow: hidden;
+			}
+			#sidebetBackground {
+				position: absolute;
+				top: 0;
+				left: 640px;
+				background-position: right;
 			}
 			
 			.info p:last-child {
@@ -52,6 +65,9 @@
 				bottom: 0px;
 				width: 100%;
 			}
+			.done .info p:last-child {
+				display: none;
+			}
 			
 			.info {
 				position: absolute;
@@ -59,17 +75,16 @@
 				left: 0;
 				width: 30%;
 				height: 100%;
+				border-right: 2px dotted grey;
 			}
 			
 			p {
 				margin: 5px;
 			}
-			p > span {
-				display: inline-block;
-			}
-			span:first-child {
-				width: 55%;
+			p > span:first-child {
+				width: 100px;
 				text-align: right;
+				float: left;
 			}
 			
 			div.optionsContainer {
@@ -150,6 +165,9 @@
 			.almostDone .time, .done .time {
 				color: red;
 			}
+			.done * {
+				color: grey !important;
+			}
 			
 			/* colors for each individual option's name */
 			.options :nth-child(1) .name {
@@ -218,9 +236,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript">
 			$betinfo = {
-				timerDurationMs: 120000,	// count down to [ 2 minutes ] after start time
+				timerDurationMs: 90000,		// count down to [ 90 seconds ] after start time
 				almostDoneMs: 30000,		// trigger warning at [ 30 seconds ] remaining
-				shouldPlayStart: false,		// play sound when first bet starts?
+				shouldPlayStart: true,		// play sound when first bet starts?
+				playStartDelayMs: 500,		// after bet starts, wait [ 500ms ] to play the sound
 				shouldPlayAlmostDone: true,	// play sound when either bet is almost done?
 				shouldPlayDone: true,		// play sound when all bets done?
 				betinfo: [],
@@ -260,10 +279,11 @@
 				updateInfo: function (info, elementId) {
 					if (!info || !info.isActive || (Date.now()-info.startTime) > $betinfo.timerDurationMs) {
 						$(elementId).addClass('done');
-						if ($('#bet').is('.done, .hidden') && $('#sidebet').is('.done, .hidden') && $('body').css('background-image') != 'none') {
+						if ($('#bet').is('.done, .hidden') && $('#sidebet').is('.done, .hidden') && ($('#betBackground').css('background-image') != 'none' || $('#sidebetBackground').css('background-image') != 'none')) {
 							$('#bet').addClass('hidden');
 							$('#sidebet').addClass('hidden');
-							$('body').css('background-image', '');
+							$('#betBackground').css('background-image', '');
+							$('#sidebetBackground').css('background-image', '');
 							if ($betinfo.shouldPlayDone) playAudio('#done');
 						}
 						return;
@@ -276,10 +296,16 @@
 					} else {
 						$(elementId).removeClass('almostDone');
 					}
-					if ($('body').css('background-image') == 'none')
+					if ($('#betBackground').css('background-image') == 'none' && $('#sidebetBackground').css('background-image') == 'none')
 					{
-						$('body').css('background-image', 'url(doorclose.gif?'+Date.now()+')');
-						if ($betinfo.shouldPlayStart) playAudio('#start');
+						if ($betinfo.shouldPlayStart) {
+							setTimeout(function() { playAudio('#start'); }, $betinfo.playStartDelayMs);
+						}
+					}
+					if (elementId == '#bet' && $('#bet').is('.hidden') && $('#betBackground').css('background-image') == 'none') {
+						$('#betBackground').css('background-image', 'url(doorclose.gif?'+Date.now()+')');
+					} else if (elementId == '#sidebet' && $('#sidebet').is('.hidden') && $('#sidebetBackground').css('background-image') == 'none') {
+						$('#sidebetBackground').css('background-image', 'url(doorclose.gif?'+Date.now()+')');
 					}
 					$(elementId).removeClass('done');
 					$(elementId).removeClass('hidden');
@@ -342,6 +368,7 @@
 		<audio id="done">
 			<source src="bet-done.mp3" type="audio/mpeg">
 		</audio>
+		<div id="betBackground"></div>
 		<div id="bet" class="hidden">
 			<div class="info">
 				<p class="title"><span>Main Bet&nbsp;-&nbsp;</span><span class="numBets"></span><span>&nbsp;bets</span></p>
@@ -353,6 +380,7 @@
 				<ul class="options"></ul>
 			</div>
 		</div>
+		<div id="sidebetBackground"></div>
 		<div id="sidebet" class="hidden">
 			<div class="info">
 				<p class="title"><span>Sidebet&nbsp;-&nbsp;</span><span class="numBets"></span><span>&nbsp;bets</span></p>
