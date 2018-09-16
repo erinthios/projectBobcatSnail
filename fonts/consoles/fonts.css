@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Need Every Sound';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Need Every Sound'), url(Need_Every_Sound.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Helvetica Ultra Compressed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Helvetica Ultra Compressed'), url(Helvetica-UltraCompressed.otf) format('opentype');
+}
+@font-face {
+  font-family: 'NiseSegaSonic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('NiseSegaSonic'), url(NiseSegaSonic.TTF) format('truetype');
+}

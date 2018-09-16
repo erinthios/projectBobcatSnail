@@ -4,9 +4,17 @@
 
 		<title>VG Challenge Wall</title>
 		<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
-		<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/css?family=Righteous|Yantramanav:900" rel="stylesheet">
 		<link href="fonts/dseg7/modern.css" rel="stylesheet">
+		<link href="fonts/consoles/fonts.css" rel="stylesheet">
+		<link href="animate.css" rel="stylesheet">
+		
+		<!-- font preload (to reduce likelihood of textfit picking wrong size) -->
+		<link rel="preload" href="fonts/consoles/Need_Every_Sound.ttf" as="font" type="font/ttf" crossorigin>
+		<link rel="preload" href="fonts/consoles/Helvetica-UltraCompressed.otf" as="font" type="font/otf" crossorigin>
+		<link rel="preload" href="fonts/consoles/NiseSegaSonic.TTF" as="font" type="font/ttf" crossorigin>
+		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 		<style>
 			#tv0, #tv1, #tv2 {
@@ -54,11 +62,30 @@
 			.gamen .challenge-console {
 				position: absolute;
 				display: inline-block;
-				top: 264px;
-				left: 300px;
+				top: 254px;
+				left: 295px;
 				font-size: 16px;
 				color: #a2dae9;
 				text-shadow: 3px 3px 0px #000000;
+				background-size: contain;
+				background-repeat: no-repeat;
+				width: 50px;
+				height: 50px;
+			}
+			.challenge-console.NES {
+				background-image: url('images/badge_nes.png');
+			}
+			.challenge-console.SNES {
+				background-image: url('images/badge_snes.png');
+			}
+			.challenge-console.GB {
+				background-image: url('images/badge_gb.png');
+			}
+			.challenge-console.GBA {
+				background-image: url('images/badge_gba.png');
+			}
+			.challenge-console.GEN {
+				background-image: url('images/badge_gen.png');
 			}
 			
 			.gamen .channel {
@@ -69,6 +96,15 @@
 				top: 2px;
 				left: 295px;
 			}
+			.gamen.rare1 .channel, .gamen.rare2 .channel {
+				color: yellow;
+			}
+			#navContent.hustle .gamen .channel {
+				color: lightpink;
+				font-size: 28px;
+				top: 6px;
+				left: 291px;
+			}
 			
 			.show-hide {
 				position: relative;
@@ -77,7 +113,7 @@
 			
 			.emblem {
 				position: absolute;
-				top: 182px;
+				top: 168px;
 				left: 300px;
 				width: 90px;
 				height: 90px;
@@ -132,10 +168,10 @@
 				width: 100%;
 				height: 100%;
 			}
-			.hidden .title-card, .hidden .channel, .hidden .game-name, .hidden .challenge-console {
+			.hidden .title-card, .hidden .channel, .hidden .game-name, .hidden .challenge-console, .hidden .emblem {
 				opacity: 0;
 			}
-			.title-card, .channel, .game-name, .challenge-console {
+			.title-card, .channel, .game-name, .challenge-console, .emblem {
 				transition: opacity .5s;
 				opacity: 1;
 			}
@@ -157,38 +193,37 @@
 				background: url('TV on.png') no-repeat;
 			}
 			
-			#header {
-				width:400px;
-				font-size:14px;
-			}
 			#submitter {
 				word-break: break-word;
 				width: 110px;
 			}
 			#description {
 				position: absolute;
-				top: 438px;
-				left: 1446px;
+				top: 380px;
+				left: 1486px;
 				height: 180px;
 				width: 302px;
+				-webkit-animation-duration: 2s;
+				animation-duration: 2s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
 			}
 			#description.hidden {
-				visibility: hidden;
-			}
-			#details, #footer {
-				width: 302px;
-				font-size: 12px;
-				clear: left;
+				/*visibility: hidden;*/
 			}
 			#details {
-				max-height: 115px;
+				width: 302px;
+				font-size: 10px;
+				clear: left;
+				overflow: hidden;
+				display: table;
+				text-align: center;
 			}
 			#footer {
 				width: 302px;
 				position: absolute;
 				bottom: 2px;
 				left: 0px;
-				background-color: black;
 			}
 			
 			.select-desc {
@@ -198,45 +233,47 @@
 			}
 			
 			#descNone {
-				top: 390px;
-				left: 1460px;
+				width: 100px;
+				text-align: right;
+				top: 200px;
+				left: 1300px;
 			}
 			#desc0, #desc1, #desc2, #desc3, #desc4, #desc5 {
 				width: 100px;
 				text-align: right;
-				left: 1340px;
+				left: 1300px;
 			}
 			#desc0 {
-				top: 430px;
+				top: 230px;
 			}
 			#desc1 {
-				top: 460px;
+				top: 260px;
 			}
 			#desc2 {
-				top: 490px;
+				top: 290px;
 			}
 			#desc3 {
-				top: 520px;
+				top: 320px;
 			}
 			#desc4 {
-				top: 550px;
+				top: 350px;
 			}
 			#desc5 {
-				top: 580px;
+				top: 380px;
 			}
 			#descSad {
-				top: 620px;
-				left: 1445px;
+				top: 410px;
+				left: 1351px;
 			}
 			#descGrabBag {
-				top: 620px;
-				left: 1600px;
+				top: 440px;
+				left: 1311px;
 			}
 			
 			#gameLogo {
 				position: absolute;
-				top: 153px;
-				left: 1422px;
+				top: 727px;
+				left: 467px;
 				width: 343px;
 				height: 115px;
 				background-repeat: no-repeat;
@@ -252,10 +289,6 @@
 				background-image: url('Grab_Bag.png');
 			}
 
-			div.info{
-				display: block;
-				float: left;
-			}
 			.info{
 				color: white;
 				font-weight: bold;
@@ -269,36 +302,32 @@
 				margin: 5px;
 			}
 			
-			#game-name {
+			#header {
 				color: magenta;
+				font-family: Verdana;
+				font-size: 10px;
+				font-weight: bold;
+				text-align: center;
+				overflow: hidden;
+				display: table;
+			}
+			#game-name {
+				padding: 2px 5px;
+				display: table-cell;
+				vertical-align: middle;
 			}
 			.header {
 				color: pink;
-			}
-
-			.controllerNES {
-				background: url('playericons/controllers/nes_2.png');
-			}
-			.controllerSNES {
-				background: url('playericons/controllers/snes_2.png');
-			}
-			.controllerGBA {
-				background: url('playericons/controllers/gba_2.png');
-			}
-			.controllerN64 {
-				background: url('playericons/controllers/64_2.png');
-			}
-			.controllerGEN {
-				background: url('playericons/controllers/gen_2.png');
 			}
 			
 			#wagerManagement, #wagerDisplay {
 				padding: 0 10px;
 				position: absolute;
-				top: 320px;
+				left: 1300px;
 			}
 			#wagerManagement {
-				left: 1450px;
+				top: 70px;
+				width: 100px;
 				color: white;
 				font-family: Arial, sans-serif;
 			}
@@ -306,21 +335,405 @@
 				width: 50px;
 			}
 			#wagerDisplay {
-				left: 1600px;
-				background-color: black;
-				color: white;
+				top: 20px;
+				width: 139px;
+				height: 64px;
+				display: table;
+				padding: 0;
 				
+				color: white;
 				font-size: 30px;
-				width: 60px;
 				text-align: center;
-				font-family: Righteous, Arimo, monospace;
-				font-weight: bold;
+				font-family: Arial;
+				font-weight: 900;
 			}
 			#wg {
-				background: linear-gradient(to bottom, white 20%, #3399ff 50%);
-				text-shadow: 1px 1px 1px #79bdff, 0 0 0 #000, 1px 1px 1px #000;
+				display: table-cell;
+				vertical-align: middle;
+			}
+			#wg p {
+				margin: 0;
+				padding: 0;
+				background: linear-gradient(to bottom, #ffffcc 0%, #ff9900 100%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+				-webkit-text-stroke: 1px black;
+			}
+			
+			#toggleHustle {
+				position: absolute;
+				top: 170px;
+				left: 1300px;
+			}
+			
+			#description.GB {
+				top: 441px;
+				width: 170px;
+				height: 173px;
+				background-image: url('images/AP Cart - GB.png');
+			}
+			#description.GBA {
+				top: 491px;
+				width: 230px;
+				height: 123px;
+				background-image: url('images/AP Cart - GBA.png');
+			}
+			#description.GEN {
+				top: 491px;
+				width: 230px;
+				height: 123px;
+				background-image: url('images/AP Cart - GEN.png');
+			}
+			#description.NES {
+				top: 380px;
+				width: 230px;
+				height: 234px;
+				background-image: url('images/AP Cart - NES.png');
+			}
+			#description.SNES {
+				top: 491px;
+				width: 230px;
+				height: 123px;
+				background-image: url('images/AP Cart - SNES.png');
+			}
+			
+			#header p {
+				margin: 0;
+				padding: 0;
+			}
+			#details {
+				font-size: 12px;
+			}
+			
+			.NES #header {
+				position: absolute;
+				min-width: 150px;
+				max-width: 150px;
+				top: 44px;
+				left: 60px;
+				min-height: 60px;
+				max-height: 60px;
+				overflow: hidden;
+				font-family: Yantramanav;
+				text-transform: uppercase;
+				line-height: 1em;
+				letter-spacing: -0.03em;
+				font-size: 24px;
+				color: red;
+				font-weight: 900;
+				transform: skew(-8deg) rotate(-8deg);
+			}
+			.NES #game-name {
+				vertical-align: top;
+			}
+			.NES #details {
+				position: absolute;
+				width: 150px;
+				bottom: 55px;
+				left: 60px;
+				min-height: 60px;
+				max-height: 60px;
+			}
+			
+			.SNES #header {
+				position: absolute;
+				min-width: 164px;
+				max-width: 164px;
+				top: 1px;
+				left: 33px;
+				min-height: 46px;
+				max-height: 46px;
+				overflow: hidden;
+				font-family: "Helvetica Ultra Compressed";
+				font-weight: normal;
+				text-transform: uppercase;
+				line-height: 1em;
+				font-size: 32px;
+				transform: perspective(3.5em) rotateX(15deg);
+			}
+			.SNES #header p {
+				background: -webkit-linear-gradient(yellow 0%, yellow 10%, red 50%, red 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.SNES #header p.multiline {
+				background: -webkit-linear-gradient(yellow 0%, yellow 5%,  red 25%, red 50%, yellow 50.1%, yellow 55%, red 75%, red 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.SNES #details {
+				position: absolute;
+				width: 164px;
+				bottom: 46px;
+				left: 33px;
+				min-height: 36px;
+				max-height: 36px;
+			}
+			
+			.GEN #header {
+				position: absolute;
+				min-width: 164px;
+				max-width: 164px;
+				top: 2px;
+				left: 33px;
+				min-height: 40px;
+				max-height: 40px;
+				overflow: hidden;
+				font-family: "NiseSegaSonic";
+				text-transform: lowercase;
+				color: #e5ca1b;
+				-webkit-text-stroke: 0.05em #0c1a72;
+				text-shadow: 0.03em 0.03em white, -0.03em -0.03em white, -0.03em 0.03em white, 0.03em -0.03em white;
+				font-size: 40px;
+			}
+			.GEN #details {
+				position: absolute;
+				width: 164px;
+				bottom: 44px;
+				left: 33px;
+				min-height: 36px;
+				max-height: 36px;
+			}
+			
+			.GBA #header {
+				position: absolute;
+				min-width: 164px;
+				max-width: 164px;
+				top: 28px;
+				left: 33px;
+				min-height: 37px;
+				max-height: 37px;
+				font-family: "Need Every Sound";
+				text-transform: uppercase;
+				line-height: 1em;
+				font-size: 24px;
+				background: -webkit-linear-gradient(#ff6e02, #ffff00, #ff6e02);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.GBA #details {
+				position: absolute;
+				width: 164px;
+				bottom: 15px;
+				left: 33px;
+				min-height: 36px;
+				max-height: 36px;
+			}
+			
+			.GB #header {
+				position: absolute;
+				min-width: 130px;
+				max-width: 130px;
+				top: 45px;
+				left: 20px;
+				min-height: 65px;
+				max-height: 65px;
+				overflow: hidden;
+				font-family: Yantramanav;
+				text-transform: uppercase;
+				line-height: 1em;
+				letter-spacing: -0.03em;
+				font-size: 48px;
+				color: red;
+				font-weight: 900;
+			}
+			.GB #details {
+				position: absolute;
+				width: 130px;
+				bottom: 18px;
+				left: 20px;
+				min-height: 45px;
+				max-height: 45px;
+			}
+			
+			#description2, #description2_background {
+				position: absolute;
+				width: 316.5px;
+				height: 319.5px;
+				top: 20px;
+				left: 1445px;
+				
+				font-family: Verdana;
+				font-size: 10px;
+				font-weight: bold;
+				color: white;
+				
+				background-size: contain;
+			}
+			#description2_background {
+				background-image: url('images/DS red closed forever.png');
+			}
+			#description2 > div {
+				transition: opacity 0.5s 2.5s;
+			}
+			#description2.hidden > div {
+				opacity: 0;
+				transition: opacity 0.5s 0s;
+			}
+			#description2 p {
+				margin: 2px 4px;
+			}
+			#controlsScreen {
+				position: absolute;
+				width: 211px;
+				height: 109px;
+				top: 31px;
+				left: 52px;
+				background: url('images/DS top screen.png');
+			}
+			#controlsDesc {
+				position: absolute;
+				width: 211px;
+				min-height: 97px;
+				max-height: 97px;
+				top: 0px;
+				left: 0px;
+				font-size: 12px;
+				display: table;
+			}
+			#controlsDesc span {
+				display: block;
+			}
+			#footer2 {
+				position: absolute;
+				width: 211px;
+				bottom: 0px;
+				left: 0px;
+			}
+			
+			#bonusScreen {
+				position: absolute;
+				width: 147px;
+				height: 120px;
+				top: 175px;
+				left: 84px;
+				background: url('images/DS bottom screen.png');
+				color: black;
+			}
+			#bonusScreen.noBonus {
+				background: url('images/DS bottom screen no bonus.png');
+			}
+			#gameLogo.sad ~ #description2 #bonusScreen {
+				background: url('images/DS bottom screen no bonus sad.png');
+				color: transparent;
+			}
+			#bonusDesc {
+				position: absolute;
+				width: 147px;
+				min-height: 69px;
+				max-height: 69px;
+				top: 21px;
+				left: 0px;
+				line-height: 15px; /* size of button images */
+				font-size: 12px;
+				display: table;
+				text-align: center;
+			}
+			
+			#controlsDesc > p, #bonusDesc > p {
+				display: table-cell;
+				padding: 5px;
+			}
+			#bonusDesc > p {
+				vertical-align: middle;
+			}
+			
+			#controlsDesc span + span.controls, #controlsDesc span + span.combo1 {
+				margin-top: 5px; /* separate "sections" a little */
+			}
+			
+			.controls {
+				color: #ccc;
+			}
+			#description2 img {
+				margin: -0.25em 0; /* try to center button images in line */
+			}
+			
+			.combo1 {
+				color: #fa0;
+			}
+			.combo2 {
+				color: #fb4;
+			}
+			.combo3 {
+				color: #fd6;
+			}
+			.combo4 {
+				color: #fe8;
+			}
+			
+			#challenge {
+				position: absolute;
+				bottom: 16px;
+				left: 5px;
+				font-family: Verdana;
+				font-size: 10px;
+				color: black;
+			}
+			
+			#difficulty-rating {
+				position: absolute;
+				width: 147px;
+				height: 30px;
+				bottom: 0px;
+				left: 0px;
+			}
+			#difficulty-rating.light1 {
+				background-image: url('images/difficulty 1.png');
+			}
+			#difficulty-rating.light2 {
+				background-image: url('images/difficulty 2.png');
+			}
+			#difficulty-rating.light3 {
+				background-image: url('images/difficulty 3.png');
+			}
+			#difficulty-rating.light4 {
+				background-image: url('images/difficulty 4.png');
+			}
+			#difficulty-rating.light5 {
+				background-image: url('images/difficulty 5.png');
+			}
+			
+			#timerContainer {
+				position: absolute;
+				left: 1300px;
+				top: 500px;
+				width: 140px;
+			}
+			#timer {
+				width: 50px;
+			}
+			#timerDisplay {
+				top: 20px;
+				width: 139px;
+				height: 64px;
+				display: table;
+				padding: 0;
+				margin-bottom: 10px;
+				
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				font-family: Arial;
+				font-weight: 900;
+			}
+			#timerText {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			#timerText p {
+				margin: 0;
+				padding: 0;
+				background: linear-gradient(to bottom, #ffffcc 0%, #ff9900 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				-webkit-text-stroke: 1px black;
+			}
+			#timerVal {
+				color: white;
+				font-family: Arial;
+				
+				display: none;
 			}
 		</style>
 	</head>
@@ -351,45 +764,48 @@
 			<p id="desc3" class="select-desc"><label for="r3">4</label><input id="r3" type="radio" name="desc" value="3" onclick="$challenge.showDesc(3)"></p>
 			<p id="desc4" class="select-desc"><label for="r4">5</label><input id="r4" type="radio" name="desc" value="4" onclick="$challenge.showDesc(4)"></p>
 			<p id="desc5" class="select-desc"><label for="r5">6</label><input id="r5" type="radio" name="desc" value="5" onclick="$challenge.showDesc(5)"></p>
-			<p id="descSad" class="select-desc"><label for="rSad">Sad</label><input id="rSad" type="radio" name="desc" value="6" onclick="$challenge.showDesc(6)"> <button onclick="$challenge.reroll(6);">Reroll</button></p>
-			<p id="descGrabBag" class="select-desc"><label for="rGrabBag">Grab Bag</label><input id="rGrabBag" type="radio" name="desc" value="7" onclick="$challenge.showDesc(7)"> <button onclick="$challenge.reroll(7);">Reroll</button></p>
+			<p id="descSad" class="select-desc"><label for="rSad">Sad</label><input id="rSad" type="radio" name="desc" value="6" onclick="$challenge.showDesc(6)"> <button onclick="$challenge.reroll(6);">🔄</button></p>
+			<p id="descGrabBag" class="select-desc"><label for="rGrabBag">Grab Bag</label><input id="rGrabBag" type="radio" name="desc" value="7" onclick="$challenge.showDesc(7)"> <button onclick="$challenge.reroll(7);">🔄</button></p>
 			
 			<!-- selected challenge description -->
 			<div id="description" class="hidden">
 				<div id="header">
-					<div class="info" style="width: 297px; padding-left: 5px;" id="game-name">Game</div>
+					<div id="game-name"></div>
 				</div>
 				<div id="details">
-					<p class="info" style="padding: 5px;"><span id="challenge">C000</span>: <span id="challenge-details">Stuff</span></p>
+					<p class="info" style="padding: 0 5px; display: table-cell; vertical-align: middle;"><span id="challenge-details"></span></p>
 				</div>
-				<div id="footer">
-					<hr>
-
-					<div class="info" style="width: 292px; margin: 0 5px;">
-						<div style="float: left; width: 50px; height: 40px; background-size: auto; background-position: center; background-repeat:no-repeat;" id="game-console"></div>
-						
-						<table style="table-layout: fixed; padding-left: 5px; height: 40px; width: 242px; white-space: nowrap;">
-							<tr>
-								<td style="width: auto; text-overflow: ellipsis; overflow: hidden;">
-									<span class="header">By: </span>
-									<span id="submitter"></span>
-								</td>
-								
-								<td style="width: 79px;">
-									<span class="header">State:</span> <span id="state-slot">None</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="header">Time:</span> <span id="challenge-time-limit">1</span>m
-								</td>
-
-								<td>
-									<span class="header">Difficulty:</span> <span id="difficulty-rating"></span>
-								</td>
-							</tr>
-						</table>
+			</div>
+			
+			<div id="description2_background"></div>
+			<div id="description2" class="hidden">
+				<div id="controlsScreen">
+					<div id="controlsDesc"><p>Sample controls</p></div>
+					<div id="footer2">
+						<div class="info" style="margin: 0 5px;">
+							<table style="table-layout: fixed; width: 100%; white-space: nowrap;" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="width: auto; text-overflow: ellipsis; overflow: hidden;">
+										<span class="header">By</span>
+										<span id="submitter"></span>
+									</td>
+									
+									<td style="width: 60px; text-align: right;">
+										<span class="header" id="challenge-time-type">Time</span> <span id="challenge-time-limit">1</span>
+									</td>
+									
+									<td style="width: 55px; text-align: right;">
+										<span class="header">Save</span> <span id="state-slot">None</span>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
+				</div>
+				<div id="bonusScreen">
+					<div id="bonusDesc"><p>Sample bonus</p></div>
+					<div id="difficulty-rating"></div>
+					<div id="challenge">C000</div>
 				</div>
 			</div>
 			
@@ -398,6 +814,24 @@
 				<p>Wager: <input type="text" id="wager" value="20"></p>
 			</div>
 			<div id="wagerDisplay"><div id="wg"></div></div>
+			
+			<!-- button to toggle Hustle -->
+			<button id="toggleHustle" onclick="$challenge.toggleHustle();">Toggle Hustle</button>
+			
+			<!-- challenge timer -->
+			<div id="timerContainer">
+				<div id="timerDisplay"><div id="timerText"></div></div>
+				<div id="timerVal">Time (sec): <input type="text" id="timer" value=""></div>
+				
+				<button id="timerStart" onclick="timerStart();">Start</button>
+				<button id="timerCancel" onclick="timerCancel();">Cancel</button>
+				<button id="timerReset" onclick="timerReset();">Reset</button>
+				<button id="timerSetZero" onclick="timerSetZero();">Set 0</button>
+				
+				<audio id="timerBuzzer">
+					<source src="wheel/sfx/Air Horn Sound Effect.mp3" type="audio/mpeg">
+				</audio>
+			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
@@ -436,7 +870,45 @@
 				while (node[0].scrollHeight > mh) {
 					node.css("font-size", --fs + "px");
 				}
+				var mw = parseInt(node.css("max-width"), 10);
+				if (mw) {
+					while (node[0].scrollWidth > mw) {
+						node.css("font-size", --fs + "px");
+					}
+				}
 			};
+			
+			var buttonImages = {
+				'GB(A)'		:	'images/Game Boy A.png',
+				'GB(B)'		:	'images/Game Boy B.png',
+				'GBA(A)'	:	'images/GBA A.png',
+				'GBA(B)'	:	'images/GBA B.png',
+				'GEN(A)'	:	'images/Genesis A.png',
+				'GEN(B)'	:	'images/Genesis B.png',
+				'GEN(C)'	:	'images/Genesis C.png',
+				'GEN(X)'	:	'images/Genesis X.png',
+				'GEN(Y)'	:	'images/Genesis Y.png',
+				'GEN(Z)'	:	'images/Genesis Z.png',
+				'NES(A)'	:	'images/NES A.png',
+				'NES(B)'	:	'images/NES B.png',
+				'SNES(A)'	:	'images/SNES A.png',
+				'SNES(B)'	:	'images/SNES B.png',
+				'SNES(X)'	:	'images/SNES X.png',
+				'SNES(Y)'	:	'images/SNES Y.png',
+				'(UP)'		:	'images/dpad up.png',
+				'(DOWN)'	:	'images/dpad down.png',
+				'(LEFT)'	:	'images/dpad left.png',
+				'(RIGHT)'	:	'images/dpad right.png',
+				'(D-PAD)'	:	'images/whole dpad.png'
+			};
+			
+			function markupControls(text, console) {
+				if (!text) { return ''; }
+				
+				var markup = text.replace(/\([ABCXYZ]\)/gi, function(m) { return '<img src="'+buttonImages[console+m.toUpperCase()]+'">'; });
+				markup = markup.replace(/\((UP|DOWN|LEFT|RIGHT|D\-PAD)\)/gi, function(m) { return '<img src="'+buttonImages[m.toUpperCase()]+'">'; });
+				return markup;
+			}
 			
 			var isCalled = false;
 			function isSaveState(value) {
@@ -466,6 +938,7 @@
 				challenges: [null,null,null,null,null,null,null,null],
 				seenChallenges: [],
 				shownChallenge: -1,
+				isHustle: false,
 				loadJSON: function (path, callback) {
 					var xobj = new XMLHttpRequest();
 					xobj.overrideMimeType("application/json");
@@ -490,23 +963,118 @@
 						$challenge.clearGame();
 						return;
 					}
-					$('#description').removeClass('hidden');
-					$('#game-name').text(challenge["Game Title"]);
-					$('#challenge').text(challenge.CKey);
-					$('#submitter').text(challenge.Submitter);
-					$('#challenge-details').text(challenge["Challenge Details"]);
-					$('#challenge-time-limit').text(challenge["Challenge Time Limit"]);
-					$('#difficulty-rating').text(challenge["Difficulty Rating"]);
-					$('#state-slot').text(challenge.StateSlot);
-					$('#wager')[0].value = challenge.Points;
+					var wasHidden = $('#description2').hasClass('hidden');
+					var timeout = wasHidden ? 2000 : 1000;
 					
-					var cssClass = 'controller'+challenge["Game Console"];
-					$('#game-console').removeClass().addClass(cssClass);
+					if (!wasHidden) {
+						// transition old game out quickly
+						$('#description').addClass('hidden bounceOutDown');
+						$('#description2').addClass('hidden');
+					}
 					
-					textfit($('#details'));
+					window.setTimeout(function() {
+						$('#description').removeClass('hidden');
+						$('#description2').removeClass('hidden');
+						
+						if (wasHidden) {
+							$('#description2').css('background-image', 'url("images/DS red opens and stops.gif?'+Date.now()+'")');
+						}
+						
+						// parse out controls/bonus from the details
+						var fullDetails = challenge["Notes"];
+						if (fullDetails) {
+							fullDetails = markupControls(fullDetails, challenge["Game Console"]);
+							
+							var html = '';
+							
+							var descMatch = /^([^\[{]+)/.exec(fullDetails);
+							if (descMatch) {
+								html = '<span>'+descMatch[0].trim()+'</span>';
+							}
+							
+							var controlsMatch = /\[(.+?)\]/.exec(fullDetails);
+							if (controlsMatch)
+							{
+								if (html !== '') {
+									html += ' ';
+								}
+								html += '<span class="controls">'+controlsMatch[1]+'</span>';
+							}
+							
+							var combosRegex = /(?:\{(.+?)\})+?/g;
+							var combosMatch;
+							var comboNum = 0;
+							while ((combosMatch = combosRegex.exec(fullDetails)) !== null) {
+								if (html !== '') {
+									html += ' ';
+								}
+								html += '<span class="combo'+(++comboNum)+'">'+combosMatch[1]+'</span>';
+							}
+							$('#controlsDesc > p').html(html);
+						} else {
+							$('#controlsDesc > p').html('');
+						}
+						
+						var bonus = challenge["BONUS"];
+						$('#bonusDesc > p').text(bonus ? bonus : '');
+						if (bonus) {
+							$('#bonusScreen').removeClass('noBonus');
+						} else {
+							$('#bonusScreen').addClass('noBonus');
+						}
+						
+						$('#game-name').html('<p>'+challenge["Game Title"]+'</p>');
+						$('#challenge').text(challenge.CKey);
+						$('#submitter').text(challenge.Submitter);
+						$('#challenge-details').text(challenge["Challenge Details"]);
+						var time = challenge["Challenge Time Limit"];
+						if (time.endsWith('a')) {
+							$('#challenge-time-type').text('Tries');
+							$('#challenge-time-limit').text(time.slice(0, -1));
+						} else {
+							$('#challenge-time-type').text('Time');
+							$('#challenge-time-limit').text(time+'m');
+						}
+						$('#difficulty-rating').removeClass().addClass('light'+challenge["Difficulty Rating"]);
+						if (challenge.StateSlot === "" || challenge.StateSlot === "N/A") {
+							$('#state-slot').text('-');
+						} else if (challenge.StateSlot === "0") {
+							$('#state-slot').text('F10');
+						} else {
+
+							$('#state-slot').text('F'+challenge.StateSlot);
+						}
+						$('#wager')[0].value = (i < 6 && $challenge.isHustle) ? "-20" : challenge.Points;
+						
+						$('#description').hide().show(0); // workaround for SNES titles not always redrawing
+						
+						var cssClass = challenge["Game Console"];
+						$('#description').removeClass().addClass(cssClass+' bounceInUp');
+						
+						textfit($('#header'));
+						textfit($('#details'));
+						textfit($('#controlsDesc'));
+						textfit($('#bonusDesc'));
+						
+						// mark header with line count
+						$('#header p').removeClass();
+						if (challenge["Game Console"] === "SNES" && $('#header p')[0].scrollHeight > 34) {
+							$('#header p').addClass('multiline');
+						}
+						
+						// set up timer
+						setUpTimer();
+					}, timeout);
 				},
 				clearGame: function () {
-					$('#description').addClass('hidden');
+					$('#description').addClass('hidden bounceOutDown');
+					if (!$('#description2').hasClass('hidden')) {
+						$('#description2').addClass('hidden');
+						$('#description2').css('background-image', 'url("images/DS red closes.gif?'+Date.now()+'")');
+					}
+					
+					// cancel timer
+					timerCancel();
 				},
 				reroll: function(i) {
 					switch (i)
@@ -526,9 +1094,12 @@
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
 								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
-								$('#tv' + i).children('.challenge-console').text(challenge["Game Console"]);
-								challenge["Points"] = 15+5*Math.floor(Math.random()*4);
-								$('#tv' + i).children('.channel').text(challenge["Points"]);
+								$('#tv' + i).children('.challenge-console').removeClass().addClass('challenge-console '+challenge["Game Console"]);
+								challenge["Points"] = 15+5*Math.floor(Math.random()*4); // 15-35 points in increments of 5
+								if (challenge.Rare === 1 || challenge.Rare === 2) {
+									challenge["Points"] += 5*challenge.Rare;
+								}
+								$('#tv' + i).children('.channel').text($challenge.isHustle ? "-20" : challenge["Points"]);
 								$challenge.challenges[i] = challenge;
 								$challenge.seenChallenges.push(challenge);
 								
@@ -556,12 +1127,10 @@
 								if (challenge.Rare === 1)
 								{
 									$('#tv' + i).addClass('rare1');
-									challenge.Points += 5;
 								}
 								else if (challenge.Rare === 2)
 								{
 									$('#tv' + i).addClass('rare2');
-									challenge.Points += 10;
 								}
 
 								// update game description
@@ -627,19 +1196,23 @@
 					}
 				},
 				showHide: function(i) {
-					// select radio button (which will show description)
-					$('#r' + i).click();
-					
-					$('#tv' + i).removeClass('rare1');
-					$('#tv' + i).removeClass('rare2');
 					if ($('#tv' + i).hasClass('hidden') === false)
 					{
+						// select radio button (which will show description)
+						$('#r' + i).click();
+					
 						timeline[i].restart();
 						$('#tv' + i).addClass('hidden');
 						$challenge.challenges[i] = null;
+						window.setTimeout(function() {
+							$('#tv' + i).removeClass('rare1');
+							$('#tv' + i).removeClass('rare2');
+						}, 500);
 					}
 					else
 					{
+						$('#tv' + i).removeClass('rare1');
+						$('#tv' + i).removeClass('rare2');
 						$challenge.reroll(i);
 					}
 				},
@@ -673,13 +1246,134 @@
 					{
 						$challenge.clearGame();
 					}
+				},
+				toggleHustle: function() {
+					$challenge.isHustle = ($challenge.isHustle == false);
+					
+					// toggle CSS class
+					$('#navContent').toggleClass('hustle', $challenge.isHustle);
+					
+					// update TVs
+					for (var i=0; i<6; ++i) {
+						if ($challenge.challenges[i]) {
+							$('#tv' + i).children('.channel').text($challenge.isHustle ? "-20" : $challenge.challenges[i]["Points"]);
+						}
+					}
+					
+					// update displayed wager
+					$('#wager')[0].value = ($challenge.shownChallenge < 6 && $challenge.isHustle) ? "-20" : $challenge.challenges[$challenge.shownChallenge].Points;
 				}
 			};
+			
+			// based on https://stackoverflow.com/a/44337628
+			function AdjustingInterval(workFunc, interval, errorFunc) {
+				var that = this;
+				var expected;
+				
+				this.timeout = null;
+				this.isStopped = true;
+				this.interval = interval;
+
+				this.start = function() {
+					that.isStopped = false;
+					expected = Date.now() + that.interval;
+					that.timeout = setTimeout(step, that.interval);
+				}
+
+				this.stop = function() {
+					that.isStopped = true;
+					clearTimeout(that.timeout);
+				}
+
+				function step() {
+					var drift = Date.now() - expected;
+					if (drift > that.interval) {
+						// You could have some default stuff here too...
+						if (errorFunc) errorFunc();
+					}
+					workFunc();
+					expected += that.interval;
+					if (!that.isStopped) {
+						that.timeout = setTimeout(step, Math.max(0, that.interval-drift));
+					}
+				}
+			}
+			var currentTimer, timerStartTime, timerEndTime, timerDuration;
+			function setUpTimer() {
+				// cancel any current timer
+				timerCancel();
+				timerDuration = -1;
+				
+				// populate time from current game display
+				var timeMinutes;
+				if ($('#challenge-time-type').text() === "Time" && (timeMinutes = parseFloat($('#challenge-time-limit').text()))) {
+					if (!currentTimer) {
+						currentTimer = new AdjustingInterval(timerTick, 100);
+					}
+					timerDuration = timeMinutes * 60 * 1000;
+					updateTime(timerDuration);
+				} else if ($('#challenge-time-type').text() === "Time") {
+					$('#timerText').html('<p>'+$('#challenge-time-limit').text()+'</p>');
+				} else if ($('#challenge-time-type').text() === "Tries" && (timeMinutes = parseInt($('#challenge-time-limit').text(), 10))) {
+					$('#timerText').html('<p>'+(timeMinutes > 1 ? timeMinutes + ' tries' : '1 try')+'</p>');
+				}
+			}
+			function updateTime(timeLeftMs) {
+				// calculate time remaining
+				var timeLeftMinPart = Math.floor(timeLeftMs / 60000);
+				var timeLeftSecPart = Math.floor((timeLeftMs % 60000) / 1000);
+				$('#timerText').html('<p>' + timeLeftMinPart + ':' + (timeLeftSecPart < 10 ? '0' : '') + timeLeftSecPart + '</p>');
+			}
+			function timerTick() {
+				var timeLeftMs = Math.max(timerEndTime - Date.now(), 0);
+				updateTime(timeLeftMs);
+				if (timeLeftMs === 0) {
+					// stop timer, play buzzer
+					if (currentTimer) {
+						currentTimer.stop();
+						$('#timerBuzzer')[0].play();
+					}
+				}
+			}
+			
+			function timerStart() {
+				if (currentTimer && timerDuration > 0) {
+					// set start time
+					timerStartTime = Date.now();
+					timerEndTime = timerStartTime + timerDuration;
+					
+					// activate timer process
+					currentTimer.start();
+				}
+			}
+			function timerCancel() {
+				if (currentTimer) {
+					currentTimer.stop();
+				}
+				// clear display
+				$('#timer').text('');
+				$('#timerText').text('');
+			}
+			function timerReset() {
+				setUpTimer();
+			}
+			function timerSetZero() {
+				if (currentTimer) {
+					// put timer in past
+					timerEndTime = timerStartTime;
+				}
+			}
+			
 			window.onload = function () {
+				// activate hustle if querystring param exists
+				if (window.location.href.indexOf('hustle=1') != -1) {
+					$challenge.toggleHustle();
+				}
+				
 				buildTimeline();
 				$challenge.init('challenges.json');
 				setInterval(function () {
-					$('#wg').text($('#wager')[0].value);
+					$('#wg').html('<p>'+$('#wager')[0].value+' pts</p>');
 				}, 1000);
 			};
 		</script>
