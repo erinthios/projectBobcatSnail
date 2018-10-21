@@ -207,6 +207,7 @@
 				animation-duration: 2s;
 				-webkit-animation-fill-mode: both;
 				animation-fill-mode: both;
+				background-size: contain;
 			}
 			#description.hidden {
 				/*visibility: hidden;*/
@@ -272,12 +273,20 @@
 			
 			#gameLogo {
 				position: absolute;
-				top: 727px;
-				left: 467px;
+				top: 327px;
+				left: 1430px;
 				width: 343px;
 				height: 115px;
 				background-repeat: no-repeat;
 				background-position: center;
+				-webkit-animation-duration: 1s;
+				animation-duration: 1s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+				animation-delay: 2s;
+			}
+			#gameLogo.hidden {
+				animation-delay: 0s;
 			}
 			#gameLogo.gamebler {
 				background-image: url('Gamebler_Tiny.png');
@@ -287,6 +296,18 @@
 			}
 			#gameLogo.grabBag {
 				background-image: url('Grab_Bag.png');
+			}
+			#gameLogo.hustle {
+				background-image: url('hustlin.png');
+			}
+			#gameLogo.NES {
+				top: 327px;
+			}
+			#gameLogo.GBA, #gameLogo.GEN, #gameLogo.SNES {
+				top: 436px;
+			}
+			#gameLogo.GB {
+				top: 384px;
 			}
 
 			.info{
@@ -367,31 +388,32 @@
 			}
 			
 			#description.GB {
-				top: 441px;
+				top: 480px;
+				left: 1516px;
 				width: 170px;
 				height: 173px;
 				background-image: url('images/AP Cart - GB.png');
 			}
 			#description.GBA {
-				top: 491px;
+				top: 530px;
 				width: 230px;
 				height: 123px;
 				background-image: url('images/AP Cart - GBA.png');
 			}
 			#description.GEN {
-				top: 491px;
+				top: 530px;
 				width: 230px;
 				height: 123px;
 				background-image: url('images/AP Cart - GEN.png');
 			}
 			#description.NES {
-				top: 380px;
+				top: 419px;
 				width: 230px;
 				height: 234px;
 				background-image: url('images/AP Cart - NES.png');
 			}
 			#description.SNES {
-				top: 491px;
+				top: 530px;
 				width: 230px;
 				height: 123px;
 				background-image: url('images/AP Cart - SNES.png');
@@ -409,7 +431,7 @@
 				position: absolute;
 				min-width: 150px;
 				max-width: 150px;
-				top: 44px;
+				top: 66px;
 				left: 60px;
 				min-height: 60px;
 				max-height: 60px;
@@ -507,6 +529,8 @@
 				text-transform: uppercase;
 				line-height: 1em;
 				font-size: 24px;
+			}
+			.GBA #header p {
 				background: -webkit-linear-gradient(#ff6e02, #ffff00, #ff6e02);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
@@ -548,8 +572,8 @@
 			
 			#description2, #description2_background {
 				position: absolute;
-				width: 316.5px;
-				height: 319.5px;
+				width: 316.0px;
+				height: 319.0px;
 				top: 20px;
 				left: 1445px;
 				
@@ -735,6 +759,15 @@
 				
 				display: none;
 			}
+			
+			#showNone {
+				position: absolute;
+				top: 750px;
+				left: 870px;
+				width: 120px;
+				height: 70px;
+				font-size: larger;
+			}
 		</style>
 	</head>
 	<body background="vgcWall.png">
@@ -818,6 +851,9 @@
 			<!-- button to toggle Hustle -->
 			<button id="toggleHustle" onclick="$challenge.toggleHustle();">Toggle Hustle</button>
 			
+			<!-- button to clear current game display -->
+			<button id="showNone" onclick="$('#rNone').click();">Close DS</button>
+			
 			<!-- challenge timer -->
 			<div id="timerContainer">
 				<div id="timerDisplay"><div id="timerText"></div></div>
@@ -827,6 +863,7 @@
 				<button id="timerCancel" onclick="timerCancel();">Cancel</button>
 				<button id="timerReset" onclick="timerReset();">Reset</button>
 				<button id="timerSetZero" onclick="timerSetZero();">Set 0</button>
+				<button id="timerDecTries" onclick="timerDecrementTries();">-1 Try</button>
 				
 				<audio id="timerBuzzer">
 					<source src="wheel/sfx/Air Horn Sound Effect.mp3" type="audio/mpeg">
@@ -970,11 +1007,13 @@
 						// transition old game out quickly
 						$('#description').addClass('hidden bounceOutDown');
 						$('#description2').addClass('hidden');
+						$('#gameLogo').addClass('hidden zoomOut');
 					}
 					
 					window.setTimeout(function() {
 						$('#description').removeClass('hidden');
 						$('#description2').removeClass('hidden');
+						$('#gameLogo').removeClass('hidden');
 						
 						if (wasHidden) {
 							$('#description2').css('background-image', 'url("images/DS red opens and stops.gif?'+Date.now()+'")');
@@ -1016,6 +1055,13 @@
 						}
 						
 						var bonus = challenge["BONUS"];
+						if (challenge["Difficulty Rating"] == 4) {
+							// static bonus for difficulty 4
+							bonus = 'This challenge is worth +5 bonus points on victory.';
+						} else if (challenge["Difficulty Rating"] == 5) {
+							// static bonus for difficulty 5
+							bonus = 'This challenge is worth +10 bonus points on victory.';
+						}
 						$('#bonusDesc > p').text(bonus ? bonus : '');
 						if (bonus) {
 							$('#bonusScreen').removeClass('noBonus');
@@ -1050,6 +1096,27 @@
 						
 						var cssClass = challenge["Game Console"];
 						$('#description').removeClass().addClass(cssClass+' bounceInUp');
+						$('#gameLogo').removeClass().addClass(cssClass+' zoomIn');
+						
+						switch (i)
+						{
+							case 0:
+							case 1:
+							case 2:
+							case 3:
+							case 4:
+							case 5:
+								$('#gameLogo').addClass($challenge.isHustle ? 'hustle' : 'gamebler');
+								break;
+
+							case 6:
+								$('#gameLogo').addClass('sad');
+								break;
+
+							case 7:
+								$('#gameLogo').addClass('grabBag');
+								break;
+						}
 						
 						textfit($('#header'));
 						textfit($('#details'));
@@ -1068,6 +1135,7 @@
 				},
 				clearGame: function () {
 					$('#description').addClass('hidden bounceOutDown');
+					$('#gameLogo').addClass('hidden zoomOut');
 					if (!$('#description2').hasClass('hidden')) {
 						$('#description2').addClass('hidden');
 						$('#description2').css('background-image', 'url("images/DS red closes.gif?'+Date.now()+'")');
@@ -1203,7 +1271,6 @@
 					
 						timeline[i].restart();
 						$('#tv' + i).addClass('hidden');
-						$challenge.challenges[i] = null;
 						window.setTimeout(function() {
 							$('#tv' + i).removeClass('rare1');
 							$('#tv' + i).removeClass('rare2');
@@ -1219,27 +1286,6 @@
 				showDesc: function(i) {
 					if (i >= 0)
 					{
-						$('#gameLogo').removeClass();
-						switch (i)
-						{
-							case 0:
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-							case 5:
-								$('#gameLogo').addClass('gamebler');
-								break;
-
-							case 6:
-								$('#gameLogo').addClass('sad');
-								break;
-
-							case 7:
-								$('#gameLogo').addClass('grabBag');
-								break;
-						}
-
 						$challenge.loadGame(i);
 					}
 					else
@@ -1262,6 +1308,12 @@
 					
 					// update displayed wager
 					$('#wager')[0].value = ($challenge.shownChallenge < 6 && $challenge.isHustle) ? "-20" : $challenge.challenges[$challenge.shownChallenge].Points;
+					
+					// update logo
+					if ($challenge.shownChallenge >= 0 && $challenge.shownChallenge <=6) {
+						$('#gameLogo').toggleClass('hustle');
+						$('#gameLogo').toggleClass('gamebler');
+					}
 				}
 			};
 			
@@ -1298,7 +1350,7 @@
 					}
 				}
 			}
-			var currentTimer, timerStartTime, timerEndTime, timerDuration;
+			var currentTimer, timerStartTime, timerEndTime, timerDuration, currentTries;
 			function setUpTimer() {
 				// cancel any current timer
 				timerCancel();
@@ -1315,7 +1367,8 @@
 				} else if ($('#challenge-time-type').text() === "Time") {
 					$('#timerText').html('<p>'+$('#challenge-time-limit').text()+'</p>');
 				} else if ($('#challenge-time-type').text() === "Tries" && (timeMinutes = parseInt($('#challenge-time-limit').text(), 10))) {
-					$('#timerText').html('<p>'+(timeMinutes > 1 ? timeMinutes + ' tries' : '1 try')+'</p>');
+					currentTries = timeMinutes;
+					$('#timerText').html('<p>'+(currentTries > 1 ? currentTries + ' tries' : '1 try')+'</p>');
 				}
 			}
 			function updateTime(timeLeftMs) {
@@ -1361,6 +1414,14 @@
 				if (currentTimer) {
 					// put timer in past
 					timerEndTime = timerStartTime;
+				}
+			}
+			function timerDecrementTries() {
+				if (currentTries < 1) { return; }
+				$('#timerText').html('<p>'+(--currentTries !== 1 ? currentTries + ' tries' : '1 try')+'</p>');
+				
+				if (currentTries === 0) {
+					$('#timerBuzzer')[0].play();
 				}
 			}
 			

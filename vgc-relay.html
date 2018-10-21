@@ -122,8 +122,21 @@
 		return value["Relay"] > 0;
 	}
     $challenge = {
-		challenges: [],
-		nextGameId: 0,
+		availableChallenges: [],
+		shownChallenge1: null,
+		shownChallenge2: null,
+		loadChallenges: function (challenges) {
+			var filteredChallenges = challenges.filter(isSaveState).filter(isRelay);
+			
+			$challenge.availableChallenges = [];
+			for (var i=0; i<filteredChallenges.length; ++i) {
+				var c = filteredChallenges[i];
+				if ($challenge.availableChallenges[c["Game Title"]] == null) {
+					$challenge.availableChallenges[c["Game Title"]] = [];
+				}
+				$challenge.availableChallenges[c["Game Title"]].push(c);
+			}
+		},
         loadJSON: function (path, callback) {
             var xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
@@ -142,8 +155,7 @@
 					$challenge.loadJSON(path2, function (response2) {
 						var challenges1 = JSON.parse(response1);
 						var challenges2 = JSON.parse(response2);
-						var filteredChallenges = challenges1.concat(challenges2);
-						$challenge.challenges = shuffle(filteredChallenges.filter(isSaveState).filter(isRelay));
+						$challenge.loadChallenges(challenges1.concat(challenges2));
 
 						// get initial challenges
 						$challenge.reroll(1);
@@ -153,7 +165,39 @@
             }
         },
 		reroll: function(id) {
-			var challenge = $challenge.challenges[$challenge.nextGameId++];
+			// clear old challenge
+			var oldChallenge;
+			if (id === 1) {
+				oldChallenge = $challenge.shownChallenge1;
+				$challenge.shownChallenge1 = null;
+			} else if (id === 2) {
+				oldChallenge = $challenge.shownChallenge2;
+				$challenge.shownChallenge2 = null;
+			}
+			if (oldChallenge) {
+				$challenge.availableChallenges[oldChallenge["Game Title"]].splice($challenge.availableChallenges[oldChallenge["Game Title"]].indexOf(oldChallenge));
+				if ($challenge.availableChallenges[oldChallenge["Game Title"]].length == 0) {
+					delete $challenge.availableChallenges[oldChallenge["Game Title"]];
+				}
+			}
+			
+			// get new challenge (no duplicate game names)
+			var gameNames = shuffle(Object.keys($challenge.availableChallenges));
+			var gameName = gameNames[0];
+			if (id === 1 && $challenge.shownChallenge2 && gameName === $challenge.shownChallenge2["Game Title"]) {
+				gameName = gameNames[1];
+			} else if (id === 2 && $challenge.shownChallenge1 && gameName === $challenge.shownChallenge1["Game Title"]) {
+				gameName = gameNames[1];
+			}
+			var gameChallenges = $challenge.availableChallenges[gameName];
+			var challenge = gameChallenges[Math.floor(Math.random() * gameChallenges.length)];
+			
+			if (id === 1) {
+				$challenge.shownChallenge1 = challenge;
+			} else if (id === 2) {
+				$challenge.shownChallenge2 = challenge;
+			}
+
 			$('#game-name'+id).text(challenge["Game Title"]);
 			$('#game-console'+id).text(challenge["Game Console"]);
 			$('#submitter'+id).text(challenge.Submitter);
@@ -161,6 +205,10 @@
 			$('#state-slot'+id).text(challenge.Stateslot);
 		},
 		swap: function() {
+			var temp = $challenge.shownChallenge1;
+			$challenge.shownChallenge1 = $challenge.shownChallenge2;
+			$challenge.shownChallenge2 = temp;
+			
 			var game1name = $('#game-name'+1).text();
 			var game1console = $('#game-console'+1).text();
 			var game1submitter = $('#submitter'+1).text();
