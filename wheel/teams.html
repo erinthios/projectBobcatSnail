@@ -55,7 +55,7 @@
 				position: absolute;
 				top: 6px;
 				left: 120px;
-				width: 370px;
+				width: 340px;
 				line-height: 60px;
 				vertical-align: middle;
 				max-height: 64px;	/* for textfit */
@@ -550,6 +550,9 @@
 					textfit($('#bt'));
 					textfit($('#bm'));
 				}, 30000);
+				setInterval(function () {
+					$.get('update-scores.php?bs='+$('#blueScore')[0].value+'&ys='+$('#yellowScore')[0].value);
+				}, 5000);
 
 				function updateValues()
 				{
