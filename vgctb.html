@@ -300,6 +300,7 @@
 		<p><button id="next" onclick="getNext();">Next</button></p>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="vgc-common.js"></script>
 		<script>
 			// based on https://github.com/nbrunt/TextFit
 			// modified to require a max-height
@@ -333,12 +334,6 @@
 			}
 
 			var isCalled = false;
-			function isSaveState(value) {
-				return value["Save State Download Location"] === "X";
-			}
-			function isNotOnlyRelay(value) {
-				return value["Relay"] != 2;
-			}
 			function notSeen(value) {
 				return !$challenge.seenChallenges.includes(value);
 			}
@@ -371,10 +366,11 @@
 					$challenge.availableChallenges = [];
 					for (var i=0; i<filteredChallenges.length; ++i) {
 						var c = filteredChallenges[i];
-						if ($challenge.availableChallenges[c["Game Title"]] == null) {
-							$challenge.availableChallenges[c["Game Title"]] = [];
+						c.GameConsole = getConsoleNameForId(c.GameSystem);
+						if ($challenge.availableChallenges[c["GameTitle"]] == null) {
+							$challenge.availableChallenges[c["GameTitle"]] = [];
 						}
-						$challenge.availableChallenges[c["Game Title"]].push(c);
+						$challenge.availableChallenges[c["GameTitle"]].push(c);
 					}
 				},
 				loadJSON: function (path, callback) {
@@ -409,9 +405,9 @@
 					var gameChallenges0 = $challenge.availableChallenges[gameName0];
 					var challenge0 = gameChallenges0[Math.floor(Math.random() * gameChallenges0.length)];
 					$challenge.activeChallenges[0] = challenge0;
-					$('#game-0').text(challenge0["Game Title"]);
-					$('#game-0-name').text(challenge0["Game Title"]);
-					$('#game-0-console').text(challenge0["Game Console"]);
+					$('#game-0').text(challenge0["GameTitle"]);
+					$('#game-0-name').text(challenge0["GameTitle"]);
+					$('#game-0-console').text(challenge0["GameConsole"]);
 					textfit($('#game-0'));
 					
 					// game 2
@@ -419,9 +415,9 @@
 					var gameChallenges1 = $challenge.availableChallenges[gameName1];
 					var challenge1 = gameChallenges1[Math.floor(Math.random() * gameChallenges1.length)];
 					$challenge.activeChallenges[1] = challenge1;
-					$('#game-1').text(challenge1["Game Title"]);
-					$('#game-1-name').text(challenge1["Game Title"]);
-					$('#game-1-console').text(challenge1["Game Console"]);
+					$('#game-1').text(challenge1["GameTitle"]);
+					$('#game-1-name').text(challenge1["GameTitle"]);
+					$('#game-1-console').text(challenge1["GameConsole"]);
 					textfit($('#game-1'));
 					
 					// game 3
@@ -429,9 +425,9 @@
 					var gameChallenges2 = $challenge.availableChallenges[gameName2];
 					var challenge2 = gameChallenges2[Math.floor(Math.random() * gameChallenges2.length)];
 					$challenge.activeChallenges[2] = challenge2;
-					$('#game-2').text(challenge2["Game Title"]);
-					$('#game-2-name').text(challenge2["Game Title"]);
-					$('#game-2-console').text(challenge2["Game Console"]);
+					$('#game-2').text(challenge2["GameTitle"]);
+					$('#game-2-name').text(challenge2["GameTitle"]);
+					$('#game-2-console').text(challenge2["GameConsole"]);
 					textfit($('#game-2'));
 					
 					// handle image
@@ -456,22 +452,25 @@
 					
 					$('#frame').removeClass('hidden');
 					$('#game-list').addClass('hidden');
-					$('#game-name').text(challenge["Game Title"]);
-					$('#challenge').text(challenge.TBKey);
-					$('#game-console').text(challenge["Game Console"]);
+					$('#game-name').text(challenge["GameTitle"]);
+					$('#challenge').text('T'+challenge.id);
+					$('#game-console').text(challenge["GameConsole"]);
 					$('#submitter').text(challenge.Submitter);
-					$('#challenge-details').text(challenge["Challenge Details"]);
-					$('#state-slot').text(challenge.Stateslot);
+					$('#challenge-details').text(challenge["ChallengeDetails"]);
+					$('#state-slot').text(challenge.StateSlot !== "" ? challenge.StateSlot : "N/A");
 					
-					var cssClass = 'controller'+challenge["Game Console"];
+					var cssClass = 'controller'+challenge["GameConsole"];
 					$('#controllerA').addClass(cssClass);
 					$('#controllerB').addClass(cssClass);
 					
 					$challenge.seenChallenges.push(challenge);
-					$challenge.availableChallenges[challenge["Game Title"]].splice($challenge.availableChallenges[challenge["Game Title"]].indexOf(challenge));
-					if ($challenge.availableChallenges[challenge["Game Title"]].length == 0) {
-						delete $challenge.availableChallenges[challenge["Game Title"]];
+					$challenge.availableChallenges[challenge["GameTitle"]].splice($challenge.availableChallenges[challenge["GameTitle"]].indexOf(challenge));
+					if ($challenge.availableChallenges[challenge["GameTitle"]].length == 0) {
+						delete $challenge.availableChallenges[challenge["GameTitle"]];
 					}
+					
+					// mark as seen on server
+					markIdAsSeen(challenge.id);
 						
 					clearTimeout();
 					setTimeout(function () {
@@ -484,7 +483,7 @@
 				}
 			};
 			window.onload = function () {
-				$challenge.init('TB challenges.json');
+				$challenge.init('https://arcadepit.net/api/gamebler/allunseenteambattle');
 			};
 			function getNext() {
 				$challenge.nextChoices();

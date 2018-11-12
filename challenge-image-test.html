@@ -60,24 +60,26 @@
 					xobj.send(null);
 				},
 				init: function (path) {
-					$challenge.loadJSON('challenges.json', function (response1) {
-						$challenge.loadJSON('TB challenges.json', function (response2) {
-							$challenge.availableChallenges = JSON.parse(response1).concat(JSON.parse(response2));
-							
-							$challenge.gameNames = getUniqueValuesOfKey($challenge.availableChallenges, "Game Title").sort();
-							
-							for (var i=0; i<$challenge.gameNames.length; ++i) {
-								var name = $challenge.gameNames[i];
-								var url = getTitleCardUrl(name);
-								$("#allGames").append("<tr><td>\""+name+"\"</tr></td>");
-								checkImage(name);
-							}
+					$challenge.loadJSON('https://arcadepit.net/api/gamebler/allunseengamebler', function (response1) {
+						$challenge.loadJSON('https://arcadepit.net/api/gamebler/allunseenteambattle', function (response2) {
+							$challenge.loadJSON('https://arcadepit.net/api/gamebler/allunseensmightchallenge', function (response3) {
+								$challenge.availableChallenges = JSON.parse(response1).concat(JSON.parse(response2)).concat(JSON.parse(response3));
+								
+								$challenge.gameNames = getUniqueValuesOfKey($challenge.availableChallenges, "GameTitle").sort();
+								
+								for (var i=0; i<$challenge.gameNames.length; ++i) {
+									var name = $challenge.gameNames[i];
+									var url = getTitleCardUrl(name);
+									$("#allGames").append("<tr><td>\""+name+"\"</tr></td>");
+									checkImage(name);
+								}
+							});
 						});
 					});
 				},
 			};
 			window.onload = function () {
-				$challenge.init('challenges.json');
+				$challenge.init();
 			};
 		</script>
 	</body>

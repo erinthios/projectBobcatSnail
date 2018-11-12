@@ -871,6 +871,7 @@
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="vgc-common.js"></script>
 		<script>
 			// based on https://codepen.io/francescostella/pen/ONaWvZ
 			var timeline = [];
@@ -948,21 +949,6 @@
 			}
 			
 			var isCalled = false;
-			function isSaveState(value) {
-				return value["Save State Download Location"] === "X";
-			}
-			function isHard(value) {
-				return value["Difficulty Rating"] >= 4;
-			}
-			function isEasy(value) {
-				return !isHard(value);
-			}
-			function isRare(value) {
-				return value["Rare"] > 0;
-			}
-			function isNotOnlyRelay(value) {
-				return value["Relay"] != 2;
-			}
 			function notSeen(value) {
 				return !$challenge.seenChallenges.includes(value);
 			}
@@ -988,8 +974,13 @@
 					xobj.send(null);
 				},
 				init: function (path) {
-					$challenge.loadJSON('challenges.json', function (response) {
+					$challenge.loadJSON('https://arcadepit.net/api/gamebler/allunseengamebler', function (response) {
 						$challenge.availableChallenges = JSON.parse(response);
+						
+						for (var i=0; i<$challenge.availableChallenges.length; ++i) {
+							var c = $challenge.availableChallenges[i];
+							c.GameConsole = getConsoleNameForId(c.GameSystem);
+						}
 					});
 				},
 				loadGame: function (i) {
@@ -1000,6 +991,7 @@
 						$challenge.clearGame();
 						return;
 					}
+
 					var wasHidden = $('#description2').hasClass('hidden');
 					var timeout = wasHidden ? 2000 : 1000;
 					
@@ -1022,7 +1014,7 @@
 						// parse out controls/bonus from the details
 						var fullDetails = challenge["Notes"];
 						if (fullDetails) {
-							fullDetails = markupControls(fullDetails, challenge["Game Console"]);
+							fullDetails = markupControls(fullDetails, challenge["GameConsole"]);
 							
 							var html = '';
 							
@@ -1054,11 +1046,11 @@
 							$('#controlsDesc > p').html('');
 						}
 						
-						var bonus = challenge["BONUS"];
-						if (challenge["Difficulty Rating"] == 4) {
+						var bonus = challenge["Bonus"];
+						if (challenge["Difficulty"] == 4) {
 							// static bonus for difficulty 4
 							bonus = 'This challenge is worth +5 bonus points on victory.';
-						} else if (challenge["Difficulty Rating"] == 5) {
+						} else if (challenge["Difficulty"] == 5) {
 							// static bonus for difficulty 5
 							bonus = 'This challenge is worth +10 bonus points on victory.';
 						}
@@ -1069,19 +1061,20 @@
 							$('#bonusScreen').addClass('noBonus');
 						}
 						
-						$('#game-name').html('<p>'+challenge["Game Title"]+'</p>');
-						$('#challenge').text(challenge.CKey);
+						$('#game-name').html('<p>'+challenge["GameTitle"]+'</p>');
+						$('#challenge').text('C'+challenge.id);
 						$('#submitter').text(challenge.Submitter);
-						$('#challenge-details').text(challenge["Challenge Details"]);
-						var time = challenge["Challenge Time Limit"];
-						if (time.endsWith('a')) {
+						$('#challenge-details').text(challenge["ChallengeDetails"]);
+						var time = challenge["ChallengeTimeLimit"];
+						var attempts = challenge["ChallengeAttempts"];
+						if (attempts > 0) {
 							$('#challenge-time-type').text('Tries');
-							$('#challenge-time-limit').text(time.slice(0, -1));
+							$('#challenge-time-limit').text(attempts);
 						} else {
 							$('#challenge-time-type').text('Time');
 							$('#challenge-time-limit').text(time+'m');
 						}
-						$('#difficulty-rating').removeClass().addClass('light'+challenge["Difficulty Rating"]);
+						$('#difficulty-rating').removeClass().addClass('light'+challenge["Difficulty"]);
 						if (challenge.StateSlot === "" || challenge.StateSlot === "N/A") {
 							$('#state-slot').text('-');
 						} else if (challenge.StateSlot === "0") {
@@ -1094,7 +1087,7 @@
 						
 						$('#description').hide().show(0); // workaround for SNES titles not always redrawing
 						
-						var cssClass = challenge["Game Console"];
+						var cssClass = challenge["GameConsole"];
 						$('#description').removeClass().addClass(cssClass+' bounceInUp');
 						$('#gameLogo').removeClass().addClass(cssClass+' zoomIn');
 						
@@ -1125,12 +1118,15 @@
 						
 						// mark header with line count
 						$('#header p').removeClass();
-						if (challenge["Game Console"] === "SNES" && $('#header p')[0].scrollHeight > 34) {
+						if (challenge["GameConsole"] === "SNES" && $('#header p')[0].scrollHeight > 34) {
 							$('#header p').addClass('multiline');
 						}
 						
 						// set up timer
 						setUpTimer();
+						
+						// mark as seen on server
+						markIdAsSeen(challenge.id);
 					}, timeout);
 				},
 				clearGame: function () {
@@ -1161,8 +1157,8 @@
 
 								// get new challenge
 								var challenge = filteredChallenges[Math.floor(Math.random() * filteredChallenges.length)];
-								$('#tv' + i).children('.game-name').text(challenge["Game Title"]);
-								$('#tv' + i).children('.challenge-console').removeClass().addClass('challenge-console '+challenge["Game Console"]);
+								$('#tv' + i).children('.game-name').text(challenge["GameTitle"]);
+								$('#tv' + i).children('.challenge-console').removeClass().addClass('challenge-console '+challenge["GameConsole"]);
 								challenge["Points"] = 15+5*Math.floor(Math.random()*4); // 15-35 points in increments of 5
 								if (challenge.Rare === 1 || challenge.Rare === 2) {
 									challenge["Points"] += 5*challenge.Rare;
@@ -1173,7 +1169,7 @@
 								
 								// handle image
 								var titleCard = $('#tv' + i).children('.title-card').children('img');
-								var titleImageUrl = getTitleCardUrl(challenge["Game Title"]);
+								var titleImageUrl = getTitleCardUrl(challenge["GameTitle"]);
 								var titleImage = new Image();
 								titleCard.removeClass('load-failed');
 								//titleCard.css("background-image", "");

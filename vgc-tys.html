@@ -260,6 +260,7 @@
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="vgc-common.js"></script>
 		<script>
 			// based on https://github.com/nbrunt/TextFit
 			// modified to require a max-height
@@ -293,9 +294,6 @@
 			}
 
 			var isCalled = false;
-			function isNotOnlyRelay(value) {
-				return value["Relay"] != 2;
-			}
 			function getTitleCardUrl(name) {
 				var cleanName = name.replace(/[\\\/:*?"<>|]/g,'');
 				return "images/titlecards/" + cleanName + ".gif";
@@ -324,10 +322,11 @@
 					$challenge.availableChallenges = [];
 					for (var i=0; i<filteredChallenges.length; ++i) {
 						var c = filteredChallenges[i];
-						if ($challenge.availableChallenges[c["Game Title"]] == null) {
-							$challenge.availableChallenges[c["Game Title"]] = [];
+						c.GameConsole = getConsoleNameForId(c.GameSystem);
+						if ($challenge.availableChallenges[c["GameTitle"]] == null) {
+							$challenge.availableChallenges[c["GameTitle"]] = [];
 						}
-						$challenge.availableChallenges[c["Game Title"]].push(c);
+						$challenge.availableChallenges[c["GameTitle"]].push(c);
 					}
 				},
 				loadJSON: function (path, callback) {
@@ -354,13 +353,16 @@
 					
 					$('#navContent').removeClass('hidden');
 					$('#game-list').addClass('hidden');
-					$('#game-name').text(challenge["Game Title"]);
-					$('#challenge').text(challenge.CKey);
-					$('#game-console').text(challenge["Game Console"]);
+					$('#game-name').text(challenge["GameTitle"]);
+					$('#challenge').text('S'+challenge.id);
+					$('#game-console').text(challenge["GameConsole"]);
 					$('#submitter').text(challenge.Submitter);
-					$('#challenge-details').text(challenge["Challenge Details"]);
-					$('#state-slot').text(challenge.StateSlot);
+					$('#challenge-details').text(challenge["ChallengeDetails"]);
+					$('#state-slot').text(challenge.StateSlot !== "" ? challenge.StateSlot : "N/A");
 					$('#challenge-handicap').text("Handicap: "+challenge.Handicap);
+					
+					// mark as seen on server
+					markIdAsSeen(challenge.id);
 
 					// gong
 					$('#gong')[0].pause();
@@ -380,9 +382,9 @@
 								var gameChallenges = $challenge.availableChallenges[gameName];
 								var challenge = gameChallenges[Math.floor(Math.random() * gameChallenges.length)];
 								$challenge.challenges[i] = challenge;
-								$('#game-'+i).text(challenge["Game Title"]);
-								$('#game-'+i+'-name').text(challenge["Game Title"]);
-								$('#game-'+i+'-console').text(challenge["Game Console"]);
+								$('#game-'+i).text(challenge["GameTitle"]);
+								$('#game-'+i+'-name').text(challenge["GameTitle"]);
+								$('#game-'+i+'-console').text(challenge["GameConsole"]);
 								textfit($('#game-'+i));
 							}
 					
@@ -403,7 +405,7 @@
 					$('#navContent').addClass('hidden');
 					$('#game-list').addClass('hidden');
 				}, 240000);
-				$challenge.initGames('challenges-smite.json');
+				$challenge.initGames('https://arcadepit.net/api/gamebler/allunseensmightchallenge');
 			};
 		</script>
 	</body>
